@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Jesse Claven</title>
+  <style>
+    * {
+      font-family: monospace;
+      font-size: 1em;
+      font-weight: normal;
+    }
+
+    ul {
+      padding: 0;
+      list-style: none;
+    }
+
+    p {
+      display: block;
+    }
+
+    h1 {
+      font-size: 1.2em;
+    }
+
+    h2 {
+      font-size: 1.1em;
+    }
+
+    h3 {
+      font-size: 1em;
+      font-style: italic;
+    }
+
+    .strike {
+      text-decoration: line-through;
+    }
+  </style>
+</head>
+
+<body>
+  <section class="section">
+    <div class="container">
+<p>&larr; / <a href="/">Home</a> / <a href="https://j-e-s-s-e.com/notes/">Notes</a> / Note</p>
+
+<h1 class="title">
+  Multi-UIs for a daemon and using gRPC to communicate locally from Rust &lt;&gt; Swift
+</h1>
+<p class="subtitle"><strong>2022-06-24</strong></p>
+<p><a href="https://j-e-s-s-e.com/notes/multi-uis-with-grpc/#sample">Jump to sample</a></p>
+<h1 id="multi-uis-discovery-of-a-paradigm">Multi-UIs Discovery of a paradigm</h1>
+<p>While building an extension for <a href="https://www.raycast.com/jns/sabnzbd">SABnzbd</a> for <a href="https://www.raycast.com">Raycast</a> <sup class="footnote-reference"><a href="#1">1</a></sup>, it made me think about a paradigm of multiple UIs. I interact with SABnzbd through its web UI, Raycast, and NZBHydra 2. There may even be another way that I'm not remembering.</p>
+<p>The paradigm I thought of from this, and added to my projects list, was something like this:</p>
+<img src="/notes/simple-map.png" alt="Example: Multi-UIs connected with a daemon" width="600" />
+<p>The name that I gave the project/idea was &quot;headless for everything&quot;, where headless is the daemon, in that drawing.</p>
+<p>Some clients are local, while some are remote, like &quot;Export to website&quot;. There are more and more local- and offline-first projects. What if you could export your data to another service? Chuck some local issues/tickets up in Jira and Linear? What if you could E2E as part of that? What if it could realtime, distributed, and collaborative? <sup class="footnote-reference"><a href="#2">2</a></sup></p>
+<p>The obvious—and huge—downside is that adding a network in-between brings all the issues that a network inherently has. Maybe <a href="https://hyperfiddle.notion.site/Demo-Photon-a-full-stack-Clojure-Script-dialect-with-compiler-managed-client-server-data-sync-57aee367c20e45b3b80366d1abe4fbc3">Photon</a> will help us out.</p>
+<h1 id="my-first-experiment-with-this-paradigm">My first experiment with this paradigm</h1>
+<p>The Pomodoro technique has occasionally worked well for me. On macOS, I use <a href="https://tomato2.app">Tomato 2</a>—and highly recommend it! A Pomodoro timer became the first experiment for me.</p>
+<p>The first version used sockets and an SQLite DB with the daemon and CLI client written in Rust. I wanted notifications though and with notarising/signing, I didn't like how I would send native macOS notifications.</p>
+<p>The second version got rid of SQLite and kept it all in memory to simplify it and used MessagePack.</p>
+<p>The third version, which is a work-in-progress, gets rid of sockets and uses gRPC for communication so that I can write a client in Swift. I did look around, and it seemed possible to use sockets with Swift, but again, I didn't like how I would've had to do so.</p>
+<h1 id="sample">Sample: How-to use gRPC to communicate between Rust &lt;&gt; Swift</h1>
+<p>Repository: <a href="https://github.com/jesse-c/grpc-example-rust-swift">https://github.com/jesse-c/grpc-example-rust-swift</a></p>
+<p>While I plan on writing a step-by-step tutorial, in the desire to get this idea and sample out to the world, I've published the repository.</p>
+<hr />
+<div class="footnote-definition" id="1"><sup class="footnote-definition-label">1</sup>
+<p>I'm still not decided on Raycast. I would go back to Alfred in a heartbeat if it wasn't so visually dated.</p>
+</div>
+<div class="footnote-definition" id="2"><sup class="footnote-definition-label">2</sup>
+<p>My undergrad thesis was titled <a href="https://github.com/jesse-c/thesis">Technology-supported activities through realtime, distributed, and collaborative interfaces</a>.</p>
+</div>
+
+</div>
+  </section>
+</body>
+
+</html>
