@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1 class="title">{{ page.title }}</h1>
+    <p class="subtitle">{{ page.date }}</p>
+    {%- if page.taxonomies.tags %}
+        {% for tag in page.taxonomies.tags %}
+            {{ tag }}
+        {% endfor %}
+    {% endif %}
+    {{ page.content | safe }}
+{% endblock content %}

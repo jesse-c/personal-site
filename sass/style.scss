@@ -1,0 +1,265 @@
+:root {
+  --text: #000;
+  --bg: #fff;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  font-size: 12px;
+  font-weight: normal;
+  background-color: var(--bg);
+  color: var(--text);
+  padding: 45px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: normal;
+}
+
+p {
+  font-size: 14px;
+}
+
+header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  padding: 0 0 15px 0;
+  margin: 0 0 25px 0;
+
+  h1 {
+    display: inline-block;
+
+    margin: 0;
+    padding: 0;
+
+    font-weight: bold;
+    font-size: 12px;
+  }
+
+  nav {
+    ul {
+      margin: 0;
+
+      li {
+        list-style: none;
+        display: inline-block;
+        padding: 0 10px;
+        font-weight: normal;
+
+        &:first-of-type {
+          padding-left: 0;
+        }
+      }
+    }
+  }
+
+  border-bottom: 1px solid var(--text);
+}
+
+a {
+  color: var(--text);
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  sup {
+    padding-left: 3px;
+    font-size: 10px;
+  }
+}
+
+p {
+  display: block;
+}
+
+main {
+  max-width: 600px;
+
+  #notice {
+    border-radius: 2px;
+    background-color: #fef7f3;
+    border: 1px dashed darken(#fef7f3, 25%);
+    padding: 10px;
+    margin: 0 0 20px 0;
+  }
+
+  #index {
+    h1 {
+      margin: 0;
+      padding: 0;
+    }
+    #index-notes,
+    #index-work,
+    #index-projects,
+    #index-education,
+    #index-get-in-touch {
+      margin-top: 45px;
+    }
+
+    #index-notes {
+      #index-notes-page {
+        margin-bottom: 10px;
+
+        p {
+          margin: 0;
+          padding: 0;
+
+          &:first-of-type {
+            margin-bottom: 5px;
+          }
+
+          &:nth-of-type(2) {
+            font-size: 10px;
+          }
+        }
+      }
+    }
+
+    #index-work {
+      #index-work-page {
+        h3 {
+          margin-bottom: 5px;
+        }
+
+        p:nth-of-type(1),
+        p:nth-of-type(2),
+        p:nth-of-type(3) {
+          margin: 3px 0;
+          font-size: 12px;
+        }
+      }
+    }
+
+    #index-projects {
+      #index-projects-page {
+        h3 {
+          margin-bottom: 5px;
+        }
+
+        p:nth-of-type(1) {
+          margin: 3px 0;
+          font-size: 12px;
+        }
+
+        p:nth-of-type(2) {
+          margin: 3px 0;
+          font-size: 10px;
+        }
+      }
+    }
+
+    #index-education {
+      h4 {
+        font-weight: bold;
+        font-size: 12px;
+      }
+
+      p {
+        font-size: 12px;
+
+        &:nth-of-type(1) {
+          font-style: italic;
+        }
+      }
+    }
+  }
+
+  #notes {
+    #notes-short {
+      margin-bottom: 15px;
+
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+
+      p:nth-of-type(1) {
+        margin: 3px 0;
+        font-size: 14px;
+      }
+
+      p:nth-of-type(2) {
+        margin: 3px 0;
+        font-size: 10px;
+      }
+    }
+  }
+
+  #projects {
+    #projects-short {
+      margin-bottom: 25px;
+
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+
+      p:nth-of-type(1),
+      p:nth-of-type(2) {
+        margin: 3px 0;
+        font-size: 10px;
+      }
+    }
+  }
+
+  #work {
+    #work-short {
+      margin-bottom: 25px;
+
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  #education {
+    h4 {
+      font-weight: bold;
+      font-size: 12px;
+    }
+
+    p {
+      font-size: 12px;
+
+      &:nth-of-type(1) {
+        font-style: italic;
+      }
+    }
+  }
+
+  pre {
+    padding: 10px;
+  }
+
+  div.footnote-definition {
+    display: block;
+    sup.footnote-definition-label {
+      display: inline-block;
+    }
+
+    p {
+      display: inline-block;
+      margin: 3px 0;
+      font-size: 10px;
+    }
+  }
+
+  hr {
+    margin: 15px 0 15px 0;
+    border: 1px dotted #000;
+    border-style: none none dotted;
+    color: #fff;
+    background-color: #fff;
+  }
+
+  .pagination {
+    margin: 25px 0 0 0;
+  }
+}

@@ -1,0 +1,85 @@
+{% extends "base.html" %} {% block content %}
+{% set notes = get_section(path="notes/_index.md") -%}
+{% set work = get_section(path="work/_index.md") -%}
+{% set projects = get_section(path="projects/_index.md") -%}
+<div id="index">
+    <h1>Hello,</h1>
+    <p>I’m a software engineer&mdash;and sometimes a photographer or designer.</p>
+    <p><a href="{{ get_url(path="@/about/index.md") }}">More →</a></p>
+    <div id="index-notes">
+        <h2>Notes</h2>
+        {%- if notes.pages | length > 0 %}
+                {%- for page in notes.pages | slice(start=0, end=3) %}
+                    <div id="index-notes-page">
+                        <p><a href="{{ get_url(path=page.path) }}">{{ page.title }}</a></p>
+                        <p>
+                            {{ page.date }} ･
+                            {%- if page.taxonomies.tags %}
+                                {{ page.taxonomies.tags | join(sep=", ") }}
+                            {%- else %}
+                                <em>no tags</em>
+                            {% endif %}
+                        </p>
+                    </div>
+                {% endfor %}
+        {%- else %}
+            <p><em>no work</em></p>
+        {% endif %}
+        <p><a href="{{ get_url(path="@/notes/_index.md") }}">Index<sup>{{ notes.pages | length }}</sup> →</a></p>
+    </div>
+    <div id="index-work">
+        <h2>Work</h2>
+        {%- for page in work.pages | slice(start=0, end=2) %}
+            <div id="index-work-page">
+                <h3><a href="{{ get_url(path=page.path) }}">{{ page.title }}</a></h3>
+                <p>{{ page.extra.role }}</p>
+                <p>{{ page.extra.start }} &mdash; {{ page.extra.end }}</p>
+                <p>{{ page.extra.description }}</p>
+            </div>
+        {% endfor %}
+        <p><a href="{{ get_url(path="@/work/_index.md") }}">Index<sup>{{ work.pages | length }}</sup> →</a></p>
+    </div>
+    <div id="index-projects">
+        <h2>Projects</h2>
+        {%- for page in projects.pages | slice(start=0, end=2) %}
+            <div id="index-projects-page">
+                <h3><a href="{{ get_url(path=page.path) }}">{{ page.title }}</a></h3>
+                <p>{{ page.extra.description }}</p>
+                <p>{{ page.taxonomies.tags | join(sep=", ") }}</p>
+            </div>
+        {% endfor %}
+        <p><a href="{{ get_url(path="@/projects/_index.md") }}">Index<sup>{{ projects.pages | length }}</sup> →</a></p>
+    </div>
+    <div id="index-education">
+        <h2>Education</h2>
+        <h3>Bachelor of Engineering &mdash; Software (Honours) at University of Queensland</h3>
+        <h4>Thesis (Undergraduate)</h4>
+        <p>Technology-supported activities through realtime, distributed, and collaborative interfaces</p>
+        <p>Abstract</p>
+        <p>
+        Traditionally user interfaces have been designed for a single user
+        using one common device type&mdash;e.g. someone on a computer visiting a website.
+        With the internet and mobile devices now being commonplace, interfaces could
+        take advantage of being distributed across devices and working collaboratively
+        with others in real-time. While there have been attempts to to handle this
+        (e.g. Google Docs), they have so far been in a limited, prescribed manner. A
+        proposed concept is put forward to design and build a new approach for a
+        distributed and real-time collaborative user interface focusing on the concept
+        of having a workspace with components that the user is able to freely use in a
+        real-time manner. It is based upon existing web browsers and devices. Parts of
+        the UI can be distributed across separate platforms. A prototype of a
+        workspace for education is included and user testing of the prototype shows
+        positive experiences and results for the users.
+        </p>
+        <p><a href="https://github.com/jesse-c/thesis" target="_blank">Full thesis ↗</a></p>
+        <p><a href="https://github.com/jesse-c/thesis-workspace" target="_blank">Prototype ↗</a></p>
+    </div>
+    <div id="index-get-in-touch">
+        <h2>Get in touch</h2>
+        <p>
+            I’m available through <a href="https://twitter.com/jqiye" target="_blank">Twitter ↗</a> for mixed chat and
+            <a href="https://github.com/jesse-c" target="_blank">GitHub ↗</a> for various projects/contributions and collaboration</a>.
+        </p>
+    </div>
+</div>
+{% endblock content %}
