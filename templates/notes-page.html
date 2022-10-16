@@ -1,11 +1,12 @@
 {% extends "base.html" %}
 
 {% block content %}
-<p>&larr; / <a href="/">Home</a> / <a href="{{ get_url(path="@/notes/_index.md") }}">Notes</a> / Note</p>
-
-<h1 class="title">
-  {{ page.title }}
-</h1>
-<p class="subtitle"><strong>{{ page.date }}</strong></p>
-{{ page.content | safe }}
+    <h1 class="title">{{ page.title }}</h1>
+    <p class="subtitle">{{ page.date }}</p>
+    {%- if page.taxonomies.tags %}
+        {% for tag in page.taxonomies.tags %}
+            {{ tag }}
+        {% endfor %}
+    {% endif %}
+    {{ page.content | safe }}
 {% endblock content %}

@@ -1,13 +1,15 @@
 +++
 title = "Multi-UIs for a daemon and using gRPC to communicate locally from Rust <> Swift"
 date = 2022-06-24
+[taxonomies]
+tags=["Rust","Swift","gRPC","UI"]
 +++
 
 [Jump to sample](#sample)
 
 # Multi-UIs Discovery of a paradigm
 
-While building an extension for [SABnzbd](https://www.raycast.com/jns/sabnzbd) for [Raycast](https://www.raycast.com) [^1], it made me think about a paradigm of multiple UIs. I interact with SABnzbd through its web UI, Raycast, and NZBHydra 2. There may even be another way that I'm not remembering.
+While building an extension for [SABnzbd](https://www.raycast.com/jns/sabnzbd) for [Raycast](https://www.raycast.com)[^1], it made me think about a paradigm of multiple UIs. I interact with SABnzbd through its web UI, Raycast, and NZBHydra 2. There may even be another way that I'm not remembering.
 
 The paradigm I thought of from this, and added to my projects list, was something like this:
 
@@ -15,7 +17,7 @@ The paradigm I thought of from this, and added to my projects list, was somethin
 
 The name that I gave the project/idea was "headless for everything", where headless is the daemon, in that drawing.
 
-Some clients are local, while some are remote, like "Export to website". There are more and more local- and offline-first projects. What if you could export your data to another service? Chuck some local issues/tickets up in Jira and Linear? What if you could E2E as part of that? What if it could realtime, distributed, and collaborative? [^2]
+Some clients are local, while some are remote, like "Export to website". There are more and more local- and offline-first projects. What if you could export your data to another service? Chuck some local issues/tickets up in Jira and Linear? What if you could E2E as part of that? What if it could realtime, distributed, and collaborative?[^2]
 
 The obvious—and huge—downside is that adding a network in-between brings all the issues that a network inherently has. Maybe [Photon](https://hyperfiddle.notion.site/Demo-Photon-a-full-stack-Clojure-Script-dialect-with-compiler-managed-client-server-data-sync-57aee367c20e45b3b80366d1abe4fbc3) will help us out.
 
