@@ -3,6 +3,9 @@ title = "Education"
 +++
 
 <div id="education">
+    <h1 class="title">
+        Education
+    </h1>
     <h3>Bachelor of Engineering &mdash; Software (Honours) at University of Queensland</h3>
     <h4>Thesis (Undergraduate)</h4>
     <p>Technology-supported activities through realtime, distributed, and collaborative interfaces</p>

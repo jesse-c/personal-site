@@ -2,6 +2,10 @@
 title = "About"
 +++
 
+<h1 class="title">
+    About
+</h1>
+
 I'm a multi-disciplinary software engineer, with design experience, in back- and front-end, iOS, prototyping, machine learning, user testing, etc.
 
 I've worked at Experience at large international companies, to new startups.
