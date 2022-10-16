@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Jesse Claven</title>
+    <link rel="stylesheet" href="https://j-e-s-s-e.com/inter/inter.css">
+    <link rel="stylesheet" href="/style.css">
+  </head>
+
+  <body>
+    <header>
+        <h1>Jesse Claven</h1>
+        <nav>
+            <ul>
+                <li><a href="https:&#x2F;&#x2F;j-e-s-s-e.com">Home</a></li>
+                <li><a href="https://j-e-s-s-e.com/notes/">Notes<sup>2</sup></a></li>
+                <li><a href="https://j-e-s-s-e.com/projects/">Projects<sup>7</sup></a></li>
+                <li><a href="https://j-e-s-s-e.com/work/">Work<sup>2</sup></a></li>
+                <li><a href="https://j-e-s-s-e.com/education/">Education</a></li>
+                <li><a href="https://j-e-s-s-e.com/about/">About</a></li>
+                <li><a href="https://j-e-s-s-e.com/get-in-touch/">Get in touch</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div id="notice">NB: Content (Work, projects, notes, etc.) is being added.</div>
+        
+    <h1 class="title">Counting pages in sections from other sections in Zola</h1>
+    <p class="subtitle">2022-10-11</p>
+        
+            Zola
+        
+    
+    <p>For the design of this website (as of 2022-10-11), I wanted to include the number of pages in a section—e.g., in the menu. I found a post on the Zola forum<sup class="footnote-reference"><a href="#1">1</a></sup> where I learnt about the <code>get_section</code> and a section's <code>pages</code> variable. Then in the Tera documentation<sup class="footnote-reference"><a href="#2">2</a></sup>, I found the <code>length</code> function.</p>
+<p>Between the 2 of these, I'm able to display the pages count.</p>
+<h2 id="example">Example</h2>
+<pre style="background-color:#2b303b;color:#c0c5ce;"><code><span>{% set notes = get_section(path=&quot;notes/_index.md&quot;) -%}
+</span><span>{{ notes.pages | length }}
+</span></code></pre>
+<hr />
+<div class="footnote-definition" id="1"><sup class="footnote-definition-label">1</sup>
+<p><a href="https://zola.discourse.group/t/section-vs-page/522/8">https://zola.discourse.group/t/section-vs-page/522/8 ↗</a></p>
+</div>
+<div class="footnote-definition" id="2"><sup class="footnote-definition-label">2</sup>
+<p><a href="https://tera.netlify.app/docs/#length">https://tera.netlify.app/docs/#length ↗</a></p>
+</div>
+
+
+    </main>
+  </body>
+</html>
