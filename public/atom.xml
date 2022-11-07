@@ -4,8 +4,38 @@
 	<link href="https://j-e-s-s-e.com/atom.xml" rel="self" type="application/atom+xml"/>
   <link href="https://j-e-s-s-e.com"/>
 	<generator uri="https://www.getzola.org/">Zola</generator>
-	<updated>2022-10-11T00:00:00+00:00</updated>
+	<updated>2022-11-06T00:00:00+00:00</updated>
 	<id>https://j-e-s-s-e.com/atom.xml</id>
+	<entry xml:lang="en">
+		<title>Custom Zola project type for Projectile</title>
+		<published>2022-11-06T00:00:00+00:00</published>
+		<updated>2022-11-06T00:00:00+00:00</updated>
+		<link rel="alternate" href="https://j-e-s-s-e.com/notes/custom-zola-project-type-for-projectile/" type="text/html"/>
+		<id>https://j-e-s-s-e.com/notes/custom-zola-project-type-for-projectile/</id>
+		<content type="html">&lt;p&gt;I currently use Zola for this website and use Emacs as my editor with &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;bbatsov&#x2F;projectile&quot;&gt;Projectile&lt;&#x2F;a&gt;. Here&#x27;s a snippet from my dotfiles to add support for Zola projects to Projectile.&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;diff&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-diff &quot;&gt;&lt;code class=&quot;language-diff&quot; data-lang=&quot;diff&quot;&gt;&lt;span&gt;diff --git a&#x2F;home&#x2F;private_dot_config&#x2F;emacs&#x2F;init.el b&#x2F;home&#x2F;private_dot_config&#x2F;emacs&#x2F;init.el
+&lt;&#x2F;span&gt;&lt;span&gt;index c8d15dc..a3f9260 100644
+&lt;&#x2F;span&gt;&lt;span&gt;--- a&#x2F;home&#x2F;private_dot_config&#x2F;emacs&#x2F;init.el
+&lt;&#x2F;span&gt;&lt;span&gt;+++ b&#x2F;home&#x2F;private_dot_config&#x2F;emacs&#x2F;init.el
+&lt;&#x2F;span&gt;&lt;span&gt;@@ -797,7 +797,19 @@
+&lt;&#x2F;span&gt;&lt;span&gt;   :config
+&lt;&#x2F;span&gt;&lt;span&gt;   (setq projectile-project-search-path &amp;#39;(&amp;quot;~&#x2F;Documents&#x2F;projects&#x2F;&amp;quot; (&amp;quot;~&#x2F;src&#x2F;&amp;quot; . 3)))
+&lt;&#x2F;span&gt;&lt;span&gt;   (setq projectile-auto-discover nil)
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;-  :init (counsel-projectile-mode))
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;+  :init (counsel-projectile-mode)
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;+  (projectile-register-project-type
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;+   &amp;#39;zola
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;+   &amp;#39;(&amp;quot;config.toml&amp;quot; &amp;quot;content&amp;quot; &amp;quot;static&amp;quot; &amp;quot;templates&amp;quot; &amp;quot;themes&amp;quot;)
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;+   :project-file &amp;quot;config.toml&amp;quot;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;+   :compile &amp;quot;zola build&amp;quot;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;+   :test &amp;quot;zola check&amp;quot;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;+   :run &amp;quot;zola server&amp;quot;))
+&lt;&#x2F;span&gt;&lt;span&gt; 
+&lt;&#x2F;span&gt;&lt;span&gt; ;; Make Ivy a bit more friendly by adding information to ivy buffers, e.g. description of commands in Alt-x, meta info when switching buffers, etc.
+&lt;&#x2F;span&gt;&lt;span&gt; (use-package ivy-rich
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+</content>
+	</entry>
 	<entry xml:lang="en">
 		<title>Counting pages in sections from other sections in Zola</title>
 		<published>2022-10-11T00:00:00+00:00</published>

@@ -20,6 +20,10 @@
         <lastmod>2022-10-11</lastmod>
     </url>
     <url>
+        <loc>https://j-e-s-s-e.com/notes/custom-zola-project-type-for-projectile/</loc>
+        <lastmod>2022-11-06</lastmod>
+    </url>
+    <url>
         <loc>https://j-e-s-s-e.com/notes/multi-uis-with-grpc/</loc>
         <lastmod>2022-06-24</lastmod>
     </url>
@@ -80,6 +84,9 @@
     </url>
     <url>
         <loc>https://j-e-s-s-e.com/tags/elm/</loc>
+    </url>
+    <url>
+        <loc>https://j-e-s-s-e.com/tags/emacs/</loc>
     </url>
     <url>
         <loc>https://j-e-s-s-e.com/tags/event-streaming/</loc>
