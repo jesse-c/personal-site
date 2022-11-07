@@ -3,9 +3,11 @@
 {% set work = get_section(path="work/_index.md") -%}
 {% set projects = get_section(path="projects/_index.md") -%}
 <div id="index">
-    <h1>Hello,</h1>
-    <p>I’m a software engineer&mdash;and sometimes a photographer or designer.</p>
-    <p><a href="{{ get_url(path="@/about/index.md") }}">More →</a></p>
+    <div id="index-introduction">
+        <h2>Hello,</h2>
+        <p>I’m a software engineer&mdash;and sometimes a photographer or designer.</p>
+        <p><a href="{{ get_url(path="@/about/index.md") }}">More →</a></p>
+    </div>
     <div id="index-notes">
         <h2>Notes</h2>
         {%- if notes.pages | length > 0 %}
