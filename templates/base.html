@@ -4,31 +4,41 @@
     <meta charset="utf-8" />
     <title>Jesse Claven</title>
     <link rel="stylesheet" href="{{ get_url(path="inter/inter.css") }}">
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/style.css" />
   </head>
 
-  {% set notes = get_section(path="notes/_index.md") -%}
-  {% set work = get_section(path="work/_index.md") -%}
-  {% set projects = get_section(path="projects/_index.md") -%}
+  {% set notes = get_section(path="notes/_index.md") -%} {% set work =
+  get_section(path="work/_index.md") -%} {% set projects =
+  get_section(path="projects/_index.md") -%}
 
   <body>
     <header>
-        <h1>Jesse Claven</h1>
-        <nav>
-            <ul>
-                <li><a href="{{ config.base_url }}">Home</a></li>
-                <li><a href="{{ get_url(path="@/notes/_index.md") }}">Notes<sup>{{ notes.pages | length }}</sup></a></li>
-                <li><a href="{{ get_url(path="@/projects/_index.md") }}">Projects<sup>{{ projects.pages | length }}</sup></a></li>
-                <li><a href="{{ get_url(path="@/work/_index.md") }}">Work<sup>{{ work.pages | length }}</sup></a></li>
-                <li><a href="{{ get_url(path="@/education/index.md") }}">Education</a></li>
-                <li><a href="{{ get_url(path="@/about/index.md") }}">About</a></li>
-                <li><a href="{{ get_url(path="@/get_in_touch/index.md") }}">Get in touch</a></li>
-            </ul>
-        </nav>
+      <div id="title" >
+        <h1><a href="{{ config.base_url }}">Jesse Claven</a></h1>
+      </div>
+
+      <nav id="hamnav">
+        <!-- THE HAMBURGER -->
+        <label for="hamburger">&#9776;</label>
+        <input type="checkbox" id="hamburger" />
+
+        <!-- MENU ITEMS -->
+        <div id="hamitems">
+            <a href="{{ config.base_url }}">Home</a>
+            <a href="{{ get_url(path="@/notes/_index.md") }}">Notes<sup>{{ notes.pages | length }}</sup></a>
+            <a href="{{ get_url(path="@/projects/_index.md") }}">Projects<sup>{{ projects.pages | length }}</sup></a>
+            <a href="{{ get_url(path="@/work/_index.md") }}">Work<sup>{{ work.pages | length }}</sup></a>
+            <a href="{{ get_url(path="@/education/index.md") }}">Education</a>
+            <a href="{{ get_url(path="@/about/index.md") }}">About</a>
+            <a href="{{ get_url(path="@/get_in_touch/index.md") }}">Get in touch</a>
+        </div>
+      </nav>
     </header>
     <main>
-        <div id="notice">&#9432; Content (Work, projects, notes, etc.) is being added.</div>
-        {% block content %} {% endblock %}
+      <div id="notice">
+        &#9432; Content (Work, projects, notes, etc.) is being added.
+      </div>
+      {% block content %} {% endblock %}
     </main>
   </body>
 </html>

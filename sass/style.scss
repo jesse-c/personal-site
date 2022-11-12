@@ -26,35 +26,85 @@ p {
 }
 
 header {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-
-  padding: 0 0 15px 0;
   margin: 0 0 25px 0;
 
-  h1 {
-    margin: 0;
-    padding: 0;
+  height: 40px;
 
-    font-weight: bold;
-    font-size: 16px;
+  #title {
+    float: left;
+
+    h1 {
+      margin: 0;
+      padding: 0;
+
+      font-weight: bold;
+      font-size: 16px;
+
+      a {
+        &:hover {
+          text-decoration: none;
+        }
+      }
+    }
   }
 
-  nav {
-    ul {
-      margin: 0;
+  /* Adapted from: https://code-boxx.com/simple-responsive-pure-css-hamburger-menu/ */
 
-      li {
-        list-style: none;
-        display: inline-block;
-        padding: 0 10px;
-        font-weight: normal;
-        font-size: 14px;
+  /* [ON BIG SCREEN] */
+  /* WRAPPER */
+  #hamnav {
+  }
 
-        &:first-of-type {
-          padding-left: 0;
-        }
+  /* HORIZONTAL MENU ITEMS */
+  #hamitems {
+    font-size: 14px;
+    background: #fff;
+
+    a {
+      padding: 0 10px;
+    }
+  }
+
+  /* HIDE HAMBURGER */
+  #hamnav label,
+  #hamburger {
+    display: none;
+  }
+
+  /* [ON SMALL SCREENS] */
+  @media screen and (max-width: 768px) {
+    #hamnav {
+      float: right;
+    }
+
+    /* BREAK INTO VERTICAL MENU */
+    #hamitems a {
+      box-sizing: border-box;
+      display: block;
+    }
+
+    /* SHOW HAMBURGER ICON */
+    #hamnav label {
+      display: inline-block;
+      font-size: 1.4em;
+      cursor: pointer;
+      float: right;
+    }
+
+    /* TOGGLE SHOW/HIDE MENU */
+    #hamitems {
+      display: none;
+    }
+    #hamnav input:checked ~ #hamitems {
+      display: block;
+      margin-top: 45px;
+
+      border: 1px solid #000;
+      border-radius: 2px;
+
+      a {
+        padding: 5px;
+        text-align: right;
       }
     }
   }
