@@ -31,6 +31,10 @@
         <loc>https://j-e-s-s-e.com/notes/page/1/</loc>
     </url>
     <url>
+        <loc>https://j-e-s-s-e.com/notes/retrospective-on-a-side-project/</loc>
+        <lastmod>2017-04-19</lastmod>
+    </url>
+    <url>
         <loc>https://j-e-s-s-e.com/projects/</loc>
     </url>
     <url>
@@ -120,6 +124,9 @@
     </url>
     <url>
         <loc>https://j-e-s-s-e.com/tags/rust/</loc>
+    </url>
+    <url>
+        <loc>https://j-e-s-s-e.com/tags/side-project/</loc>
     </url>
     <url>
         <loc>https://j-e-s-s-e.com/tags/swift/</loc>
