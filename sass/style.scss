@@ -1,6 +1,32 @@
 :root {
   --text: #000;
   --bg: #fff;
+  --circle: 10px;
+}
+
+#pointer {
+  pointer-events: none;
+
+  // Size
+  width: var(--circle);
+  height: var(--circle);
+  transition: width 3s ease-out;
+  transition: height 3s ease-out;
+
+  // Style
+  background-color: #000;
+  border-radius: 50%;
+  transition: background-color 5s ease-out;
+
+  // Positioning
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: top 0.005s ease-out;
+  transition: left 0.005s ease-out;
+
+  // Visibility
+  display: none;
 }
 
 body {
