@@ -5,7 +5,7 @@ date = 2022-11-06
 tags=["Zola", "Emacs"]
 +++
 
-I currently use Zola for this website and use Emacs as my editor with [Projectile](https://github.com/bbatsov/projectile). Here's a snippet from my dotfiles to add support for Zola projects to Projectile.
+I currently use Zola for this website and use Emacs as my editor with [Projectile](https://github.com/bbatsov/projectile). Here's a snippet from my dotfiles to add support for Zola projects to Projectile [^1].
 
 ```diff
 diff --git a/home/private_dot_config/emacs/init.el b/home/private_dot_config/emacs/init.el
@@ -29,3 +29,7 @@ index c8d15dc..a3f9260 100644
  ;; Make Ivy a bit more friendly by adding information to ivy buffers, e.g. description of commands in Alt-x, meta info when switching buffers, etc.
  (use-package ivy-rich
 ```
+
+---
+
+[^1]: [https://docs.projectile.mx/projectile/projects.html](https://docs.projectile.mx/projectile/projects.html)
