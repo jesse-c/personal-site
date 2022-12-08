@@ -4,8 +4,28 @@
 	<link href="https://j-e-s-s-e.com/atom.xml" rel="self" type="application/atom+xml"/>
   <link href="https://j-e-s-s-e.com"/>
 	<generator uri="https://www.getzola.org/">Zola</generator>
-	<updated>2022-11-06T00:00:00+00:00</updated>
+	<updated>2022-12-08T00:00:00+00:00</updated>
 	<id>https://j-e-s-s-e.com/atom.xml</id>
+	<entry xml:lang="en">
+		<title>v1 release of AppearanceNotifier</title>
+		<published>2022-12-08T00:00:00+00:00</published>
+		<updated>2022-12-08T00:00:00+00:00</updated>
+		<link rel="alternate" href="https://j-e-s-s-e.com/notes/v1-release-of-appearancenotifier/" type="text/html"/>
+		<id>https://j-e-s-s-e.com/notes/v1-release-of-appearancenotifier/</id>
+		<content type="html">&lt;p&gt;v0.0.1 was released on 2021-06-09&lt;sup class=&quot;footnote-reference&quot;&gt;&lt;a href=&quot;#1&quot;&gt;1&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt;. Since then, I&#x27;ve been using it daily both at home and at work. After a lazy approach to auto-starting it&lt;sup class=&quot;footnote-reference&quot;&gt;&lt;a href=&quot;#2&quot;&gt;2&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt;, I added a daemon definition for macOS with &lt;code&gt;launchd&lt;&#x2F;code&gt;. Recently as well, I added Emacs support.&lt;&#x2F;p&gt;
+&lt;p&gt;With these changes, I remembered to do a release, giving us v1&lt;sup class=&quot;footnote-reference&quot;&gt;&lt;a href=&quot;#3&quot;&gt;3&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt;&lt;&#x2F;p&gt;
+&lt;hr &#x2F;&gt;
+&lt;div class=&quot;footnote-definition&quot; id=&quot;1&quot;&gt;&lt;sup class=&quot;footnote-definition-label&quot;&gt;1&lt;&#x2F;sup&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;jesse-c&#x2F;AppearanceNotifier&#x2F;releases&#x2F;tag&#x2F;v0.0.1&quot;&gt;Initial release&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;div&gt;
+&lt;div class=&quot;footnote-definition&quot; id=&quot;2&quot;&gt;&lt;sup class=&quot;footnote-definition-label&quot;&gt;2&lt;&#x2F;sup&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;jesse-c&#x2F;dotfiles&#x2F;commit&#x2F;7d46082baecb3e1440dd17c0c26fc3d2fd4e3cb6&quot;&gt;dotfiles#7d46082baecb3e1440dd17c0c26fc3d2fd4e3cb6&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;div&gt;
+&lt;div class=&quot;footnote-definition&quot; id=&quot;3&quot;&gt;&lt;sup class=&quot;footnote-definition-label&quot;&gt;3&lt;&#x2F;sup&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;jesse-c&#x2F;AppearanceNotifier&#x2F;releases&#x2F;tag&#x2F;v1.0.0&quot;&gt;v1 release&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;div&gt;
+</content>
+	</entry>
 	<entry xml:lang="en">
 		<title>Custom Zola project type for Projectile</title>
 		<published>2022-11-06T00:00:00+00:00</published>
