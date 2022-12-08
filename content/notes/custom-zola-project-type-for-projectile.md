@@ -5,7 +5,7 @@ date = 2022-11-06
 tags=["Zola", "Emacs"]
 +++
 
-I currently use Zola for this website and use Emacs as my editor with [Projectile](https://github.com/bbatsov/projectile). Here's a snippet from my dotfiles to add support for Zola projects to Projectile [^1].
+I currently use Zola for this website and use Emacs as my editor with [Projectile](https://github.com/bbatsov/projectile). Here's a snippet from my dotfiles to add support for Zola projects to Projectile[^1].
 
 ```diff
 diff --git a/home/private_dot_config/emacs/init.el b/home/private_dot_config/emacs/init.el

@@ -32,7 +32,7 @@
 		<updated>2022-11-06T00:00:00+00:00</updated>
 		<link rel="alternate" href="https://j-e-s-s-e.com/notes/custom-zola-project-type-for-projectile/" type="text/html"/>
 		<id>https://j-e-s-s-e.com/notes/custom-zola-project-type-for-projectile/</id>
-		<content type="html">&lt;p&gt;I currently use Zola for this website and use Emacs as my editor with &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;bbatsov&#x2F;projectile&quot;&gt;Projectile&lt;&#x2F;a&gt;. Here&#x27;s a snippet from my dotfiles to add support for Zola projects to Projectile &lt;sup class=&quot;footnote-reference&quot;&gt;&lt;a href=&quot;#1&quot;&gt;1&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt;.&lt;&#x2F;p&gt;
+		<content type="html">&lt;p&gt;I currently use Zola for this website and use Emacs as my editor with &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;bbatsov&#x2F;projectile&quot;&gt;Projectile&lt;&#x2F;a&gt;. Here&#x27;s a snippet from my dotfiles to add support for Zola projects to Projectile&lt;sup class=&quot;footnote-reference&quot;&gt;&lt;a href=&quot;#1&quot;&gt;1&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt;.&lt;&#x2F;p&gt;
 &lt;pre data-lang=&quot;diff&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-diff &quot;&gt;&lt;code class=&quot;language-diff&quot; data-lang=&quot;diff&quot;&gt;&lt;span&gt;diff --git a&#x2F;home&#x2F;private_dot_config&#x2F;emacs&#x2F;init.el b&#x2F;home&#x2F;private_dot_config&#x2F;emacs&#x2F;init.el
 &lt;&#x2F;span&gt;&lt;span&gt;index c8d15dc..a3f9260 100644
 &lt;&#x2F;span&gt;&lt;span&gt;--- a&#x2F;home&#x2F;private_dot_config&#x2F;emacs&#x2F;init.el
