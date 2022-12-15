@@ -16,6 +16,10 @@
         <loc>https://j-e-s-s-e.com/notes/</loc>
     </url>
     <url>
+        <loc>https://j-e-s-s-e.com/notes/brewfile-app-relaunched/</loc>
+        <lastmod>2022-12-15</lastmod>
+    </url>
+    <url>
         <loc>https://j-e-s-s-e.com/notes/counting-pages-in-sections-in-zola/</loc>
         <lastmod>2022-10-11</lastmod>
     </url>
@@ -88,6 +92,9 @@
         <loc>https://j-e-s-s-e.com/tags/arduino/</loc>
     </url>
     <url>
+        <loc>https://j-e-s-s-e.com/tags/brewfile-app/</loc>
+    </url>
+    <url>
         <loc>https://j-e-s-s-e.com/tags/c/</loc>
     </url>
     <url>
@@ -110,6 +117,9 @@
     </url>
     <url>
         <loc>https://j-e-s-s-e.com/tags/grpc/</loc>
+    </url>
+    <url>
+        <loc>https://j-e-s-s-e.com/tags/homebrew/</loc>
     </url>
     <url>
         <loc>https://j-e-s-s-e.com/tags/homebridge/</loc>
@@ -140,6 +150,9 @@
     </url>
     <url>
         <loc>https://j-e-s-s-e.com/tags/nodejs/</loc>
+    </url>
+    <url>
+        <loc>https://j-e-s-s-e.com/tags/ruby/</loc>
     </url>
     <url>
         <loc>https://j-e-s-s-e.com/tags/rust/</loc>

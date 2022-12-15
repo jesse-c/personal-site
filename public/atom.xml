@@ -4,8 +4,24 @@
 	<link href="https://j-e-s-s-e.com/atom.xml" rel="self" type="application/atom+xml"/>
   <link href="https://j-e-s-s-e.com"/>
 	<generator uri="https://www.getzola.org/">Zola</generator>
-	<updated>2022-12-08T00:00:00+00:00</updated>
+	<updated>2022-12-15T00:00:00+00:00</updated>
 	<id>https://j-e-s-s-e.com/atom.xml</id>
+	<entry xml:lang="en">
+		<title>Brewfile app relaunched</title>
+		<published>2022-12-15T00:00:00+00:00</published>
+		<updated>2022-12-15T00:00:00+00:00</updated>
+		<link rel="alternate" href="https://j-e-s-s-e.com/notes/brewfile-app-relaunched/" type="text/html"/>
+		<id>https://j-e-s-s-e.com/notes/brewfile-app-relaunched/</id>
+		<content type="html">&lt;p&gt;I&#x27;ve relaunched this app&lt;sup class=&quot;footnote-reference&quot;&gt;&lt;a href=&quot;#1&quot;&gt;1&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt; The short version is that it&#x27;s the &lt;a href=&quot;https:&#x2F;&#x2F;gitignore.io&quot;&gt;gitignore.io&lt;&#x2F;a&gt; equivalent for Homebrew Brewfiles.&lt;&#x2F;p&gt;
+&lt;p&gt;There&#x27;s work to do, but, it&#x27;s in a reliable and reproducible state.&lt;&#x2F;p&gt;
+&lt;p&gt;Previously, it was on a VPS running FreeBSD and was using jails with Nginx and Puma. Now, it&#x27;s still on a VPS, but it&#x27;s running Debian and is using containers with Caddy and Puma.&lt;&#x2F;p&gt;
+&lt;p&gt;I do not regret using FreeBSD and jails. I learnt from it and would consider using them again, project-dependent.&lt;&#x2F;p&gt;
+&lt;hr &#x2F;&gt;
+&lt;div class=&quot;footnote-definition&quot; id=&quot;1&quot;&gt;&lt;sup class=&quot;footnote-definition-label&quot;&gt;1&lt;&#x2F;sup&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;brewfile.app&quot;&gt;brewfile.app&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;div&gt;
+</content>
+	</entry>
 	<entry xml:lang="en">
 		<title>v1 release of AppearanceNotifier</title>
 		<published>2022-12-08T00:00:00+00:00</published>
