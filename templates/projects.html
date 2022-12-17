@@ -8,7 +8,12 @@
         {% for page in paginator.pages %}
             <div id="projects-short">
                 <h2>{{ page.title }}</h2>
-                <p><a href="{{ page.extra.source_link }}" target="_blank">{{ page.extra.source_link }} ↗</a></p>
+                {% if page.extra.source_link %}
+                    <p><a href="{{ page.extra.source_link }}" target="_blank">{{ page.extra.source_link }} ↗</a></p>
+                {% endif %}
+                {% if page.extra.external_link %}
+                    <p><a href="{{ page.extra.external_link }}" target="_blank">{{ page.extra.external_link }} ↗</a></p>
+                {% endif %}
                 <p>{{ page.taxonomies.tags | join(sep=", ") }}</p>
                 <p>{{ page.extra.description }}</p>
             </div>
