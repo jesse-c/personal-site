@@ -20,6 +20,10 @@
         <lastmod>2022-12-15</lastmod>
     </url>
     <url>
+        <loc>https://j-e-s-s-e.com/notes/compile-tree-sitter-langs-for-emacs-29-on-an-m1/</loc>
+        <lastmod>2022-12-20</lastmod>
+    </url>
+    <url>
         <loc>https://j-e-s-s-e.com/notes/counting-pages-in-sections-in-zola/</loc>
         <lastmod>2022-10-11</lastmod>
     </url>
@@ -166,6 +170,9 @@
     </url>
     <url>
         <loc>https://j-e-s-s-e.com/tags/swift/</loc>
+    </url>
+    <url>
+        <loc>https://j-e-s-s-e.com/tags/tree-sitter/</loc>
     </url>
     <url>
         <loc>https://j-e-s-s-e.com/tags/ui/</loc>

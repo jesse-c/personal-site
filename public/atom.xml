@@ -4,8 +4,33 @@
 	<link href="https://j-e-s-s-e.com/atom.xml" rel="self" type="application/atom+xml"/>
   <link href="https://j-e-s-s-e.com"/>
 	<generator uri="https://www.getzola.org/">Zola</generator>
-	<updated>2022-12-15T00:00:00+00:00</updated>
+	<updated>2022-12-20T00:00:00+00:00</updated>
 	<id>https://j-e-s-s-e.com/atom.xml</id>
+	<entry xml:lang="en">
+		<title>Compile Tree-sitter langs for Emacs 29 on an M1</title>
+		<published>2022-12-20T00:00:00+00:00</published>
+		<updated>2022-12-20T00:00:00+00:00</updated>
+		<link rel="alternate" href="https://j-e-s-s-e.com/notes/compile-tree-sitter-langs-for-emacs-29-on-an-m1/" type="text/html"/>
+		<id>https://j-e-s-s-e.com/notes/compile-tree-sitter-langs-for-emacs-29-on-an-m1/</id>
+		<content type="html">&lt;p&gt;Recently I tried Emacs 29&lt;sup class=&quot;footnote-reference&quot;&gt;&lt;a href=&quot;#1&quot;&gt;1&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt; and began slimming down my config&lt;sup class=&quot;footnote-reference&quot;&gt;&lt;a href=&quot;#2&quot;&gt;2&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt;. Following the Tree-sitter starter guide&lt;sup class=&quot;footnote-reference&quot;&gt;&lt;a href=&quot;#3&quot;&gt;3&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt;, I couldn&#x27;t figure out why I wasn&#x27;t able to start the appropriate mode. I would get errors along the lines of, &lt;code&gt;Cannot activate tree-sitter, because language definition for ...&lt;&#x2F;code&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;After double-checking file paths and names, I compared my local build output of the recommend build script&lt;sup class=&quot;footnote-reference&quot;&gt;&lt;a href=&quot;#4&quot;&gt;4&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt; to the provided release—which &lt;em&gt;did&lt;&#x2F;em&gt; work .&lt;&#x2F;p&gt;
+&lt;p&gt;The provided release was compiled for &lt;code&gt;x86_64&lt;&#x2F;code&gt; and my local build output was for &lt;code&gt;arm64&lt;&#x2F;code&gt;. That wasn&#x27;t wrong, as I &lt;em&gt;am&lt;&#x2F;em&gt; on an M1.&lt;&#x2F;p&gt;
+&lt;p&gt;Here&#x27;s the a simple and lazy to compile for &lt;code&gt;x64_64&lt;&#x2F;code&gt; and have it work: &lt;code&gt;arch -x86_64 .&#x2F;batch.sh&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+&lt;hr &#x2F;&gt;
+&lt;div class=&quot;footnote-definition&quot; id=&quot;1&quot;&gt;&lt;sup class=&quot;footnote-definition-label&quot;&gt;1&lt;&#x2F;sup&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;jimeh&#x2F;emacs-builds&quot;&gt;jimeh&#x2F;emacs-builds&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;div&gt;
+&lt;div class=&quot;footnote-definition&quot; id=&quot;2&quot;&gt;&lt;sup class=&quot;footnote-definition-label&quot;&gt;2&lt;&#x2F;sup&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;www.reddit.com&#x2F;r&#x2F;emacs&#x2F;comments&#x2F;zqdrnz&#x2F;replacing_packages_with_more_stripped_down&#x2F;&quot;&gt;Replacing packages with more &amp;quot;stripped down&amp;quot; packages&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;div&gt;
+&lt;div class=&quot;footnote-definition&quot; id=&quot;3&quot;&gt;&lt;sup class=&quot;footnote-definition-label&quot;&gt;3&lt;&#x2F;sup&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;emacs-mirror&#x2F;emacs&#x2F;blob&#x2F;master&#x2F;admin&#x2F;notes&#x2F;tree-sitter&#x2F;starter-guide&quot;&gt;Tree-sitter starter guide&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;div&gt;
+&lt;div class=&quot;footnote-definition&quot; id=&quot;4&quot;&gt;&lt;sup class=&quot;footnote-definition-label&quot;&gt;4&lt;&#x2F;sup&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;casouri&#x2F;tree-sitter-module&quot;&gt;casouri&#x2F;tree-sitter-module&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;div&gt;
+</content>
+	</entry>
 	<entry xml:lang="en">
 		<title>Brewfile app relaunched</title>
 		<published>2022-12-15T00:00:00+00:00</published>
