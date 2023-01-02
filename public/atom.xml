@@ -4,8 +4,110 @@
 	<link href="https://j-e-s-s-e.com/atom.xml" rel="self" type="application/atom+xml"/>
   <link href="https://j-e-s-s-e.com"/>
 	<generator uri="https://www.getzola.org/">Zola</generator>
-	<updated>2022-12-20T00:00:00+00:00</updated>
+	<updated>2023-02-02T00:00:00+00:00</updated>
 	<id>https://j-e-s-s-e.com/atom.xml</id>
+	<entry xml:lang="en">
+		<title>Serialise and deserialise enums with named associated values from Rust → Swift</title>
+		<published>2023-02-02T00:00:00+00:00</published>
+		<updated>2023-02-02T00:00:00+00:00</updated>
+		<link rel="alternate" href="https://j-e-s-s-e.com/notes/serialise-deserialise-enum-from-rust-to-swift/" type="text/html"/>
+		<id>https://j-e-s-s-e.com/notes/serialise-deserialise-enum-from-rust-to-swift/</id>
+		<content type="html">&lt;p&gt;Between Rust and Serde and Swift and &lt;code&gt;Codable&lt;&#x2F;code&gt;, it&#x27;s &lt;em&gt;relatively&lt;&#x2F;em&gt; easy to serialise and deserialise between the 2, using JSON. Whilst there aren&#x27;t shared definitions through a common format, such as Protobuf or MessagePack, for simple data it looks to be maintainable.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;code&gt;serde_derive&lt;&#x2F;code&gt; and &lt;code&gt;Codable&lt;&#x2F;code&gt; deally save you writing encoders&#x2F;serialisers and decoders&#x2F;deserialisers. For Rust → Swift, I&#x27;ve so far had to write a decoder for enums with named associated values. Both Rust and Swift use nth-indexing for unnamed associated values, so I don&#x27;t &lt;em&gt;think&lt;&#x2F;em&gt; it would be too hard. Without associated values, decoding worked without having to write anything for decoding.&lt;&#x2F;p&gt;
+&lt;p&gt;Here are small snippets of the types and decoder.&lt;&#x2F;p&gt;
+&lt;p&gt;Rust&lt;sup class=&quot;footnote-reference&quot;&gt;&lt;a href=&quot;#1&quot;&gt;1&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt;:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;rust&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-rust &quot;&gt;&lt;code class=&quot;language-rust&quot; data-lang=&quot;rust&quot;&gt;&lt;span&gt;#[&lt;&#x2F;span&gt;&lt;span style=&quot;color:#bf616a;&quot;&gt;derive&lt;&#x2F;span&gt;&lt;span&gt;(Debug, Copy, Clone, PartialEq, Deserialize, Serialize)]
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;pub enum &lt;&#x2F;span&gt;&lt;span&gt;State {
+&lt;&#x2F;span&gt;&lt;span&gt;    Paused { duration: Duration },
+&lt;&#x2F;span&gt;&lt;span&gt;    Stopped,
+&lt;&#x2F;span&gt;&lt;span&gt;    Working { duration: Duration },
+&lt;&#x2F;span&gt;&lt;span&gt;    TakingShortBreak { duration: Duration },
+&lt;&#x2F;span&gt;&lt;span&gt;    TakingLongBreak { duration: Duration },
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;Swift&lt;sup class=&quot;footnote-reference&quot;&gt;&lt;a href=&quot;#2&quot;&gt;2&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt;:&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;swift&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-swift &quot;&gt;&lt;code class=&quot;language-swift&quot; data-lang=&quot;swift&quot;&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;@available&lt;&#x2F;span&gt;&lt;span&gt;(macOS &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;13&lt;&#x2F;span&gt;&lt;span&gt;.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d08770;&quot;&gt;0&lt;&#x2F;span&gt;&lt;span&gt;, *)
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;enum&lt;&#x2F;span&gt;&lt;span&gt; State: Codable {
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;case&lt;&#x2F;span&gt;&lt;span&gt; Paused(duration: Duration)
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;case&lt;&#x2F;span&gt;&lt;span&gt; Stopped
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;case&lt;&#x2F;span&gt;&lt;span&gt; Working(duration: Duration)
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;case&lt;&#x2F;span&gt;&lt;span&gt; TakingShortBreak(duration: Duration)
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;case&lt;&#x2F;span&gt;&lt;span&gt; TakingLongBreak(duration: Duration)
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;enum&lt;&#x2F;span&gt;&lt;span&gt; CodingKeys: String, CodingKey {
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;case&lt;&#x2F;span&gt;&lt;span&gt; Paused
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;case&lt;&#x2F;span&gt;&lt;span&gt; Stopped
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;case&lt;&#x2F;span&gt;&lt;span&gt; Working
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;case&lt;&#x2F;span&gt;&lt;span&gt; TakingShortBreak
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;case&lt;&#x2F;span&gt;&lt;span&gt; TakingLongBreak
+&lt;&#x2F;span&gt;&lt;span&gt;    }
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;enum&lt;&#x2F;span&gt;&lt;span&gt; AdditionalCodingKeys: String, CodingKey {
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;case&lt;&#x2F;span&gt;&lt;span&gt; duration
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;case&lt;&#x2F;span&gt;&lt;span&gt; secs
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;case&lt;&#x2F;span&gt;&lt;span&gt; nanos
+&lt;&#x2F;span&gt;&lt;span&gt;    }
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;init&lt;&#x2F;span&gt;&lt;span&gt;(from decoder: Decoder) &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;throws&lt;&#x2F;span&gt;&lt;span&gt; {
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;let&lt;&#x2F;span&gt;&lt;span&gt; container = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;try&lt;&#x2F;span&gt;&lt;span&gt; decoder.singleValueContainer()
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;if let&lt;&#x2F;span&gt;&lt;span&gt; state = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;try&lt;&#x2F;span&gt;&lt;span&gt;? container.decode(String.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;self&lt;&#x2F;span&gt;&lt;span&gt;) {
+&lt;&#x2F;span&gt;&lt;span&gt;            &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; For when it&amp;#39;s &amp;quot;state&amp;quot;:&amp;quot;Stopped&amp;quot;
+&lt;&#x2F;span&gt;&lt;span&gt;            &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;switch&lt;&#x2F;span&gt;&lt;span&gt; state {
+&lt;&#x2F;span&gt;&lt;span&gt;            &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;case &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;&amp;quot;Stopped&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;:
+&lt;&#x2F;span&gt;&lt;span&gt;                &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;self &lt;&#x2F;span&gt;&lt;span&gt;= .Stopped
+&lt;&#x2F;span&gt;&lt;span&gt;            &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;default&lt;&#x2F;span&gt;&lt;span&gt;:
+&lt;&#x2F;span&gt;&lt;span&gt;                fatalError(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;&amp;quot;Unexpected value &lt;&#x2F;span&gt;&lt;span&gt;\(state)&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;)
+&lt;&#x2F;span&gt;&lt;span&gt;            }
+&lt;&#x2F;span&gt;&lt;span&gt;        } &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;else&lt;&#x2F;span&gt;&lt;span&gt; {
+&lt;&#x2F;span&gt;&lt;span&gt;            &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; For when &amp;quot;state&amp;quot;:{&amp;quot;Working&amp;quot;:{&amp;quot;duration&amp;quot;:{&amp;quot;secs&amp;quot;:1,&amp;quot;nanos&amp;quot;:0}}}
+&lt;&#x2F;span&gt;&lt;span&gt;            &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;let&lt;&#x2F;span&gt;&lt;span&gt; values = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;try&lt;&#x2F;span&gt;&lt;span&gt; decoder.container(keyedBy: CodingKeys.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;self&lt;&#x2F;span&gt;&lt;span&gt;)
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;            &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; Dynamically get the CodingKey for the State from its enum
+&lt;&#x2F;span&gt;&lt;span&gt;            &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;let&lt;&#x2F;span&gt;&lt;span&gt; stateKey = values.allKeys.first!
+&lt;&#x2F;span&gt;&lt;span&gt;            &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;let&lt;&#x2F;span&gt;&lt;span&gt; stateContainer = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;try&lt;&#x2F;span&gt;&lt;span&gt; values.nestedContainer(
+&lt;&#x2F;span&gt;&lt;span&gt;                keyedBy: AdditionalCodingKeys.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;self&lt;&#x2F;span&gt;&lt;span&gt;, forKey: stateKey
+&lt;&#x2F;span&gt;&lt;span&gt;            )
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;            &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;let&lt;&#x2F;span&gt;&lt;span&gt; durationKey = stateContainer.allKeys.first!
+&lt;&#x2F;span&gt;&lt;span&gt;            &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;let&lt;&#x2F;span&gt;&lt;span&gt; durationContainer = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;try&lt;&#x2F;span&gt;&lt;span&gt; stateContainer.nestedContainer(
+&lt;&#x2F;span&gt;&lt;span&gt;                keyedBy: AdditionalCodingKeys.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;self&lt;&#x2F;span&gt;&lt;span&gt;, forKey: durationKey
+&lt;&#x2F;span&gt;&lt;span&gt;            )
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;            &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;let&lt;&#x2F;span&gt;&lt;span&gt; nanos = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;try&lt;&#x2F;span&gt;&lt;span&gt; durationContainer.decode(Int.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;self&lt;&#x2F;span&gt;&lt;span&gt;, forKey: .nanos)
+&lt;&#x2F;span&gt;&lt;span&gt;            &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;let&lt;&#x2F;span&gt;&lt;span&gt; secs = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;try&lt;&#x2F;span&gt;&lt;span&gt; durationContainer.decode(Int.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;self&lt;&#x2F;span&gt;&lt;span&gt;, forKey: .secs)
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;            &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;let&lt;&#x2F;span&gt;&lt;span&gt; duration = Duration.nanoseconds(nanos) + Duration.seconds(secs)
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;            &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;let&lt;&#x2F;span&gt;&lt;span&gt; state: State = {
+&lt;&#x2F;span&gt;&lt;span&gt;                &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;switch&lt;&#x2F;span&gt;&lt;span&gt; stateKey.stringValue {
+&lt;&#x2F;span&gt;&lt;span&gt;                &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;case &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;&amp;quot;Paused&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;:
+&lt;&#x2F;span&gt;&lt;span&gt;                    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;return&lt;&#x2F;span&gt;&lt;span&gt; State.Paused(duration: duration)
+&lt;&#x2F;span&gt;&lt;span&gt;                &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;case &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;&amp;quot;Working&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;:
+&lt;&#x2F;span&gt;&lt;span&gt;                    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;return&lt;&#x2F;span&gt;&lt;span&gt; State.Working(duration: duration)
+&lt;&#x2F;span&gt;&lt;span&gt;                &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;case &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;&amp;quot;TakingShortBreak&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;:
+&lt;&#x2F;span&gt;&lt;span&gt;                    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;return&lt;&#x2F;span&gt;&lt;span&gt; State.TakingShortBreak(duration: duration)
+&lt;&#x2F;span&gt;&lt;span&gt;                &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;case &lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;&amp;quot;TakingLongBreak&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;:
+&lt;&#x2F;span&gt;&lt;span&gt;                    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;return&lt;&#x2F;span&gt;&lt;span&gt; State.TakingLongBreak(duration: duration)
+&lt;&#x2F;span&gt;&lt;span&gt;                &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;default&lt;&#x2F;span&gt;&lt;span&gt;:
+&lt;&#x2F;span&gt;&lt;span&gt;                    fatalError(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;&amp;quot;Unexpected value &lt;&#x2F;span&gt;&lt;span&gt;\(stateKey.stringValue)&lt;&#x2F;span&gt;&lt;span style=&quot;color:#a3be8c;&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;)
+&lt;&#x2F;span&gt;&lt;span&gt;                }
+&lt;&#x2F;span&gt;&lt;span&gt;            }()
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;            &lt;&#x2F;span&gt;&lt;span style=&quot;color:#65737e;&quot;&gt;&#x2F;&#x2F; Fake
+&lt;&#x2F;span&gt;&lt;span&gt;            &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b48ead;&quot;&gt;self &lt;&#x2F;span&gt;&lt;span&gt;= state
+&lt;&#x2F;span&gt;&lt;span&gt;        }
+&lt;&#x2F;span&gt;&lt;span&gt;    }
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;hr &#x2F;&gt;
+&lt;div class=&quot;footnote-definition&quot; id=&quot;1&quot;&gt;&lt;sup class=&quot;footnote-definition-label&quot;&gt;1&lt;&#x2F;sup&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;jesse-c&#x2F;y-pomodoro&#x2F;blob&#x2F;5e808a251db8971c8987b6f9cd738d5173ba8adc&#x2F;core&#x2F;src&#x2F;lib.rs#L45&quot;&gt;jesse-c&#x2F;y-pomodoro&#x2F;blob&#x2F;5e808a251db8971c8987b6f9cd738d5173ba8adc&#x2F;core&#x2F;src&#x2F;lib.rs&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;div&gt;
+&lt;div class=&quot;footnote-definition&quot; id=&quot;2&quot;&gt;&lt;sup class=&quot;footnote-definition-label&quot;&gt;2&lt;&#x2F;sup&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;jesse-c&#x2F;y-pomodoro&#x2F;blob&#x2F;5e808a251db8971c8987b6f9cd738d5173ba8adc&#x2F;client&#x2F;Sources&#x2F;pomodoro&#x2F;pomodoro.swift#L72&quot;&gt;jesse-c&#x2F;y-pomodoro&#x2F;blob&#x2F;5e808a251db8971c8987b6f9cd738d5173ba8adc&#x2F;client&#x2F;Sources&#x2F;pomodoro&#x2F;pomodoro.swift&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;div&gt;
+</content>
+	</entry>
 	<entry xml:lang="en">
 		<title>Compile Tree-sitter langs for Emacs 29 on an M1</title>
 		<published>2022-12-20T00:00:00+00:00</published>
