@@ -43,8 +43,12 @@
         <lastmod>2017-04-19</lastmod>
     </url>
     <url>
+        <loc>https://j-e-s-s-e.com/notes/safari-opening-without-windows/</loc>
+        <lastmod>2023-01-23</lastmod>
+    </url>
+    <url>
         <loc>https://j-e-s-s-e.com/notes/serialise-deserialise-enum-from-rust-to-swift/</loc>
-        <lastmod>2023-02-02</lastmod>
+        <lastmod>2023-01-02</lastmod>
     </url>
     <url>
         <loc>https://j-e-s-s-e.com/notes/v1-release-of-appearancenotifier/</loc>
@@ -96,6 +100,9 @@
     </url>
     <url>
         <loc>https://j-e-s-s-e.com/tags/api/</loc>
+    </url>
+    <url>
+        <loc>https://j-e-s-s-e.com/tags/appcleaner/</loc>
     </url>
     <url>
         <loc>https://j-e-s-s-e.com/tags/appearancenotifier/</loc>
@@ -171,6 +178,9 @@
     </url>
     <url>
         <loc>https://j-e-s-s-e.com/tags/rust/</loc>
+    </url>
+    <url>
+        <loc>https://j-e-s-s-e.com/tags/safari/</loc>
     </url>
     <url>
         <loc>https://j-e-s-s-e.com/tags/side-project/</loc>

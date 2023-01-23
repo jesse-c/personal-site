@@ -1,6 +1,6 @@
 +++
 title = "Serialise and deserialise enums with named associated values from Rust → Swift"
-date = 2023-02-02
+date = 2023-01-02
 [taxonomies]
 tags=["Swift", "Rust", "JSON"]
 +++

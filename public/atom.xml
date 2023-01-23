@@ -4,12 +4,28 @@
 	<link href="https://j-e-s-s-e.com/atom.xml" rel="self" type="application/atom+xml"/>
   <link href="https://j-e-s-s-e.com"/>
 	<generator uri="https://www.getzola.org/">Zola</generator>
-	<updated>2023-02-02T00:00:00+00:00</updated>
+	<updated>2023-01-23T00:00:00+00:00</updated>
 	<id>https://j-e-s-s-e.com/atom.xml</id>
 	<entry xml:lang="en">
+		<title>Safari opening without windows</title>
+		<published>2023-01-23T00:00:00+00:00</published>
+		<updated>2023-01-23T00:00:00+00:00</updated>
+		<link rel="alternate" href="https://j-e-s-s-e.com/notes/safari-opening-without-windows/" type="text/html"/>
+		<id>https://j-e-s-s-e.com/notes/safari-opening-without-windows/</id>
+		<content type="html">&lt;p&gt;This is one of those, &amp;quot;I don&#x27;t know why it broke but here&#x27;s what fixed it&amp;quot;. Safari started opening without any windows—private or otherwise.&lt;&#x2F;p&gt;
+&lt;p&gt;Using AppCleaner&lt;sup class=&quot;footnote-reference&quot;&gt;&lt;a href=&quot;#1&quot;&gt;1&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt;, search for &amp;quot;Safari&amp;quot;. I removed everything except what&#x27;s remaining in this screenshot. If there&#x27;s permission issues, use a terminal or Finder.&lt;&#x2F;p&gt;
+&lt;p&gt;NB: Be &lt;em&gt;wise&lt;&#x2F;em&gt; in what you delete.&lt;&#x2F;p&gt;
+&lt;img src=&quot;&#x2F;notes&#x2F;appcleaner-safari.png&quot; alt=&quot;The remaining files from using AppCleaner to cleanup Safari&quot; width=&quot;600&quot; &#x2F;&gt;
+&lt;hr &#x2F;&gt;
+&lt;div class=&quot;footnote-definition&quot; id=&quot;1&quot;&gt;&lt;sup class=&quot;footnote-definition-label&quot;&gt;1&lt;&#x2F;sup&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;freemacsoft.net&#x2F;appcleaner&#x2F;&quot;&gt;AppCleaner&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;div&gt;
+</content>
+	</entry>
+	<entry xml:lang="en">
 		<title>Serialise and deserialise enums with named associated values from Rust → Swift</title>
-		<published>2023-02-02T00:00:00+00:00</published>
-		<updated>2023-02-02T00:00:00+00:00</updated>
+		<published>2023-01-02T00:00:00+00:00</published>
+		<updated>2023-01-02T00:00:00+00:00</updated>
 		<link rel="alternate" href="https://j-e-s-s-e.com/notes/serialise-deserialise-enum-from-rust-to-swift/" type="text/html"/>
 		<id>https://j-e-s-s-e.com/notes/serialise-deserialise-enum-from-rust-to-swift/</id>
 		<content type="html">&lt;p&gt;Between Rust and Serde and Swift and &lt;code&gt;Codable&lt;&#x2F;code&gt;, it&#x27;s &lt;em&gt;relatively&lt;&#x2F;em&gt; easy to serialise and deserialise between the 2, using JSON. Whilst there aren&#x27;t shared definitions through a common format, such as Protobuf or MessagePack, for simple data it looks to be maintainable.&lt;&#x2F;p&gt;
