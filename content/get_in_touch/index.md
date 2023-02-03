@@ -6,4 +6,4 @@ title = "Get in touch"
     Get in touch
 </h1>
 
-I’m available through <a href="https://twitter.com/jqiye" target="_blank">Twitter ↗</a> for mixed chat and <a href="https://github.com/jesse-c" target="_blank">GitHub ↗</a> for various projects/contributions and collaboration</a>.
+I’m available through <a rel="me" href="https://mastodon.social/@jqk">Mastodon ↗</a> for mixed chat and
