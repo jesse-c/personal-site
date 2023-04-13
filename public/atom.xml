@@ -1,18 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
-	<title></title>
-	<link href="https://j-e-s-s-e.com/atom.xml" rel="self" type="application/atom+xml"/>
-  <link href="https://j-e-s-s-e.com"/>
-	<generator uri="https://www.getzola.org/">Zola</generator>
-	<updated>2023-01-23T00:00:00+00:00</updated>
-	<id>https://j-e-s-s-e.com/atom.xml</id>
-	<entry xml:lang="en">
-		<title>Safari opening without windows</title>
-		<published>2023-01-23T00:00:00+00:00</published>
-		<updated>2023-01-23T00:00:00+00:00</updated>
-		<link rel="alternate" href="https://j-e-s-s-e.com/notes/safari-opening-without-windows/" type="text/html"/>
-		<id>https://j-e-s-s-e.com/notes/safari-opening-without-windows/</id>
-		<content type="html">&lt;p&gt;This is one of those, &amp;quot;I don&#x27;t know why it broke but here&#x27;s what fixed it&amp;quot;. Safari started opening without any windows—private or otherwise.&lt;&#x2F;p&gt;
+    <title></title>
+    <link href="https://j-e-s-s-e.com/atom.xml" rel="self" type="application/atom+xml"/>
+    <link href="https://j-e-s-s-e.com"/>
+    <generator uri="https://www.getzola.org/">Zola</generator>
+    <updated>2023-04-13T00:00:00+00:00</updated>
+    <id>https://j-e-s-s-e.com/atom.xml</id>
+    <entry xml:lang="en">
+        <title>Hyper key without Karabiner Elements</title>
+        <published>2023-04-13T00:00:00+00:00</published>
+        <updated>2023-04-13T00:00:00+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://j-e-s-s-e.com/notes/hyper-key-without-karabiner-elements/" type="text/html"/>
+        <id>https://j-e-s-s-e.com/notes/hyper-key-without-karabiner-elements/</id>
+        
+        <content type="html">&lt;p&gt;I came across a blog post&lt;sup class=&quot;footnote-reference&quot;&gt;&lt;a href=&quot;#1&quot;&gt;1&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt; about using &lt;code&gt;hidutil&lt;&#x2F;code&gt; on macOS. As much as I&#x27;m thankful for those who worked on Karabiner Elements, I&#x27;m happy to remove a dependency!&lt;&#x2F;p&gt;
+&lt;p&gt;This was a simple change to my dotfiles&lt;sup class=&quot;footnote-reference&quot;&gt;&lt;a href=&quot;#2&quot;&gt;2&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt;. I had already used the builtin macOS ability to remap a modifier, which I had done from caps lock to ESC, which I had to remove.&lt;&#x2F;p&gt;
+&lt;hr &#x2F;&gt;
+&lt;div class=&quot;footnote-definition&quot; id=&quot;1&quot;&gt;&lt;sup class=&quot;footnote-definition-label&quot;&gt;1&lt;&#x2F;sup&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;amitp.blogspot.com&#x2F;2023&#x2F;04&#x2F;mac-keyboard-with-hidutil.html&quot;&gt;Mac keyboard with hidutil&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;div&gt;
+&lt;div class=&quot;footnote-definition&quot; id=&quot;2&quot;&gt;&lt;sup class=&quot;footnote-definition-label&quot;&gt;2&lt;&#x2F;sup&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;jesse-c&#x2F;dotfiles&#x2F;commit&#x2F;ee0e45ac0fc68ba055f73011b5a025c992fd5984&quot;&gt;dotfiles#ee0e45ac0fc68ba055f73011b5a025c992fd5984&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;div&gt;
+</content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Safari opening without windows</title>
+        <published>2023-01-23T00:00:00+00:00</published>
+        <updated>2023-01-23T00:00:00+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://j-e-s-s-e.com/notes/safari-opening-without-windows/" type="text/html"/>
+        <id>https://j-e-s-s-e.com/notes/safari-opening-without-windows/</id>
+        
+        <content type="html">&lt;p&gt;This is one of those, &amp;quot;I don&#x27;t know why it broke but here&#x27;s what fixed it&amp;quot;. Safari started opening without any windows—private or otherwise.&lt;&#x2F;p&gt;
 &lt;p&gt;Using AppCleaner&lt;sup class=&quot;footnote-reference&quot;&gt;&lt;a href=&quot;#1&quot;&gt;1&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt;, search for &amp;quot;Safari&amp;quot;. I removed everything except what&#x27;s remaining in this screenshot. If there&#x27;s permission issues, use a terminal or Finder.&lt;&#x2F;p&gt;
 &lt;p&gt;NB: Be &lt;em&gt;wise&lt;&#x2F;em&gt; in what you delete.&lt;&#x2F;p&gt;
 &lt;img src=&quot;&#x2F;notes&#x2F;appcleaner-safari.png&quot; alt=&quot;The remaining files from using AppCleaner to cleanup Safari&quot; width=&quot;600&quot; &#x2F;&gt;
@@ -21,14 +47,19 @@
 &lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;freemacsoft.net&#x2F;appcleaner&#x2F;&quot;&gt;AppCleaner&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
 &lt;&#x2F;div&gt;
 </content>
-	</entry>
-	<entry xml:lang="en">
-		<title>Serialise and deserialise enums with named associated values from Rust → Swift</title>
-		<published>2023-01-02T00:00:00+00:00</published>
-		<updated>2023-01-02T00:00:00+00:00</updated>
-		<link rel="alternate" href="https://j-e-s-s-e.com/notes/serialise-deserialise-enum-from-rust-to-swift/" type="text/html"/>
-		<id>https://j-e-s-s-e.com/notes/serialise-deserialise-enum-from-rust-to-swift/</id>
-		<content type="html">&lt;p&gt;Between Rust and Serde and Swift and &lt;code&gt;Codable&lt;&#x2F;code&gt;, it&#x27;s &lt;em&gt;relatively&lt;&#x2F;em&gt; easy to serialise and deserialise between the 2, using JSON. Whilst there aren&#x27;t shared definitions through a common format, such as Protobuf or MessagePack, for simple data it looks to be maintainable.&lt;&#x2F;p&gt;
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Serialise and deserialise enums with named associated values from Rust → Swift</title>
+        <published>2023-01-02T00:00:00+00:00</published>
+        <updated>2023-01-02T00:00:00+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://j-e-s-s-e.com/notes/serialise-deserialise-enum-from-rust-to-swift/" type="text/html"/>
+        <id>https://j-e-s-s-e.com/notes/serialise-deserialise-enum-from-rust-to-swift/</id>
+        
+        <content type="html">&lt;p&gt;Between Rust and Serde and Swift and &lt;code&gt;Codable&lt;&#x2F;code&gt;, it&#x27;s &lt;em&gt;relatively&lt;&#x2F;em&gt; easy to serialise and deserialise between the 2, using JSON. Whilst there aren&#x27;t shared definitions through a common format, such as Protobuf or MessagePack, for simple data it looks to be maintainable.&lt;&#x2F;p&gt;
 &lt;p&gt;&lt;code&gt;serde_derive&lt;&#x2F;code&gt; and &lt;code&gt;Codable&lt;&#x2F;code&gt; deally save you writing encoders&#x2F;serialisers and decoders&#x2F;deserialisers. For Rust → Swift, I&#x27;ve so far had to write a decoder for enums with named associated values. Both Rust and Swift use nth-indexing for unnamed associated values, so I don&#x27;t &lt;em&gt;think&lt;&#x2F;em&gt; it would be too hard. Without associated values, decoding worked without having to write anything for decoding.&lt;&#x2F;p&gt;
 &lt;p&gt;Here are small snippets of the types and decoder.&lt;&#x2F;p&gt;
 &lt;p&gt;Rust&lt;sup class=&quot;footnote-reference&quot;&gt;&lt;a href=&quot;#1&quot;&gt;1&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt;:&lt;&#x2F;p&gt;
@@ -123,14 +154,19 @@
 &lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;jesse-c&#x2F;y-pomodoro&#x2F;blob&#x2F;5e808a251db8971c8987b6f9cd738d5173ba8adc&#x2F;client&#x2F;Sources&#x2F;pomodoro&#x2F;pomodoro.swift#L72&quot;&gt;jesse-c&#x2F;y-pomodoro&#x2F;blob&#x2F;5e808a251db8971c8987b6f9cd738d5173ba8adc&#x2F;client&#x2F;Sources&#x2F;pomodoro&#x2F;pomodoro.swift&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
 &lt;&#x2F;div&gt;
 </content>
-	</entry>
-	<entry xml:lang="en">
-		<title>Compile Tree-sitter langs for Emacs 29 on an M1</title>
-		<published>2022-12-20T00:00:00+00:00</published>
-		<updated>2022-12-20T00:00:00+00:00</updated>
-		<link rel="alternate" href="https://j-e-s-s-e.com/notes/compile-tree-sitter-langs-for-emacs-29-on-an-m1/" type="text/html"/>
-		<id>https://j-e-s-s-e.com/notes/compile-tree-sitter-langs-for-emacs-29-on-an-m1/</id>
-		<content type="html">&lt;p&gt;Recently I tried Emacs 29&lt;sup class=&quot;footnote-reference&quot;&gt;&lt;a href=&quot;#1&quot;&gt;1&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt; and began slimming down my config&lt;sup class=&quot;footnote-reference&quot;&gt;&lt;a href=&quot;#2&quot;&gt;2&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt;. Following the Tree-sitter starter guide&lt;sup class=&quot;footnote-reference&quot;&gt;&lt;a href=&quot;#3&quot;&gt;3&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt;, I couldn&#x27;t figure out why I wasn&#x27;t able to start the appropriate mode. I would get errors along the lines of, &lt;code&gt;Cannot activate tree-sitter, because language definition for ...&lt;&#x2F;code&gt;.&lt;&#x2F;p&gt;
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Compile Tree-sitter langs for Emacs 29 on an M1</title>
+        <published>2022-12-20T00:00:00+00:00</published>
+        <updated>2022-12-20T00:00:00+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://j-e-s-s-e.com/notes/compile-tree-sitter-langs-for-emacs-29-on-an-m1/" type="text/html"/>
+        <id>https://j-e-s-s-e.com/notes/compile-tree-sitter-langs-for-emacs-29-on-an-m1/</id>
+        
+        <content type="html">&lt;p&gt;Recently I tried Emacs 29&lt;sup class=&quot;footnote-reference&quot;&gt;&lt;a href=&quot;#1&quot;&gt;1&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt; and began slimming down my config&lt;sup class=&quot;footnote-reference&quot;&gt;&lt;a href=&quot;#2&quot;&gt;2&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt;. Following the Tree-sitter starter guide&lt;sup class=&quot;footnote-reference&quot;&gt;&lt;a href=&quot;#3&quot;&gt;3&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt;, I couldn&#x27;t figure out why I wasn&#x27;t able to start the appropriate mode. I would get errors along the lines of, &lt;code&gt;Cannot activate tree-sitter, because language definition for ...&lt;&#x2F;code&gt;.&lt;&#x2F;p&gt;
 &lt;p&gt;After double-checking file paths and names, I compared my local build output of the recommend build script&lt;sup class=&quot;footnote-reference&quot;&gt;&lt;a href=&quot;#4&quot;&gt;4&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt; to the provided release—which &lt;em&gt;did&lt;&#x2F;em&gt; work .&lt;&#x2F;p&gt;
 &lt;p&gt;The provided release was compiled for &lt;code&gt;x86_64&lt;&#x2F;code&gt; and my local build output was for &lt;code&gt;arm64&lt;&#x2F;code&gt;. That wasn&#x27;t wrong, as I &lt;em&gt;am&lt;&#x2F;em&gt; on an M1.&lt;&#x2F;p&gt;
 &lt;p&gt;Here&#x27;s the a simple and lazy to compile for &lt;code&gt;x64_64&lt;&#x2F;code&gt; and have it work: &lt;code&gt;arch -x86_64 .&#x2F;batch.sh&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
@@ -148,14 +184,19 @@
 &lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;casouri&#x2F;tree-sitter-module&quot;&gt;casouri&#x2F;tree-sitter-module&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
 &lt;&#x2F;div&gt;
 </content>
-	</entry>
-	<entry xml:lang="en">
-		<title>Brewfile app relaunched</title>
-		<published>2022-12-15T00:00:00+00:00</published>
-		<updated>2022-12-15T00:00:00+00:00</updated>
-		<link rel="alternate" href="https://j-e-s-s-e.com/notes/brewfile-app-relaunched/" type="text/html"/>
-		<id>https://j-e-s-s-e.com/notes/brewfile-app-relaunched/</id>
-		<content type="html">&lt;p&gt;I&#x27;ve relaunched this app&lt;sup class=&quot;footnote-reference&quot;&gt;&lt;a href=&quot;#1&quot;&gt;1&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt; The short version is that it&#x27;s the &lt;a href=&quot;https:&#x2F;&#x2F;gitignore.io&quot;&gt;gitignore.io&lt;&#x2F;a&gt; equivalent for Homebrew Brewfiles.&lt;&#x2F;p&gt;
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Brewfile app relaunched</title>
+        <published>2022-12-15T00:00:00+00:00</published>
+        <updated>2022-12-15T00:00:00+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://j-e-s-s-e.com/notes/brewfile-app-relaunched/" type="text/html"/>
+        <id>https://j-e-s-s-e.com/notes/brewfile-app-relaunched/</id>
+        
+        <content type="html">&lt;p&gt;I&#x27;ve relaunched this app&lt;sup class=&quot;footnote-reference&quot;&gt;&lt;a href=&quot;#1&quot;&gt;1&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt; The short version is that it&#x27;s the &lt;a href=&quot;https:&#x2F;&#x2F;gitignore.io&quot;&gt;gitignore.io&lt;&#x2F;a&gt; equivalent for Homebrew Brewfiles.&lt;&#x2F;p&gt;
 &lt;p&gt;There&#x27;s work to do, but, it&#x27;s in a reliable and reproducible state.&lt;&#x2F;p&gt;
 &lt;p&gt;Previously, it was on a VPS running FreeBSD and was using jails with Nginx and Puma. Now, it&#x27;s still on a VPS, but it&#x27;s running Debian and is using containers with Caddy and Puma.&lt;&#x2F;p&gt;
 &lt;p&gt;I do not regret using FreeBSD and jails. I learnt from it and would consider using them again, project-dependent.&lt;&#x2F;p&gt;
@@ -164,22 +205,32 @@
 &lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;brewfile.app&quot;&gt;brewfile.app&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
 &lt;&#x2F;div&gt;
 </content>
-	</entry>
-	<entry xml:lang="en">
-		<title>Brewfile</title>
-		<published>2022-12-15T00:00:00+00:00</published>
-		<updated>2022-12-15T00:00:00+00:00</updated>
-		<link rel="alternate" href="https://j-e-s-s-e.com/projects/brewfile/" type="text/html"/>
-		<id>https://j-e-s-s-e.com/projects/brewfile/</id>
-		<content type="html"></content>
-	</entry>
-	<entry xml:lang="en">
-		<title>v1 release of AppearanceNotifier</title>
-		<published>2022-12-08T00:00:00+00:00</published>
-		<updated>2022-12-08T00:00:00+00:00</updated>
-		<link rel="alternate" href="https://j-e-s-s-e.com/notes/v1-release-of-appearancenotifier/" type="text/html"/>
-		<id>https://j-e-s-s-e.com/notes/v1-release-of-appearancenotifier/</id>
-		<content type="html">&lt;p&gt;v0.0.1 was released on 2021-06-09&lt;sup class=&quot;footnote-reference&quot;&gt;&lt;a href=&quot;#1&quot;&gt;1&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt;. Since then, I&#x27;ve been using it daily both at home and at work. After a lazy approach to auto-starting it&lt;sup class=&quot;footnote-reference&quot;&gt;&lt;a href=&quot;#2&quot;&gt;2&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt;, I added a daemon definition for macOS with &lt;code&gt;launchd&lt;&#x2F;code&gt;. Recently as well, I added Emacs support.&lt;&#x2F;p&gt;
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Brewfile</title>
+        <published>2022-12-15T00:00:00+00:00</published>
+        <updated>2022-12-15T00:00:00+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://j-e-s-s-e.com/projects/brewfile/" type="text/html"/>
+        <id>https://j-e-s-s-e.com/projects/brewfile/</id>
+        
+        <content type="html"></content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>v1 release of AppearanceNotifier</title>
+        <published>2022-12-08T00:00:00+00:00</published>
+        <updated>2022-12-08T00:00:00+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://j-e-s-s-e.com/notes/v1-release-of-appearancenotifier/" type="text/html"/>
+        <id>https://j-e-s-s-e.com/notes/v1-release-of-appearancenotifier/</id>
+        
+        <content type="html">&lt;p&gt;v0.0.1 was released on 2021-06-09&lt;sup class=&quot;footnote-reference&quot;&gt;&lt;a href=&quot;#1&quot;&gt;1&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt;. Since then, I&#x27;ve been using it daily both at home and at work. After a lazy approach to auto-starting it&lt;sup class=&quot;footnote-reference&quot;&gt;&lt;a href=&quot;#2&quot;&gt;2&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt;, I added a daemon definition for macOS with &lt;code&gt;launchd&lt;&#x2F;code&gt;. Recently as well, I added Emacs support.&lt;&#x2F;p&gt;
 &lt;p&gt;With these changes, I remembered to do a release, giving us v1&lt;sup class=&quot;footnote-reference&quot;&gt;&lt;a href=&quot;#3&quot;&gt;3&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt;&lt;&#x2F;p&gt;
 &lt;hr &#x2F;&gt;
 &lt;div class=&quot;footnote-definition&quot; id=&quot;1&quot;&gt;&lt;sup class=&quot;footnote-definition-label&quot;&gt;1&lt;&#x2F;sup&gt;
@@ -192,14 +243,19 @@
 &lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;jesse-c&#x2F;AppearanceNotifier&#x2F;releases&#x2F;tag&#x2F;v1.0.0&quot;&gt;v1 release&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
 &lt;&#x2F;div&gt;
 </content>
-	</entry>
-	<entry xml:lang="en">
-		<title>Custom Zola project type for Projectile</title>
-		<published>2022-11-06T00:00:00+00:00</published>
-		<updated>2022-11-06T00:00:00+00:00</updated>
-		<link rel="alternate" href="https://j-e-s-s-e.com/notes/custom-zola-project-type-for-projectile/" type="text/html"/>
-		<id>https://j-e-s-s-e.com/notes/custom-zola-project-type-for-projectile/</id>
-		<content type="html">&lt;p&gt;I currently use Zola for this website and use Emacs as my editor with &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;bbatsov&#x2F;projectile&quot;&gt;Projectile&lt;&#x2F;a&gt;. Here&#x27;s a snippet from my dotfiles to add support for Zola projects to Projectile&lt;sup class=&quot;footnote-reference&quot;&gt;&lt;a href=&quot;#1&quot;&gt;1&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt;.&lt;&#x2F;p&gt;
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Custom Zola project type for Projectile</title>
+        <published>2022-11-06T00:00:00+00:00</published>
+        <updated>2022-11-06T00:00:00+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://j-e-s-s-e.com/notes/custom-zola-project-type-for-projectile/" type="text/html"/>
+        <id>https://j-e-s-s-e.com/notes/custom-zola-project-type-for-projectile/</id>
+        
+        <content type="html">&lt;p&gt;I currently use Zola for this website and use Emacs as my editor with &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;bbatsov&#x2F;projectile&quot;&gt;Projectile&lt;&#x2F;a&gt;. Here&#x27;s a snippet from my dotfiles to add support for Zola projects to Projectile&lt;sup class=&quot;footnote-reference&quot;&gt;&lt;a href=&quot;#1&quot;&gt;1&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt;.&lt;&#x2F;p&gt;
 &lt;pre data-lang=&quot;diff&quot; style=&quot;background-color:#2b303b;color:#c0c5ce;&quot; class=&quot;language-diff &quot;&gt;&lt;code class=&quot;language-diff&quot; data-lang=&quot;diff&quot;&gt;&lt;span&gt;diff --git a&#x2F;home&#x2F;private_dot_config&#x2F;emacs&#x2F;init.el b&#x2F;home&#x2F;private_dot_config&#x2F;emacs&#x2F;init.el
 &lt;&#x2F;span&gt;&lt;span&gt;index c8d15dc..a3f9260 100644
 &lt;&#x2F;span&gt;&lt;span&gt;--- a&#x2F;home&#x2F;private_dot_config&#x2F;emacs&#x2F;init.el
@@ -226,14 +282,19 @@
 &lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;docs.projectile.mx&#x2F;projectile&#x2F;projects.html&quot;&gt;https:&#x2F;&#x2F;docs.projectile.mx&#x2F;projectile&#x2F;projects.html&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
 &lt;&#x2F;div&gt;
 </content>
-	</entry>
-	<entry xml:lang="en">
-		<title>Counting pages in sections from other sections in Zola</title>
-		<published>2022-10-11T00:00:00+00:00</published>
-		<updated>2022-10-11T00:00:00+00:00</updated>
-		<link rel="alternate" href="https://j-e-s-s-e.com/notes/counting-pages-in-sections-in-zola/" type="text/html"/>
-		<id>https://j-e-s-s-e.com/notes/counting-pages-in-sections-in-zola/</id>
-		<content type="html">&lt;p&gt;For the design of this website (as of 2022-10-11), I wanted to include the number of pages in a section—e.g., in the menu. I found a post on the Zola forum&lt;sup class=&quot;footnote-reference&quot;&gt;&lt;a href=&quot;#1&quot;&gt;1&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt; where I learnt about the &lt;code&gt;get_section&lt;&#x2F;code&gt; and a section&#x27;s &lt;code&gt;pages&lt;&#x2F;code&gt; variable. Then in the Tera documentation&lt;sup class=&quot;footnote-reference&quot;&gt;&lt;a href=&quot;#2&quot;&gt;2&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt;, I found the &lt;code&gt;length&lt;&#x2F;code&gt; function.&lt;&#x2F;p&gt;
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Counting pages in sections from other sections in Zola</title>
+        <published>2022-10-11T00:00:00+00:00</published>
+        <updated>2022-10-11T00:00:00+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://j-e-s-s-e.com/notes/counting-pages-in-sections-in-zola/" type="text/html"/>
+        <id>https://j-e-s-s-e.com/notes/counting-pages-in-sections-in-zola/</id>
+        
+        <content type="html">&lt;p&gt;For the design of this website (as of 2022-10-11), I wanted to include the number of pages in a section—e.g., in the menu. I found a post on the Zola forum&lt;sup class=&quot;footnote-reference&quot;&gt;&lt;a href=&quot;#1&quot;&gt;1&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt; where I learnt about the &lt;code&gt;get_section&lt;&#x2F;code&gt; and a section&#x27;s &lt;code&gt;pages&lt;&#x2F;code&gt; variable. Then in the Tera documentation&lt;sup class=&quot;footnote-reference&quot;&gt;&lt;a href=&quot;#2&quot;&gt;2&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt;, I found the &lt;code&gt;length&lt;&#x2F;code&gt; function.&lt;&#x2F;p&gt;
 &lt;p&gt;Between the 2 of these, I&#x27;m able to display the pages count.&lt;&#x2F;p&gt;
 &lt;h2 id=&quot;example&quot;&gt;Example&lt;&#x2F;h2&gt;
 &lt;pre style=&quot;background-color:#2b303b;color:#c0c5ce;&quot;&gt;&lt;code&gt;&lt;span&gt;{% set notes = get_section(path=&amp;quot;notes&#x2F;_index.md&amp;quot;) -%}
@@ -247,70 +308,110 @@
 &lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;tera.netlify.app&#x2F;docs&#x2F;#length&quot;&gt;https:&#x2F;&#x2F;tera.netlify.app&#x2F;docs&#x2F;#length ↗&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
 &lt;&#x2F;div&gt;
 </content>
-	</entry>
-	<entry xml:lang="en">
-		<title>AppearanceNotifier</title>
-		<published>2022-10-11T00:00:00+00:00</published>
-		<updated>2022-10-11T00:00:00+00:00</updated>
-		<link rel="alternate" href="https://j-e-s-s-e.com/projects/appearancenotifier/" type="text/html"/>
-		<id>https://j-e-s-s-e.com/projects/appearancenotifier/</id>
-		<content type="html"></content>
-	</entry>
-	<entry xml:lang="en">
-		<title>Arduino-DDP</title>
-		<published>2022-10-11T00:00:00+00:00</published>
-		<updated>2022-10-11T00:00:00+00:00</updated>
-		<link rel="alternate" href="https://j-e-s-s-e.com/projects/arduino-ddp/" type="text/html"/>
-		<id>https://j-e-s-s-e.com/projects/arduino-ddp/</id>
-		<content type="html"></content>
-	</entry>
-	<entry xml:lang="en">
-		<title>AutoVolume</title>
-		<published>2022-10-11T00:00:00+00:00</published>
-		<updated>2022-10-11T00:00:00+00:00</updated>
-		<link rel="alternate" href="https://j-e-s-s-e.com/projects/autovolume/" type="text/html"/>
-		<id>https://j-e-s-s-e.com/projects/autovolume/</id>
-		<content type="html"></content>
-	</entry>
-	<entry xml:lang="en">
-		<title>Book Depository wishlists exporter</title>
-		<published>2022-10-11T00:00:00+00:00</published>
-		<updated>2022-10-11T00:00:00+00:00</updated>
-		<link rel="alternate" href="https://j-e-s-s-e.com/projects/bookdepository-wishlists-exporter/" type="text/html"/>
-		<id>https://j-e-s-s-e.com/projects/bookdepository-wishlists-exporter/</id>
-		<content type="html"></content>
-	</entry>
-	<entry xml:lang="en">
-		<title>Pomodoro</title>
-		<published>2022-10-11T00:00:00+00:00</published>
-		<updated>2022-10-11T00:00:00+00:00</updated>
-		<link rel="alternate" href="https://j-e-s-s-e.com/projects/pomodoro/" type="text/html"/>
-		<id>https://j-e-s-s-e.com/projects/pomodoro/</id>
-		<content type="html"></content>
-	</entry>
-	<entry xml:lang="en">
-		<title>PreventSleep</title>
-		<published>2022-10-11T00:00:00+00:00</published>
-		<updated>2022-10-11T00:00:00+00:00</updated>
-		<link rel="alternate" href="https://j-e-s-s-e.com/projects/preventsleep/" type="text/html"/>
-		<id>https://j-e-s-s-e.com/projects/preventsleep/</id>
-		<content type="html"></content>
-	</entry>
-	<entry xml:lang="en">
-		<title>Toshiba TV control proxy</title>
-		<published>2022-10-11T00:00:00+00:00</published>
-		<updated>2022-10-11T00:00:00+00:00</updated>
-		<link rel="alternate" href="https://j-e-s-s-e.com/projects/toshiba-tv-control-proxy/" type="text/html"/>
-		<id>https://j-e-s-s-e.com/projects/toshiba-tv-control-proxy/</id>
-		<content type="html"></content>
-	</entry>
-	<entry xml:lang="en">
-		<title>Multi-UIs for a daemon and using gRPC to communicate locally from Rust &lt;&gt; Swift</title>
-		<published>2022-06-24T00:00:00+00:00</published>
-		<updated>2022-06-24T00:00:00+00:00</updated>
-		<link rel="alternate" href="https://j-e-s-s-e.com/notes/multi-uis-with-grpc/" type="text/html"/>
-		<id>https://j-e-s-s-e.com/notes/multi-uis-with-grpc/</id>
-		<content type="html">&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;j-e-s-s-e.com&#x2F;notes&#x2F;multi-uis-with-grpc&#x2F;#sample&quot;&gt;Jump to sample&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>AppearanceNotifier</title>
+        <published>2022-10-11T00:00:00+00:00</published>
+        <updated>2022-10-11T00:00:00+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://j-e-s-s-e.com/projects/appearancenotifier/" type="text/html"/>
+        <id>https://j-e-s-s-e.com/projects/appearancenotifier/</id>
+        
+        <content type="html"></content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Arduino-DDP</title>
+        <published>2022-10-11T00:00:00+00:00</published>
+        <updated>2022-10-11T00:00:00+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://j-e-s-s-e.com/projects/arduino-ddp/" type="text/html"/>
+        <id>https://j-e-s-s-e.com/projects/arduino-ddp/</id>
+        
+        <content type="html"></content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>AutoVolume</title>
+        <published>2022-10-11T00:00:00+00:00</published>
+        <updated>2022-10-11T00:00:00+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://j-e-s-s-e.com/projects/autovolume/" type="text/html"/>
+        <id>https://j-e-s-s-e.com/projects/autovolume/</id>
+        
+        <content type="html"></content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Book Depository wishlists exporter</title>
+        <published>2022-10-11T00:00:00+00:00</published>
+        <updated>2022-10-11T00:00:00+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://j-e-s-s-e.com/projects/bookdepository-wishlists-exporter/" type="text/html"/>
+        <id>https://j-e-s-s-e.com/projects/bookdepository-wishlists-exporter/</id>
+        
+        <content type="html"></content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Pomodoro</title>
+        <published>2022-10-11T00:00:00+00:00</published>
+        <updated>2022-10-11T00:00:00+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://j-e-s-s-e.com/projects/pomodoro/" type="text/html"/>
+        <id>https://j-e-s-s-e.com/projects/pomodoro/</id>
+        
+        <content type="html"></content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>PreventSleep</title>
+        <published>2022-10-11T00:00:00+00:00</published>
+        <updated>2022-10-11T00:00:00+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://j-e-s-s-e.com/projects/preventsleep/" type="text/html"/>
+        <id>https://j-e-s-s-e.com/projects/preventsleep/</id>
+        
+        <content type="html"></content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Toshiba TV control proxy</title>
+        <published>2022-10-11T00:00:00+00:00</published>
+        <updated>2022-10-11T00:00:00+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://j-e-s-s-e.com/projects/toshiba-tv-control-proxy/" type="text/html"/>
+        <id>https://j-e-s-s-e.com/projects/toshiba-tv-control-proxy/</id>
+        
+        <content type="html"></content>
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Multi-UIs for a daemon and using gRPC to communicate locally from Rust &lt;&gt; Swift</title>
+        <published>2022-06-24T00:00:00+00:00</published>
+        <updated>2022-06-24T00:00:00+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://j-e-s-s-e.com/notes/multi-uis-with-grpc/" type="text/html"/>
+        <id>https://j-e-s-s-e.com/notes/multi-uis-with-grpc/</id>
+        
+        <content type="html">&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;j-e-s-s-e.com&#x2F;notes&#x2F;multi-uis-with-grpc&#x2F;#sample&quot;&gt;Jump to sample&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
 &lt;h1 id=&quot;multi-uis-discovery-of-a-paradigm&quot;&gt;Multi-UIs Discovery of a paradigm&lt;&#x2F;h1&gt;
 &lt;p&gt;While building an extension for &lt;a href=&quot;https:&#x2F;&#x2F;www.raycast.com&#x2F;jns&#x2F;sabnzbd&quot;&gt;SABnzbd&lt;&#x2F;a&gt; for &lt;a href=&quot;https:&#x2F;&#x2F;www.raycast.com&quot;&gt;Raycast&lt;&#x2F;a&gt;&lt;sup class=&quot;footnote-reference&quot;&gt;&lt;a href=&quot;#1&quot;&gt;1&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt;, it made me think about a paradigm of multiple UIs. I interact with SABnzbd through its web UI, Raycast, and NZBHydra 2. There may even be another way that I&#x27;m not remembering.&lt;&#x2F;p&gt;
 &lt;p&gt;The paradigm I thought of from this, and added to my projects list, was something like this:&lt;&#x2F;p&gt;
@@ -334,14 +435,19 @@
 &lt;p&gt;My undergrad thesis was titled &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;jesse-c&#x2F;thesis&quot;&gt;Technology-supported activities through realtime, distributed, and collaborative interfaces&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
 &lt;&#x2F;div&gt;
 </content>
-	</entry>
-	<entry xml:lang="en">
-		<title>Retrospective on a side-project: AutoVolume for macOS</title>
-		<published>2017-04-19T00:00:00+00:00</published>
-		<updated>2017-04-19T00:00:00+00:00</updated>
-		<link rel="alternate" href="https://j-e-s-s-e.com/notes/retrospective-on-a-side-project/" type="text/html"/>
-		<id>https://j-e-s-s-e.com/notes/retrospective-on-a-side-project/</id>
-		<content type="html">&lt;p&gt;&lt;a href=&quot;http:&#x2F;&#x2F;www.jesseclaven.com&#x2F;projects&#x2F;AutoVolume&#x2F;&quot;&gt;AutoVolume&lt;&#x2F;a&gt; is a free and open source app that automatically changes the volume when your Mac wakes from sleep. I&#x27;m going to give a brief overview from how it started, to being released.&lt;&#x2F;p&gt;
+        
+    </entry>
+    <entry xml:lang="en">
+        <title>Retrospective on a side-project: AutoVolume for macOS</title>
+        <published>2017-04-19T00:00:00+00:00</published>
+        <updated>2017-04-19T00:00:00+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://j-e-s-s-e.com/notes/retrospective-on-a-side-project/" type="text/html"/>
+        <id>https://j-e-s-s-e.com/notes/retrospective-on-a-side-project/</id>
+        
+        <content type="html">&lt;p&gt;&lt;a href=&quot;http:&#x2F;&#x2F;www.jesseclaven.com&#x2F;projects&#x2F;AutoVolume&#x2F;&quot;&gt;AutoVolume&lt;&#x2F;a&gt; is a free and open source app that automatically changes the volume when your Mac wakes from sleep. I&#x27;m going to give a brief overview from how it started, to being released.&lt;&#x2F;p&gt;
 &lt;h2 id=&quot;initial-idea&quot;&gt;Initial idea&lt;&#x2F;h2&gt;
 &lt;p&gt;From my &lt;code&gt;idea.md&lt;&#x2F;code&gt; file for this, one night I had my volume up high because I was watching a TV show, and the next day when I received an email notification it was super loud, which was just a bit shocking and embarrassing. I wrote down the idea of, &#x27;If sleep longer than time period x, show a notification on log in with action to mute&#x27;. The end product ended up being similar.&lt;&#x2F;p&gt;
 &lt;p&gt;I took this as an opportunity to do a few other little things that I&#x27;ve been wanting to do: design a website for the the first time in a while, create an animation, and code a website using no IDs or classes.&lt;&#x2F;p&gt;
@@ -355,5 +461,6 @@
 &lt;h2 id=&quot;what-s-next&quot;&gt;What&#x27;s next&lt;&#x2F;h2&gt;
 &lt;p&gt;I already have my own TODO items, but people had suggestions from the get go. For now it does it&#x27;s purpose and works &#x27;perfectly&#x27; in that regard, so I&#x27;m going to leave it alone for a bit.&lt;&#x2F;p&gt;
 </content>
-	</entry>
+        
+    </entry>
 </feed>
