@@ -43,6 +43,13 @@
         <loc>https://j-e-s-s-e.com/notes/page/1/</loc>
     </url>
     <url>
+        <loc>https://j-e-s-s-e.com/notes/page/2/</loc>
+    </url>
+    <url>
+        <loc>https://j-e-s-s-e.com/notes/raycast-extension-for-himalaya/</loc>
+        <lastmod>2023-04-29</lastmod>
+    </url>
+    <url>
         <loc>https://j-e-s-s-e.com/notes/retrospective-on-a-side-project/</loc>
         <lastmod>2017-04-19</lastmod>
     </url>
@@ -133,6 +140,9 @@
         <loc>https://j-e-s-s-e.com/tags/emacs/</loc>
     </url>
     <url>
+        <loc>https://j-e-s-s-e.com/tags/email/</loc>
+    </url>
+    <url>
         <loc>https://j-e-s-s-e.com/tags/event-streaming/</loc>
     </url>
     <url>
@@ -140,6 +150,9 @@
     </url>
     <url>
         <loc>https://j-e-s-s-e.com/tags/grpc/</loc>
+    </url>
+    <url>
+        <loc>https://j-e-s-s-e.com/tags/himalaya/</loc>
     </url>
     <url>
         <loc>https://j-e-s-s-e.com/tags/homebrew/</loc>
@@ -179,6 +192,9 @@
     </url>
     <url>
         <loc>https://j-e-s-s-e.com/tags/nodejs/</loc>
+    </url>
+    <url>
+        <loc>https://j-e-s-s-e.com/tags/raycast/</loc>
     </url>
     <url>
         <loc>https://j-e-s-s-e.com/tags/ruby/</loc>

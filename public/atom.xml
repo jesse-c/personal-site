@@ -4,8 +4,50 @@
     <link href="https://j-e-s-s-e.com/atom.xml" rel="self" type="application/atom+xml"/>
     <link href="https://j-e-s-s-e.com"/>
     <generator uri="https://www.getzola.org/">Zola</generator>
-    <updated>2023-04-13T00:00:00+00:00</updated>
+    <updated>2023-04-29T00:00:00+00:00</updated>
     <id>https://j-e-s-s-e.com/atom.xml</id>
+    <entry xml:lang="en">
+        <title>Raycast extension for Himalaya released</title>
+        <published>2023-04-29T00:00:00+00:00</published>
+        <updated>2023-04-29T00:00:00+00:00</updated>
+        <author>
+          <name>Unknown</name>
+        </author>
+        <link rel="alternate" href="https://j-e-s-s-e.com/notes/raycast-extension-for-himalaya/" type="text/html"/>
+        <id>https://j-e-s-s-e.com/notes/raycast-extension-for-himalaya/</id>
+        
+        <content type="html">&lt;p&gt;Previously&lt;sup class=&quot;footnote-reference&quot;&gt;&lt;a href=&quot;#1&quot;&gt;1&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt;&lt;sup class=&quot;footnote-reference&quot;&gt;&lt;a href=&quot;#2&quot;&gt;2&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt;, I wrote about a paradigm where you had daemon which had multi-UIs that interacted with it. For some time I had wanted to quickly be able to act on emails as they come in. Someone is working on a Raycast extension that uses AppleScript to interact with Mail.app&lt;sup class=&quot;footnote-reference&quot;&gt;&lt;a href=&quot;#3&quot;&gt;3&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt;. Whilst it&#x27;s tractable, it was taking some time—and then I remembered Himalaya&lt;sup class=&quot;footnote-reference&quot;&gt;&lt;a href=&quot;#4&quot;&gt;4&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt;!&lt;&#x2F;p&gt;
+&lt;p&gt;After testing it out, I was happy with it and set out to try and build a Raycast extension&lt;sup class=&quot;footnote-reference&quot;&gt;&lt;a href=&quot;#5&quot;&gt;5&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt; around it. I&#x27;m happy to further announce that it&#x27;s available for us! I&#x27;ve already had several new minor versions since the original release.&lt;&#x2F;p&gt;
+&lt;p&gt;Along with this, I got into a discussion with @soywood&lt;sup class=&quot;footnote-reference&quot;&gt;&lt;a href=&quot;#6&quot;&gt;6&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt; over email as I had sponsored him on GitHub. It turns out, the paradigm&lt;sup class=&quot;footnote-reference&quot;&gt;&lt;a href=&quot;#1&quot;&gt;1&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt; I wrote about, and his own project&lt;sup class=&quot;footnote-reference&quot;&gt;&lt;a href=&quot;#6&quot;&gt;6&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt; had converged on the same approach! Hilariously, we had both been working on Pomodoro timers.&lt;&#x2F;p&gt;
+&lt;p&gt;Up next? A Raycast extension for Comodoro&lt;sup class=&quot;footnote-reference&quot;&gt;&lt;a href=&quot;#8&quot;&gt;7&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt;.&lt;&#x2F;p&gt;
+&lt;hr &#x2F;&gt;
+&lt;div class=&quot;footnote-definition&quot; id=&quot;1&quot;&gt;&lt;sup class=&quot;footnote-definition-label&quot;&gt;1&lt;&#x2F;sup&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;j-e-s-s-e.com&#x2F;notes&#x2F;multi-uis-with-grpc&#x2F;&quot;&gt;Multi-UIs for a daemon and using gRPC to communicate locally from Rust &amp;lt;&amp;gt; Swift&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;div&gt;
+&lt;div class=&quot;footnote-definition&quot; id=&quot;2&quot;&gt;&lt;sup class=&quot;footnote-definition-label&quot;&gt;2&lt;&#x2F;sup&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;jesse-c&#x2F;thesis&quot;&gt;Technology-supported activities through realtime, distributed, and collaborative interfaces&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;div&gt;
+&lt;div class=&quot;footnote-definition&quot; id=&quot;3&quot;&gt;&lt;sup class=&quot;footnote-definition-label&quot;&gt;3&lt;&#x2F;sup&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;raycast&#x2F;extensions&#x2F;pull&#x2F;4080&quot;&gt;[New Extension] Apple Mail #4080&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;div&gt;
+&lt;div class=&quot;footnote-definition&quot; id=&quot;4&quot;&gt;&lt;sup class=&quot;footnote-definition-label&quot;&gt;4&lt;&#x2F;sup&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;soywod&#x2F;himalaya&quot;&gt;Himalaya (CLI)&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;div&gt;
+&lt;div class=&quot;footnote-definition&quot; id=&quot;5&quot;&gt;&lt;sup class=&quot;footnote-definition-label&quot;&gt;5&lt;&#x2F;sup&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;www.raycast.com&#x2F;jns&#x2F;himalaya&quot;&gt;Himalaya (Raycast)&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;div&gt;
+&lt;div class=&quot;footnote-definition&quot; id=&quot;6&quot;&gt;&lt;sup class=&quot;footnote-definition-label&quot;&gt;6&lt;&#x2F;sup&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;soywod&quot;&gt;@soywood&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;div&gt;
+&lt;div class=&quot;footnote-definition&quot; id=&quot;7&quot;&gt;&lt;sup class=&quot;footnote-definition-label&quot;&gt;8&lt;&#x2F;sup&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;pimalaya.org&quot;&gt;Pimalaya&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;div&gt;
+&lt;div class=&quot;footnote-definition&quot; id=&quot;8&quot;&gt;&lt;sup class=&quot;footnote-definition-label&quot;&gt;7&lt;&#x2F;sup&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;pimalaya.org&#x2F;comodoro&#x2F;&quot;&gt;Comodoro&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;div&gt;
+</content>
+        
+    </entry>
     <entry xml:lang="en">
         <title>Hyper key without Karabiner Elements</title>
         <published>2023-04-13T00:00:00+00:00</published>
@@ -417,7 +459,7 @@
 &lt;p&gt;The paradigm I thought of from this, and added to my projects list, was something like this:&lt;&#x2F;p&gt;
 &lt;img src=&quot;&#x2F;notes&#x2F;simple-map.png&quot; alt=&quot;Example: Multi-UIs connected with a daemon&quot; width=&quot;600&quot; &#x2F;&gt;
 &lt;p&gt;The name that I gave the project&#x2F;idea was &amp;quot;headless for everything&amp;quot;, where headless is the daemon, in that drawing.&lt;&#x2F;p&gt;
-&lt;p&gt;Some clients are local, while some are remote, like &amp;quot;Export to website&amp;quot;. There are more and more local- and offline-first projects. What if you could export your data to another service? Chuck some local issues&#x2F;tickets up in Jira and Linear? What if you could E2E as part of that? What if it could realtime, distributed, and collaborative?&lt;sup class=&quot;footnote-reference&quot;&gt;&lt;a href=&quot;#2&quot;&gt;2&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;Some clients are local, while some are remote, like &amp;quot;Export to website&amp;quot;. There are more and more local- and offline-first projects. What if you could export your data to another service? Chuck some local issues&#x2F;tickets up in Jira and Linear? What if you could E2E as part of that? What if it could realtime, distributed, and collaborative? This is a concept I covered with my undergraduate thesis&lt;sup class=&quot;footnote-reference&quot;&gt;&lt;a href=&quot;#2&quot;&gt;2&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt;.&lt;&#x2F;p&gt;
 &lt;p&gt;The obvious—and huge—downside is that adding a network in-between brings all the issues that a network inherently has. Maybe &lt;a href=&quot;https:&#x2F;&#x2F;hyperfiddle.notion.site&#x2F;Demo-Photon-a-full-stack-Clojure-Script-dialect-with-compiler-managed-client-server-data-sync-57aee367c20e45b3b80366d1abe4fbc3&quot;&gt;Photon&lt;&#x2F;a&gt; will help us out.&lt;&#x2F;p&gt;
 &lt;h1 id=&quot;my-first-experiment-with-this-paradigm&quot;&gt;My first experiment with this paradigm&lt;&#x2F;h1&gt;
 &lt;p&gt;The Pomodoro technique has occasionally worked well for me. On macOS, I use &lt;a href=&quot;https:&#x2F;&#x2F;tomato2.app&quot;&gt;Tomato 2&lt;&#x2F;a&gt;—and highly recommend it! A Pomodoro timer became the first experiment for me.&lt;&#x2F;p&gt;
@@ -432,7 +474,7 @@
 &lt;p&gt;I&#x27;m still not decided on Raycast. I would go back to Alfred in a heartbeat if it wasn&#x27;t so visually dated.&lt;&#x2F;p&gt;
 &lt;&#x2F;div&gt;
 &lt;div class=&quot;footnote-definition&quot; id=&quot;2&quot;&gt;&lt;sup class=&quot;footnote-definition-label&quot;&gt;2&lt;&#x2F;sup&gt;
-&lt;p&gt;My undergrad thesis was titled &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;jesse-c&#x2F;thesis&quot;&gt;Technology-supported activities through realtime, distributed, and collaborative interfaces&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;jesse-c&#x2F;thesis&quot;&gt;Technology-supported activities through realtime, distributed, and collaborative interfaces&lt;&#x2F;a&gt;&lt;&#x2F;p&gt;
 &lt;&#x2F;div&gt;
 </content>
         

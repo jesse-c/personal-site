@@ -17,7 +17,7 @@ The paradigm I thought of from this, and added to my projects list, was somethin
 
 The name that I gave the project/idea was "headless for everything", where headless is the daemon, in that drawing.
 
-Some clients are local, while some are remote, like "Export to website". There are more and more local- and offline-first projects. What if you could export your data to another service? Chuck some local issues/tickets up in Jira and Linear? What if you could E2E as part of that? What if it could realtime, distributed, and collaborative?[^2]
+Some clients are local, while some are remote, like "Export to website". There are more and more local- and offline-first projects. What if you could export your data to another service? Chuck some local issues/tickets up in Jira and Linear? What if you could E2E as part of that? What if it could realtime, distributed, and collaborative? This is a concept I covered with my undergraduate thesis[^2].
 
 The obvious—and huge—downside is that adding a network in-between brings all the issues that a network inherently has. Maybe [Photon](https://hyperfiddle.notion.site/Demo-Photon-a-full-stack-Clojure-Script-dialect-with-compiler-managed-client-server-data-sync-57aee367c20e45b3b80366d1abe4fbc3) will help us out.
 
@@ -41,4 +41,4 @@ While I plan on writing a step-by-step tutorial, in the desire to get this idea 
 
 [^1]: I'm still not decided on Raycast. I would go back to Alfred in a heartbeat if it wasn't so visually dated.
 
-[^2]: My undergrad thesis was titled [Technology-supported activities through realtime, distributed, and collaborative interfaces](https://github.com/jesse-c/thesis).
+[^2]: [Technology-supported activities through realtime, distributed, and collaborative interfaces](https://github.com/jesse-c/thesis)
