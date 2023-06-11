@@ -42,7 +42,7 @@ window.onload = (event) => {
 
       // Let it transition back
       setTimeout(() => {
-        pointer.style.backgroundColor = "#000";
+        pointer.style.backgroundColor = colourSchemeToColour();
       }, 5000);
     };
 
@@ -51,8 +51,18 @@ window.onload = (event) => {
       let pointer = getPointer();
 
       resizePointer(pointer, 10, 10);
-      pointer.style.backgroundColor = "#000";
+      pointer.style.backgroundColor = colourSchemeToColour();
     };
+  }
+};
+
+const colourSchemeToColour = () => {
+  const darkModeMediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+
+  if (darkModeMediaQuery.matches) {
+    return "#fff";
+  } else {
+    return "#000";
   }
 };
 

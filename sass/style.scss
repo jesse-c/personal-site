@@ -1,32 +1,22 @@
 :root {
-  --text: #000;
-  --bg: #fff;
-  --circle: 10px;
+  --circle-diameter: 10px;
+  --notice-colour: #f4a97d;
 }
 
-#pointer {
-  pointer-events: none;
+@media (prefers-color-scheme: light) {
+  :root {
+    --text: #000;
+    --bg: #fff;
+    --circle-colour: #000;
+  }
+}
 
-  // Size
-  width: var(--circle);
-  height: var(--circle);
-  transition: width 3s ease-out;
-  transition: height 3s ease-out;
-
-  // Style
-  background-color: #000;
-  border-radius: 50%;
-  transition: background-color 5s ease-out;
-
-  // Positioning
-  position: absolute;
-  top: 0;
-  left: 0;
-  transition: top 0.005s ease-out;
-  transition: left 0.005s ease-out;
-
-  // Visibility
-  display: none;
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text: #fff;
+    --bg: #000;
+    --circle-colour: #fff;
+  }
 }
 
 body {
@@ -84,7 +74,7 @@ header {
   /* HORIZONTAL MENU ITEMS */
   #hamitems {
     font-size: 14px;
-    background: #fff;
+    background: var(--bg);
 
     a {
       padding: 0 10px;
@@ -161,8 +151,8 @@ main {
 
   #notice {
     border-radius: 2px;
-    background-color: #fef7f3;
-    border: 1px dashed darken(#fef7f3, 25%);
+    border: 1px dashed var(--notice-colour);
+    color: var(--notice-colour);
     padding: 10px;
     margin: 0 0 20px 0;
   }
@@ -328,13 +318,38 @@ main {
 
   hr {
     margin: 15px 0 15px 0;
-    border: 1px dotted #000;
+    border: 1px dotted var(--bg);
     border-style: none none dotted;
-    color: #fff;
-    background-color: #fff;
+    color: var(--text);
+    background-color: var(--text);
   }
 
   .pagination {
     margin: 25px 0 0 0;
   }
+}
+
+#pointer {
+  pointer-events: none;
+
+  // Size
+  width: var(--circle-diameter);
+  height: var(--circle-diameter);
+  transition: width 3s ease-out;
+  transition: height 3s ease-out;
+
+  // Style
+  background-color: var(--circle-colour);
+  border-radius: 50%;
+  transition: background-color 5s ease-out;
+
+  // Positioning
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: top 0.005s ease-out;
+  transition: left 0.005s ease-out;
+
+  // Visibility
+  display: none;
 }
