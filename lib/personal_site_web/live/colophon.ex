@@ -9,7 +9,8 @@ defmodule PersonalSiteWeb.Live.Colophon do
     ~H"""
     <.live_component module={PersonalSiteWeb.Live.Cursors} id="cursors" users={@users} />
     <h1>Colophon</h1>
-    <div></div>
+    <h2>Everything about this website</h2>
+    <div>This area is a WIP.</div>
     """
   end
 end
