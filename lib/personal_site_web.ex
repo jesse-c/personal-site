@@ -57,6 +57,7 @@ defmodule PersonalSiteWeb do
 
       alias PersonalSite.Cursors
       alias PersonalSite.Notes
+      alias PersonalSite.Projects
       alias PersonalSiteWeb.Endpoint
       alias PersonalSiteWeb.Presence
 
@@ -67,6 +68,7 @@ defmodule PersonalSiteWeb do
           socket
           |> assign(Presence.initialise(socket, self()))
           |> assign(notes: Notes.all_notes())
+          |> assign(projects: Projects.all_projects())
 
         apply(__MODULE__, :inner_mount, [params, session, socket])
       end
