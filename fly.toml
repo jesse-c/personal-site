@@ -1,0 +1,23 @@
+# fly.toml app configuration file generated for quiet-smoke-7854 on 2023-06-16T23:52:56+01:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = "quiet-smoke-7854"
+primary_region = "lhr"
+kill_signal = "SIGTERM"
+
+[env]
+  PHX_HOST = "quiet-smoke-7854.fly.dev"
+  PORT = "8080"
+
+[http_service]
+  internal_port = 8080
+  force_https = true
+  auto_stop_machines = true
+  auto_start_machines = true
+  min_machines_running = 0
+  [http_service.concurrency]
+    type = "connections"
+    hard_limit = 1000
+    soft_limit = 1000
