@@ -3,3 +3,6 @@
 @import "tailwindcss/utilities";
 
 /* This file is for your main application CSS */
+
+.sub { font-variant-position: sub; }
+.sup { font-variant-position: super; }
