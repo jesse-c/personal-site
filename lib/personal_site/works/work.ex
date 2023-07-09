@@ -27,16 +27,30 @@ defmodule PersonalSite.Works.Work do
   @type t() :: any()
 
   def build(_filename, attrs, body) do
+    # There
+    date_start = Date.from_iso8601!("#{attrs.date_start}-01")
+
+    date_end =
+      case attrs.date_end do
+        "Current" ->
+          attrs.date_end
+
+        date_end ->
+          Date.from_iso8601!("#{date_end}-01")
+      end
+
     slug = Slug.slugify(attrs.title)
 
     fields =
       [
         id: slug,
         slug: slug,
-        body: body
+        body: body,
+        date_start: date_start,
+        date_end: date_end
       ] ++
         (attrs
-         |> Map.take(~w(title tags date_start date_end role description locations)a)
+         |> Map.take(~w(title tags  role description locations)a)
          |> Map.to_list())
 
     struct!(
