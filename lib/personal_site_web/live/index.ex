@@ -68,66 +68,120 @@ defmodule PersonalSiteWeb.Live.Index do
   def render(assigns) do
     ~H"""
     <.live_component module={PersonalSiteWeb.Live.Cursors} id="cursors" users={@users} />
-    <div>
-      <h2>Hello,</h2>
-      <p>I’m a software engineer&mdash;and sometimes a photographer or designer.</p>
-      <p><.link navigate={~p"/about"}>More →</.link></p>
-    </div>
-    <div>
-      <h2>Notes</h2>
-      <div :for={note <- Enum.take(@notes, 5)}>
-        <%= note.title %>
-        <%= note.date %>
-        <%= Enum.join(note.tags, ", ") %>
+    <div class="space-y-10">
+      <div class="space-y-3">
+        <h2 class="text-lg">Hello,</h2>
+        <p class="text-sm">I’m a software engineer&mdash;and sometimes a photographer or designer.</p>
+        <div>
+          <.link class="text-xs hover:underline" navigate={~p"/about"}>More →</.link>
+        </div>
       </div>
-      <p><.link navigate={~p"/notes"}>Index <%= Enum.count(@notes) %> →</.link></p>
-    </div>
-    <div>
-      <h2>Works</h2>
-      <div :for={work <- Enum.take(@works, 2)}>
-        <%= work.title %>
-        <%= work.date_start %>
-        <%= work.date_end %>
-        <%= work.description %>
+      <div class="space-y-3">
+        <h2 class="text-lg">Notes</h2>
+        <div class="space-y-3">
+          <div :for={note <- Enum.take(@notes, 5)} class="space-y-1">
+            <p class="text-sm">
+              <.link class="hover:underline" navigate={~p"/notes/#{note.slug}"}>
+                <%= note.title %>
+              </.link>
+            </p>
+            <p class="text-xs"><%= note.date %> ･ <%= Enum.join(note.tags, ", ") %></p>
+          </div>
+        </div>
+        <div>
+          <.link class="text-xs hover:underline" navigate={~p"/notes"}>
+            Index<span class="sup pl-0.5"><%= Enum.count(@notes) %></span> →
+          </.link>
+        </div>
       </div>
-      <p><.link navigate={~p"/works"}>Index <%= Enum.count(@works) %> →</.link></p>
-    </div>
-    <div>
-      <h2>Projects</h2>
-      <div :for={project <- @projects |> Enum.shuffle |> Enum.take(2)}>
-        <%= project.title %>
-        <%= project.description %>
-        <%= Enum.join(project.tags, ", ") %>
+      <div class="space-y-3">
+        <h2 class="text-lg">Works</h2>
+        <div class="space-y-3">
+          <div :for={work <- Enum.take(@works, 5)} class="space-y-1">
+            <p class="text-sm"><%= work.title %></p>
+            <p class="text-xs"><%= work.role %></p>
+            <p class="text-xs"><%= work.date_start %> &mdash; <%= work.date_end %></p>
+            <p class="text-xs"><%= work.description %></p>
+            <p class="text-xs"><%= Enum.join(work.tags, ", ") %></p>
+          </div>
+        </div>
+        <div>
+          <.link class="text-xs hover:underline" navigate={~p"/works"}>
+            Index<span class="sup pl-0.5"><%= Enum.count(@works) %></span> →
+          </.link>
+        </div>
       </div>
-      <p><.link navigate={~p"/projects"}>Index <%= Enum.count(@projects) %> →</.link></p>
-    </div>
-    <div>
-      <h2>Education</h2>
-      <h3>Bachelor of Engineering &mdash; Software (Honours) at University of Queensland</h3>
-      <h4>Thesis (Undergraduate)</h4>
-      <p>Technology-supported activities through realtime, distributed, and collaborative interfaces</p>
-      <p>Abstract</p>
-      <p>Traditionally user interfaces have been designed for a single user using one common device type&mdash;e.g. someone on a computer visiting a website. With the internet and mobile devices now being commonplace, interfaces could take advantage of being distributed across devices and working collaboratively with others in real-time. While there have been attempts to to handle this (e.g. Google Docs), they have so far been in a limited, prescribed manner. A proposed concept is put forward to design and build a new approach for a distributed and real-time collaborative user interface focusing on the concept of having a workspace with components that the user is able to freely use in a real-time manner. It is based upon existing web browsers and devices. Parts of the UI can be distributed across separate platforms. A prototype of a workspace for education is included and user testing of the prototype shows positive experiences and results for the users.</p>
-      <p><a href="https://github.com/jesse-c/thesis" target="_blank">Full thesis ↗</a></p>
-      <p><a href="https://github.com/jesse-c/thesis-workspace" target="_blank">Prototype ↗</a></p>
-    </div>
-    <div>
-      <h2>Get in touch</h2>
-      <p>I’m available through <a rel="me" href="https://mastodon.social/@jqk">Mastodon ↗</a> for mixed chat and <a href="https://github.com/jesse-c" target="_blank">GitHub ↗</a> for various projects/contributions and collaboration.</p>
-    </div>
-    <div>
-      <h2>Shouts (<%= Enum.count(@shouts) %>)</h2>
-      <div :for={shout <- Enum.take(@shouts, 10)}>
-        <%= shout.name %>
-        <%= shout.timestamp %>
-        <%= shout.message %>
+      <div class="space-y-3">
+        <h2 class="text-lg">Projects</h2>
+        <div class="space-y-3">
+          <div :for={project <- Enum.take(@projects, 5)} class="space-y-1">
+            <p class="text-sm"><%= project.title %></p>
+            <p class="text-xs"><%= project.description %></p>
+            <p class="text-xs"><%= Enum.join(project.tags, ", ") %></p>
+          </div>
+        </div>
+        <div>
+          <.link class="text-xs hover:underline" navigate={~p"/projects"}>
+            Index<span class="sup pl-0.5"><%= Enum.count(@projects) %></span> →
+          </.link>
+        </div>
       </div>
-    </div>
-    <div>
-    <.form for={@form} phx-change="validate" phx-submit="save">
-      <.input type="text" field={@form[:message]} />
-      <button>Save</button>
-    </.form>
+      <div class="space-y-3">
+        <h2 class="text-lg">Education</h2>
+        <h3 class="text-base">
+          Bachelor of Engineering &mdash; Software (Honours) at University of Queensland
+        </h3>
+        <h4 class="text-sm font-bold">Thesis (Undergraduate)</h4>
+        <p class="text-sm">
+          Technology-supported activities through realtime, distributed, and collaborative interfaces
+        </p>
+        <p class="text-sm">Abstract</p>
+        <p class="text-xs">
+          Traditionally user interfaces have been designed for a single user using one common device type&mdash;e.g. someone on a computer visiting a website. With the internet and mobile devices now being commonplace, interfaces could take advantage of being distributed across devices and working collaboratively with others in real-time. While there have been attempts to to handle this (e.g. Google Docs), they have so far been in a limited, prescribed manner. A proposed concept is put forward to design and build a new approach for a distributed and real-time collaborative user interface focusing on the concept of having a workspace with components that the user is able to freely use in a real-time manner. It is based upon existing web browsers and devices. Parts of the UI can be distributed across separate platforms. A prototype of a workspace for education is included and user testing of the prototype shows positive experiences and results for the users.
+        </p>
+        <p class="text-xs">
+          <a class="hover:underline" href="https://github.com/jesse-c/thesis" target="_blank">
+            Full thesis ↗
+          </a>
+        </p>
+        <p class="text-xs">
+          <a
+            class="hover:underline"
+            href="https://github.com/jesse-c/thesis-workspace"
+            target="_blank"
+          >
+            Prototype ↗
+          </a>
+        </p>
+      </div>
+      <div class="space-y-3">
+        <h2 class="text-lg">Contact</h2>
+        <p class="text-sm">
+          I’m available through
+          <a class="hover:underline" rel="me" href="https://mastodon.social/@jqk">Mastodon ↗</a>
+          for mixed chat and
+          <a class="hover:underline" href="https://github.com/jesse-c" target="_blank">GitHub ↗</a>
+          for various projects/contributions and collaboration.
+        </p>
+      </div>
+      <div class="space-y-3">
+        <h2 class="text-lg">Shouts<span class="sup pl-0.5"><%= Enum.count(@shouts) %></span></h2>
+        <div class="space-y-3">
+          <div class="space-y-1" :for={shout <- Enum.take(@shouts, 10)}>
+            <p class="text-sm">&#9786; <%= shout.name %> ･ &#9200; <%= Timex.from_now(shout.timestamp) %></p>
+            <p class="text-sm"><%= shout.message %></p>
+          </div>
+        </div>
+        <div class="space-y-3">
+          <h3 class="text-sm">New</h3>
+          <.form class="space-y-3" for={@form} phx-change="validate" phx-submit="save">
+            <.input type="text" field={@form[:message]} maxlength="255" />
+            <button class="border border-solid rounded-sm border-black dark:border-white hover:bg-black dark:hover:bg-white text-black dark:text-white hover:text-white dark:hover:text-black transition-colors p-2 mb-6 text-xs max-w-fit">
+              Save
+            </button>
+          </.form>
+        </div>
+      </div>
     </div>
     """
   end

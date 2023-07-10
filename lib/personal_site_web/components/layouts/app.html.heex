@@ -1,19 +1,17 @@
 <.flash_group flash={@flash} />
-<div class="flex gap-6">
-<h1 class="font-bold">Jesse Claven</h1>
-<nav>
-  <ul class="list-none flex gap-6">
-    <li><.link navigate={~p"/"}>Home</.link></li>
-    <li><.link navigate={~p"/notes"}>Notes<span class="sup pl-0.5"><%= Enum.count(@notes) %></span></.link></li>
-    <li><.link navigate={~p"/projects"}>Projects<span class="sup pl-0.5"><%= Enum.count(@projects) %></span></.link></li>
-    <li><.link navigate={~p"/works"}>Works<span class="sup pl-0.5"><%= Enum.count(@works) %></span></.link></li>
-    <li><.link navigate={~p"/education"}>Education</.link></li>
-    <li><.link navigate={~p"/about"}>About</.link></li>
-    <li><.link navigate={~p"/contact"}>Contact</.link></li>
-    <li><.link navigate={~p"/colophon"}>Colophon</.link></li>
-  </ul>
-</nav>
-</div>
+<header class="flex gap-6">
+    <h1 class="font-bold">Jesse Claven</h1>
+    <nav class="list-none flex gap-6 text-sm">
+        <.link class="hover:underline" navigate={~p"/"}>Home</.link>
+        <.link class="hover:underline" navigate={~p"/notes"}>Notes<span class="sup pl-0.5"><%= Enum.count(@notes) %></span></.link>
+        <.link class="hover:underline" navigate={~p"/projects"}>Projects<span class="sup pl-0.5"><%= Enum.count(@projects) %></span></.link>
+        <.link class="hover:underline" navigate={~p"/works"}>Works<span class="sup pl-0.5"><%= Enum.count(@works) %></span></.link>
+        <.link class="hover:underline" navigate={~p"/education"}>Education</.link>
+        <.link class="hover:underline" navigate={~p"/about"}>About</.link>
+        <.link class="hover:underline" navigate={~p"/contact"}>Contact</.link>
+        <.link class="hover:underline" navigate={~p"/colophon"}>Colophon</.link>
+    </nav>
+</header>
 <hr class="my-6" />
 <main class="w-full lg:w-1/2">
   <.flash_group flash={@flash} />

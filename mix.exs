@@ -53,7 +53,8 @@ defmodule PersonalSite.MixProject do
       {:slugify, "~> 1.3"},
       {:credo, "~> 1.7", only: [:dev, :test], runtime: false},
       {:redix, "~> 1.1"},
-      {:castore, ">= 0.0.0"}
+      {:castore, ">= 0.0.0"},
+      {:timex, "~> 3.7"}
     ]
   end
 
