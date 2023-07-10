@@ -39,6 +39,8 @@ defmodule PersonalSite.Shoutbox do
   def handle_call({:new, name, timestamp, message}, _from, state) do
     Logger.info("new")
 
+    message = String.slice(message, 0..255)
+
     shout = %{name: name, message: message, timestamp: timestamp}
 
     state = [shout | state]
