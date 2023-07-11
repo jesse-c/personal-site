@@ -69,10 +69,13 @@ defmodule PersonalSiteWeb.Live.Index do
   def render(assigns) do
     ~H"""
     <.live_component module={PersonalSiteWeb.Live.Cursors} id="cursors" users={@users} />
+    <div class="border border-dashed rounded-sm border-black dark:border-white p-2 mb-6 text-xs max-w-fit">
+      &#9788; Remember to try the shoutbox! &#8595
+    </div>
     <div class="space-y-10">
       <div class="space-y-3">
         <h2 class="text-lg">Hello,</h2>
-        <p class="text-sm">I’m a software engineer&mdash;and sometimes a photographer or designer.</p>
+        <p class="text-sm">I’m a ⍚ software engineer&mdash;and sometimes a ⛰ photographer or ♤ designer.</p>
         <div>
           <.link class="text-xs hover:underline" navigate={~p"/about"}>More →</.link>
         </div>
@@ -167,10 +170,14 @@ defmodule PersonalSiteWeb.Live.Index do
       </div>
       <div class="space-y-3">
         <h2 class="text-lg">Shoutbox</h2>
-          <h3 class="text-sm">Latest<span class="sup pl-0.5"><%= min(Enum.count(@shouts), 10) %> of <%= Enum.count(@shouts) %></span></h3>
+        <h3 class="text-sm">
+          Latest<span class="sup pl-0.5"><%= min(Enum.count(@shouts), 10) %> of <%= Enum.count(@shouts) %></span>
+        </h3>
         <div class="space-y-3">
-          <div class="space-y-1" :for={shout <- Enum.take(@shouts, 10)}>
-            <p class="text-sm">&#9786; <%= shout.name %> ･ &#9200; <%= Timex.from_now(shout.timestamp) %></p>
+          <div :for={shout <- Enum.take(@shouts, 10)} class="space-y-1">
+            <p class="text-sm">
+              &#9786; <%= shout.name %> ･ &#9200; <%= Timex.from_now(shout.timestamp) %>
+            </p>
             <p class="text-sm"><%= shout.message %></p>
           </div>
         </div>
