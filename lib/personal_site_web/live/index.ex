@@ -12,6 +12,7 @@ defmodule PersonalSiteWeb.Live.Index do
       socket
       |> assign(form: to_form(%{"message" => nil}))
       |> assign(shouts: Shoutbox.list())
+      |> assign(page_title: "Home")
 
     {:ok, socket}
   end

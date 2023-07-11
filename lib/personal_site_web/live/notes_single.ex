@@ -7,7 +7,12 @@ defmodule PersonalSiteWeb.Live.NotesSingle do
   alias PersonalSiteWeb.Presence
 
   def inner_mount(params, _session, socket) do
-    updated = assign(socket, note: Notes.get_note_by_slug!(params["id"]))
+    note = Notes.get_note_by_slug!(params["id"])
+
+    updated =
+      socket
+      |> assign(note: note)
+      |> assign(page_title: "#{note.title} · Note")
 
     {:ok, updated}
   end

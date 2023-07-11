@@ -15,6 +15,7 @@ defmodule PersonalSiteWeb.Live.NotesIndex do
       socket
       |> assign(years: years)
       |> assign(notes: Notes.all_notes())
+      |> assign(page_title: "Notes")
 
     {:ok, updated}
   end

@@ -15,6 +15,7 @@ defmodule PersonalSiteWeb.Live.ProjectsIndex do
       socket
       |> assign(years: years)
       |> assign(projects: Projects.all_projects())
+      |> assign(page_title: "Projects")
 
     {:ok, updated}
   end

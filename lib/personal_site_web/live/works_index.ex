@@ -4,7 +4,10 @@ defmodule PersonalSiteWeb.Live.WorksIndex do
   alias PersonalSite.Works
 
   def inner_mount(_params, _session, socket) do
-    updated = assign(socket, works: Works.all_works())
+    updated =
+      socket
+      |> assign(works: Works.all_works())
+      |> assign(page_title: "Works")
 
     {:ok, updated}
   end

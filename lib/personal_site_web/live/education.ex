@@ -2,6 +2,8 @@ defmodule PersonalSiteWeb.Live.Education do
   use PersonalSiteWeb, :live_view
 
   def inner_mount(_params, _session, socket) do
+    socket = assign(socket, page_title: "Education")
+
     {:ok, socket}
   end
 
