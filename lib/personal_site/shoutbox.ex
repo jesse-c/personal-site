@@ -39,13 +39,17 @@ defmodule PersonalSite.Shoutbox do
   def handle_call({:new, name, timestamp, message}, _from, state) do
     Logger.info("new")
 
-    message = String.slice(message, 0..255)
+    if Enum.count(state) >= 99 do
+      {:reply, :ok, state}
+    else
+      message = String.slice(message, 0..255)
 
-    shout = %{name: name, message: message, timestamp: timestamp}
+      shout = %{name: name, message: message, timestamp: timestamp}
 
-    state = [shout | state]
+      state = [shout | state]
 
-    {:reply, :ok, state}
+      {:reply, :ok, state}
+    end
   end
 
   @doc """
