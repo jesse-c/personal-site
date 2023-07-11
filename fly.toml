@@ -1,14 +1,14 @@
-# fly.toml app configuration file generated for quiet-smoke-7854 on 2023-06-16T23:52:56+01:00
+# fly.toml app configuration file generated for jc-personal-site on 2023-07-11T13:19:27+01:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = "quiet-smoke-7854"
+app = "jc-personal-site"
 primary_region = "lhr"
 kill_signal = "SIGTERM"
 
 [env]
-  PHX_HOST = "quiet-smoke-7854.fly.dev"
+  PHX_HOST = "jc-personal-site.fly.dev"
   PORT = "8080"
 
 [http_service]
@@ -17,6 +17,7 @@ kill_signal = "SIGTERM"
   auto_stop_machines = true
   auto_start_machines = true
   min_machines_running = 0
+  processes = ["app"]
   [http_service.concurrency]
     type = "connections"
     hard_limit = 1000
