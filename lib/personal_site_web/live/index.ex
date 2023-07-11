@@ -165,7 +165,8 @@ defmodule PersonalSiteWeb.Live.Index do
         </p>
       </div>
       <div class="space-y-3">
-        <h2 class="text-lg">Shouts<span class="sup pl-0.5"><%= Enum.count(@shouts) %></span></h2>
+        <h2 class="text-lg">Shoutbox</h2>
+          <h3 class="text-sm">Latest<span class="sup pl-0.5"><%= min(Enum.count(@shouts), 10) %> of <%= Enum.count(@shouts) %></span></h3>
         <div class="space-y-3">
           <div class="space-y-1" :for={shout <- Enum.take(@shouts, 10)}>
             <p class="text-sm">&#9786; <%= shout.name %> ･ &#9200; <%= Timex.from_now(shout.timestamp) %></p>
