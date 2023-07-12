@@ -41,7 +41,7 @@ defmodule PersonalSite.MixProject do
       {:tailwind, "~> 0.2.0", runtime: Mix.env() == :dev},
       {:telemetry_metrics, "~> 0.6"},
       {:telemetry_poller, "~> 1.0"},
-      {:jason, "~> 1.2"},
+      {:jason, "~> 1.4"},
       {:plug_cowboy, "~> 2.5"},
       {:mnemonic_slugs, "~> 0.0.3"},
       {:bandit, "~> 1.0-pre"},
