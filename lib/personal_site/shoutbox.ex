@@ -63,7 +63,23 @@ defmodule PersonalSite.Shoutbox do
               %{shout | timestamp: timestamp}
             end)
 
-          Logger.debug("loaded shouts")
+          Logger.debug("loaded shouts: #{Enum.count(value)}")
+
+          if Enum.count(state) >=
+               Application.get_env(:personal_site, PersonalSite.Shoutbox)[:max] do
+            Logger.debug(
+              "trimming shouts: #{Application.get_env(:personal_site, PersonalSite.Shoutbox)[:max]}"
+            )
+
+            trim()
+          else
+            Logger.debug(
+              "shouts trimming not needed: #{Application.get_env(:personal_site, PersonalSite.Shoutbox)[:max]}"
+            )
+          end
+
+          value =
+            Enum.take(value, Application.get_env(:personal_site, PersonalSite.Shoutbox)[:max])
 
           {:noreply, value}
 
@@ -81,39 +97,49 @@ defmodule PersonalSite.Shoutbox do
 
   @impl true
   def handle_call({:new, name, timestamp, message}, _from, state) do
-    if Enum.count(state) >
-         Application.get_env(:personal_site, PersonalSite.Shoutbox)[:max] do
-      Logger.debug("hit limit")
+    state =
+      if Enum.count(state) >=
+           Application.get_env(:personal_site, PersonalSite.Shoutbox)[:max] do
+        Logger.debug("hit limit: #{Enum.count(state)}")
+
+        trim()
+
+        # Take the max
+        Enum.take(state, Application.get_env(:personal_site, PersonalSite.Shoutbox)[:max] - 1)
+      else
+        Logger.debug("didn't hit limit: #{Enum.count(state)}")
+
+        state
+      end
+
+    message = message |> String.trim() |> String.slice(0..255)
+
+    message_length = String.length(message)
+
+    Logger.debug("message length: #{message_length}")
+
+    if message_length == 0 do
+      Logger.debug("empty message")
 
       {:reply, :ok, state}
     else
-      message = message |> String.trim() |> String.slice(0..255)
+      shout = %{name: name, message: message, timestamp: timestamp}
 
-      message_length = String.length(message)
-      Logger.debug("message length: #{message_length}")
-
-      if message_length == 0 do
-        Logger.debug("empty message")
-        {:reply, :ok, state}
+      with {:ok, shout_json} <- Jason.encode(shout),
+           command = ["LPUSH", "shouts", shout_json],
+           {:ok, _new_list_length} <- Redis.command(command) do
+        Logger.debug("stored in Redis")
       else
-        shout = %{name: name, message: message, timestamp: timestamp}
+        {:error, error} ->
+          Logger.debug("failed to store in Redis: #{inspect(error)}")
 
-        with {:ok, shout_json} <- Jason.encode(shout),
-             command = ["LPUSH", "shouts", shout_json],
-             {:ok, _new_list_length} <- Redis.command(command) do
-          Logger.debug("stored in Redis")
-        else
-          {:error, error} ->
-            Logger.debug("failed to store in Redis: #{inspect(error)}")
-
-          unexpected ->
-            Logger.debug("failed to store in Redis: #{inspect(unexpected)}")
-        end
-
-        state = [shout | state]
-
-        {:reply, :ok, state}
+        unexpected ->
+          Logger.debug("failed to store in Redis: #{inspect(unexpected)}")
       end
+
+      state = [shout | state]
+
+      {:reply, :ok, state}
     end
   end
 
@@ -135,5 +161,21 @@ defmodule PersonalSite.Shoutbox do
     end
 
     {:reply, state, state}
+  end
+
+  defp trim do
+    case Redis.command([
+           "LTRIM",
+           "shouts",
+           0,
+           # - 1 since it's 0-index
+           Application.get_env(:personal_site, PersonalSite.Shoutbox)[:max] - 1
+         ]) do
+      {:ok, _simple_string} ->
+        Logger.debug("trimmed shouts")
+
+      {:error, error} ->
+        Logger.debug("failed to trim shouts: #{inspect(error)}")
+    end
   end
 end

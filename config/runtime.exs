@@ -25,7 +25,7 @@ if config_env() == :dev do
     url: "redis://localhost:6379/3",
     connection_attempts: 50
 
-  config :personal_site, PersonalSite.Shoutbox, max: 100
+  config :personal_site, PersonalSite.Shoutbox, max: 5
 end
 
 if config_env() == :prod do
