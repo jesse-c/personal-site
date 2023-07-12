@@ -24,8 +24,6 @@ config :personal_site, PersonalSite.Shoutbox, clear: 10_000
 
 config :personal_site, PersonalSite.Redis, connection_attempts: 50
 
-config :personal_site, PersonalSiteWeb, analytics: nil
-
 if config_env() == :dev do
   config :personal_site, PersonalSite.Redis, url: "redis://localhost:6379/3"
 
@@ -51,10 +49,6 @@ if config_env() == :prod do
   config :personal_site, PersonalSite.Redis, url: System.get_env("REDIS_URL")
 
   config :personal_site, PersonalSite.Shoutbox, max: 100
-
-  config :personal_site, PersonalSiteWeb,
-    analytics:
-      ~s(<script defer data-domain="jc-personal-site.fly.dev" src="https://plausible.io/js/script.js"></script>)
 
   config :personal_site, PersonalSiteWeb.Endpoint,
     url: [host: host, port: 443, scheme: "https"],
