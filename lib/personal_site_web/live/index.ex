@@ -76,7 +76,9 @@ defmodule PersonalSiteWeb.Live.Index do
     <div class="space-y-10">
       <div class="space-y-3">
         <h2 class="text-lg">Hello,</h2>
-        <p class="text-sm">I’m a ⍚ software engineer&mdash;and sometimes a ⛰ photographer or ♤ designer.</p>
+        <p class="text-sm">
+          I’m a ⍚ software engineer&mdash;and sometimes a ⛰ photographer or ♤ designer.
+        </p>
         <div>
           <.link class="text-xs hover:underline" navigate={~p"/about"}>More →</.link>
         </div>
@@ -185,10 +187,14 @@ defmodule PersonalSiteWeb.Live.Index do
         <div class="space-y-3">
           <h3 class="text-sm">New</h3>
           <.form class="space-y-3" for={@form} phx-change="validate" phx-submit="save">
-            <.input type="text" field={@form[:message]} maxlength="255" />
-            <button class="border border-solid rounded-sm border-black dark:border-white hover:bg-black dark:hover:bg-white text-black dark:text-white hover:text-white dark:hover:text-black transition-colors p-2 mb-6 text-xs max-w-fit">
-              Save
-            </button>
+            <div>
+              <.input type="text" field={@form[:message]} maxlength="255" />
+            </div>
+            <div>
+              <button class="border border-solid rounded-sm border-black dark:border-white hover:bg-black dark:hover:bg-white text-black dark:text-white hover:text-white dark:hover:text-black transition-colors p-2 mb-6 text-xs max-w-fit">
+                Save
+              </button>
+            </div>
           </.form>
         </div>
       </div>
