@@ -39,11 +39,21 @@ defmodule PersonalSiteWeb.Live.Index do
 
     socket =
       socket
-      |> put_flash(:info, "shout save")
+      |> put_flash(:info, "Shout sent!")
       # Reset the form
       |> assign(form: to_form(%{"message" => nil}))
 
+    Process.send_after(
+      self(),
+      :clear_flash,
+      Application.get_env(:personal_site, PersonalSite.Shoutbox)[:clear]
+    )
+
     {:noreply, socket}
+  end
+
+  def handle_info(:clear_flash, socket) do
+    {:noreply, clear_flash(socket)}
   end
 
   def handle_info(
@@ -61,7 +71,7 @@ defmodule PersonalSiteWeb.Live.Index do
       |> then(fn socket ->
         if socket.assigns[:user] == name,
           do: socket,
-          else: put_flash(socket, :info, "someone shouted")
+          else: put_flash(socket, :info, "Someone sent a shout!")
       end)
 
     {:noreply, socket}

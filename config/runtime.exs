@@ -20,10 +20,12 @@ if System.get_env("PHX_SERVER") do
   config :personal_site, PersonalSiteWeb.Endpoint, server: true
 end
 
+config :personal_site, PersonalSite.Shoutbox, clear: 10_000
+
+config :personal_site, PersonalSite.Redis, connection_attempts: 50
+
 if config_env() == :dev do
-  config :personal_site, PersonalSite.Redis,
-    url: "redis://localhost:6379/3",
-    connection_attempts: 50
+  config :personal_site, PersonalSite.Redis, url: "redis://localhost:6379/3"
 
   config :personal_site, PersonalSite.Shoutbox, max: 5
 end
@@ -44,9 +46,7 @@ if config_env() == :prod do
   host = System.get_env("PHX_HOST") || "example.com"
   port = String.to_integer(System.get_env("PORT") || "4000")
 
-  config :personal_site, PersonalSite.Redis,
-    url: System.get_env("REDIS_URL"),
-    connection_attempts: 50
+  config :personal_site, PersonalSite.Redis, url: System.get_env("REDIS_URL")
 
   config :personal_site, PersonalSite.Shoutbox, max: 100
 
