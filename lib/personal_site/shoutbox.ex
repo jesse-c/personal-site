@@ -43,31 +43,39 @@ defmodule PersonalSite.Shoutbox do
     # No shouts
     initial_state = []
 
-    {:ok, initial_state, {:continue, :load}}
+    {:ok, initial_state, {:continue, {:load, 0}}}
   end
 
   @impl true
-  def handle_continue(:load, state) do
-    case Redis.command(["LRANGE", "shouts", 0, -1]) do
-      {:ok, value} ->
-        value =
-          value
-          |> Enum.map(&Jason.decode!(&1, keys: :atoms))
-          |> Enum.map(fn shout ->
-            # Parse the string as a timestamp
-            {:ok, timestamp, _calendar_offset} = DateTime.from_iso8601(shout.timestamp)
+  def handle_continue({:load, attempt_n}, state) do
+    Logger.debug("load attempt: #{attempt_n}")
 
-            %{shout | timestamp: timestamp}
-          end)
+    if attempt_n < 50 do
+      case Redis.command(["LRANGE", "shouts", 0, -1]) do
+        {:ok, value} ->
+          value =
+            value
+            |> Enum.map(&Jason.decode!(&1, keys: :atoms))
+            |> Enum.map(fn shout ->
+              # Parse the string as a timestamp
+              {:ok, timestamp, _calendar_offset} = DateTime.from_iso8601(shout.timestamp)
 
-        Logger.debug("loaded shouts")
+              %{shout | timestamp: timestamp}
+            end)
 
-        {:noreply, value}
+          Logger.debug("loaded shouts")
 
-      {:error, error} ->
-        Logger.debug("failed to load shouts: #{inspect(error)}")
+          {:noreply, value}
 
-        {:noreply, state, {:continue, :load}}
+        {:error, error} ->
+          Logger.debug("failed to load shouts: #{inspect(error)}")
+
+          {:noreply, state, {:continue, {:load, attempt_n + 1}}}
+      end
+    else
+      Logger.debug("load attempt threshold reached")
+
+      {:noreply, state}
     end
   end
 
