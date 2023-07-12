@@ -30,11 +30,12 @@ defmodule PersonalSiteWeb.Live.Index do
 
     :ok = Shoutbox.new(name, timestamp, message)
 
-    Endpoint.broadcast(Shoutbox.topic(), "save", %{
-      name: name,
-      message: message,
-      timestamp: timestamp
-    })
+    :ok =
+      Endpoint.broadcast(Shoutbox.topic(), "save", %{
+        name: name,
+        message: message,
+        timestamp: timestamp
+      })
 
     socket =
       socket

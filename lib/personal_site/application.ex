@@ -17,7 +17,7 @@ defmodule PersonalSite.Application do
       PersonalSiteWeb.Presence,
       # Start a worker by calling: PersonalSite.Worker.start_link(arg)
       # {PersonalSite.Worker, arg}
-      {PersonalSite.Shoutbox, [backend: :memory]},
+      {PersonalSite.Shoutbox, []},
       {Redix, {"redis://localhost:6379/3", [name: PersonalSite.Redis.name()]}}
     ]
 

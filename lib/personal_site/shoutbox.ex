@@ -5,6 +5,8 @@ defmodule PersonalSite.Shoutbox do
 
   @topic "shoutbox"
 
+  alias PersonalSite.Redis
+
   def topic, do: @topic
 
   # Client
@@ -13,16 +15,25 @@ defmodule PersonalSite.Shoutbox do
     GenServer.start_link(__MODULE__, opts, name: __MODULE__)
   end
 
+  @doc """
+  Takes a new shout
+  """
   def new(name, timestamp, message) do
-    Logger.info("new")
-
     GenServer.call(__MODULE__, {:new, name, timestamp, message})
   end
 
+  @doc """
+  List all the current shouts
+  """
   def list() do
-    Logger.info("list")
-
     GenServer.call(__MODULE__, :list)
+  end
+
+  @doc """
+  Clear all the current shouts
+  """
+  def clear() do
+    GenServer.call(__MODULE__, :clear)
   end
 
   # Server (callbacks)
@@ -32,32 +43,87 @@ defmodule PersonalSite.Shoutbox do
     # No shouts
     initial_state = []
 
-    {:ok, initial_state}
+    {:ok, initial_state, {:continue, :load}}
+  end
+
+  @impl true
+  def handle_continue(:load, state) do
+    case Redis.command(["LRANGE", "shouts", 0, -1]) do
+      {:ok, value} ->
+        value =
+          value
+          |> Enum.map(&Jason.decode!(&1, keys: :atoms))
+          |> Enum.map(fn shout ->
+            # Parse the string as a timestamp
+            {:ok, timestamp, _calendar_offset} = DateTime.from_iso8601(shout.timestamp)
+
+            %{shout | timestamp: timestamp}
+          end)
+
+        Logger.debug("loaded shouts")
+
+        {:noreply, value}
+
+      {:error, error} ->
+        Logger.debug("failed to load shouts: #{inspect(error)}")
+
+        {:noreply, state, {:continue, :load}}
+    end
   end
 
   @impl true
   def handle_call({:new, name, timestamp, message}, _from, state) do
-    Logger.info("new")
-
     if Enum.count(state) >= 99 do
+      Logger.debug("hit limit")
+
       {:reply, :ok, state}
     else
-      message = String.slice(message, 0..255)
+      message = message |> String.trim() |> String.slice(0..255)
 
-      shout = %{name: name, message: message, timestamp: timestamp}
+      message_length = String.length(message)
+      Logger.debug("message length: #{message_length}")
 
-      state = [shout | state]
+      if message_length == 0 do
+        Logger.debug("empty message")
+        {:reply, :ok, state}
+      else
+        shout = %{name: name, message: message, timestamp: timestamp}
 
-      {:reply, :ok, state}
+        with {:ok, shout_json} <- Jason.encode(shout),
+             command = ["LPUSH", "shouts", shout_json],
+             {:ok, _new_list_length} <- Redis.command(command) do
+          Logger.debug("stored in Redis")
+        else
+          {:error, error} ->
+            Logger.debug("failed to store in Redis: #{inspect(error)}")
+
+          unexpected ->
+            Logger.debug("failed to store in Redis: #{inspect(unexpected)}")
+        end
+
+        state = [shout | state]
+
+        {:reply, :ok, state}
+      end
     end
   end
 
-  @doc """
-  List all the current shouts
-  """
   @impl true
   def handle_call(:list, _from, state) do
-    Logger.info("list")
+    {:reply, state, state}
+  end
+
+  @impl true
+  def handle_call(:clear, _from, _state) do
+    state = []
+
+    case Redis.command(["DEL", "shouts"]) do
+      {:ok, _list_length_deleted} ->
+        Logger.debug("cleared shouts")
+
+      {:error, error} ->
+        Logger.debug("failed to clear shouts in Redis: #{inspect(error)}")
+    end
 
     {:reply, state, state}
   end

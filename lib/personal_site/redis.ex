@@ -3,5 +3,8 @@ defmodule PersonalSite.Redis do
 
   def name, do: @name
 
+  @doc """
+  Pass through command to default Redis instance
+  """
   def command(command), do: Redix.command(@name, command)
 end
