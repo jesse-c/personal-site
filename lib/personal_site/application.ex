@@ -18,7 +18,13 @@ defmodule PersonalSite.Application do
       # Start a worker by calling: PersonalSite.Worker.start_link(arg)
       # {PersonalSite.Worker, arg}
       {PersonalSite.Shoutbox, []},
-      {Redix, {"redis://localhost:6379/3", [name: PersonalSite.Redis.name()]}}
+      {
+        Redix,
+        {
+          Application.get_env(:personal_site, PersonalSite.Redis)[:url],
+          [name: PersonalSite.Redis.name()]
+        }
+      }
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

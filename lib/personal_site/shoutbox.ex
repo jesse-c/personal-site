@@ -50,7 +50,7 @@ defmodule PersonalSite.Shoutbox do
   def handle_continue({:load, attempt_n}, state) do
     Logger.debug("load attempt: #{attempt_n}")
 
-    if attempt_n < 50 do
+    if attempt_n < Application.get_env(:personal_site, PersonalSite.Redis)[:connection_attempts] do
       case Redis.command(["LRANGE", "shouts", 0, -1]) do
         {:ok, value} ->
           value =
@@ -81,7 +81,8 @@ defmodule PersonalSite.Shoutbox do
 
   @impl true
   def handle_call({:new, name, timestamp, message}, _from, state) do
-    if Enum.count(state) >= 99 do
+    if Enum.count(state) >
+         Application.get_env(:personal_site, PersonalSite.Shoutbox)[:max] do
       Logger.debug("hit limit")
 
       {:reply, :ok, state}

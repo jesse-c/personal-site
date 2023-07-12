@@ -20,6 +20,14 @@ if System.get_env("PHX_SERVER") do
   config :personal_site, PersonalSiteWeb.Endpoint, server: true
 end
 
+if config_env() == :dev do
+  config :personal_site, PersonalSite.Redis,
+    url: "redis://localhost:6379/3",
+    connection_attempts: 50
+
+  config :personal_site, PersonalSite.Shoutbox, max: 100
+end
+
 if config_env() == :prod do
   # The secret key base is used to sign/encrypt cookies and other secrets.
   # A default value is used in config/dev.exs and config/test.exs but you
@@ -35,6 +43,12 @@ if config_env() == :prod do
 
   host = System.get_env("PHX_HOST") || "example.com"
   port = String.to_integer(System.get_env("PORT") || "4000")
+
+  config :personal_site, PersonalSite.Redis,
+    url: System.get_env("REDIS_URL"),
+    connection_attempts: 50
+
+  config :personal_site, PersonalSite.Shoutbox, max: 100
 
   config :personal_site, PersonalSiteWeb.Endpoint,
     url: [host: host, port: 443, scheme: "https"],
