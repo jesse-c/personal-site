@@ -40,7 +40,7 @@ defmodule PersonalSiteWeb.Live.Index do
     socket =
       socket
       |> put_flash(:info, "shout save")
-      # Rest the form
+      # Reset the form
       |> assign(form: to_form(%{"message" => nil}))
 
     {:noreply, socket}
