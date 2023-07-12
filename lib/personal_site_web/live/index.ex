@@ -187,7 +187,7 @@ defmodule PersonalSiteWeb.Live.Index do
         <div class="space-y-3">
           <h3 class="text-sm">New</h3>
           <.form class="space-y-3" for={@form} phx-change="validate" phx-submit="save">
-            <div>
+            <div class="md:w-96">
               <.input type="text" field={@form[:message]} maxlength="255" />
             </div>
             <div>
