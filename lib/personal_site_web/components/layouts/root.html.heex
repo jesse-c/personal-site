@@ -11,7 +11,25 @@
     <script defer phx-track-static type="text/javascript" src={~p"/assets/app.js"}></script>
     <script defer data-domain="jc-personal-site.fly.dev" src="https://plausible.io/js/script.js"></script>
   </head>
-  <body class="bg-white dark:bg-black text-black dark:text-white cursor-none w-screen h-screen p-14">
-    <%= @inner_content %>
+  <body class="bg-white dark:bg-black text-black dark:text-white w-screen h-screen p-14">
+    <.flash_group flash={@flash} />
+    <header class="flex gap-6">
+       <h1 class="font-bold">Jesse Claven</h1>
+       <nav class="list-none flex gap-6 text-sm">
+          <.link class="hover:underline" navigate={~p"/"}>Home</.link>
+          <.link class="hover:underline" navigate={~p"/notes"}>Notes<span class="sup pl-0.5"><%= Enum.count(@notes) %></span></.link>
+          <.link class="hover:underline" navigate={~p"/projects"}>Projects<span class="sup pl-0.5"><%= Enum.count(@projects) %></span></.link>
+          <.link class="hover:underline" navigate={~p"/works"}>Works<span class="sup pl-0.5"><%= Enum.count(@works) %></span></.link>
+          <.link class="hover:underline" navigate={~p"/education"}>Education</.link>
+          <.link class="hover:underline" navigate={~p"/about"}>About</.link>
+          <.link class="hover:underline" navigate={~p"/contact"}>Contact</.link>
+          <.link class="hover:underline" navigate={~p"/colophon"}>Colophon</.link>
+       </nav>
+    </header>
+    <hr class="my-6" />
+    <main class="w-full lg:w-1/2">
+    <div class="border border-dashed rounded-sm border-black dark:border-white p-2 mb-6 text-xs max-w-fit">✂ Content (Work, projects, notes, etc.) is being added.</div>
+        <%= @inner_content %>
+    </main>
   </body>
 </html>
