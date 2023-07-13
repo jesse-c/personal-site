@@ -7,15 +7,39 @@ defmodule PersonalSiteWeb.ErrorHTML do
 
   import PersonalSiteWeb.Layouts, only: [root: 1]
 
-  def render(template, assigns) do
+  def render("404.html", assigns) do
     ~H"""
     <.root
-      inner_content={Phoenix.Controller.status_message_from_template(template)}
+      inner_content={not_found(assigns)}
       flash={%{}}
       notes={Notes.all_notes()}
       projects={Projects.all_projects()}
       works={Works.all_works()}
     />
+    """
+  end
+
+  def render("500.html", assigns) do
+    ~H"""
+    <.root
+      inner_content={internal_server_error(assigns)}
+      flash={%{}}
+      notes={Notes.all_notes()}
+      projects={Projects.all_projects()}
+      works={Works.all_works()}
+    />
+    """
+  end
+
+  defp not_found(assigns) do
+    ~H"""
+    <p class="text-sm">Sorry, the page you are looking for does not exist.</p>
+    """
+  end
+
+  defp internal_server_error(assigns) do
+    ~H"""
+    <p class="text-sm">Sorry, we've encountered an internal error.</p>
     """
   end
 end
