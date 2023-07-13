@@ -23,17 +23,21 @@ defmodule PersonalSiteWeb.Live.NotesIndex do
   def render(assigns) do
     ~H"""
     <.live_component module={PersonalSiteWeb.Live.Cursors} id="cursors" users={@users} />
-    <h1>All Notes</h1>
-    <div>
-      <%= for {year, notes} <- @years do %>
+    <h1 class="text-lg">Notes</h1>
+    <div class="space-y-3">
+      <div :for={{year, notes} <- @years} class="space-y-1">
         <div><%= year %></div>
-        <%= for note <- notes do %>
-          <div>
-            <.link navigate={~p"/notes/#{note}"}><%= note.title %> - <%= note.date %></.link>
-            Tags: <%= Enum.join(note.tags, ", ") %>
+        <div class="space-y-3">
+          <div :for={note <- notes} class="space-y-1">
+            <p class="text-sm">
+              <.link class="hover:underline" navigate={~p"/notes/#{note.slug}"}>
+                <%= note.title %>
+              </.link>
+            </p>
+            <p class="text-xs"><%= note.date %> ･ <%= Enum.join(note.tags, ", ") %></p>
           </div>
-        <% end %>
-      <% end %>
+        </div>
+      </div>
     </div>
     """
   end
