@@ -11,13 +11,13 @@ defmodule PersonalSiteWeb.Live.Education do
     ~H"""
     <.live_component module={PersonalSiteWeb.Live.Cursors} id="cursors" users={@users} />
     <h1>Education</h1>
-    <h3>Bachelor of Engineering &mdash; Software (Honours) at University of Queensland</h3>
+    <h3>Bachelor of Engineering — Software (Honours) at University of Queensland</h3>
     <h4>Thesis (Undergraduate)</h4>
     <p>Technology-supported activities through realtime, distributed, and collaborative interfaces</p>
     <p>Abstract</p>
     <p>
       Traditionally user interfaces have been designed for a single user
-      using one common device type&mdash;e.g. someone on a computer visiting a website.
+      using one common device type—e.g. someone on a computer visiting a website.
       With the internet and mobile devices now being commonplace, interfaces could
       take advantage of being distributed across devices and working collaboratively
       with others in real-time. While there have been attempts to to handle this
