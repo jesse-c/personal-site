@@ -1,8 +1,38 @@
-@import "tailwindcss/base";
-@import "tailwindcss/components";
-@import "tailwindcss/utilities";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 /* This file is for your main application CSS */
 
 .sub { font-variant-position: sub; }
 .sup { font-variant-position: super; }
+
+@layer components {
+  .note p {
+    @apply text-sm;
+  }
+
+  .note hr {
+    @apply my-6 border-dashed;
+  }
+
+  .note .footnote {
+    @apply sup hover:underline;
+  }
+
+  .note .footnotes ol {
+    @apply space-y-3;
+  }
+
+  .note .footnotes ol li {
+    @apply flex gap-2;
+  }
+
+  .note .footnotes ol li a {
+    @apply text-xs hover:underline;
+  }
+
+  .note .footnotes ol li p {
+    @apply text-xs;
+  }
+}

@@ -20,9 +20,12 @@ defmodule PersonalSiteWeb.Live.NotesSingle do
   def render(assigns) do
     ~H"""
     <.live_component module={PersonalSiteWeb.Live.Cursors} id="cursors" users={@users} />
-    <h1><%= @note.title %></h1>
-    <div>
-      <%= raw(@note.body) %>
+    <div class="note space-y-3">
+      <h1 class="text-lg"><%= @note.title %></h1>
+      <p class="text-xs"><%= @note.date %> ･ <%= Enum.join(@note.tags, ", ") %></p>
+      <div class="space-y-1">
+        <%= raw(@note.body) %>
+      </div>
     </div>
     """
   end
