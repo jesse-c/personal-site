@@ -26,4 +26,18 @@ defmodule PersonalSite.Notes do
   end
 
   def all_tags, do: @tags
+
+  def prev_next(note, notes) do
+    case Enum.find_index(notes, &(&1 == note)) do
+      nil ->
+        {:error, :not_found}
+
+      idx ->
+        prev = Enum.at(notes, idx + 1)
+        # Don't loop around to the start of the list with a -1 index
+        next = if idx != 0, do: Enum.at(notes, idx - 1), else: nil
+
+        {:ok, {prev, next}}
+    end
+  end
 end
