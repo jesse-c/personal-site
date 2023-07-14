@@ -8,6 +8,10 @@
 .sup { font-variant-position: super; }
 
 @layer components {
+  a {
+    @apply hover:underline;
+  }
+
   .note p {
     @apply text-sm;
   }
@@ -17,11 +21,11 @@
   }
 
   .note .footnote {
-    @apply sup hover:underline;
+    @apply sup;
   }
 
   .note .footnotes ol {
-    @apply space-y-3;
+    @apply space-y-1;
   }
 
   .note .footnotes ol li {
@@ -29,7 +33,7 @@
   }
 
   .note .footnotes ol li a {
-    @apply text-xs hover:underline;
+    @apply text-xs;
   }
 
   .note .footnotes ol li p {

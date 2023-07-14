@@ -30,7 +30,7 @@ defmodule PersonalSiteWeb.Live.NotesIndex do
         <div class="space-y-3">
           <div :for={note <- notes} class="space-y-1">
             <p class="text-sm">
-              <.link class="hover:underline" navigate={~p"/notes/#{note.slug}"}>
+              <.link navigate={~p"/notes/#{note.slug}"}>
                 <%= note.title %>
               </.link>
             </p>

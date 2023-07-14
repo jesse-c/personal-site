@@ -19,8 +19,7 @@ defmodule PersonalSiteWeb.Live.WorksIndex do
     <div>
       <%= for work <- @works do %>
         <div>
-          <%= work.title %>
-          Tags: <%= Enum.join(work.tags, ", ") %>
+          <%= work.title %> Tags: <%= Enum.join(work.tags, ", ") %>
         </div>
       <% end %>
     </div>

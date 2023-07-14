@@ -23,7 +23,7 @@ defmodule PersonalSiteWeb.Live.NotesSingle do
     <div class="note space-y-3">
       <h1 class="text-lg"><%= @note.title %></h1>
       <p class="text-xs"><%= @note.date %> ･ <%= Enum.join(@note.tags, ", ") %></p>
-      <div class="space-y-1">
+      <div class="space-y-3">
         <%= raw(@note.body) %>
       </div>
     </div>

@@ -29,8 +29,7 @@ defmodule PersonalSiteWeb.Live.ProjectsIndex do
         <div><%= year %></div>
         <%= for project <- projects do %>
           <div>
-            <%= project.title %> - <%= project.date %>
-            Tags: <%= Enum.join(project.tags, ", ") %>
+            <%= project.title %> - <%= project.date %> Tags: <%= Enum.join(project.tags, ", ") %>
           </div>
         <% end %>
       <% end %>
