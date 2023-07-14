@@ -16,6 +16,10 @@
     @apply text-sm;
   }
 
+  .note code {
+    @apply text-sm;
+  }
+
   .note hr {
     @apply my-6 border-dashed;
   }
