@@ -10,9 +10,11 @@ defmodule PersonalSiteWeb.Live.Colophon do
   def render(assigns) do
     ~H"""
     <.live_component module={PersonalSiteWeb.Live.Cursors} id="cursors" users={@users} />
-    <h1>Colophon</h1>
-    <h2>Everything about this website</h2>
-    <div>This area is a WIP.</div>
+    <h1 class="text-lg">Colophon</h1>
+    <h2 class="text-md">Everything about this website</h2>
+    <div>
+      <p class="text-sm">This will be expanded upon!</p>
+    </div>
     """
   end
 end

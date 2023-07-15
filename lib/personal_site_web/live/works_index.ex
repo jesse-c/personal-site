@@ -15,13 +15,15 @@ defmodule PersonalSiteWeb.Live.WorksIndex do
   def render(assigns) do
     ~H"""
     <.live_component module={PersonalSiteWeb.Live.Cursors} id="cursors" users={@users} />
-    <h1>All Works</h1>
-    <div>
-      <%= for work <- @works do %>
-        <div>
-          <%= work.title %> Tags: <%= Enum.join(work.tags, ", ") %>
-        </div>
-      <% end %>
+    <h1 class="text-lg">Works</h1>
+    <div class="space-y-3">
+      <div :for={work <- @works} class="space-y-1">
+        <p class="text-sm"><%= work.title %></p>
+        <p class="text-xs"><%= work.role %></p>
+        <p class="text-xs"><%= work.date_start %> — <%= work.date_end %></p>
+        <p class="text-xs"><%= work.description %></p>
+        <p class="text-xs"><%= Enum.join(work.tags, ", ") %></p>
+      </div>
     </div>
     """
   end

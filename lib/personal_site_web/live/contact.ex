@@ -10,10 +10,14 @@ defmodule PersonalSiteWeb.Live.Contact do
   def render(assigns) do
     ~H"""
     <.live_component module={PersonalSiteWeb.Live.Cursors} id="cursors" users={@users} />
-    <h1>Contact</h1>
-    I’m available through <a rel="me" href="https://mastodon.social/@jqk">Mastodon ↗</a>
-    for mixed chat and
-    <a href="https://github.com/jesse-c" target="_blank">GitHub ↗</a> for various projects/contributions and collaboration.
+    <h1 class="text-lg">Contact</h1>
+    <div>
+      <p class="text-sm">
+        I’m available through <a rel="me" href="https://mastodon.social/@jqk">Mastodon ↗</a>
+        for mixed chat and <a href="https://github.com/jesse-c" target="_blank">GitHub ↗</a>
+        for various projects/contributions and collaboration.
+      </p>
+    </div>
     """
   end
 end
