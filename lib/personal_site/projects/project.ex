@@ -17,6 +17,7 @@ defmodule PersonalSite.Projects.Project do
     :tags,
     :body,
     :source_link,
+    :external_link,
     :description
   ]
 
@@ -33,7 +34,10 @@ defmodule PersonalSite.Projects.Project do
         slug: slug,
         date: date,
         body: body
-      ] ++ (attrs |> Map.take(~w(title tags source_link description)a) |> Map.to_list())
+      ] ++
+        (attrs
+         |> Map.take(~w(title tags source_link external_link description)a)
+         |> Map.to_list())
 
     struct!(
       __MODULE__,

@@ -33,6 +33,11 @@ defmodule PersonalSiteWeb.Live.ProjectsIndex do
             <p class="text-xs">
               <.link href={project.source_link}><%= project.source_link %></.link>
             </p>
+            <%= if not is_nil(project.external_link) do %>
+              <p class="text-xs">
+                <.link href={project.external_link}><%= project.external_link %></.link>
+              </p>
+            <% end %>
             <p class="text-xs"><%= project.date %> ･ <%= Enum.join(project.tags, ", ") %></p>
             <div class="space-y-3 text-sm">
               <%= raw(project.description) %>
