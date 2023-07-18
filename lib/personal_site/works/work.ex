@@ -58,4 +58,10 @@ defmodule PersonalSite.Works.Work do
       fields
     )
   end
+
+  def date(date)
+
+  def date("Current" = date), do: date
+
+  def date(%Date{} = date), do: Calendar.strftime(date, "%Y-%m")
 end

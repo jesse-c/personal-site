@@ -25,8 +25,7 @@ defmodule PersonalSiteWeb.Live.ProjectsIndex do
     <.live_component module={PersonalSiteWeb.Live.Cursors} id="cursors" users={@users} />
     <h1 class="text-lg">Projects</h1>
     <div class="space-y-3">
-      <div :for={{year, projects} <- @years} class="space-y-1">
-        <div><%= year %></div>
+      <div :for={{_year, projects} <- @years} class="space-y-1">
         <div class="space-y-3">
           <div :for={project <- projects} class="space-y-1">
             <p class="text-md"><%= project.title %></p>
@@ -38,7 +37,6 @@ defmodule PersonalSiteWeb.Live.ProjectsIndex do
                 <.link href={project.external_link}><%= project.external_link %></.link>
               </p>
             <% end %>
-            <p class="text-xs"><%= project.date %> ･ <%= Enum.join(project.tags, ", ") %></p>
             <div class="space-y-3 text-sm">
               <%= raw(project.description) %>
             </div>

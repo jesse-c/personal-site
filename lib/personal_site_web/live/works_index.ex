@@ -2,6 +2,7 @@ defmodule PersonalSiteWeb.Live.WorksIndex do
   use PersonalSiteWeb, :live_view
 
   alias PersonalSite.Works
+  alias PersonalSite.Works.Work
 
   def inner_mount(_params, _session, socket) do
     updated =
@@ -20,7 +21,7 @@ defmodule PersonalSiteWeb.Live.WorksIndex do
       <div :for={work <- @works} class="space-y-1">
         <p class="text-sm"><%= work.title %></p>
         <p class="text-xs"><%= work.role %></p>
-        <p class="text-xs"><%= work.date_start %> — <%= work.date_end %></p>
+        <p class="text-xs"><%= Work.date(work.date_start) %> — <%= Work.date(work.date_end) %></p>
         <p class="text-xs"><%= work.description %></p>
         <p class="text-xs"><%= Enum.join(work.tags, ", ") %></p>
       </div>

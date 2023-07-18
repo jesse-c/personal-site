@@ -2,6 +2,7 @@ defmodule PersonalSiteWeb.Live.Index do
   use PersonalSiteWeb, :live_view
 
   alias PersonalSite.Shoutbox
+  alias PersonalSite.Works.Work
 
   require Logger
 
@@ -117,7 +118,7 @@ defmodule PersonalSiteWeb.Live.Index do
           <div :for={work <- Enum.take(@works, 5)} class="space-y-1">
             <p class="text-sm"><%= work.title %></p>
             <p class="text-xs"><%= work.role %></p>
-            <p class="text-xs"><%= work.date_start %> — <%= work.date_end %></p>
+            <p class="text-xs"><%= Work.date(work.date_start) %> — <%= Work.date(work.date_end) %></p>
             <p class="text-xs"><%= work.description %></p>
             <p class="text-xs"><%= Enum.join(work.tags, ", ") %></p>
           </div>
