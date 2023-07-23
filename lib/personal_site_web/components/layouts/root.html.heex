@@ -10,7 +10,11 @@
     <link phx-track-static rel="stylesheet" href={~p"/assets/app.css"} />
     <script defer phx-track-static type="text/javascript" src={~p"/assets/app.js"}>
     </script>
-    <script defer data-domain="jc-personal-site.fly.dev" src="https://plausible.io/js/script.js">
+    <script
+      defer
+      data-domain={Application.get_env(:personal_site, PersonalSite.Plausible)[:data_domain]}
+      src="https://plausible.io/js/script.js"
+    >
     </script>
   </head>
   <body class="bg-white dark:bg-black text-black dark:text-white w-screen h-screen p-14">

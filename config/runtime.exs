@@ -25,6 +25,8 @@ config :personal_site, PersonalSite.Shoutbox, clear: 10_000
 config :personal_site, PersonalSite.Redis, connection_attempts: 50
 
 if config_env() == :dev do
+  config :personal_site, PersonalSite.Plausible, data_domain: "jc-personal-site.fly.dev"
+
   config :personal_site, PersonalSite.Redis,
     url: "redis://localhost:6379/3",
     # No options to overwrite from the URI
@@ -34,6 +36,8 @@ if config_env() == :dev do
 end
 
 if config_env() == :prod do
+  config :personal_site, PersonalSite.Plausible, data_domain: "jc-personal-site.fly.dev"
+
   # The secret key base is used to sign/encrypt cookies and other secrets.
   # A default value is used in config/dev.exs and config/test.exs but you
   # want to use a different value for prod and you most likely don't want
