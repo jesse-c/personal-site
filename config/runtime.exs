@@ -46,11 +46,26 @@ if config_env() == :prod do
       You can generate one by calling: mix phx.gen.secret
       """
 
-  host = System.get_env("PHX_HOST") || "example.com"
-  port = String.to_integer(System.get_env("PORT") || "4000")
+  host =
+    System.get_env("PHX_HOST") ||
+      raise """
+      environment variable PHX_HOST is missing.
+      """
+
+  port =
+    String.to_integer(
+      System.get_env("PORT") ||
+        raise("""
+        environment variable PORT is missing.
+        """)
+    )
 
   config :personal_site, PersonalSite.Redis,
-    url: System.get_env("REDIS_URL"),
+    url:
+      System.get_env("REDIS_URL") ||
+        raise("""
+        environment variable REDIS_URL is missing.
+        """),
     # Fly uses IPv6 for private networking
     opts: [
       socket_opts: [:inet6]
