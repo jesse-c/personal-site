@@ -7,6 +7,8 @@ defmodule PersonalSite.Application do
 
   @impl true
   def start(_type, _args) do
+    redis_env = Application.get_env(:personal_site, PersonalSite.Redis)
+
     children = [
       # Start the Telemetry supervisor
       PersonalSiteWeb.Telemetry,
@@ -21,8 +23,8 @@ defmodule PersonalSite.Application do
       {
         Redix,
         {
-          Application.get_env(:personal_site, PersonalSite.Redis)[:url],
-          [name: PersonalSite.Redis.name()]
+          redis_env[:url],
+          Keyword.merge(redis_env[:opts], name: PersonalSite.Redis.name())
         }
       }
     ]

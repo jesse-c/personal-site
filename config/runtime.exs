@@ -25,7 +25,10 @@ config :personal_site, PersonalSite.Shoutbox, clear: 10_000
 config :personal_site, PersonalSite.Redis, connection_attempts: 50
 
 if config_env() == :dev do
-  config :personal_site, PersonalSite.Redis, url: "redis://localhost:6379/3"
+  config :personal_site, PersonalSite.Redis,
+    url: "redis://localhost:6379/3",
+    # No options to overwrite from the URI
+    opts: []
 
   config :personal_site, PersonalSite.Shoutbox, max: 5
 end
@@ -46,7 +49,12 @@ if config_env() == :prod do
   host = System.get_env("PHX_HOST") || "example.com"
   port = String.to_integer(System.get_env("PORT") || "4000")
 
-  config :personal_site, PersonalSite.Redis, url: System.get_env("REDIS_URL")
+  config :personal_site, PersonalSite.Redis,
+    url: System.get_env("REDIS_URL"),
+    # Fly uses IPv6 for private networking
+    opts: [
+      socket_opts: [:inet6]
+    ]
 
   config :personal_site, PersonalSite.Shoutbox, max: 100
 
