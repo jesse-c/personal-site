@@ -44,3 +44,81 @@
     @apply text-xs;
   }
 }
+
+/* .makeup .hll {background-color: #ffffcc} */
+/* .makeup {background-color: #f8f8f8}.makeup .unselectable { */
+/*   -webkit-touch-callout: none; */
+/*   -webkit-user-select: none; */
+/*   -khtml-user-select: none; */
+/*   -moz-user-select: none; */
+/*   -ms-user-select: none; */
+/*   user-select: none; */
+/* } */
+
+.makeup .bp {color: #008000; } /* :name_builtin_pseudo */
+.makeup .c {color: #408080; font-style: italic; } /* :comment */
+.makeup .c1 {color: #408080; font-style: italic; } /* :comment_single */
+.makeup .ch {color: #408080; font-style: italic; } /* :comment_hashbang */
+.makeup .cm {color: #408080; font-style: italic; } /* :comment_multiline */
+.makeup .cp {color: #BC7A00; font-style: normal; } /* :comment_preproc */
+.makeup .cpf {color: #BC7A00; font-style: normal; } /* :comment_preproc_file */
+.makeup .cs {color: #408080; font-style: italic; } /* :comment_special */
+.makeup .dl {color: #BA2121; } /* :string_delimiter */
+.makeup .err {border: #FF0000; } /* :error */
+.makeup .fm {color: #0000FF; } /* :name_function_magic */
+.makeup .gd {color: #A00000; } /* :generic_deleted */
+.makeup .ge {font-style: italic; } /* :generic_emph */
+.makeup .gh {color: #000080; font-weight: bold; } /* :generic_heading */
+.makeup .gi {color: #00A000; } /* :generic_inserted */
+.makeup .go {color: #888; } /* :generic_output */
+.makeup .gp {color: #000080; font-weight: bold; } /* :generic_prompt */
+.makeup .gr {color: #FF0000; } /* :generic_error */
+.makeup .gs {font-weight: bold; } /* :generic_strong */
+.makeup .gt {color: #04D; } /* :generic_traceback */
+.makeup .gu {color: #800080; font-weight: bold; } /* :generic_subheading */
+.makeup .il {color: #666666; } /* :number_integer_long */
+.makeup .k {color: #008000; font-weight: bold; } /* :keyword */
+.makeup .kc {color: #008000; font-weight: bold; } /* :keyword_constant */
+.makeup .kd {color: #008000; font-weight: bold; } /* :keyword_declaration */
+.makeup .kn {color: #008000; font-weight: bold; } /* :keyword_namespace */
+.makeup .kp {color: #008000; font-weight: normal; } /* :keyword_pseudo */
+.makeup .kr {color: #008000; font-weight: bold; } /* :keyword_reserved */
+.makeup .kt {color: #B00040; font-weight: normal; } /* :keyword_type */
+.makeup .m {color: #666666; } /* :number */
+.makeup .mb {color: #666666; } /* :number_bin */
+.makeup .mf {color: #666666; } /* :number_float */
+.makeup .mh {color: #666666; } /* :number_hex */
+.makeup .mi {color: #666666; } /* :number_integer */
+.makeup .mo {color: #666666; } /* :number_oct */
+.makeup .na {color: #7D9029; } /* :name_attribute */
+.makeup .nb {color: #008000; } /* :name_builtin */
+.makeup .nc {color: #0000FF; font-weight: bold; } /* :name_class */
+.makeup .nd {color: #AA22FF; } /* :name_decorator */
+.makeup .ne {color: #D2413A; font-weight: bold; } /* :name_exception */
+.makeup .nf {color: #0000FF; } /* :name_function */
+.makeup .ni {color: #999999; font-weight: bold; } /* :name_entity */
+.makeup .nl {color: #A0A000; } /* :name_label */
+.makeup .nn {color: #0000FF; font-weight: bold; } /* :name_namespace */
+.makeup .no {color: #880000; } /* :name_constant */
+.makeup .nt {color: #008000; font-weight: bold; } /* :name_tag */
+.makeup .nv {color: #19177C; } /* :name_variable */
+.makeup .o {color: #666666; } /* :operator */
+.makeup .ow {color: #AA22FF; font-weight: bold; } /* :operator_word */
+.makeup .s {color: #BA2121; } /* :string */
+.makeup .s1 {color: #BA2121; } /* :string_single */
+.makeup .s2 {color: #BA2121; } /* :string_double */
+.makeup .sa {color: #BA2121; } /* :string_affix */
+.makeup .sb {color: #BA2121; } /* :string_backtick */
+.makeup .sc {color: #BA2121; } /* :string_char */
+.makeup .sd {color: #BA2121; font-style: italic; } /* :string_doc */
+.makeup .se {color: #BB6622; font-weight: bold; } /* :string_escape */
+.makeup .sh {color: #BA2121; } /* :string_heredoc */
+.makeup .si {color: #BB6688; font-weight: bold; } /* :string_interpol */
+.makeup .sr {color: #BB6688; } /* :string_regex */
+.makeup .ss {color: #19177C; } /* :string_symbol */
+.makeup .sx {color: #008000; } /* :string_other */
+.makeup .sx {color: #BA2121; } /* :string_sigil */
+.makeup .vc {color: #19177C; } /* :name_variable_class */
+.makeup .vg {color: #19177C; } /* :name_variable_global */
+.makeup .vi {color: #19177C; } /* :name_variable_instance */
+.makeup .vm {color: #19177C; } /* :name_variable_magic */

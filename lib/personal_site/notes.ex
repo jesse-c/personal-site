@@ -5,7 +5,14 @@ defmodule PersonalSite.Notes do
     build: Note,
     from: Application.app_dir(:personal_site, "priv/notes/*.md"),
     as: :notes,
-    highlighters: [:makeup_elixir, :makeup_erlang],
+    highlighters: [
+      :makeup_diff,
+      :makeup_elixir,
+      :makeup_erlang,
+      :makeup_json,
+      :makeup_rust,
+      :makeup_sql
+    ],
     earmark_options: [footnotes: true]
 
   @notes Enum.sort_by(@notes, & &1.date, {:desc, Date})
