@@ -54,7 +54,7 @@ defmodule PersonalSite.MixProject do
       {:makeup_json, "~> 0.1.0"},
       {:makeup_rust, "~> 0.2.0"},
       {:makeup_sql, "~> 0.1.0"},
-      {:makeup_swift, "~> 0.0.1"},
+      {:makeup_swift, "~> 0.0.2"},
       {:slugify, "~> 1.3"},
       {:credo, "~> 1.7", only: [:dev, :test], runtime: false},
       {:redix, "~> 1.1"},
