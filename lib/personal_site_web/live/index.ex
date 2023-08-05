@@ -82,7 +82,7 @@ defmodule PersonalSiteWeb.Live.Index do
     ~H"""
     <.live_component module={PersonalSiteWeb.Live.Cursors} id="cursors" users={@users} />
     <div class="border border-dashed rounded-sm border-black dark:border-white p-2 mb-6 text-xs max-w-fit">
-      &#9788; Remember to try the shoutbox! &#8595
+      &#9788; Remember to try the <a href="#shoutbox">shoutbox</a>! &#8595
     </div>
     <div class="space-y-10">
       <div class="space-y-3">
@@ -177,7 +177,7 @@ defmodule PersonalSiteWeb.Live.Index do
         </p>
       </div>
       <div class="space-y-3">
-        <h2 class="text-lg">Shoutbox</h2>
+        <h2 id="shoutbox" class="text-lg">Shoutbox</h2>
         <h3 class="text-sm">
           Latest<span class="sup pl-0.5"><%= min(Enum.count(@shouts), 10) %> of <%= Enum.count(@shouts) %></span>
         </h3>
