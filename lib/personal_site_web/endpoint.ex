@@ -24,6 +24,8 @@ defmodule PersonalSiteWeb.Endpoint do
     only: PersonalSiteWeb.static_paths()
   )
 
+  # plug(PlugCanonicalHost, canonical_host: "www.j-e-s-s-e.com")
+
   # Code reloading can be explicitly enabled under the
   # :code_reloader configuration of your endpoint.
   if code_reloading? do

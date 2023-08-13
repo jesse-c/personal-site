@@ -25,7 +25,7 @@ config :personal_site, PersonalSite.Shoutbox, clear: 10_000
 config :personal_site, PersonalSite.Redis, connection_attempts: 50
 
 if config_env() == :dev do
-  config :personal_site, PersonalSite.Plausible, data_domain: "j-e-s-s-e.com"
+  config :personal_site, PersonalSite.Plausible, data_domain: nil
 
   config :personal_site, PersonalSite.Redis,
     url: "redis://localhost:6379/3",
@@ -36,8 +36,6 @@ if config_env() == :dev do
 end
 
 if config_env() == :prod do
-  config :personal_site, PersonalSite.Plausible, data_domain: "j-e-s-s-e.com"
-
   # The secret key base is used to sign/encrypt cookies and other secrets.
   # A default value is used in config/dev.exs and config/test.exs but you
   # want to use a different value for prod and you most likely don't want
@@ -64,6 +62,8 @@ if config_env() == :prod do
         """)
     )
 
+  config :personal_site, PersonalSite.Plausible, data_domain: host
+
   config :personal_site, PersonalSite.Redis,
     url:
       System.get_env("REDIS_URL") ||
@@ -87,7 +87,12 @@ if config_env() == :prod do
       ip: {0, 0, 0, 0, 0, 0, 0, 0},
       port: port
     ],
-    secret_key_base: secret_key_base
+    secret_key_base: secret_key_base,
+    check_origin: [
+      # Expects `host` to be "xxxx.com"
+      "https://#{host}",
+      "https://www.#{host}"
+    ]
 
   # ## SSL Support
   #
