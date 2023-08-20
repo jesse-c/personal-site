@@ -181,14 +181,20 @@ defmodule PersonalSiteWeb.Live.Index do
         <h3 class="text-sm">
           Latest<span class="sup pl-0.5"><%= min(Enum.count(@shouts), 10) %> of <%= Enum.count(@shouts) %></span>
         </h3>
-        <div class="space-y-3">
-          <div :for={shout <- Enum.take(@shouts, 10)} class="space-y-1">
-            <p class="text-sm">
-              &#9786; <%= shout.name %> ･ &#9200; <%= Timex.from_now(shout.timestamp) %>
-            </p>
-            <p class="text-sm"><%= shout.message %></p>
+        <%= if Enum.empty?(@shouts) do %>
+          <div>
+            <p class="text-xs">None yet</p>
           </div>
-        </div>
+        <% else %>
+          <div class="space-y-3">
+            <div :for={shout <- Enum.take(@shouts, 10)} class="space-y-1">
+              <p class="text-xs">
+                &#9786; <%= shout.name %> ･ &#9200; <%= Timex.from_now(shout.timestamp) %>
+              </p>
+              <p class="text-xs"><%= shout.message %></p>
+            </div>
+          </div>
+        <% end %>
         <div class="space-y-3">
           <h3 class="text-sm">New</h3>
           <.form class="space-y-3" for={@form} phx-change="validate" phx-submit="save">
