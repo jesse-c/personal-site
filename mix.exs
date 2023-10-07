@@ -59,7 +59,8 @@ defmodule PersonalSite.MixProject do
       {:credo, "~> 1.7", only: [:dev, :test], runtime: false},
       {:redix, "~> 1.1"},
       {:castore, ">= 0.0.0"},
-      {:timex, "~> 3.7"}
+      {:timex, "~> 3.7"},
+      {:atomex, "0.5.1"}
     ]
   end
 

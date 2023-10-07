@@ -28,10 +28,7 @@ defmodule PersonalSiteWeb.Router do
       live("/contact", Live.Contact)
       live("/education", Live.Education)
     end
-  end
 
-  # Other scopes may use custom stacks.
-  # scope "/api", PersonalSiteWeb do
-  #   pipe_through :api
-  # end
+    get "/feed.xml", FeedController, :index
+  end
 end

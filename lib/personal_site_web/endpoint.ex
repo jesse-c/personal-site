@@ -20,7 +20,7 @@ defmodule PersonalSiteWeb.Endpoint do
   plug(Plug.Static,
     at: "/",
     from: :personal_site,
-    gzip: false,
+    gzip: true,
     only: PersonalSiteWeb.static_paths()
   )
 
