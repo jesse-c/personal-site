@@ -66,9 +66,9 @@ if config_env() == :prod do
 
   config :personal_site, PersonalSite.Redis,
     url:
-      System.get_env("REDIS_URL") ||
+      System.get_env("REDIS_PRIVATE_URL") ||
         raise("""
-        environment variable REDIS_URL is missing.
+        environment variable REDIS_PRIVATE_URL is missing.
         """),
     # Fly uses IPv6 for private networking
     opts: [
