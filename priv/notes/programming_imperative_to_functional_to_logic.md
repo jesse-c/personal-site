@@ -4,8 +4,6 @@
     date: "2024-02-23",
 }
 ---
-[Jump to code](#code)
-
 # How I started programming
 
 This is about my journey with programming languages from imperative to functional to (potentially) logic.
@@ -38,7 +36,7 @@ At work, there was a snippet of Go code that was used to find running servers th
 
 Flix calls the Datalog constraints fixpoints[^3]. The Flix book on them was helpful.
 
-# Implementations by programming approach {#code}
+# Implementations by programming approach
 
 I quickly threw something together. It's very simple in that there's a small set of facts (`features()`). It was so simple that I didn't need to implement any explicit rule(s).
 

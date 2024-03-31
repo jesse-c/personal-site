@@ -6,7 +6,203 @@
   </author>
   <id>https://j-e-s-s-e.com</id>
   <title>Notes · Jesse Claven</title>
-  <updated>2023-11-12T16:07:17.989519Z</updated>
+  <updated>2024-03-31T19:52:04.327653Z</updated>
+  <entry>
+    <link rel="alternate" href="https://j-e-s-s-e.com/notes/missing-s3fs-for-sagemaker-real-time-inference-tutorial"/>
+    <content type="html">&lt;p&gt;
+If you’re getting the following error when going through a AWS SageMaker Studio tutorial&lt;a href=&quot;#fn:1&quot; id=&quot;fnref:1&quot; class=&quot;footnote&quot; title=&quot;see footnote&quot;&gt;1&lt;/a&gt;, here’s a quick solution I’m writing down, to save someone else searching. It’s as obvious as you’d expect!&lt;/p&gt;
+&lt;p&gt;
+The error:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ModuleNotFoundError: No module named &amp;#39;s3fs&amp;#39;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;
+Earlier in the notebook, install the package:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;%pip install s3fs&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;
+Then, import it:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;python&quot;&gt;import s3fs&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&quot;footnotes&quot;&gt;
+  &lt;hr&gt;
+  &lt;ol&gt;
+    &lt;li id=&quot;fn:1&quot;&gt;
+&lt;a title=&quot;return to article&quot; class=&quot;reversefootnote&quot; href=&quot;#fnref:1&quot;&gt;&amp;#x21A9;&lt;/a&gt;      &lt;p&gt;
+&lt;a href=&quot;https://aws.amazon.com/tutorials/machine-learning-tutorial-deploy-model-to-real-time-inference-endpoint/&quot;&gt;Deploy a Machine Learning Model to a Real-Time Inference Endpoint&lt;/a&gt;      &lt;/p&gt;
+    &lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/div&gt;
+</content>
+    <author>
+      <name>Jesse Claven</name>
+      <uri>https://j-e-s-s-e.com</uri>
+    </author>
+    <id>missing-s3fs-for-sagemaker-real-time-inference-tutorial</id>
+    <title>Missing `s3fs` for SageMaker real-time inference tutorial</title>
+    <updated>2024-03-31T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <link rel="alternate" href="https://j-e-s-s-e.com/notes/programming-imperative-to-functional-to-logic"/>
+    <content type="html">&lt;h1&gt;
+How I started programming&lt;/h1&gt;
+&lt;p&gt;
+This is about my journey with programming languages from imperative to functional to (potentially) logic.&lt;/p&gt;
+&lt;p&gt;
+Similar to &lt;em&gt;most&lt;/em&gt; people, I got into programming with imperative languages. They were the programming languages (PLs) that I used at my first few jobs—specifically, ColdFusion, PHP, Java, Python, JavaScript, and some others.&lt;/p&gt;
+&lt;p&gt;
+Back in high school, I remember our IT teacher briefly introducing us to Prolog, of which I remember very little of, but it’s stuck with me as a &lt;em&gt;neat idea&lt;/em&gt; ever since.&lt;/p&gt;
+&lt;p&gt;
+Then, I worked at a startup that used Go for the API and agents, and then Elm&lt;a href=&quot;#fn:2&quot; id=&quot;fnref:2&quot; class=&quot;footnote&quot; title=&quot;see footnote&quot;&gt;2&lt;/a&gt; for the SPA. Why Elm? It was a fortuitous choice by the main frontend engineer. When I joined, there were roughly 4 current software engineers. Why Go? The &lt;em&gt;usual&lt;/em&gt; reasons.&lt;/p&gt;
+&lt;p&gt;
+Elm, or rather functional programming was fascinating and eye-opening, as trite as that sounds. I won’t go into why as others have covered that extensively—though I would like to do so myself one day.&lt;/p&gt;
+&lt;p&gt;
+At my next job, there was another fortuitous choice of PLs of Elixir, since the technical co-founder was familiar with it and that it seemed like the right PL (including OTP) for the job.&lt;/p&gt;
+&lt;p&gt;
+We’ve reached a point in my hobby and career that I’m convinced functional programming is overall, better than imperative programming. It’s more fun too.&lt;/p&gt;
+&lt;h1&gt;
+Okay, so Prolog&lt;/h1&gt;
+&lt;p&gt;
+With Prolog, and the continuous search for The One True Programming Language. I’ve found Flix&lt;a href=&quot;#fn:1&quot; id=&quot;fnref:1&quot; class=&quot;footnote&quot; title=&quot;see footnote&quot;&gt;1&lt;/a&gt;, which may very well be it. It’s fairly novel in its design. I’ll quote their own answer to their question of “Why Flix?”:&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;
+Flix aims to offer a unique combination of features that no other programming language offers, including: algebraic data types and pattern matching (like Haskell, OCaml), extensible records (like Elm), traits (type classes) (like Haskell, Rust), higher-kinded types (like Haskell), typematch (like Scala), type inference (like Haskell, OCaml), structured channel and process-based concurrency (like Go), and compilation to JVM bytecode (like Scala).  &lt;/p&gt;
+  &lt;p&gt;
+Flix also supports several unique features, including: a polymorphic effect system, region-based local mutation, purity reflection, and first-class Datalog constraints.  &lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;
+The Datalog constraints, or declarative logic programming, combined with so many other ideal features was interesting, and it wasn’t long until I saw an opportunity to try it out.&lt;/p&gt;
+&lt;h1&gt;
+A real world use-case for logic programming/constraint solving&lt;/h1&gt;
+&lt;p&gt;
+At work, there was a snippet of Go code that was used to find running servers that satisfied having a certain capability (read: framework or runtime) to serve a machine learning model.. It would get/have the list of servers and loop through looking for ones that had the desired capability in its list of capabilities, and return those.&lt;/p&gt;
+&lt;p&gt;
+Flix calls the Datalog constraints fixpoints&lt;a href=&quot;#fn:3&quot; id=&quot;fnref:3&quot; class=&quot;footnote&quot; title=&quot;see footnote&quot;&gt;3&lt;/a&gt;. The Flix book on them was helpful.&lt;/p&gt;
+&lt;h1&gt;
+Implementations by programming approach&lt;/h1&gt;
+&lt;p&gt;
+I quickly threw something together. It’s very simple in that there’s a small set of facts (&lt;code class=&quot;inline&quot;&gt;features()&lt;/code&gt;). It was so simple that I didn’t need to implement any explicit rule(s).&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;def features(): #{ IsCapable(String, String) | r } = #{
+        IsCapable(&quot;MLServer&quot;, &quot;TensorFlow&quot;).
+        IsCapable(&quot;MLServer&quot;, &quot;Scikit-learn&quot;).
+        IsCapable(&quot;Triton&quot;, &quot;PyTorch&quot;).
+        IsCapable(&quot;Triton&quot;, &quot;TensorFlow&quot;).
+    }
+
+def serversWithCapability(c: String): Vector[String] =
+    query features() select server from IsCapable(server, c)
+
+def main(): Unit \ IO =
+    Vector#{&quot;TensorFlow&quot;, &quot;PyTorch&quot;, &quot;Transformers&quot;}
+    |&gt; Vector.map(serversWithCapability)
+    |&gt; println&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;
+Output:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Vector#{Vector#{MLServer, Triton}, Vector#{Triton}, Vector#{}}&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;
+For comparison, I wrote Elixir and Go versions.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;makeup elixir&quot;&gt;&lt;span class=&quot;kd&quot;&gt;defmodule&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Capabilities&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot; data-group-id=&quot;6745389770-1&quot;&gt;do&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;@servers&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot; data-group-id=&quot;6745389770-2&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;p&quot; data-group-id=&quot;6745389770-3&quot;&gt;%{&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:mlserver&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;capabilities&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot; data-group-id=&quot;6745389770-4&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:tensorflow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:scikit_learn&lt;/span&gt;&lt;span class=&quot;p&quot; data-group-id=&quot;6745389770-4&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;p&quot; data-group-id=&quot;6745389770-3&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;p&quot; data-group-id=&quot;6745389770-5&quot;&gt;%{&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:triton&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;capabilities&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot; data-group-id=&quot;6745389770-6&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:pytorch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:tensorflow&lt;/span&gt;&lt;span class=&quot;p&quot; data-group-id=&quot;6745389770-6&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;p&quot; data-group-id=&quot;6745389770-5&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;p&quot; data-group-id=&quot;6745389770-2&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+
+  &lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;def&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;servers_with_capabilities&lt;/span&gt;&lt;span class=&quot;p&quot; data-group-id=&quot;6745389770-7&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot; data-group-id=&quot;6745389770-7&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot; data-group-id=&quot;6745389770-8&quot;&gt;do&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;@servers&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&gt;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Enum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;filter&lt;/span&gt;&lt;span class=&quot;p&quot; data-group-id=&quot;6745389770-9&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot; data-group-id=&quot;6745389770-10&quot;&gt;fn&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot; data-group-id=&quot;6745389770-11&quot;&gt;%{&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;capabilities&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;capabilities&lt;/span&gt;&lt;span class=&quot;p&quot; data-group-id=&quot;6745389770-11&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&gt;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Enum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;member?&lt;/span&gt;&lt;span class=&quot;p&quot; data-group-id=&quot;6745389770-12&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;capabilities&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot; data-group-id=&quot;6745389770-12&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;k&quot; data-group-id=&quot;6745389770-10&quot;&gt;end&lt;/span&gt;&lt;span class=&quot;p&quot; data-group-id=&quot;6745389770-9&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&gt;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Enum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;p&quot; data-group-id=&quot;6745389770-13&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;ni&quot;&gt;&amp;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot; data-group-id=&quot;6745389770-13&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;k&quot; data-group-id=&quot;6745389770-8&quot;&gt;end&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;k&quot; data-group-id=&quot;6745389770-1&quot;&gt;end&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+
+&lt;/span&gt;&lt;span class=&quot;p&quot; data-group-id=&quot;6745389770-14&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:tensorflow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:pytorch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:transformers&lt;/span&gt;&lt;span class=&quot;p&quot; data-group-id=&quot;6745389770-14&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&gt;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Enum&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;p&quot; data-group-id=&quot;6745389770-15&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Capabilities&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;servers_with_capabilities&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot; data-group-id=&quot;6745389770-15&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;|&gt;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;IO&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;inspect&lt;/span&gt;&lt;span class=&quot;p&quot; data-group-id=&quot;6745389770-16&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;p&quot; data-group-id=&quot;6745389770-16&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;
+Output:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;makeup elixir&quot;&gt;&lt;span class=&quot;p&quot; data-group-id=&quot;7473557309-1&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;p&quot; data-group-id=&quot;7473557309-2&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:mlserver&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:triton&lt;/span&gt;&lt;span class=&quot;p&quot; data-group-id=&quot;7473557309-2&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot; data-group-id=&quot;7473557309-3&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:triton&lt;/span&gt;&lt;span class=&quot;p&quot; data-group-id=&quot;7473557309-3&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot; data-group-id=&quot;7473557309-4&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;p&quot; data-group-id=&quot;7473557309-4&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;p&quot; data-group-id=&quot;7473557309-1&quot;&gt;]&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;
+NB: I originally used an LLM with the prompt, “Convert this Elixir code to Go”, and received a functionally and syntactically code snippet.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;go&quot;&gt;package main
+
+import (
+	&quot;fmt&quot;
+)
+
+type Server struct {
+	Name         string
+	Capabilities []string
+}
+
+var servers = []Server{
+	{Name: &quot;mlserver&quot;, Capabilities: []string{&quot;tensorflow&quot;, &quot;scikit_learn&quot;}},
+	{Name: &quot;triton&quot;, Capabilities: []string{&quot;pytorch&quot;, &quot;tensorflow&quot;}},
+}
+
+func serversWithCapabilities(c string) []string {
+	var results []string
+
+	for _, server := range servers {
+		for _, capability := range server.Capabilities {
+			if capability == c {
+				results = append(results, server.Name)
+				break
+			}
+		}
+	}
+
+	return results
+}
+
+func main() {
+	capabilities := []string{&quot;tensorflow&quot;, &quot;pytorch&quot;, &quot;transformers&quot;}
+	results := [][]string{}
+
+	for _, c := range capabilities {
+		results = append(results, serversWithCapabilities(c))
+	}
+
+	fmt.Println(results)
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;
+Output:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;go&quot;&gt;[[mlserver triton] [triton] []]&lt;/code&gt;&lt;/pre&gt;
+&lt;h1&gt;
+Side-by-side comparison&lt;/h1&gt;
+&lt;p&gt;
+An alternative view of the different implementations that highlights the differences, such as length.&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&quot;/images/notes/flix-elixir-go-servers.png&quot; target=&quot;_blank&quot;&gt;  &lt;img src=&quot;/images/notes/flix-elixir-go-servers.png&quot; alt=&quot;Each implementation side-by-side in VS Code&quot;&gt;
+&lt;/a&gt;&lt;/p&gt;
+&lt;h1&gt;
+Summary&lt;/h1&gt;
+&lt;p&gt;
+I’ve already espoused my view that functional programming is generally preferable to imperative. I view logic programming, in a vague sense, as a higher level of thinking in that there’s less I need to &lt;em&gt;instruct&lt;/em&gt; the computer to do, and can &lt;em&gt;declare&lt;/em&gt; (or, describe) what is to be done, and let it figure it out for me.&lt;/p&gt;
+&lt;p&gt;
+One potential barrier to logic programming being adopted is that who wants to learn a whole new programming langauge that’s very specific, as opposed to Rust, Elixir, Clojure, etc that can solve a wide array of problems.&lt;/p&gt;
+&lt;div class=&quot;footnotes&quot;&gt;
+  &lt;hr&gt;
+  &lt;ol&gt;
+    &lt;li id=&quot;fn:1&quot;&gt;
+&lt;a title=&quot;return to article&quot; class=&quot;reversefootnote&quot; href=&quot;#fnref:1&quot;&gt;&amp;#x21A9;&lt;/a&gt;      &lt;p&gt;
+&lt;a href=&quot;https://flix.dev&quot;&gt;Flix&lt;/a&gt;      &lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:2&quot;&gt;
+&lt;a title=&quot;return to article&quot; class=&quot;reversefootnote&quot; href=&quot;#fnref:2&quot;&gt;&amp;#x21A9;&lt;/a&gt;      &lt;p&gt;
+&lt;a href=&quot;https://elm-lang.org&quot;&gt;Elm&lt;/a&gt;      &lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:3&quot;&gt;
+&lt;a title=&quot;return to article&quot; class=&quot;reversefootnote&quot; href=&quot;#fnref:3&quot;&gt;&amp;#x21A9;&lt;/a&gt;      &lt;p&gt;
+&lt;a href=&quot;https://doc.flix.dev/fixpoints.html&quot;&gt;Fixpoints&lt;/a&gt;      &lt;/p&gt;
+    &lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/div&gt;
+</content>
+    <author>
+      <name>Jesse Claven</name>
+      <uri>https://j-e-s-s-e.com</uri>
+    </author>
+    <id>programming-imperative-to-functional-to-logic</id>
+    <title>Programming: Imperative to Functional to Logic</title>
+    <updated>2024-02-23T00:00:00Z</updated>
+  </entry>
   <entry>
     <link rel="alternate" href="https://j-e-s-s-e.com/notes/makeup-parser-for-swift"/>
     <content type="html">&lt;p&gt;
@@ -152,88 +348,88 @@ Between Rust and Serde and Swift and &lt;code class=&quot;inline&quot;&gt;Codabl
 Here are small snippets of the types and decoder.&lt;/p&gt;
 &lt;p&gt;
 Rust&lt;a href=&quot;#fn:1&quot; id=&quot;fnref:1&quot; class=&quot;footnote&quot; title=&quot;see footnote&quot;&gt;1&lt;/a&gt;:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;makeup rust&quot;&gt;&lt;span class=&quot;err&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;p&quot; data-group-id=&quot;4823283446-1&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;derive&lt;/span&gt;&lt;span class=&quot;p&quot; data-group-id=&quot;4823283446-2&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Debug&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Copy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Clone&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;PartialEq&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Deserialize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Serialize&lt;/span&gt;&lt;span class=&quot;p&quot; data-group-id=&quot;4823283446-2&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;p&quot; data-group-id=&quot;4823283446-1&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;pub&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;enum&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;State&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot; data-group-id=&quot;4823283446-3&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Paused&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot; data-group-id=&quot;4823283446-4&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;duration&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Duration&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot; data-group-id=&quot;4823283446-4&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;pre&gt;&lt;code class=&quot;makeup rust&quot;&gt;&lt;span class=&quot;err&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;p&quot; data-group-id=&quot;6539252540-1&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;derive&lt;/span&gt;&lt;span class=&quot;p&quot; data-group-id=&quot;6539252540-2&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Debug&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Copy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Clone&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;PartialEq&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Deserialize&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Serialize&lt;/span&gt;&lt;span class=&quot;p&quot; data-group-id=&quot;6539252540-2&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;p&quot; data-group-id=&quot;6539252540-1&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;pub&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;enum&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;State&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot; data-group-id=&quot;6539252540-3&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Paused&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot; data-group-id=&quot;6539252540-4&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;duration&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Duration&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot; data-group-id=&quot;6539252540-4&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
     &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Stopped&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Working&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot; data-group-id=&quot;4823283446-5&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;duration&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Duration&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot; data-group-id=&quot;4823283446-5&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;TakingShortBreak&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot; data-group-id=&quot;4823283446-6&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;duration&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Duration&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot; data-group-id=&quot;4823283446-6&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;TakingLongBreak&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot; data-group-id=&quot;4823283446-7&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;duration&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Duration&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot; data-group-id=&quot;4823283446-7&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot; data-group-id=&quot;4823283446-3&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+    &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Working&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot; data-group-id=&quot;6539252540-5&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;duration&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Duration&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot; data-group-id=&quot;6539252540-5&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;TakingShortBreak&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot; data-group-id=&quot;6539252540-6&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;duration&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Duration&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot; data-group-id=&quot;6539252540-6&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;TakingLongBreak&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot; data-group-id=&quot;6539252540-7&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;duration&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Duration&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot; data-group-id=&quot;6539252540-7&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot; data-group-id=&quot;6539252540-3&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;
 Swift&lt;a href=&quot;#fn:2&quot; id=&quot;fnref:2&quot; class=&quot;footnote&quot; title=&quot;see footnote&quot;&gt;2&lt;/a&gt;:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;swift&quot;&gt;@available(macOS 13.0, *)
-enum State: Codable {
-    case Paused(duration: Duration)
-    case Stopped
-    case Working(duration: Duration)
-    case TakingShortBreak(duration: Duration)
-    case TakingLongBreak(duration: Duration)
+&lt;pre&gt;&lt;code class=&quot;makeup swift&quot;&gt;&lt;span class=&quot;p&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;available&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;macOS&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;13.0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;enum&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;State&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Codable&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;case&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Paused&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;duration&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Duration&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;case&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Stopped&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;case&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Working&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;duration&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Duration&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;case&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;TakingShortBreak&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;duration&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Duration&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;case&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;TakingLongBreak&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;duration&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Duration&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
 
-    enum CodingKeys: String, CodingKey {
-        case Paused
-        case Stopped
-        case Working
-        case TakingShortBreak
-        case TakingLongBreak
-    }
+    &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;enum&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;CodingKeys&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;CodingKey&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;case&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Paused&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;case&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Stopped&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;case&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Working&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;case&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;TakingShortBreak&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;case&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;TakingLongBreak&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
 
-    enum AdditionalCodingKeys: String, CodingKey {
-        case duration
-        case secs
-        case nanos
-    }
+    &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;enum&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;AdditionalCodingKeys&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;CodingKey&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;case&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;duration&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;case&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;secs&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;case&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nanos&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
 
-    init(from decoder: Decoder) throws {
-        let container = try decoder.singleValueContainer()
-        if let state = try? container.decode(String.self) {
-            // For when it&amp;#39;s &quot;state&quot;:&quot;Stopped&quot;
-            switch state {
-            case &quot;Stopped&quot;:
-                self = .Stopped
-            default:
-                fatalError(&quot;Unexpected value \(state)&quot;)
-            }
-        } else {
-            // For when &quot;state&quot;:{&quot;Working&quot;:{&quot;duration&quot;:{&quot;secs&quot;:1,&quot;nanos&quot;:0}}}
-            let values = try decoder.container(keyedBy: CodingKeys.self)
+    &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;init&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;from&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;decoder&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Decoder&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;throws&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;container&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;try&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;decoder&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;singleValueContainer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;state&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;try&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;?&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;container&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;decode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+            &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;// For when it&amp;#39;s &quot;state&quot;:&quot;Stopped&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+            &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;switch&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;state&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+            &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;case&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;l&quot;&gt;&quot;Stopped&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+                &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Stopped&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+            &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;default&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+                &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fatalError&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;l&quot;&gt;&quot;Unexpected value \(state)&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+            &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+            &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;// For when &quot;state&quot;:{&quot;Working&quot;:{&quot;duration&quot;:{&quot;secs&quot;:1,&quot;nanos&quot;:0}}}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+            &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;values&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;try&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;decoder&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;container&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;keyedBy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;CodingKeys&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
 
-            // Dynamically get the CodingKey for the State from its enum
-            let stateKey = values.allKeys.first!
-            let stateContainer = try values.nestedContainer(
-                keyedBy: AdditionalCodingKeys.self, forKey: stateKey
-            )
+            &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;// Dynamically get the CodingKey for the State from its enum&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+            &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;stateKey&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;values&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;allKeys&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;first&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+            &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;stateContainer&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;try&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;values&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nestedContainer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+                &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;keyedBy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;AdditionalCodingKeys&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;stateKey&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+            &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
 
-            let durationKey = stateContainer.allKeys.first!
-            let durationContainer = try stateContainer.nestedContainer(
-                keyedBy: AdditionalCodingKeys.self, forKey: durationKey
-            )
+            &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;durationKey&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;stateContainer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;allKeys&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;first&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+            &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;durationContainer&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;try&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;stateContainer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nestedContainer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+                &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;keyedBy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;AdditionalCodingKeys&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;durationKey&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+            &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
 
-            let nanos = try durationContainer.decode(Int.self, forKey: .nanos)
-            let secs = try durationContainer.decode(Int.self, forKey: .secs)
+            &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nanos&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;try&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;durationContainer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;decode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nanos&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+            &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;secs&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;try&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;durationContainer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;decode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;secs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
 
-            let duration = Duration.nanoseconds(nanos) + Duration.seconds(secs)
+            &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;duration&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Duration&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nanoseconds&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nanos&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Duration&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;seconds&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;secs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
 
-            let state: State = {
-                switch stateKey.stringValue {
-                case &quot;Paused&quot;:
-                    return State.Paused(duration: duration)
-                case &quot;Working&quot;:
-                    return State.Working(duration: duration)
-                case &quot;TakingShortBreak&quot;:
-                    return State.TakingShortBreak(duration: duration)
-                case &quot;TakingLongBreak&quot;:
-                    return State.TakingLongBreak(duration: duration)
-                default:
-                    fatalError(&quot;Unexpected value \(stateKey.stringValue)&quot;)
-                }
-            }()
+            &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;let&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;state&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;State&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+                &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;switch&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;stateKey&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;stringValue&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+                &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;case&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;l&quot;&gt;&quot;Paused&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+                    &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;State&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Paused&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;duration&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;duration&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+                &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;case&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;l&quot;&gt;&quot;Working&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+                    &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;State&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Working&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;duration&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;duration&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+                &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;case&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;l&quot;&gt;&quot;TakingShortBreak&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+                    &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;State&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;TakingShortBreak&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;duration&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;duration&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+                &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;case&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;l&quot;&gt;&quot;TakingLongBreak&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+                    &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;State&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;TakingLongBreak&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;duration&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;duration&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+                &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;default&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+                    &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fatalError&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;l&quot;&gt;&quot;Unexpected value \(stateKey.stringValue)&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+                &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+            &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
 
-            // Fake
-            self = state
-        }
-    }
-}&lt;/code&gt;&lt;/pre&gt;
+            &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;// Fake&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+            &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;state&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;div class=&quot;footnotes&quot;&gt;
   &lt;hr&gt;
   &lt;ol&gt;
@@ -432,9 +628,7 @@ Between the 2 of these, I’m able to display the pages count.&lt;/p&gt;
   </entry>
   <entry>
     <link rel="alternate" href="https://j-e-s-s-e.com/notes/multi-uis-for-a-daemon-and-using-grpc-to-communicate-locally-from-rust-swift"/>
-    <content type="html">&lt;p&gt;
-&lt;a href=&quot;#sample&quot;&gt;Jump to sample&lt;/a&gt;&lt;/p&gt;
-&lt;h1&gt;
+    <content type="html">&lt;h1&gt;
 Multi-UIs Discovery of a paradigm&lt;/h1&gt;
 &lt;p&gt;
 While building an extension for &lt;a href=&quot;https://www.raycast.com/jns/sabnzbd&quot;&gt;SABnzbd&lt;/a&gt; for &lt;a href=&quot;https://www.raycast.com&quot;&gt;Raycast&lt;/a&gt;&lt;a href=&quot;#fn:1&quot; id=&quot;fnref:1&quot; class=&quot;footnote&quot; title=&quot;see footnote&quot;&gt;1&lt;/a&gt;, it made me think about a paradigm of multiple UIs. I interact with SABnzbd through its web UI, Raycast, and NZBHydra 2. There may even be another way that I’m not remembering.&lt;/p&gt;
@@ -458,7 +652,7 @@ The second version got rid of SQLite and kept it all in memory to simplify it an
 &lt;p&gt;
 The third version, which is a work-in-progress, gets rid of sockets and uses gRPC for communication so that I can write a client in Swift. I did look around, and it seemed possible to use sockets with Swift, but again, I didn’t like how I would’ve had to do so.&lt;/p&gt;
 &lt;h1&gt;
-Sample: How-to use gRPC to communicate between Rust &lt;&gt; Swift {#sample}&lt;/h1&gt;
+Sample: How-to use gRPC to communicate between Rust &lt;&gt; Swift&lt;/h1&gt;
 &lt;p&gt;
 Repository: &lt;a href=&quot;https://github.com/jesse-c/grpc-example-rust-swift&quot;&gt;https://github.com/jesse-c/grpc-example-rust-swift&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;

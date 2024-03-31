@@ -4,8 +4,6 @@
     date: "2022-06-24",
 }
 ---
-[Jump to sample](#sample)
-
 # Multi-UIs Discovery of a paradigm
 
 While building an extension for [SABnzbd](https://www.raycast.com/jns/sabnzbd) for [Raycast](https://www.raycast.com)[^1], it made me think about a paradigm of multiple UIs. I interact with SABnzbd through its web UI, Raycast, and NZBHydra 2. There may even be another way that I'm not remembering.
@@ -30,7 +28,7 @@ The second version got rid of SQLite and kept it all in memory to simplify it an
 
 The third version, which is a work-in-progress, gets rid of sockets and uses gRPC for communication so that I can write a client in Swift. I did look around, and it seemed possible to use sockets with Swift, but again, I didn't like how I would've had to do so.
 
-# Sample: How-to use gRPC to communicate between Rust <> Swift {#sample}
+# Sample: How-to use gRPC to communicate between Rust <> Swift
 
 Repository: [https://github.com/jesse-c/grpc-example-rust-swift](https://github.com/jesse-c/grpc-example-rust-swift)
 
