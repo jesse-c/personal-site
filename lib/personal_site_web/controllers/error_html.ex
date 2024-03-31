@@ -1,6 +1,7 @@
 defmodule PersonalSiteWeb.ErrorHTML do
   use PersonalSiteWeb, :html
 
+  alias PersonalSite.Contributions
   alias PersonalSite.Notes
   alias PersonalSite.Projects
   alias PersonalSite.Works
@@ -12,6 +13,7 @@ defmodule PersonalSiteWeb.ErrorHTML do
     <.root
       inner_content={not_found(assigns)}
       flash={%{}}
+      contributions={Contributions.all_contributions()}
       notes={Notes.all_notes()}
       projects={Projects.all_projects()}
       works={Works.all_works()}
@@ -24,6 +26,7 @@ defmodule PersonalSiteWeb.ErrorHTML do
     <.root
       inner_content={internal_server_error(assigns)}
       flash={%{}}
+      contributions={Contributions.all_contributions()}
       notes={Notes.all_notes()}
       projects={Projects.all_projects()}
       works={Works.all_works()}
