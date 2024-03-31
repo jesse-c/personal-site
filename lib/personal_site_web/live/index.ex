@@ -145,6 +145,21 @@ defmodule PersonalSiteWeb.Live.Index do
         </div>
       </div>
       <div class="space-y-3">
+        <h2 class="text-lg">Contributions</h2>
+        <div class="space-y-3">
+          <div :for={contribution <- Enum.take(@contributions, 5)} class="space-y-1">
+            <p class="text-sm"><%= contribution.title %></p>
+            <p class="text-xs"><%= contribution.description %></p>
+            <p class="text-xs"><%= Enum.join(contribution.tags, ", ") %></p>
+          </div>
+        </div>
+        <div>
+          <.link class="text-xs" navigate={~p"/contributions"}>
+            Index<span class="sup pl-0.5"><%= Enum.count(@contributions) %></span> →
+          </.link>
+        </div>
+      </div>
+      <div class="space-y-3">
         <h2 class="text-lg">Education</h2>
         <h3 class="text-base">
           Bachelor of Engineering — Software (Honours) at University of Queensland

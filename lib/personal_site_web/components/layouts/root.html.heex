@@ -29,6 +29,9 @@
         <.link navigate={~p"/projects"}>
           Projects<span class="sup pl-0.5"><%= Enum.count(@projects) %></span>
         </.link>
+        <.link navigate={~p"/contributions"}>
+          Contributions<span class="sup pl-0.5"><%= Enum.count(@contributions) %></span>
+        </.link>
         <.link navigate={~p"/works"}>
           Works<span class="sup pl-0.5"><%= Enum.count(@works) %></span>
         </.link>
@@ -40,7 +43,7 @@
     <hr class="my-6 border-black dark:border-white" />
     <main class="w-full lg:w-1/2">
       <div class="border border-dashed rounded-sm border-black dark:border-white p-2 mb-6 text-xs max-w-fit">
-        ✂ Content (Work, projects, notes, etc.) is being added.
+        ✂ Content (Work, projects, notes, contributions, etc.) is being added.
       </div>
       <%= @inner_content %>
     </main>

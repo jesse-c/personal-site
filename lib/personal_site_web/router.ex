@@ -23,6 +23,7 @@ defmodule PersonalSiteWeb.Router do
       live("/notes/:id", Live.NotesSingle)
       live("/projects", Live.ProjectsIndex)
       live("/works", Live.WorksIndex)
+      live("/contributions", Live.ContributionsIndex)
       live("/colophon", Live.Colophon)
       live("/about", Live.About)
       live("/contact", Live.Contact)

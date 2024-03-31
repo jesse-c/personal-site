@@ -50,6 +50,7 @@ config :personal_site, PersonalSiteWeb.Endpoint,
       ~r"priv/notes/.*(md)$",
       ~r"priv/projects/.*(md)$",
       ~r"priv/works/.*(md)$",
+      ~r"priv/contributions/.*(md)$",
       ~r"lib/personal_site_web/(controllers|live|components)/.*(ex|heex)$"
     ]
   ]

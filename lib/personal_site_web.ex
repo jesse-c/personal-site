@@ -56,6 +56,7 @@ defmodule PersonalSiteWeb do
       # Start: Cursors
 
       alias PersonalSite.Cursors
+      alias PersonalSite.Contributions
       alias PersonalSite.Notes
       alias PersonalSite.Projects
       alias PersonalSite.Works
@@ -71,6 +72,7 @@ defmodule PersonalSiteWeb do
           |> assign(notes: Notes.all_notes())
           |> assign(projects: Projects.all_projects())
           |> assign(works: Works.all_works())
+          |> assign(contributions: Contributions.all_contributions())
 
         apply(__MODULE__, :inner_mount, [params, session, socket])
       end
