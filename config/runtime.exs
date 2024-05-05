@@ -35,6 +35,17 @@ if config_env() == :dev do
   config :personal_site, PersonalSite.Shoutbox, max: 5
 end
 
+if config_env() == :test do
+  config :personal_site, PersonalSite.Plausible, data_domain: nil
+
+  config :personal_site, PersonalSite.Redis,
+    url: "redis://localhost:6379/3",
+    # No options to overwrite from the URI
+    opts: []
+
+  config :personal_site, PersonalSite.Shoutbox, max: 5
+end
+
 if config_env() == :prod do
   # The secret key base is used to sign/encrypt cookies and other secrets.
   # A default value is used in config/dev.exs and config/test.exs but you
