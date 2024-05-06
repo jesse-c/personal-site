@@ -160,7 +160,7 @@ defmodule PersonalSite.Shoutbox do
         Logger.debug("failed to clear shouts in Redis: #{inspect(error)}")
     end
 
-    {:reply, state, state}
+    {:reply, :ok, state}
   end
 
   defp trim do

@@ -1,4 +1,4 @@
-# PersonalSite
+# Personal Site
 
 To start your Phoenix server:
 

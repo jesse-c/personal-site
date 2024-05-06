@@ -60,7 +60,8 @@ defmodule PersonalSite.MixProject do
       {:redix, "~> 1.1"},
       {:castore, ">= 0.0.0"},
       {:timex, "~> 3.7"},
-      {:atomex, "0.5.1"}
+      {:atomex, "0.5.1"},
+      {:testcontainers, "~> 1.7.0", only: [:test]}
     ]
   end
 
