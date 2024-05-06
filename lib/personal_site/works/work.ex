@@ -1,4 +1,8 @@
 defmodule PersonalSite.Works.Work do
+  @moduledoc """
+  A work context.
+  """
+
   @enforce_keys [
     :id,
     :title,

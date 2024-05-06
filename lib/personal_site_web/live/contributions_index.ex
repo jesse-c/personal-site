@@ -1,4 +1,8 @@
 defmodule PersonalSiteWeb.Live.ContributionsIndex do
+  @moduledoc """
+  The contributions context index page.
+  """
+
   use PersonalSiteWeb, :live_view
 
   alias PersonalSite.Contributions

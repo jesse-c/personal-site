@@ -1,4 +1,8 @@
 defmodule PersonalSite.Projects do
+  @moduledoc """
+  The projects concept.
+  """
+
   alias PersonalSite.Projects.Project
 
   use NimblePublisher,

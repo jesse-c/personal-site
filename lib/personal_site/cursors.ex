@@ -1,4 +1,8 @@
 defmodule PersonalSite.Cursors do
+  @moduledoc """
+  Cursors context.
+  """
+
   @topic "cursors"
 
   def topic, do: @topic

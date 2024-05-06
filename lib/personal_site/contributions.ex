@@ -1,4 +1,8 @@
 defmodule PersonalSite.Contributions do
+  @moduledoc """
+  The contributions concept.
+  """
+
   alias PersonalSite.Contributions.Contribution
 
   use NimblePublisher,

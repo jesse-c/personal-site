@@ -1,4 +1,8 @@
 defmodule PersonalSiteWeb.Live.WorksIndex do
+  @moduledoc """
+  The works context index page.
+  """
+
   use PersonalSiteWeb, :live_view
 
   alias PersonalSite.Works

@@ -1,4 +1,8 @@
 defmodule PersonalSiteWeb.Live.Colophon do
+  @moduledoc """
+  The colophon context page.
+  """
+
   use PersonalSiteWeb, :live_view
 
   def inner_mount(_params, _session, socket) do

@@ -1,4 +1,8 @@
 defmodule PersonalSite.Notes do
+  @moduledoc """
+  The notes concept.
+  """
+
   alias PersonalSite.Notes.Note
 
   use NimblePublisher,

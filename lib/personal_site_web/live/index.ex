@@ -1,4 +1,8 @@
 defmodule PersonalSiteWeb.Live.Index do
+  @moduledoc """
+  The homepage.
+  """
+
   use PersonalSiteWeb, :live_view
 
   alias PersonalSite.Shoutbox

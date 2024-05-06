@@ -1,4 +1,8 @@
 defmodule PersonalSiteWeb.Live.ProjectsIndex do
+  @moduledoc """
+  The projects context index.
+  """
+
   use PersonalSiteWeb, :live_view
 
   alias PersonalSite.Projects
