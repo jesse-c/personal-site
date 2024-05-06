@@ -38,12 +38,7 @@ end
 if config_env() == :test do
   config :personal_site, PersonalSite.Plausible, data_domain: nil
 
-  config :personal_site, PersonalSite.Redis,
-    url: "redis://localhost:6379/3",
-    # No options to overwrite from the URI
-    opts: []
-
-  config :personal_site, PersonalSite.Shoutbox, max: 5
+  config :personal_site, PersonalSite.Shoutbox, max: 2
 end
 
 if config_env() == :prod do
