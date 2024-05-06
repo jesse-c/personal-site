@@ -1,4 +1,8 @@
 defmodule PersonalSite.Notes.Note do
+  @moduledoc """
+  A note context.
+  """
+
   @enforce_keys [
     :id,
     :title,

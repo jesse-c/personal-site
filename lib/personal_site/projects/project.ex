@@ -1,4 +1,8 @@
 defmodule PersonalSite.Projects.Project do
+  @moduledoc """
+  A project context.
+  """
+
   @enforce_keys [
     :id,
     :title,

@@ -107,8 +107,11 @@ jobs:
             ${{ runner.os }}-mix-${{ env.cache-name }}-
             ${{ runner.os }}-mix-
 
-      - name: Check Formatting
+      - name: Check formatting
         run: mix format --check-formatted
+
+      - name: Check code analysis
+        run: mix credo --all
 
   build:
     runs-on: ubuntu-latest

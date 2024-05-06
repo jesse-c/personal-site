@@ -1,4 +1,8 @@
 defmodule PersonalSiteWeb.Live.NotesSingle do
+  @moduledoc """
+  The notes context single page.
+  """
+
   use PersonalSiteWeb, :live_view
 
   alias PersonalSite.Cursors

@@ -1,4 +1,8 @@
 defmodule PersonalSite.Shoutbox do
+  @moduledoc """
+  A shoutbox in the spirit of the early 2000s.
+  """
+
   use GenServer
 
   require Logger
@@ -53,30 +57,11 @@ defmodule PersonalSite.Shoutbox do
     if attempt_n < Application.get_env(:personal_site, PersonalSite.Redis)[:connection_attempts] do
       case Redis.command(["LRANGE", "shouts", 0, -1]) do
         {:ok, value} ->
-          value =
-            value
-            |> Enum.map(&Jason.decode!(&1, keys: :atoms))
-            |> Enum.map(fn shout ->
-              # Parse the string as a timestamp
-              {:ok, timestamp, _calendar_offset} = DateTime.from_iso8601(shout.timestamp)
-
-              %{shout | timestamp: timestamp}
-            end)
+          value = raw_value_to_shout(value)
 
           Logger.debug("loaded shouts: #{Enum.count(value)}")
 
-          if Enum.count(state) >=
-               Application.get_env(:personal_site, PersonalSite.Shoutbox)[:max] do
-            Logger.debug(
-              "trimming shouts: #{Application.get_env(:personal_site, PersonalSite.Shoutbox)[:max]}"
-            )
-
-            trim()
-          else
-            Logger.debug(
-              "shouts trimming not needed: #{Application.get_env(:personal_site, PersonalSite.Shoutbox)[:max]}"
-            )
-          end
+          :ok = trim_by_state(state)
 
           value =
             Enum.take(value, Application.get_env(:personal_site, PersonalSite.Shoutbox)[:max])
@@ -93,6 +78,34 @@ defmodule PersonalSite.Shoutbox do
 
       {:noreply, state}
     end
+  end
+
+  defp raw_value_to_shout(value),
+    do:
+      value
+      |> Enum.map(&Jason.decode!(&1, keys: :atoms))
+      |> Enum.map(fn shout ->
+        # Parse the string as a timestamp
+        {:ok, timestamp, _calendar_offset} = DateTime.from_iso8601(shout.timestamp)
+
+        %{shout | timestamp: timestamp}
+      end)
+
+  defp trim_by_state(state) do
+    if Enum.count(state) >=
+         Application.get_env(:personal_site, PersonalSite.Shoutbox)[:max] do
+      Logger.debug(
+        "trimming shouts: #{Application.get_env(:personal_site, PersonalSite.Shoutbox)[:max]}"
+      )
+
+      trim()
+    else
+      Logger.debug(
+        "shouts trimming not needed: #{Application.get_env(:personal_site, PersonalSite.Shoutbox)[:max]}"
+      )
+    end
+
+    :ok
   end
 
   @impl true

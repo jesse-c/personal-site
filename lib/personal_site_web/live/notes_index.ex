@@ -1,4 +1,8 @@
 defmodule PersonalSiteWeb.Live.NotesIndex do
+  @moduledoc """
+  The notes context index page.
+  """
+
   use PersonalSiteWeb, :live_view
 
   alias PersonalSite.Notes

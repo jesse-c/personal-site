@@ -1,4 +1,8 @@
 defmodule PersonalSiteWeb.Live.Cursors do
+  @moduledoc """
+  The cursors context.
+  """
+
   use PersonalSiteWeb, :live_component
 
   alias PersonalSite.Cursors

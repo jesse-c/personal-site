@@ -1,4 +1,8 @@
 defmodule PersonalSiteWeb.Live.Education do
+  @moduledoc """
+  The education context page.
+  """
+
   use PersonalSiteWeb, :live_view
 
   def inner_mount(_params, _session, socket) do

@@ -1,4 +1,8 @@
 defmodule PersonalSite.Redis do
+  @moduledoc """
+  A Redis wrapper.
+  """
+
   @name :redis
 
   def name, do: @name

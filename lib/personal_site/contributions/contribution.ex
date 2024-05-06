@@ -1,4 +1,8 @@
 defmodule PersonalSite.Contributions.Contribution do
+  @moduledoc """
+  A contribution context.
+  """
+
   @enforce_keys [
     :id,
     :title,
