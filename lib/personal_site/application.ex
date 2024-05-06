@@ -9,6 +9,30 @@ defmodule PersonalSite.Application do
   def start(_type, _args) do
     redis_env = redis_env()
 
+    shoutbox_children = [
+      {
+        Redix,
+        {
+          redis_env[:url],
+          Keyword.merge(
+            redis_env[:opts],
+            name: PersonalSite.Redis.name(),
+            sync_connect: true,
+            exit_on_disconnection: true
+          )
+        }
+      },
+      # Start after the Redix supervisor
+      {PersonalSite.Shoutbox, []}
+    ]
+
+    isolated_shoutbox_supervisor = %{
+      # "Total" since it encompasses the totality of what's needed for the shoutbox
+      id: TotalShoutboxSupervisor,
+      type: :supervisor,
+      start: {Supervisor, :start_link, [shoutbox_children, [strategy: :rest_for_one]]}
+    }
+
     children = [
       # Start the Telemetry supervisor
       PersonalSiteWeb.Telemetry,
@@ -17,16 +41,7 @@ defmodule PersonalSite.Application do
       # Start the Endpoint (http/https)
       PersonalSiteWeb.Endpoint,
       PersonalSiteWeb.Presence,
-      # Start a worker by calling: PersonalSite.Worker.start_link(arg)
-      # {PersonalSite.Worker, arg}
-      {PersonalSite.Shoutbox, []},
-      {
-        Redix,
-        {
-          redis_env[:url],
-          Keyword.merge(redis_env[:opts], name: PersonalSite.Redis.name())
-        }
-      }
+      isolated_shoutbox_supervisor
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
