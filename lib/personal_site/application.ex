@@ -17,16 +17,18 @@ defmodule PersonalSite.Application do
       # Start the Endpoint (http/https)
       PersonalSiteWeb.Endpoint,
       PersonalSiteWeb.Presence,
-      # Start a worker by calling: PersonalSite.Worker.start_link(arg)
-      # {PersonalSite.Worker, arg}
-      {PersonalSite.Shoutbox, []},
       {
         Redix,
         {
           redis_env[:url],
-          Keyword.merge(redis_env[:opts], name: PersonalSite.Redis.name())
+          Keyword.merge(
+            redis_env[:opts],
+            name: PersonalSite.Redis.name()
+          )
         }
-      }
+      },
+      # Start after the Redix supervisor
+      {PersonalSite.Shoutbox, []}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
