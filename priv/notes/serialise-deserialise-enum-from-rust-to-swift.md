@@ -6,7 +6,7 @@
 ---
 Between Rust and Serde and Swift and `Codable`, it's _relatively_ easy to serialise and deserialise between the 2, using JSON. Whilst there aren't shared definitions through a common format, such as Protobuf or MessagePack, for simple data it looks to be maintainable.
 
-`serde_derive` and `Codable` deally save you writing encoders/serialisers and decoders/deserialisers. For Rust → Swift, I've so far had to write a decoder for enums with named associated values. Both Rust and Swift use nth-indexing for unnamed associated values, so I don't _think_ it would be too hard. Without associated values, decoding worked without having to write anything for decoding.
+`serde_derive` and `Codable` ideally save you writing encoders/serialisers and decoders/deserialisers. For Rust → Swift, I've so far had to write a decoder for enums with named associated values. Both Rust and Swift use nth-indexing for unnamed associated values, so I don't _think_ it would be too hard. Without associated values, decoding worked without having to write anything for decoding.
 
 Here are small snippets of the types and decoder.
 
