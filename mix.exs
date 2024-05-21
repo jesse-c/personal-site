@@ -50,7 +50,7 @@ defmodule PersonalSite.MixProject do
       {:earmark, "~> 1.4"},
       {:makeup_diff, "~> 0.1.0"},
       {:makeup_elixir, "~> 0.16.1"},
-      {:makeup_erlang, "~> 0.1.2"},
+      {:makeup_erlang, "~> 1.0.0"},
       {:makeup_json, "~> 0.1.0"},
       {:makeup_rust, "~> 0.2.0"},
       {:makeup_sql, "~> 0.1.0"},
