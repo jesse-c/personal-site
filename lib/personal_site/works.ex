@@ -4,13 +4,13 @@ defmodule PersonalSite.Works do
   """
 
   alias PersonalSite.Works.Work
+  alias PersonalSite.MDExConverter
 
   use NimblePublisher,
     build: Work,
     from: Application.app_dir(:personal_site, "priv/works/*.md"),
     as: :works,
-    highlighters: [:makeup_elixir, :makeup_erlang],
-    earmark_options: [footnotes: true]
+    html_converter: MDExConverter
 
   @works Enum.sort_by(@works, & &1.date_start, {:desc, Date})
 
