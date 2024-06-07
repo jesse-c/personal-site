@@ -11,7 +11,7 @@ defmodule PersonalSiteWeb.Live.Cursors do
     ~H"""
     <ul class="list-none z-50" id="cursors" phx-hook="TrackClientCursor">
       <li
-        :for={user <- @users}
+        :for={user <- Enum.filter(@users, &(not is_nil(&1.x) && not is_nil(&1.y)))}
         style={"color: #{Cursors.get_hsl(user.name)}; left: #{user.x}%; top: #{user.y}%"}
         class="flex flex-col absolute pointer-events-none whitespace-nowrap overflow-hidden"
       >

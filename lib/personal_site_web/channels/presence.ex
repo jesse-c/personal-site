@@ -12,9 +12,6 @@ defmodule PersonalSiteWeb.Presence do
   alias PersonalSite.Cursors
 
   def initialise(socket, pid) do
-    x = 50
-    y = 50
-
     user = MnemonicSlugs.generate_slug()
 
     track(
@@ -22,8 +19,8 @@ defmodule PersonalSiteWeb.Presence do
       Cursors.topic(),
       socket.id,
       %{
-        x: x,
-        y: y,
+        x: nil,
+        y: nil,
         name: user,
         socket_id: socket.id
       }
@@ -32,8 +29,8 @@ defmodule PersonalSiteWeb.Presence do
     initial_users = users()
 
     %{
-      x: x,
-      y: y,
+      x: nil,
+      y: nil,
       user: user,
       socket_id: socket.id,
       users: initial_users
