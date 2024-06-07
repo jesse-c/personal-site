@@ -7,6 +7,7 @@ defmodule PersonalSiteWeb.Live.Index do
 
   alias PersonalSite.Shoutbox
   alias PersonalSite.Works.Work
+  alias PersonalSiteWeb.Live.Cursors
 
   require Logger
 
@@ -84,7 +85,7 @@ defmodule PersonalSiteWeb.Live.Index do
 
   def render(assigns) do
     ~H"""
-    <.live_component module={PersonalSiteWeb.Live.Cursors} id="cursors" users={@users} />
+    <.live_component module={Cursors} id="cursors" users={@users} />
     <div class="border border-dashed rounded-sm border-black dark:border-white p-2 mb-6 text-xs max-w-fit">
       &#9788; Remember to try the <a href="#shoutbox">shoutbox</a>! &#8595
     </div>
