@@ -66,6 +66,7 @@ defmodule PersonalSiteWeb do
       def mount(params, session, socket) do
         Endpoint.subscribe(Cursors.topic())
 
+        # Do these common things for all LiveViews
         socket =
           socket
           |> assign(Presence.initialise(socket, self()))
@@ -81,6 +82,7 @@ defmodule PersonalSiteWeb do
             %{
               topic: "cursors",
               event: "presence_diff",
+              # Ignore the explicity `payload.joins` and `payload.leaves` for the time being
               payload: _payload
             },
             socket
@@ -99,7 +101,10 @@ defmodule PersonalSiteWeb do
 
         metas =
           Presence.get_by_key(Cursors.topic(), key)[:metas]
+          # Get the first item from the presence information, since I overwrite
+          # the latest mouse position
           |> List.first()
+          # Set the latest mouse position
           |> Map.merge(payload)
 
         Presence.update(self(), Cursors.topic(), key, metas)

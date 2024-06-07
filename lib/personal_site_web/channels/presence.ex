@@ -9,12 +9,18 @@ defmodule PersonalSiteWeb.Presence do
     otp_app: :personal_site,
     pubsub_server: PersonalSite.PubSub
 
+  require Logger
+
   alias PersonalSite.Cursors
 
   def initialise(socket, pid) do
+    Logger.debug("initialising presence")
+
     user = MnemonicSlugs.generate_slug()
     hsl = Cursors.get_hsl(user)
 
+    # Track this new presence, so that it's apart of the overall
+    # list of users' presences.
     track(
       pid,
       Cursors.topic(),
@@ -28,21 +34,22 @@ defmodule PersonalSiteWeb.Presence do
       }
     )
 
-    initial_users = users()
-
     %{
-      x: nil,
-      y: nil,
       user: user,
-      socket_id: socket.id,
-      users: initial_users,
-      hsl: hsl
+      users: users()
     }
   end
 
   def users do
     Cursors.topic()
     |> list()
-    |> Enum.map(fn {_, data} -> data[:metas] |> List.first() end)
+    # Ignore the key, which was the cursors' topic
+    |> Enum.map(fn {_, data} ->
+      data
+      |> Map.get(:metas)
+      # Get the first item from the presence information, since I overwrite
+      # the latest mouse position
+      |> List.first()
+    end)
   end
 end
