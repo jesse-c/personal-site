@@ -8,7 +8,6 @@ defmodule PersonalSiteWeb.Live.NotesSingle do
   alias PersonalSite.Cursors
   alias PersonalSite.Notes
   alias PersonalSiteWeb.Endpoint
-  alias PersonalSiteWeb.Presence
 
   @trunc_len_chars 40
 
