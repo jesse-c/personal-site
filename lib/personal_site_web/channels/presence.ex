@@ -13,6 +13,7 @@ defmodule PersonalSiteWeb.Presence do
 
   def initialise(socket, pid) do
     user = MnemonicSlugs.generate_slug()
+    hsl = Cursors.get_hsl(user)
 
     track(
       pid,
@@ -22,7 +23,8 @@ defmodule PersonalSiteWeb.Presence do
         x: nil,
         y: nil,
         name: user,
-        socket_id: socket.id
+        socket_id: socket.id,
+        hsl: hsl
       }
     )
 
@@ -33,7 +35,8 @@ defmodule PersonalSiteWeb.Presence do
       y: nil,
       user: user,
       socket_id: socket.id,
-      users: initial_users
+      users: initial_users,
+      hsl: hsl
     }
   end
 

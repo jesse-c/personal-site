@@ -5,14 +5,12 @@ defmodule PersonalSiteWeb.Live.Cursors do
 
   use PersonalSiteWeb, :live_component
 
-  alias PersonalSite.Cursors
-
   def render(assigns) do
     ~H"""
     <ul class="list-none z-50" id="cursors" phx-hook="TrackClientCursor">
       <li
         :for={user <- Enum.filter(@users, &(not is_nil(&1.x) && not is_nil(&1.y)))}
-        style={"color: #{Cursors.get_hsl(user.name)}; left: #{user.x}%; top: #{user.y}%"}
+        style={"color: #{user.hsl}; left: #{user.x}%; top: #{user.y}%"}
         class="flex flex-col absolute pointer-events-none whitespace-nowrap overflow-hidden"
       >
         <svg
@@ -25,10 +23,7 @@ defmodule PersonalSiteWeb.Live.Cursors do
         >
           <circle cx="5" cy="5" r="5" fill="currentColor" />
         </svg>
-        <span
-          style={"background-color: #{Cursors.get_hsl(user.name)};"}
-          class="mt-1 ml-4 px-1 text-sm text-white"
-        >
+        <span style={"background-color: #{user.hsl};"} class="mt-1 ml-4 px-1 text-sm text-white">
           <%= user.name %>
         </span>
       </li>
