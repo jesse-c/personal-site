@@ -63,6 +63,7 @@ defmodule PersonalSiteWeb do
       alias PersonalSiteWeb.Endpoint
       alias PersonalSiteWeb.Presence
 
+      @impl true
       def mount(params, session, socket) do
         Endpoint.subscribe(Cursors.topic())
 
@@ -78,23 +79,59 @@ defmodule PersonalSiteWeb do
         apply(__MODULE__, :inner_mount, [params, session, socket])
       end
 
+      @impl true
       def handle_info(
-            %{
+            %Phoenix.Socket.Broadcast{
               topic: "cursors",
               event: "presence_diff",
-              # Ignore the explicity `payload.joins` and `payload.leaves` for the time being
-              payload: _payload
+              # Example:
+              #
+              # %{
+              # joins: %{"123" => %{metas: [%{status: "away", phx_ref: ...}]}},
+              # leaves: %{"456" => %{metas: [%{status: "online", phx_ref: ...}]}}
+              # },
+              payload: %{joins: joins, leaves: leaves} = payload
             },
             socket
-          ) do
-        updated =
-          socket
-          |> assign(users: Presence.users())
-          |> assign(socket_id: socket.id)
+          ),
+          do: {:noreply, combine_presence_changes(socket, joins, leaves)}
 
-        {:noreply, updated}
+      defp combine_presence_changes(socket, joins, leaves),
+        do:
+          socket
+          |> combine_presence_joins(joins)
+          |> combine_presence_leaves(leaves)
+
+      defp combine_presence_joins(socket, joins),
+        do:
+          Enum.reduce(joins, socket, fn {user_joining, %{metas: [meta | _]}}, socket ->
+            users = maybe_merge_users(socket, user_joining, meta)
+
+            assign(socket, :users, users)
+          end)
+
+      defp maybe_merge_users(socket, user_joining, meta) do
+        Enum.map(socket.assigns.users, fn user ->
+          if user.socket_id == user_joining do
+            %{user | x: meta.x, y: meta.y, name: meta.name, hsl: meta.hsl}
+          else
+            user
+          end
+        end)
       end
 
+      defp combine_presence_leaves(socket, leaves),
+        do:
+          Enum.reduce(leaves, socket, fn {user, %{metas: [_ | _]}}, socket ->
+            users = Enum.reject(socket.assigns.users, fn user -> user.socket_id == user end)
+
+            assign(socket, :users, users)
+          end)
+
+      # Update the presence metadata for this user, by their key.
+      #
+      # Don't make any changes to the socket itself here.
+      @impl true
       def handle_event("cursor-move", %{"x" => x, "y" => y}, socket) do
         key = socket.id
         payload = %{x: x, y: y}

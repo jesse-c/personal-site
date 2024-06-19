@@ -16,6 +16,8 @@ defmodule PersonalSiteWeb.Presence do
   def initialise(socket, pid) do
     Logger.debug("initialising presence")
 
+    key = socket.id
+
     user = MnemonicSlugs.generate_slug()
     hsl = Cursors.get_hsl(user)
 
@@ -24,7 +26,7 @@ defmodule PersonalSiteWeb.Presence do
     track(
       pid,
       Cursors.topic(),
-      socket.id,
+      key,
       %{
         x: nil,
         y: nil,
@@ -34,9 +36,14 @@ defmodule PersonalSiteWeb.Presence do
       }
     )
 
+    # Get the current list of users
+    users = users()
+
+    Logger.debug("initialised presence")
+
     %{
       user: user,
-      users: users()
+      users: users
     }
   end
 
