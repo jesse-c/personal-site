@@ -99,8 +99,8 @@ defmodule PersonalSiteWeb do
       defp combine_presence_changes(socket, joins, leaves),
         do:
           socket
-          |> combine_presence_joins(joins)
           |> combine_presence_leaves(leaves)
+          |> combine_presence_joins(joins)
 
       defp combine_presence_joins(socket, joins),
         do:
@@ -111,19 +111,29 @@ defmodule PersonalSiteWeb do
           end)
 
       defp maybe_merge_users(socket, user_joining, meta) do
-        Enum.map(socket.assigns.users, fn user ->
-          if user.socket_id == user_joining do
-            %{user | x: meta.x, y: meta.y, name: meta.name, hsl: meta.hsl}
-          else
-            user
-          end
-        end)
+        case Enum.find(socket.assigns.users, &(&1.socket_id == user_joining)) do
+          nil ->
+            [
+              %{socket_id: user_joining, x: meta.x, y: meta.y, name: meta.name, hsl: meta.hsl}
+              | socket.assigns.users
+            ]
+
+          user ->
+            Enum.map(socket.assigns.users, fn
+              %{socket_id: ^user_joining} ->
+                %{user | x: meta.x, y: meta.y, name: meta.name, hsl: meta.hsl}
+
+              other_user ->
+                other_user
+            end)
+        end
       end
 
       defp combine_presence_leaves(socket, leaves),
         do:
-          Enum.reduce(leaves, socket, fn {user, %{metas: [_ | _]}}, socket ->
-            users = Enum.reject(socket.assigns.users, fn user -> user.socket_id == user end)
+          Enum.reduce(leaves, socket, fn {user_leaving, %{metas: [_ | _]}}, socket ->
+            users =
+              Enum.reject(socket.assigns.users, fn user -> user.socket_id == user_leaving end)
 
             assign(socket, :users, users)
           end)
