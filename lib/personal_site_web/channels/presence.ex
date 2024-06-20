@@ -59,4 +59,41 @@ defmodule PersonalSiteWeb.Presence do
       |> List.first()
     end)
   end
+
+  def combine_presence_changes(users, joins, leaves),
+    do:
+      users
+      |> combine_presence_leaves(leaves)
+      |> combine_presence_joins(joins)
+
+  defp combine_presence_joins(users, joins),
+    do:
+      Enum.reduce(joins, users, fn {user_joining, %{metas: [meta | _]}}, socket ->
+        maybe_merge_users(socket, user_joining, meta)
+      end)
+
+  defp maybe_merge_users(users, user_joining, meta) do
+    case Enum.find(users, &(&1.socket_id == user_joining)) do
+      nil ->
+        [
+          %{socket_id: user_joining, x: meta.x, y: meta.y, name: meta.name, hsl: meta.hsl}
+          | users
+        ]
+
+      user ->
+        Enum.map(users, fn
+          %{socket_id: ^user_joining} ->
+            %{user | x: meta.x, y: meta.y, name: meta.name, hsl: meta.hsl}
+
+          other_user ->
+            other_user
+        end)
+    end
+  end
+
+  defp combine_presence_leaves(users, leaves),
+    do:
+      Enum.reduce(leaves, users, fn {user_leaving, %{metas: [_ | _]}}, _socket ->
+        Enum.reject(users, fn user -> user.socket_id == user_leaving end)
+      end)
 end
