@@ -6,7 +6,40 @@
   </author>
   <id>https://j-e-s-s-e.com</id>
   <title>Notes · Jesse Claven</title>
-  <updated>2024-05-21T22:48:28.277905Z</updated>
+  <updated>2024-06-21T13:14:12.716539Z</updated>
+  <entry>
+    <link rel="alternate" href="https://j-e-s-s-e.com/notes/using-autumn-with-nimblepublisher-for-synax-highlighting"/>
+    <content type="html">&lt;p&gt;For this website, I currently use NimblePublisher&lt;sup class=&quot;footnote-ref&quot;&gt;&lt;a href=&quot;#fn-1&quot; id=&quot;fnref-1&quot; data-footnote-ref&gt;1&lt;/a&gt;&lt;/sup&gt; for the content management. By default, it uses Earmark for Markdown and different Makeup packages for syntax highlighting.&lt;/p&gt;
+&lt;p&gt;Having tried to write a Makeup parser&lt;sup class=&quot;footnote-ref&quot;&gt;&lt;a href=&quot;#fn-2&quot; id=&quot;fnref-2&quot; data-footnote-ref&gt;2&lt;/a&gt;&lt;/sup&gt;, and being a big fan of Tree-sitter, I was happy to hear about Autumn&lt;sup class=&quot;footnote-ref&quot;&gt;&lt;a href=&quot;#fn-3&quot; id=&quot;fnref-3&quot; data-footnote-ref&gt;3&lt;/a&gt;&lt;/sup&gt; and MDex &lt;sup class=&quot;footnote-ref&quot;&gt;&lt;a href=&quot;#fn-5&quot; id=&quot;fnref-5&quot; data-footnote-ref&gt;4&lt;/a&gt;&lt;/sup&gt;. Autumn uses a Rust crate under-the-hood, through Rustler, for Tree-sitter-based syntax highlighting!&lt;/p&gt;
+&lt;p&gt;It took a few minutes to customise my different content types with NimblePublisher to use a custom HTML converter module&lt;sup class=&quot;footnote-ref&quot;&gt;&lt;a href=&quot;#fn-4&quot; id=&quot;fnref-4&quot; data-footnote-ref&gt;5&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
+&lt;section class=&quot;footnotes&quot; data-footnotes&gt;
+&lt;ol&gt;
+&lt;li id=&quot;fn-1&quot;&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/dashbitco/nimble_publisher&quot;&gt;NimblePublisher&lt;/a&gt; &lt;a href=&quot;#fnref-1&quot; class=&quot;footnote-backref&quot; data-footnote-backref data-footnote-backref-idx=&quot;1&quot; aria-label=&quot;Back to reference 1&quot;&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&quot;fn-2&quot;&gt;
+&lt;p&gt;&lt;a href=&quot;@/notes/makeup_parser_for_Swift.md&quot;&gt;Makeup parser for Swift&lt;/a&gt; &lt;a href=&quot;#fnref-2&quot; class=&quot;footnote-backref&quot; data-footnote-backref data-footnote-backref-idx=&quot;2&quot; aria-label=&quot;Back to reference 2&quot;&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&quot;fn-3&quot;&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/leandrocp/autumn&quot;&gt;Autumn&lt;/a&gt; &lt;a href=&quot;#fnref-3&quot; class=&quot;footnote-backref&quot; data-footnote-backref data-footnote-backref-idx=&quot;3&quot; aria-label=&quot;Back to reference 3&quot;&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&quot;fn-5&quot;&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/leandrocp/mdex&quot;&gt;MDex&lt;/a&gt; &lt;a href=&quot;#fnref-5&quot; class=&quot;footnote-backref&quot; data-footnote-backref data-footnote-backref-idx=&quot;4&quot; aria-label=&quot;Back to reference 4&quot;&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&quot;fn-4&quot;&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/dashbitco/nimble_publisher?tab=readme-ov-file#custom-html-converter&quot;&gt;Custom HTML Converter&lt;/a&gt; &lt;a href=&quot;#fnref-4&quot; class=&quot;footnote-backref&quot; data-footnote-backref data-footnote-backref-idx=&quot;5&quot; aria-label=&quot;Back to reference 5&quot;&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/section&gt;
+</content>
+    <author>
+      <name>Jesse Claven</name>
+      <uri>https://j-e-s-s-e.com</uri>
+    </author>
+    <id>using-autumn-with-nimblepublisher-for-synax-highlighting</id>
+    <title>Using Autumn with NimblePublisher for synax highlighting</title>
+    <updated>2024-05-22T00:00:00Z</updated>
+  </entry>
   <entry>
     <link rel="alternate" href="https://j-e-s-s-e.com/notes/a-partially-wrong-tf-idf-in-flix"/>
     <content type="html">&lt;p&gt;Recently I reminded myself of TF-IDF and the relatively simplicity of it, in and of itself. Having considered a Python implementation, and wanting to write &lt;em&gt;something&lt;/em&gt; in Flix&lt;sup class=&quot;footnote-ref&quot;&gt;&lt;a href=&quot;#fn-1&quot; id=&quot;fnref-1&quot; data-footnote-ref&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;sup class=&quot;footnote-ref&quot;&gt;&lt;a href=&quot;#fn-2&quot; id=&quot;fnref-2&quot; data-footnote-ref&gt;2&lt;/a&gt;&lt;/sup&gt;, I thought this could be a good opportunity.&lt;/p&gt;
