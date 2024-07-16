@@ -10,7 +10,7 @@ While building an extension for [SABnzbd](https://www.raycast.com/jns/sabnzbd) f
 
 The paradigm I thought of from this, and added to my projects list, was something like this:
 
-<img src="/images/notes/simple-map.png" alt="Example: Multi-UIs connected with a daemon" width="600" />
+![Example: Multi-UIs connected with a daemon](/images/notes/simple-map.png)
 
 The name that I gave the project/idea was "headless for everything", where headless is the daemon, in that drawing.
 

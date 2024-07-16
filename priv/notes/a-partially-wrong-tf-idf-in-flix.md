@@ -1,6 +1,6 @@
 %{
     title: "A partially wrong TF-IDF in Flix",
-    tags: ~w(tf-idf natural-language-processing Flix),
+    tags: ~w(tf-idf natural-language-processing Flix side-project retrospective),
     date: "2024-05-05",
 }
 ---
