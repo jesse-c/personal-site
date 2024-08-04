@@ -76,7 +76,6 @@ if config_env() == :prod do
         raise("""
         environment variable REDIS_PRIVATE_URL is missing.
         """),
-    # Fly uses IPv6 for private networking
     opts: [
       socket_opts: [:inet6]
     ]
