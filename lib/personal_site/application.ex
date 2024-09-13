@@ -7,6 +7,10 @@ defmodule PersonalSite.Application do
 
   @impl true
   def start(_type, _args) do
+    :logger.add_handler(:my_sentry_handler, Sentry.LoggerHandler, %{
+      config: %{metadata: [:file, :line]}
+    })
+
     redis_env = redis_env()
 
     shoutbox_children = [
