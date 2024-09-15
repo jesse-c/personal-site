@@ -4,23 +4,40 @@
 
 /* This file is for your main application CSS */
 
-.sub {
-  font-variant-position: sub;
-}
-.sup {
-  font-variant-position: super;
-}
-
-@layer components {
+@layer base {
   a {
     @apply hover:underline;
   }
 
+  ol li {
+    @apply text-sm list-decimal ml-5;
+  }
+
+  ul li {
+    @apply text-sm list-disc ml-5;
+  }
+
+  pre {
+    @apply text-xs p-2 border rounded-sm dark:border-white border-black;
+  }
+}
+
+@layer components {
   .note p {
     @apply text-sm;
   }
 
   .note hr {
     @apply my-6 border-dashed;
+  }
+}
+
+@layer utilities {
+  .sub {
+    font-variant-position: sub;
+  }
+
+  .sup {
+    font-variant-position: super;
   }
 }
