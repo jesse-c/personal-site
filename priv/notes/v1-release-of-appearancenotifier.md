@@ -1,6 +1,6 @@
 %{
     title: "v1 release of AppearanceNotifier",
-    tags: ~w(Swift AppearanceNotifier),
+    tags: ~w(swift appearancenotifier),
     date: "2022-12-08",
 }
 ---

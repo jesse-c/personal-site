@@ -1,6 +1,6 @@
 %{
     title: "Compile Tree-sitter langs for Emacs 29 on an M1",
-    tags: ~w(Tree-sitter Emacs),
+    tags: ~w(tree-sitter emacs),
     date: "2022-12-20",
 }
 ---

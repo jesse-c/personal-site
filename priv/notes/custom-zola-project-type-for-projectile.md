@@ -1,6 +1,6 @@
 %{
     title: "Custom Zola project type for Projectile",
-    tags: ~w(Zolag Emacs),
+    tags: ~w(zolag emacs),
     date: "2022-11-06",
 }
 ---

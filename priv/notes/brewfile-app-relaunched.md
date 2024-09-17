@@ -1,6 +1,6 @@
 %{
     title: "Brewfile app relaunched",
-    tags: ~w(Brewfile.app Ruby Homebrew),
+    tags: ~w(brewfile.app ruby homebrew),
     date: "2022-12-15",
 }
 ---

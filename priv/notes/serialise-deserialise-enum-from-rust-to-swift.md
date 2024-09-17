@@ -1,6 +1,6 @@
 %{
     title: "Serialise and deserialise enums with named associated values from Rust → Swift",
-    tags: ~w(Swift Rust JSON),
+    tags: ~w(swift rust json),
     date: "2023-01-02",
 }
 ---

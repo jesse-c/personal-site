@@ -1,6 +1,6 @@
 %{
     title: "Missing `s3fs` for SageMaker real-time inference tutorial",
-    tags: ~w(AWS tip),
+    tags: ~w(aws tip),
     date: "2024-03-31",
 }
 ---

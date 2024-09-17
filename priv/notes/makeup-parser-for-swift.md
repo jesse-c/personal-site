@@ -1,6 +1,6 @@
 %{
     title: "Makeup parser for Swift",
-    tags: ~w(Swift makeup parser NimblePublisher NimbleParsec),
+    tags: ~w(swift makeup parser nimblepublisher nimbleparsec),
     date: "2023-08-25",
 }
 ---
