@@ -20,6 +20,8 @@ defmodule PersonalSiteWeb.Router do
     live_session :default do
       live("/", Live.Index)
       live("/notes", Live.NotesIndex)
+      live("/notes/tags", Live.NotesTagsIndex)
+      live("/notes/tags/:id", Live.NotesTagsSingle)
       live("/notes/:id", Live.NotesSingle)
       live("/projects", Live.ProjectsIndex)
       live("/works", Live.WorksIndex)
