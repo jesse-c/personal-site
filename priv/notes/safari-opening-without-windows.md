@@ -1,6 +1,6 @@
 %{
     title: "Safari opening without windows",
-    tags: ~w(macOS Safari AppCleaner),
+    tags: ~w(macos safari appcleaner),
     date: "2023-01-23",
 }
 ---

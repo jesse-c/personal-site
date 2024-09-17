@@ -1,6 +1,6 @@
 %{
     title: "Counting pages in sections from other sections in Zola",
-    tags: ~w(Zola),
+    tags: ~w(zola),
     date: "2022-10-11",
 }
 ---

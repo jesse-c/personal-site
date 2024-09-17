@@ -1,6 +1,6 @@
 %{
     title: "Raycast extension for Himalaya released",
-    tags: ~w(macOS email Raycast Himalaya),
+    tags: ~w(macos email raycast himalaya),
     date: "2023-04-29",
 }
 ---

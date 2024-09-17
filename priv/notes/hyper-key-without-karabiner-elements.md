@@ -1,6 +1,6 @@
 %{
     title: "Hyper key without Karabiner Elements",
-    tags: ~w(Hyper macOS),
+    tags: ~w(hyper macos),
     date: "2023-04-13",
 }
 ---

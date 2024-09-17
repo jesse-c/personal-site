@@ -1,6 +1,6 @@
 %{
     title: "Retrospective on a side-project: AutoVolume for macOS",
-    tags: ~w(Swift macOS side-project retrospective),
+    tags: ~w(swift macos side-project retrospective),
     date: "2017-04-19",
 }
 ---

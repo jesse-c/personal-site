@@ -1,6 +1,6 @@
 %{
     title: "Using Autumn with NimblePublisher for synax highlighting",
-    tags: ~w(Elixir NimblePublisher),
+    tags: ~w(elixir nimblepublisher),
     date: "2024-05-22",
 }
 ---
