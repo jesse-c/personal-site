@@ -30,32 +30,44 @@ defmodule PersonalSiteWeb.Live.Index do
   end
 
   def handle_event("save", %{"message" => message}, socket) do
-    timestamp = DateTime.utc_now()
+    if match?(
+         {:deny, _limit},
+         Hammer.check_rate("save:#{socket.assigns[:client_ip]}", 60_000, 10)
+       ) do
+      socket =
+        socket
+        |> clear_flash()
+        |> put_flash(:error, "Try again later!")
 
-    name = socket.assigns[:user]
+      {:noreply, socket}
+    else
+      timestamp = DateTime.utc_now()
 
-    :ok = Shoutbox.new(name, timestamp, message)
+      name = socket.assigns[:user]
 
-    :ok =
-      Endpoint.broadcast(Shoutbox.topic(), "save", %{
-        name: name,
-        message: message,
-        timestamp: timestamp
-      })
+      :ok = Shoutbox.new(name, timestamp, message)
 
-    socket =
-      socket
-      |> put_flash(:info, "Shout sent!")
-      # Reset the form
-      |> assign(form: to_form(%{"message" => nil}))
+      :ok =
+        Endpoint.broadcast(Shoutbox.topic(), "save", %{
+          name: name,
+          message: message,
+          timestamp: timestamp
+        })
 
-    Process.send_after(
-      self(),
-      :clear_flash,
-      Application.get_env(:personal_site, PersonalSite.Shoutbox)[:clear]
-    )
+      socket =
+        socket
+        |> put_flash(:info, "Shout sent!")
+        # Reset the form
+        |> assign(form: to_form(%{"message" => nil}))
 
-    {:noreply, socket}
+      Process.send_after(
+        self(),
+        :clear_flash,
+        Application.get_env(:personal_site, PersonalSite.Shoutbox)[:clear]
+      )
+
+      {:noreply, socket}
+    end
   end
 
   def handle_info(:clear_flash, socket) do

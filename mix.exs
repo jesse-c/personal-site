@@ -59,7 +59,8 @@ defmodule PersonalSite.MixProject do
       {:testcontainers, "~> 1.8.0"},
       {:sentry, "~> 10.7.1"},
       {:hackney, "~> 1.20.1"},
-      {:tzdata, "~> 1.1"}
+      {:tzdata, "~> 1.1"},
+      {:hammer, "~> 6.1"}
     ]
   end
 
