@@ -11,10 +11,13 @@ defmodule PersonalSiteWeb.Live.NotesTagsIndex do
     all_notes = Notes.all_notes()
     all_tags = Notes.all_tags()
 
+    freqs_tags = all_notes |> Enum.flat_map(& &1.tags) |> Enum.frequencies()
+
     updated =
       socket
       |> assign(notes: all_notes)
       |> assign(tags: all_tags)
+      |> assign(freqs_tags: freqs_tags)
       |> assign(page_title: "Notes · Tags")
 
     {:ok, updated}
@@ -32,7 +35,7 @@ defmodule PersonalSiteWeb.Live.NotesTagsIndex do
         <div :for={tag <- @tags}>
           <p class="text-sm">
             <.link navigate={~p"/notes/tags/#{tag}"}>
-              <%= tag %>
+              <%= tag %><span class="sup pl-0.5"><%= @freqs_tags[tag] %></span>
             </.link>
           </p>
         </div>
