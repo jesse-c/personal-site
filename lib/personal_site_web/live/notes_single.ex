@@ -37,7 +37,9 @@ defmodule PersonalSiteWeb.Live.NotesSingle do
     <.live_component module={PersonalSiteWeb.Live.Cursors} id="cursors" users={@users} />
     <div class="note space-y-3">
       <h1 class="text-lg"><%= @note.title %></h1>
-      <p class="text-xs"><%= @note.date %> ･ <%= Enum.join(@note.tags, ", ") %></p>
+      <p class="text-xs">
+        <%= @note.date %> ･ <PersonalSiteWeb.TagsComponents.inline tags={@note.tags} />
+      </p>
       <div class="space-y-3">
         <%= raw(@note.body) %>
       </div>

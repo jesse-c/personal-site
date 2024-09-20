@@ -36,7 +36,11 @@ defmodule PersonalSiteWeb.Live.NotesTagsSingle do
   def render(assigns) do
     ~H"""
     <.live_component module={PersonalSiteWeb.Live.Cursors} id="cursors" users={@users} />
-    <h1 class="text-lg">Notes · Tags · <%= @tag %></h1>
+    <h1 class="text-lg">
+      <.link navigate={~p"/notes"}>Notes</.link>
+      · <.link navigate={~p"/notes/tags"}>Tags</.link>
+      · <%= @tag %>
+    </h1>
     <div class="space-y-3">
       <div :for={{year, notes} <- @years} class="space-y-1">
         <div><%= year %></div>
@@ -47,7 +51,9 @@ defmodule PersonalSiteWeb.Live.NotesTagsSingle do
                 <%= note.title %>
               </.link>
             </p>
-            <p class="text-xs"><%= note.date %> ･ <%= Enum.join(note.tags, ", ") %></p>
+            <p class="text-xs">
+              <%= note.date %> ･ <PersonalSiteWeb.TagsComponents.inline tags={note.tags} />
+            </p>
           </div>
         </div>
       </div>

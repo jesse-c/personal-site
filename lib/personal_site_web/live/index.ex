@@ -108,7 +108,9 @@ defmodule PersonalSiteWeb.Live.Index do
                 <%= note.title %>
               </.link>
             </p>
-            <p class="text-xs"><%= note.date %> ･ <%= Enum.join(note.tags, ", ") %></p>
+            <p class="text-xs">
+              <%= note.date %> ･ <PersonalSiteWeb.TagsComponents.inline tags={note.tags} />
+            </p>
           </div>
         </div>
         <div>

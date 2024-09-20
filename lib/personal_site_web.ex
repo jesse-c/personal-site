@@ -158,6 +158,7 @@ defmodule PersonalSiteWeb do
       import Phoenix.HTML
       # Core UI components and translation
       import PersonalSiteWeb.CoreComponents
+      import PersonalSiteWeb.TagsComponents
 
       # Shortcut for generating JS commands
       alias Phoenix.LiveView.JS

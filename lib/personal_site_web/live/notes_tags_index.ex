@@ -29,8 +29,10 @@ defmodule PersonalSiteWeb.Live.NotesTagsIndex do
   def render(assigns) do
     ~H"""
     <.live_component module={PersonalSiteWeb.Live.Cursors} id="cursors" users={@users} />
-    <h1 class="text-lg">Notes · Tags</h1>
-    <div class="space-y-3">
+    <h1 class="text-lg">
+      <.link navigate={~p"/notes"}>Notes</.link> · <.link navigate={~p"/notes/tags"}>Tags</.link>
+    </h1>
+    <div class="space-y-3 mt-3">
       <p class="text-sm">Sorted alphabetically</p>
       <div class="space-y-1 text-sm">
         <div :for={tag <- @tags}>
