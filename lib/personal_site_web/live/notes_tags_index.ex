@@ -11,14 +11,8 @@ defmodule PersonalSiteWeb.Live.NotesTagsIndex do
     all_notes = Notes.all_notes()
     all_tags = Notes.all_tags()
 
-    years =
-      all_notes
-      |> Enum.group_by(& &1.date.year)
-      |> Enum.sort_by(&elem(&1, 0), :desc)
-
     updated =
       socket
-      |> assign(years: years)
       |> assign(notes: all_notes)
       |> assign(tags: all_tags)
       |> assign(page_title: "Notes · Tags")
