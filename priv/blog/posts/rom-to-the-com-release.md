@@ -10,7 +10,7 @@ What's different from now is that LLMs have hit it off, and solved the data prob
 
 Before reading on, check it out: [Rom-to-the-Com](https://www.rom-to-the-com.com). Here's a screenshot:
 
-![Screenshot of Rom-to-the-Com website](/images/notes/rom-to-the-com.png)
+![Screenshot of Rom-to-the-Com website](/images/blog/rom-to-the-com.png)
 
 There were 2 parts to the data problem. The first is simply a list of rom-coms. There were different lists available on the internet. Wikipedia had quite a huge one. In the end, I used several public lists that people had made on IMDB. The second is how to rank them as a percentage of romance to comedy, in a timely fashion. We could do films we know, but that would be a small dataset. In the end, I used Claude, with this prompt:
 

@@ -15,6 +15,8 @@ Between the 2 of these, I'm able to display the pages count.
 {{ notes.pages | length }}
 ```
 
+**Update:** Notes have been renamed to blog (and posts).
+
 [^1]: [https://zola.discourse.group/t/section-vs-page/522/8 ↗](https://zola.discourse.group/t/section-vs-page/522/8)
 
 [^2]: [https://tera.netlify.app/docs/#length ↗](https://tera.netlify.app/docs/#length)

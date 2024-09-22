@@ -112,22 +112,22 @@ defmodule PersonalSiteWeb.Live.Index do
         </div>
       </div>
       <div class="space-y-3">
-        <h2 class="text-lg">Notes</h2>
+        <h2 class="text-lg">Blog</h2>
         <div class="space-y-3">
-          <div :for={note <- Enum.take(@notes, 5)} class="space-y-1">
+          <div :for={post <- Enum.take(@posts, 5)} class="space-y-1">
             <p class="text-sm">
-              <.link navigate={~p"/notes/#{note.slug}"}>
-                <%= note.title %>
+              <.link navigate={~p"/blog/#{post.slug}"}>
+                <%= post.title %>
               </.link>
             </p>
             <p class="text-xs">
-              <%= note.date %> ･ <PersonalSiteWeb.TagsComponents.inline tags={note.tags} />
+              <%= post.date %> ･ <PersonalSiteWeb.TagsComponents.inline tags={post.tags} />
             </p>
           </div>
         </div>
         <div>
-          <.link class="text-xs" navigate={~p"/notes"}>
-            Index<span class="sup pl-0.5"><%= Enum.count(@notes) %></span> →
+          <.link class="text-xs" navigate={~p"/blog"}>
+            Index<span class="sup pl-0.5"><%= Enum.count(@posts) %></span> →
           </.link>
         </div>
       </div>

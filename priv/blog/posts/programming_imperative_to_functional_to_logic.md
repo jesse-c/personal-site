@@ -148,7 +148,7 @@ Output:
 
 An alternative view of the different implementations that highlights the differences, such as length.
 
-[![Each implementation side-by-side in VS Code](/images/notes/flix-elixir-go-servers.png)](/images/notes/flix-elixir-go-servers.png)
+[![Each implementation side-by-side in VS Code](/images/blog/flix-elixir-go-servers.png)](/images/blog/flix-elixir-go-servers.png)
 
 # Summary
 

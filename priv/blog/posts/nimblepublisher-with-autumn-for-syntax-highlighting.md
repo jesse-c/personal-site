@@ -12,7 +12,7 @@ It took a few minutes to customise my different content types with NimblePublish
 
 [^1]: [NimblePublisher](https://github.com/dashbitco/nimble_publisher)
 
-[^2]: [Makeup parser for Swift](@/notes/makeup_parser_for_Swift.md)
+[^2]: [Makeup parser for Swift](@/blog/makeup_parser_for_Swift)
 
 [^3]: [Autumn](https://github.com/leandrocp/autumn)
 

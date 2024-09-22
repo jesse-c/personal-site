@@ -47,7 +47,7 @@ config :personal_site, PersonalSiteWeb.Endpoint,
   live_reload: [
     patterns: [
       ~r"priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$",
-      ~r"priv/notes/.*(md)$",
+      ~r"priv/blog/posts/.*(md)$",
       ~r"priv/projects/.*(md)$",
       ~r"priv/works/.*(md)$",
       ~r"priv/contributions/.*(md)$",

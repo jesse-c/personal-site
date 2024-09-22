@@ -1,6 +1,6 @@
-defmodule PersonalSite.Notes.Note do
+defmodule PersonalSite.Blog.Post do
   @moduledoc """
-  A note context.
+  A post context.
   """
 
   @enforce_keys [

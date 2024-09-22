@@ -10,6 +10,6 @@ Using AppCleaner[^1], search for "Safari". I removed everything except what's re
 
 NB: Be _wise_ in what you delete.
 
-![The remaining files from using AppCleaner to cleanup Safari](/images/notes/appcleaner-safari.png)
+![The remaining files from using AppCleaner to cleanup Safari](/images/blog/appcleaner-safari.png)
 
 [^1]: [AppCleaner](https://freemacsoft.net/appcleaner/)

@@ -34,7 +34,7 @@ Assume that there are links for anything. Notion, a common choice, has a way to 
 
 NB: You can open the image in a new tab, to see it in a larger size.
 
-![Example: Documentation decay for CPR SDK's README](/images/notes/documentation-decay-cpr-sdk.jpg)
+![Example: Documentation decay for CPR SDK's README](/images/blog/documentation-decay-cpr-sdk.jpg)
 
 What would this do? It can help you set off in the right way, with an appropriate amount of trust and expectations.
 
@@ -198,5 +198,5 @@ I've noticed more happening in the world of non-string treatment of code, whethe
 
 [^1]: [Wikis & verified pages](https://www.notion.so/help/wikis-and-verified-pages)
 [^2]: [Synced blocks](https://www.notion.so/help/synced-blocks)
-[^3]: [Initial release of hybrid search for Notes.app](@/notes/notes-app-hybrid-search-release)
+[^3]: [Initial release of hybrid search for Notes.app](@/blog/notes-app-hybrid-search-release)
 [^4]: [notes-app-hybrid-searchl#1](https://github.com/jesse-c/notes-app-hybrid-search/pull/1)

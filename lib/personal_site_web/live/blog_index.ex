@@ -1,24 +1,24 @@
-defmodule PersonalSiteWeb.Live.NotesIndex do
+defmodule PersonalSiteWeb.Live.BlogIndex do
   @moduledoc """
-  The notes context index page.
+  The blog context index page.
   """
 
   use PersonalSiteWeb, :live_view
 
-  alias PersonalSite.Notes
+  alias PersonalSite.Blog
 
   def inner_mount(_params, _session, socket) do
-    all_notes = Notes.all_notes()
+    all_posts = Blog.all_posts()
 
     years =
-      all_notes
+      all_posts
       |> Enum.group_by(& &1.date.year)
       |> Enum.sort_by(&elem(&1, 0), :desc)
 
     updated =
       socket
       |> assign(years: years)
-      |> assign(page_title: "Notes")
+      |> assign(page_title: "Blog")
 
     {:ok, updated}
   end
@@ -26,20 +26,20 @@ defmodule PersonalSiteWeb.Live.NotesIndex do
   def render(assigns) do
     ~H"""
     <.live_component module={PersonalSiteWeb.Live.Cursors} id="cursors" users={@users} />
-    <h1 class="text-lg"><.link navigate={~p"/notes"}>Notes</.link></h1>
+    <h1 class="text-lg"><.link navigate={~p"/blog"}>Blog</.link></h1>
     <div class="space-y-3 mt-3">
-      <p class="text-sm"><.link navigate={~p"/notes/tags"}>All tags</.link></p>
-      <div :for={{year, notes} <- @years} class="space-y-1">
+      <p class="text-sm"><.link navigate={~p"/blog/tags"}>All tags</.link></p>
+      <div :for={{year, posts} <- @years} class="space-y-1">
         <div><%= year %></div>
         <div class="space-y-3">
-          <div :for={note <- notes} class="space-y-1">
+          <div :for={post <- posts} class="space-y-1">
             <p class="text-sm">
-              <.link navigate={~p"/notes/#{note.slug}"}>
-                <%= note.title %>
+              <.link navigate={~p"/blog/#{post.slug}"}>
+                <%= post.title %>
               </.link>
             </p>
             <p class="text-xs">
-              <%= note.date %> ･ <PersonalSiteWeb.TagsComponents.inline tags={note.tags} />
+              <%= post.date %> ･ <PersonalSiteWeb.TagsComponents.inline tags={post.tags} />
             </p>
           </div>
         </div>
