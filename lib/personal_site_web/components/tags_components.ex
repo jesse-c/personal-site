@@ -7,9 +7,9 @@ defmodule PersonalSiteWeb.TagsComponents do
     ~H"""
     <%= for {tag, index} <- Enum.with_index(@tags) do %>
       <%= if index == length(@tags) - 1 do %>
-        <.link navigate={"/notes/tags/#{tag}"}><%= tag %></.link>
+        <.link navigate={"/blog/tags/#{tag}"}><%= tag %></.link>
       <% else %>
-        <.link navigate={"/notes/tags/#{tag}"}><%= tag %></.link><span>, </span>
+        <.link navigate={"/blog/tags/#{tag}"}><%= tag %></.link><span>, </span>
       <% end %>
     <% end %>
     """

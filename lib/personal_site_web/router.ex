@@ -19,10 +19,10 @@ defmodule PersonalSiteWeb.Router do
 
     live_session :default do
       live("/", Live.Index)
-      live("/notes", Live.NotesIndex)
-      live("/notes/tags", Live.NotesTagsIndex)
-      live("/notes/tags/:id", Live.NotesTagsSingle)
-      live("/notes/:id", Live.NotesSingle)
+      live("/blog", Live.BlogIndex)
+      live("/blog/tags", Live.BlogTagsIndex)
+      live("/blog/tags/:id", Live.BlogTagsSingle)
+      live("/blog/:id", Live.BlogSingle)
       live("/projects", Live.ProjectsIndex)
       live("/works", Live.WorksIndex)
       live("/contributions", Live.ContributionsIndex)

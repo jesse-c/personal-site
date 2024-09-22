@@ -12,7 +12,7 @@ Along with this, I got into a discussion with @soywood[^6] over email as I had s
 
 Up next? A Raycast extension for Comodoro[^8].
 
-[^1]: [Multi-UIs for a daemon and using gRPC to communicate locally from Rust <> Swift](@/notes/multi-uis-with-grpc.md)
+[^1]: [Multi-UIs for a daemon and using gRPC to communicate locally from Rust <> Swift](@/blog/multi-uis-with-grpc.md)
 
 [^2]: [Technology-supported activities through realtime, distributed, and collaborative interfaces](https://github.com/jesse-c/thesis)
 

@@ -6,7 +6,7 @@
 ---
 This will be a brief overview of how I _attempted_ to fine-tune an LLM on my personal messages. The goal was to 1) go through the data preparation, experimentation, and evaluation loop end-to-end, and 2) be able to side-by-side evaluate my responses to responses from the LLM. This was out of curiosity and also to practice some data and ML engineering! I'm in the process of transitioning professionally from software engineer to _eventually_ something ML engineer-esque.
 
-From those 2 goals, I'm happy with the first (I did it), and unsurprised by the second (the evaluations were relatively poor). Due to privacy, and time constraints, this note will be brief in length and in content of my messages and responses.
+From those 2 goals, I'm happy with the first (I did it), and unsurprised by the second (the evaluations were relatively poor). Due to privacy, and time constraints, this post will be brief in length and in content of my messages and responses.
 
 ## Data
 
@@ -594,4 +594,4 @@ if __name__ == "__main__":
 
 **Modal compute costs**
 
-![Modal compute costs](/images/notes/modal-llm-fine-tuning-costs.png)
+![Modal compute costs](/images/blog/modal-llm-fine-tuning-costs.png)

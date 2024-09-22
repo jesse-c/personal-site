@@ -23,11 +23,11 @@
 }
 
 @layer components {
-  .note p {
+  .post p {
     @apply text-sm;
   }
 
-  .note hr {
+  .post hr {
     @apply my-6 border-dashed;
   }
 }

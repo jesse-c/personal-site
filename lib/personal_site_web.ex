@@ -57,7 +57,7 @@ defmodule PersonalSiteWeb do
 
       alias PersonalSite.Cursors
       alias PersonalSite.Contributions
-      alias PersonalSite.Notes
+      alias PersonalSite.Blog
       alias PersonalSite.Projects
       alias PersonalSite.Works
       alias PersonalSiteWeb.Endpoint
@@ -71,7 +71,7 @@ defmodule PersonalSiteWeb do
         socket =
           socket
           |> assign(Presence.initialise(socket, self()))
-          |> assign(notes: Notes.all_notes())
+          |> assign(posts: Blog.all_posts())
           |> assign(projects: Projects.all_projects())
           |> assign(works: Works.all_works())
           |> assign(contributions: Contributions.all_contributions())
