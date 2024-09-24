@@ -17,6 +17,9 @@ defmodule PersonalSiteWeb.Router do
   scope "/", PersonalSiteWeb do
     pipe_through(:browser)
 
+    get "/notes", NotesController, :index
+    get "/notes/:id", NotesController, :single
+
     live_session :default do
       live("/", Live.Index)
       live("/blog", Live.BlogIndex)
