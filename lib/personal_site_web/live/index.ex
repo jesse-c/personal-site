@@ -105,7 +105,7 @@ defmodule PersonalSiteWeb.Live.Index do
       <div class="space-y-3">
         <h2 class="text-lg">Hello,</h2>
         <p class="text-sm">
-          I’m a ⍚ software engineer—and sometimes a ⛰ photographer or ♤ designer.
+          I’m a ⍚ software and ML engineer—and sometimes a ⛰ photographer or ♤ designer.
         </p>
         <div>
           <.link class="text-xs" navigate={~p"/about"}>More →</.link>
