@@ -6,6 +6,15 @@ defmodule PersonalSiteWeb.NotesController do
   end
 
   def single(conn, params) do
-    Phoenix.Controller.redirect(conn, to: ~p"/blog/#{params["id"]}")
+    slug =
+      case params["id"] do
+        "initial-release-of-semantic-search-for-notes-app" ->
+          "initial-release-of-hybrid-search-for-notes-app"
+
+        slug ->
+          slug
+      end
+
+    Phoenix.Controller.redirect(conn, to: ~p"/blog/#{slug}")
   end
 end

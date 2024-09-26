@@ -11,8 +11,15 @@ defmodule PersonalSiteWeb.Live.BlogSingle do
 
   @trunc_len_chars 40
 
-  def inner_mount(params, _session, socket) do
-    post = Blog.get_post_by_slug!(params["id"])
+  def inner_mount(params, _session, socket), do: maybe_redirect(params["id"], socket)
+
+  def maybe_redirect(slug, socket)
+
+  def maybe_redirect("initial-release-of-semantic-search-for-notes-app", socket),
+    do: {:ok, push_navigate(socket, to: ~p"/blog/initial-release-of-hybrid-search-for-notes-app")}
+
+  def maybe_redirect(slug, socket) do
+    post = Blog.get_post_by_slug!(slug)
 
     updated =
       socket
