@@ -198,5 +198,5 @@ I've noticed more happening in the world of non-string treatment of code, whethe
 
 [^1]: [Wikis & verified pages](https://www.notion.so/help/wikis-and-verified-pages)
 [^2]: [Synced blocks](https://www.notion.so/help/synced-blocks)
-[^3]: [Initial release of hybrid search for Notes.app](@/blog/notes-app-hybrid-search-release)
+[^3]: [Initial release of hybrid search for Notes.app](notes-app-hybrid-search-release)
 [^4]: [notes-app-hybrid-searchl#1](https://github.com/jesse-c/notes-app-hybrid-search/pull/1)

@@ -6,7 +6,77 @@
   </author>
   <id>https://j-e-s-s-e.com</id>
   <title>Blog · Jesse Claven</title>
-  <updated>2024-09-22T19:45:29.163121Z</updated>
+  <updated>2024-09-30T23:37:33.425225Z</updated>
+  <entry>
+    <link rel="alternate" href="https://j-e-s-s-e.com/blog/my-trivial-but-first-model-on-huggingface"/>
+    <content type="html">&lt;h1&gt;Welcome to ResNet-50 Embeddings Only&lt;/h1&gt;
+&lt;p&gt;This came out of &lt;em&gt;&lt;a href=&quot;preventing-posting-dupes-on-instagram&quot;&gt;Preventing posting dupes on Instagram&lt;/a&gt;&lt;/em&gt;. There&apos;s truly nothing new here, except that I&apos;ve uploaded it as a stand-alone model&lt;sup class=&quot;footnote-ref&quot;&gt;&lt;a href=&quot;#fn-1&quot; id=&quot;fnref-1&quot; data-footnote-ref&gt;1&lt;/a&gt;&lt;/sup&gt;. I appreciate the work of the many others, that this is based on.&lt;/p&gt;
+&lt;section class=&quot;footnotes&quot; data-footnotes&gt;
+&lt;ol&gt;
+&lt;li id=&quot;fn-1&quot;&gt;
+&lt;p&gt;&lt;a href=&quot;https://xkcd.com/1425/&quot;&gt;https://huggingface.co/jxtc/resnet-50-embeddings&lt;/a&gt; &lt;a href=&quot;#fnref-1&quot; class=&quot;footnote-backref&quot; data-footnote-backref data-footnote-backref-idx=&quot;1&quot; aria-label=&quot;Back to reference 1&quot;&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/section&gt;
+</content>
+    <author>
+      <name>Jesse Claven</name>
+      <uri>https://j-e-s-s-e.com</uri>
+    </author>
+    <id>my-trivial-but-first-model-on-huggingface</id>
+    <title>My trivial, but first, model on HuggingFace</title>
+    <updated>2024-09-30T00:00:00Z</updated>
+  </entry>
+  <entry>
+    <link rel="alternate" href="https://j-e-s-s-e.com/blog/preventing-posting-dupes-on-instagram"/>
+    <content type="html">&lt;h1&gt;What&apos;s now simple&lt;/h1&gt;
+&lt;p&gt;One of the things I&apos;ve done continuously for a while is photography. Recently, I did my first paid shoot, at an art gallery opening, for one of the artists. Otherwise, it&apos;s simply things from my life, like anyone. I&apos;ve almost posted a photo twice before, if it&apos;s from a previous month or year.&lt;/p&gt;
+&lt;p&gt;As with others, I was recently reminded of XKCD 1425 (Tasks) &lt;sup class=&quot;footnote-ref&quot;&gt;&lt;a href=&quot;#fn-1&quot; id=&quot;fnref-1&quot; data-footnote-ref&gt;1&lt;/a&gt;&lt;/sup&gt; by Simon Willison &lt;sup class=&quot;footnote-ref&quot;&gt;&lt;a href=&quot;#fn-2&quot; id=&quot;fnref-2&quot; data-footnote-ref&gt;2&lt;/a&gt;&lt;/sup&gt;. That means that I can easily solve this problem for myself.&lt;/p&gt;
+&lt;h1&gt;Models considered&lt;/h1&gt;
+&lt;p&gt;Considering that I may want to do this on my iPhone, I looked at well-known models that could be run. ResNet-50 and MobileCLIP came up as suitable solutions. ResNet-50 requires a modification, since its architecture is to classify an image into 1 of 1,000 distinct classes. I remove that final layer to get a model, where I can get the embeddings from. Here is a common example of the architecture &lt;sup class=&quot;footnote-ref&quot;&gt;&lt;a href=&quot;#fn-3&quot; id=&quot;fnref-3&quot; data-footnote-ref&gt;3&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/blog/resnet-50.jpg&quot; alt=&quot;ResNet-50 architecture&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;MobleCLIP was used as is&lt;/p&gt;
+&lt;h1&gt;Embedding similarity distribution analysis&lt;/h1&gt;
+&lt;p&gt;As someone relatively new to the more in-depth analysis of ML model performance, I did a rather simple attempt. Simply as well, I was curious how similar my photos are. I used a similarity matrix, created through Torch. I used just the dot product for similarity. This is simple, possibly a little wrong, but sufficient.&lt;/p&gt;
+&lt;p&gt;The code is available in a repository online: &lt;a href=&quot;https://github.com/jesse-c/instagram-image-already-posted-check&quot;&gt;jesse-c/instagram-image-already-posted-check&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Distribution of image similarities for ResNet-50:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/blog/instagram_dupe_check_similarity_distribution_resnet50.png&quot; alt=&quot;Similarity distribution: ResNet-50&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;Distribution of image similarities for MobileCLIP (S2):&lt;/p&gt;
+&lt;p&gt;S2 was picked, based on general recommendations read online, for similar tasks.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/blog/instagram_dupe_check_similarity_distribution_mobileclip.png&quot; alt=&quot;Similarity distribution: Mobile&quot; /&gt;&lt;/p&gt;
+&lt;h2&gt;I &lt;em&gt;had&lt;/em&gt; posted a dupe&lt;/h2&gt;
+&lt;p&gt;When running the analysis, and looking at the most similar pair, I did discover that I had posted a dupe! It was the same photo, albeit with slightly different editing.&lt;/p&gt;
+&lt;h2&gt;Why ResNet-50 may be preferable&lt;/h2&gt;
+&lt;p&gt;There&apos;s higher similarity scores, with the distribution being centered around higher similarity values. This suggests it may be more sensitive to subtle differences.&lt;/p&gt;
+&lt;p&gt;A tighter distribution means that it could be easier to set a clear threshold, for determining if a candidate photo is a dupe. Ultimately, this would still be a manual process, but in an automated sense, you&apos;d want to avoid surfacing candidates for a manual check.&lt;/p&gt;
+&lt;p&gt;The symmetry indicates that there isn&apos;t bias towards any particular kind of photo.&lt;/p&gt;
+&lt;h1&gt;Using it on a candidate photo&lt;/h1&gt;
+&lt;p&gt;Here&apos;s the candidate photo and the top k similar images. Fundamentally, it was helpful! Here are the results:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/blog/instagram-embeddings-check-dupe.jpg&quot; alt=&quot;Top 5 similar images to candidate photo&quot; /&gt;&lt;/p&gt;
+&lt;h1&gt;Next steps&lt;/h1&gt;
+&lt;p&gt;Often if I&apos;m editing photos, I&apos;m not at my computer. Having this available as a private online service for myself would be helpful. Even better would be an offline iOS app! This could possibly be used by others.&lt;/p&gt;
+&lt;section class=&quot;footnotes&quot; data-footnotes&gt;
+&lt;ol&gt;
+&lt;li id=&quot;fn-1&quot;&gt;
+&lt;p&gt;&lt;a href=&quot;https://xkcd.com/1425/&quot;&gt;https://xkcd.com/1425/&lt;/a&gt; &lt;a href=&quot;#fnref-1&quot; class=&quot;footnote-backref&quot; data-footnote-backref data-footnote-backref-idx=&quot;1&quot; aria-label=&quot;Back to reference 1&quot;&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&quot;fn-2&quot;&gt;
+&lt;p&gt;&lt;a href=&quot;https://simonwillison.net/2024/Sep/24/xkcd-1425-turns-ten-years-old-today&quot;&gt;https://simonwillison.net/2024/Sep/24/xkcd-1425-turns-ten-years-old-today&lt;/a&gt; &lt;a href=&quot;#fnref-2&quot; class=&quot;footnote-backref&quot; data-footnote-backref data-footnote-backref-idx=&quot;2&quot; aria-label=&quot;Back to reference 2&quot;&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&quot;fn-3&quot;&gt;
+&lt;p&gt;&lt;a href=&quot;https://medium.com/@nitishkundu1993/exploring-resnet50-an-in-depth-look-at-the-model-architecture-and-code-implementation-d8d8fa67e46f&quot;&gt;https://medium.com/@nitishkundu1993/exploring-resnet50-an-in-depth-look-at-the-model-architecture-and-code-implementation-d8d8fa67e46f&lt;/a&gt; &lt;a href=&quot;#fnref-3&quot; class=&quot;footnote-backref&quot; data-footnote-backref data-footnote-backref-idx=&quot;3&quot; aria-label=&quot;Back to reference 3&quot;&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/section&gt;
+</content>
+    <author>
+      <name>Jesse Claven</name>
+      <uri>https://j-e-s-s-e.com</uri>
+    </author>
+    <id>preventing-posting-dupes-on-instagram</id>
+    <title>Preventing posting dupes on Instagram</title>
+    <updated>2024-09-27T00:00:00Z</updated>
+  </entry>
   <entry>
     <link rel="alternate" href="https://j-e-s-s-e.com/blog/explicitly-showing-and-checking-documentation-decay"/>
     <content type="html">&lt;h1&gt;The problem with manual links&lt;/h1&gt;
@@ -175,7 +245,7 @@ Please check the links above.
 &lt;p&gt;&lt;a href=&quot;https://www.notion.so/help/synced-blocks&quot;&gt;Synced blocks&lt;/a&gt; &lt;a href=&quot;#fnref-2&quot; class=&quot;footnote-backref&quot; data-footnote-backref data-footnote-backref-idx=&quot;2&quot; aria-label=&quot;Back to reference 2&quot;&gt;↩&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li id=&quot;fn-3&quot;&gt;
-&lt;p&gt;&lt;a href=&quot;@/blog/notes-app-hybrid-search-release&quot;&gt;Initial release of hybrid search for Notes.app&lt;/a&gt; &lt;a href=&quot;#fnref-3&quot; class=&quot;footnote-backref&quot; data-footnote-backref data-footnote-backref-idx=&quot;3&quot; aria-label=&quot;Back to reference 3&quot;&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;notes-app-hybrid-search-release&quot;&gt;Initial release of hybrid search for Notes.app&lt;/a&gt; &lt;a href=&quot;#fnref-3&quot; class=&quot;footnote-backref&quot; data-footnote-backref data-footnote-backref-idx=&quot;3&quot; aria-label=&quot;Back to reference 3&quot;&gt;↩&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li id=&quot;fn-4&quot;&gt;
 &lt;p&gt;&lt;a href=&quot;https://github.com/jesse-c/notes-app-hybrid-search/pull/1&quot;&gt;notes-app-hybrid-searchl#1&lt;/a&gt; &lt;a href=&quot;#fnref-4&quot; class=&quot;footnote-backref&quot; data-footnote-backref data-footnote-backref-idx=&quot;4&quot; aria-label=&quot;Back to reference 4&quot;&gt;↩&lt;/a&gt;&lt;/p&gt;
@@ -215,25 +285,21 @@ Please check the links above.
   </entry>
   <entry>
     <link rel="alternate" href="https://j-e-s-s-e.com/blog/initial-release-of-hybrid-search-for-notes-app"/>
-    <content type="html">&lt;ul&gt;
-&lt;li&gt;Introduction&lt;/li&gt;
-&lt;/ul&gt;
+    <content type="html">&lt;h1&gt;Introduction&lt;/h1&gt;
 &lt;p&gt;One of the ways I use Notes.app is for having a Shortcut that creates a daily note, titled as the current day (e.g. &quot;2024-09-08&quot;), where I use it for journal-esque writings, dropping links to products or articles, project ideas, and &lt;em&gt;anything&lt;/em&gt;.&lt;/p&gt;
 &lt;p&gt;Unfortunately, the keyword search in Notes.app isn&apos;t always sufficient. I&apos;m sure Apple will add something like this eventually, and for now, I&apos;ve cobbled something together.&lt;/p&gt;
 &lt;p&gt;You can try it yourself locally: &lt;a href=&quot;https://github.com/jesse-c/notes-app-hybrid-search/&quot;&gt;https://github.com/jesse-c/notes-app-hybrid-search/&lt;/a&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Evaluation&lt;/li&gt;
-&lt;/ul&gt;
+&lt;h1&gt;Evaluation&lt;/h1&gt;
 &lt;p&gt;I&apos;ve tried 2 different models so far, both of which were similar in quality. Along with that, I&apos;ve manually done searches for queries that in the past, were things I&apos;ve struggled to find again. It&apos;s worked reasonably well. The output needs to be tweaked to have a more useful &lt;code&gt;snippet&lt;/code&gt;.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;What&apos;s next&lt;/li&gt;
-&lt;/ul&gt;
+&lt;h1&gt;What&apos;s next&lt;/h1&gt;
 &lt;p&gt;There&apos;s a few things that I&apos;ll be adding:&lt;/p&gt;
-&lt;p&gt;• Evaluate different models&lt;/p&gt;
-&lt;p&gt;• Host the model in Vespa&lt;/p&gt;
-&lt;p&gt;• Deploy it, to access it on my phone&lt;/p&gt;
-&lt;p&gt;• Use sentences over full bodies&lt;/p&gt;
-&lt;p&gt;• Enrich data, for example by pulling link titles and summaries and creating embeddings from images&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Evaluate different models&lt;/li&gt;
+&lt;li&gt;Host the model in Vespa&lt;/li&gt;
+&lt;li&gt;Deploy it, to access it on my phone&lt;/li&gt;
+&lt;li&gt;Use sentences over full bodies&lt;/li&gt;
+&lt;li&gt;Enrich data, for example by pulling link titles and summaries and creating embeddings from images&lt;/li&gt;
+&lt;/ul&gt;
 </content>
     <author>
       <name>Jesse Claven</name>
@@ -908,7 +974,7 @@ Please check the links above.
 &lt;p&gt;&lt;a href=&quot;https://github.com/dashbitco/nimble_publisher&quot;&gt;NimblePublisher&lt;/a&gt; &lt;a href=&quot;#fnref-1&quot; class=&quot;footnote-backref&quot; data-footnote-backref data-footnote-backref-idx=&quot;1&quot; aria-label=&quot;Back to reference 1&quot;&gt;↩&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li id=&quot;fn-2&quot;&gt;
-&lt;p&gt;&lt;a href=&quot;@/blog/makeup_parser_for_Swift&quot;&gt;Makeup parser for Swift&lt;/a&gt; &lt;a href=&quot;#fnref-2&quot; class=&quot;footnote-backref&quot; data-footnote-backref data-footnote-backref-idx=&quot;2&quot; aria-label=&quot;Back to reference 2&quot;&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;makeup-parser-for-swift&quot;&gt;Makeup parser for Swift&lt;/a&gt; &lt;a href=&quot;#fnref-2&quot; class=&quot;footnote-backref&quot; data-footnote-backref data-footnote-backref-idx=&quot;2&quot; aria-label=&quot;Back to reference 2&quot;&gt;↩&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li id=&quot;fn-3&quot;&gt;
 &lt;p&gt;&lt;a href=&quot;https://github.com/leandrocp/autumn&quot;&gt;Autumn&lt;/a&gt; &lt;a href=&quot;#fnref-3&quot; class=&quot;footnote-backref&quot; data-footnote-backref data-footnote-backref-idx=&quot;3&quot; aria-label=&quot;Back to reference 3&quot;&gt;↩&lt;/a&gt;&lt;/p&gt;
@@ -1046,7 +1112,7 @@ def main(): Unit \ IO =
 &lt;p&gt;&lt;a href=&quot;https://flix.dev&quot;&gt;Flix&lt;/a&gt; &lt;a href=&quot;#fnref-1&quot; class=&quot;footnote-backref&quot; data-footnote-backref data-footnote-backref-idx=&quot;1&quot; aria-label=&quot;Back to reference 1&quot;&gt;↩&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li id=&quot;fn-2&quot;&gt;
-&lt;p&gt;Beyond a previous &lt;a href=&quot;@/blog/programming_imperative_to_functional_to_logic&quot;&gt;experiment&lt;/a&gt; trying logic programming with it &lt;a href=&quot;#fnref-2&quot; class=&quot;footnote-backref&quot; data-footnote-backref data-footnote-backref-idx=&quot;2&quot; aria-label=&quot;Back to reference 2&quot;&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Beyond a previous &lt;a href=&quot;programming-imperative-to-functional-to-logic&quot;&gt;experiment&lt;/a&gt; trying logic programming with it &lt;a href=&quot;#fnref-2&quot; class=&quot;footnote-backref&quot; data-footnote-backref data-footnote-backref-idx=&quot;2&quot; aria-label=&quot;Back to reference 2&quot;&gt;↩&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;/section&gt;
@@ -1255,7 +1321,7 @@ def main(): Unit \ IO =
 &lt;section class=&quot;footnotes&quot; data-footnotes&gt;
 &lt;ol&gt;
 &lt;li id=&quot;fn-1&quot;&gt;
-&lt;p&gt;&lt;a href=&quot;@/blog/multi-uis-with-grpc.md&quot;&gt;Multi-UIs for a daemon and using gRPC to communicate locally from Rust &lt;&gt; Swift&lt;/a&gt; &lt;a href=&quot;#fnref-1&quot; class=&quot;footnote-backref&quot; data-footnote-backref data-footnote-backref-idx=&quot;1&quot; aria-label=&quot;Back to reference 1&quot;&gt;↩&lt;/a&gt; &lt;a href=&quot;#fnref-1-2&quot; class=&quot;footnote-backref&quot; data-footnote-backref data-footnote-backref-idx=&quot;1-2&quot; aria-label=&quot;Back to reference 1-2&quot;&gt;↩&lt;sup class=&quot;footnote-ref&quot;&gt;2&lt;/sup&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;multi-uis-for-a-daemon-and-using-grpc-to-communicate-locally-from-rust-swift&quot;&gt;Multi-UIs for a daemon and using gRPC to communicate locally from Rust &lt;&gt; Swift&lt;/a&gt; &lt;a href=&quot;#fnref-1&quot; class=&quot;footnote-backref&quot; data-footnote-backref data-footnote-backref-idx=&quot;1&quot; aria-label=&quot;Back to reference 1&quot;&gt;↩&lt;/a&gt; &lt;a href=&quot;#fnref-1-2&quot; class=&quot;footnote-backref&quot; data-footnote-backref data-footnote-backref-idx=&quot;1-2&quot; aria-label=&quot;Back to reference 1-2&quot;&gt;↩&lt;sup class=&quot;footnote-ref&quot;&gt;2&lt;/sup&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li id=&quot;fn-2&quot;&gt;
 &lt;p&gt;&lt;a href=&quot;https://github.com/jesse-c/thesis&quot;&gt;Technology-supported activities through realtime, distributed, and collaborative interfaces&lt;/a&gt; &lt;a href=&quot;#fnref-2&quot; class=&quot;footnote-backref&quot; data-footnote-backref data-footnote-backref-idx=&quot;2&quot; aria-label=&quot;Back to reference 2&quot;&gt;↩&lt;/a&gt;&lt;/p&gt;

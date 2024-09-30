@@ -12,18 +12,11 @@ Along with this, I got into a discussion with @soywood[^6] over email as I had s
 
 Up next? A Raycast extension for Comodoro[^8].
 
-[^1]: [Multi-UIs for a daemon and using gRPC to communicate locally from Rust <> Swift](@/blog/multi-uis-with-grpc.md)
-
+[^1]: [Multi-UIs for a daemon and using gRPC to communicate locally from Rust <> Swift](multi-uis-for-a-daemon-and-using-grpc-to-communicate-locally-from-rust-swift)
 [^2]: [Technology-supported activities through realtime, distributed, and collaborative interfaces](https://github.com/jesse-c/thesis)
-
 [^3]: [[New Extension] Apple Mail #4080](https://github.com/raycast/extensions/pull/4080)
-
 [^4]: [Himalaya (CLI)](https://github.com/soywod/himalaya)
-
 [^5]: [Himalaya (Raycast)](https://www.raycast.com/jns/himalaya)
-
 [^6]: [@soywood](https://github.com/soywod)
-
 [^7]: [Pimalaya](https://pimalaya.org)
-
 [^8]: [Comodoro](https://pimalaya.org/comodoro/)

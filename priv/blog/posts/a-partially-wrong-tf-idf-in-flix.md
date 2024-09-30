@@ -119,4 +119,4 @@ def main(): Unit \ IO =
 
 [^1]: [Flix](https://flix.dev)
 
-[^2]: Beyond a previous [experiment](@/blog/programming_imperative_to_functional_to_logic) trying logic programming with it
+[^2]: Beyond a previous [experiment](programming-imperative-to-functional-to-logic) trying logic programming with it
