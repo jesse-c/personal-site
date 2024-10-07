@@ -56,7 +56,7 @@ defmodule PersonalSite.MixProject do
       {:castore, ">= 0.0.0"},
       {:timex, "~> 3.7"},
       {:atomex, "0.5.1"},
-      {:testcontainers, "~> 1.9.0"},
+      {:testcontainers, "~> 1.10.5"},
       {:sentry, "~> 10.7.1"},
       {:hackney, "~> 1.20.1"},
       {:tzdata, "~> 1.1"},
