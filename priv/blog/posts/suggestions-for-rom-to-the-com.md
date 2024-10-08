@@ -10,4 +10,4 @@ You're now able to add your own suggestions:
 
 ![Screenshot of Rom-to-the-Com suggestions feature](/images/blog/rom-to-the-com-suggestions.png)
 
-Have fun at  [https://www.rom-to-the-com.com](https://www.rom-to-the-com.com).
+Have fun at [https://www.rom-to-the-com.com](https://www.rom-to-the-com.com).
