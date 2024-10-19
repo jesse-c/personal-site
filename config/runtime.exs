@@ -33,12 +33,16 @@ if config_env() == :dev do
     opts: []
 
   config :personal_site, PersonalSite.Shoutbox, max: 5
+
+  config :personal_site, PersonalSite.InstagramDupeChecker, url: "localhost", port: 8800
 end
 
 if config_env() == :test do
   config :personal_site, PersonalSite.Plausible, data_domain: nil
 
   config :personal_site, PersonalSite.Shoutbox, max: 2
+
+  config :personal_site, PersonalSite.InstagramDupeChecker, url: "localhost", port: 8800
 end
 
 config :tzdata, :autoupdate, :disabled
@@ -83,6 +87,10 @@ if config_env() == :prod do
     ]
 
   config :personal_site, PersonalSite.Shoutbox, max: 100
+
+  config :personal_site, PersonalSite.InstagramDupeChecker,
+    url: System.get_env("INSTAGRAM_DUPE_CHECKER_URL"),
+    port: System.get_env("INSTAGRAM_DUPE_CHECKER_PORT")
 
   config :personal_site, PersonalSiteWeb.Endpoint,
     url: [host: host, port: 443, scheme: "https"],
