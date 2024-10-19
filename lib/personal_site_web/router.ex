@@ -33,6 +33,7 @@ defmodule PersonalSiteWeb.Router do
       live("/about", Live.About)
       live("/contact", Live.Contact)
       live("/education", Live.Education)
+      live("/apps/instagram-dupe-checker", Live.InstagramDupeChecker)
     end
 
     get "/feed.xml", FeedController, :index
