@@ -23,6 +23,15 @@
 }
 
 @layer components {
+  main a {
+    @apply underline;
+    @apply hover:underline;
+  }
+
+  .post a {
+    @apply underline;
+  }
+
   .post p {
     @apply text-sm;
   }
