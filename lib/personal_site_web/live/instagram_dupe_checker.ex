@@ -100,10 +100,7 @@ defmodule PersonalSiteWeb.Live.InstagramDupeChecker do
                   <span>
                     #<%= image["rank"] %> at <%= Float.round(image["similarity_percentage"], 2) %>%
                   </span>
-                  <img
-                    src={"http://#{Application.get_env(:personal_site, PersonalSite.InstagramDupeChecker)[:url]}:#{Application.get_env(:personal_site, PersonalSite.InstagramDupeChecker)[:port]}/images/#{image["filename"]}"}
-                    class="object-contain"
-                  />
+                  <img src={"data:image/jpeg;base64,#{image["image_base64"]}"} class="object-contain" />
                 </div>
               <% end %>
             </div>
@@ -162,6 +159,7 @@ defmodule PersonalSiteWeb.Live.InstagramDupeChecker do
       IO.puts("Rank: #{image["rank"]}")
       IO.puts("Filename: #{image["filename"]}")
       IO.puts("Similarity: #{image["similarity_percentage"]}%")
+      IO.puts("Base64: #{String.slice(image["image_base64"], 0, 10)}")
       IO.puts("---")
     end)
   end
