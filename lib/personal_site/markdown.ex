@@ -7,7 +7,7 @@ defmodule PersonalSite.MDExConverter do
     if Path.extname(filepath) in [".md", ".markdown"] do
       opts = [extension: [footnotes: true]]
 
-      MDEx.to_html(body, opts)
+      MDEx.to_html!(body, opts)
     end
   end
 end
