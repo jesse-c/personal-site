@@ -56,23 +56,6 @@ defmodule PersonalSiteWeb.Live.InstagramDupeChecker do
     end
   end
 
-  # Results
-  # Rank: 1
-  # Filename: 3238857580280753202_3238857575079624524.jpg
-  # Similarity: 24.66%
-  # Rank: 2
-  # Filename: 3420679611513971704_3420679602470933235.jpg
-  # Similarity: 24.26%
-  # Rank: 3
-  # Filename: 3451077162071001732_3451077147542092738.jpg
-  # Similarity: 24.23%
-  # Rank: 4
-  # Filename: 3122222099192925412_3122222094176616185.jpg
-  # Similarity: 24.2%
-  # Rank: 5
-  # Filename: 2097200376928238843_2097200374847777909.jpg
-  # Similarity: 24.09%
-
   def inner_mount(_params, _session, socket) do
     {
       :ok,
@@ -157,32 +140,6 @@ defmodule PersonalSiteWeb.Live.InstagramDupeChecker do
     else
       response =
         consume_uploaded_entries(socket, :candidate, fn %{path: image_path}, _entry ->
-          # # Example
-          #
-          # ## Path
-          #
-          # "/var/folders/sn/jwxlp9dd6d315j7rmblgr37m0000gn/T/plug-1729-TfDS/live_view_upload-1729374153-244860115245-2"
-          #
-          # ## Entry
-          #
-          # %Phoenix.LiveView.UploadEntry{
-          #   progress: 100,
-          #   preflighted?: true,
-          #   upload_config: :candidate,
-          #   upload_ref: "phx-F__4n6yZa_rYt0rC",
-          #   ref: "0",
-          #   uuid: "644e11e3-59fe-4472-8ea5-ef81c058c715",
-          #   valid?: true,
-          #   done?: true,
-          #   cancelled?: false,
-          #   client_name: "DSC01605.jpeg",
-          #   client_relative_path: "",
-          #   client_size: 11571188,
-          #   client_type: "image/jpeg",
-          #   client_last_modified: 1729030404000,
-          #   client_meta: nil
-          # }
-
           response = PredictionClient.get_similar_images(image_path)
 
           print_prediction(response)
