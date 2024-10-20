@@ -101,7 +101,7 @@ defmodule PersonalSiteWeb.Live.InstagramDupeChecker do
           <.live_file_input upload={@uploads.candidate} class="rounded-sm text-sm block" />
           <button
             type="submit"
-            class="font-normal text-brand hover:text-brand-dark dark:text-brand dark:hover:text-brand-dark underline transition-colors duration-200 text-sm block"
+            class="border border-solid rounded-sm border-black dark:border-white hover:bg-black dark:hover:bg-white text-black dark:text-white hover:text-white dark:hover:text-black transition-colors p-2 mb-6 text-xs max-w-fit"
           >
             Upload
           </button>
@@ -113,11 +113,14 @@ defmodule PersonalSiteWeb.Live.InstagramDupeChecker do
           <% [{:ok, similar_images}] -> %>
             <div class="gap-3 text-sm flex flex-col md:flex-row">
               <%= for image <- similar_images do %>
-                <div class="w-full lg:w-1/5 p-3 rounded-sm border border-dashed border-black dark:border-white h-16 space-y-3">
+                <div class="w-full lg:w-1/5 p-3 rounded-sm border border-dashed border-black dark:border-white space-y-3">
                   <span>
                     #<%= image["rank"] %> at <%= Float.round(image["similarity_percentage"], 2) %>%
                   </span>
-                  <img src={"http://#{Application.get_env(:personal_site, PersonalSite.InstagramDupeChecker)[:url]}:#{Application.get_env(:personal_site, PersonalSite.InstagramDupeChecker)[:port]}/images/#{image["filename"]}"} />
+                  <img
+                    src={"http://#{Application.get_env(:personal_site, PersonalSite.InstagramDupeChecker)[:url]}:#{Application.get_env(:personal_site, PersonalSite.InstagramDupeChecker)[:port]}/images/#{image["filename"]}"}
+                    class="object-contain"
+                  />
                 </div>
               <% end %>
             </div>
