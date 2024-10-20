@@ -97,9 +97,6 @@ defmodule PersonalSiteWeb.Live.InstagramDupeChecker do
               <hr class="border-dashed" />
               <h2 class="text-md">Candidate</h2>
               <%= for entry <- @uploads.candidate.entries do %>
-                <figure>
-                  <.live_img_preview entry={entry} />
-                </figure>
                 <div class="gap-3 text-sm flex flex-col md:flex-row">
                   <div class="w-100 lg:w-50">
                     <span><%= String.slice(entry.client_name, 0..9) %>&hellip;</span>
@@ -119,6 +116,9 @@ defmodule PersonalSiteWeb.Live.InstagramDupeChecker do
                 <%= for err <- upload_errors(@uploads.candidate, entry) do %>
                   <p class="alert alert-danger"><%= error_to_string(err) %></p>
                 <% end %>
+                <figure>
+                  <.live_img_preview entry={entry} />
+                </figure>
               <% end %>
               <%= for err <- upload_errors(@uploads.candidate) do %>
                 <p class="alert alert-danger"><%= error_to_string(err) %></p>
