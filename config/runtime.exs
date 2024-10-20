@@ -34,7 +34,7 @@ if config_env() == :dev do
 
   config :personal_site, PersonalSite.Shoutbox, max: 5
 
-  config :personal_site, PersonalSite.InstagramDupeChecker, url: "localhost", port: 8800
+  config :personal_site, PersonalSite.InstagramDupeChecker, url: "[::1]", port: 8800
 end
 
 if config_env() == :test do
@@ -42,7 +42,7 @@ if config_env() == :test do
 
   config :personal_site, PersonalSite.Shoutbox, max: 2
 
-  config :personal_site, PersonalSite.InstagramDupeChecker, url: "localhost", port: 8800
+  config :personal_site, PersonalSite.InstagramDupeChecker, url: "[::1]", port: 8800
 end
 
 config :tzdata, :autoupdate, :disabled

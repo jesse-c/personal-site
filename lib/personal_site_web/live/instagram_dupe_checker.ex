@@ -12,6 +12,14 @@ defmodule PersonalSiteWeb.Live.InstagramDupeChecker do
 
     use Tesla
 
+    plug Tesla.Middleware.Logger
+
+    adapter(Tesla.Adapter.Hackney,
+      transport_opts: [
+        inet6: true
+      ]
+    )
+
     def get_similar_images(image_path) do
       url = Application.get_env(:personal_site, PersonalSite.InstagramDupeChecker)[:url]
       port = Application.get_env(:personal_site, PersonalSite.InstagramDupeChecker)[:port]
