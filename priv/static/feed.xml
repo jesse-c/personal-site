@@ -6,11 +6,11 @@
   </author>
   <id>https://j-e-s-s-e.com</id>
   <title>Blog · Jesse Claven</title>
-  <updated>2024-10-20T19:47:22.802978Z</updated>
+  <updated>2024-10-20T22:20:16.386229Z</updated>
   <entry>
     <link rel="alternate" href="https://j-e-s-s-e.com/blog/new-app-check-if-i-wouldve-posted-an-image-on-instagram"/>
     <content type="html">&lt;p&gt;This is an implementation&lt;sup class=&quot;footnote-ref&quot;&gt;&lt;a href=&quot;#fn-1&quot; id=&quot;fnref-1&quot; data-footnote-ref&gt;1&lt;/a&gt;&lt;/sup&gt; as a follow-up to a previous post&lt;sup class=&quot;footnote-ref&quot;&gt;&lt;a href=&quot;#fn-2&quot; id=&quot;fnref-2&quot; data-footnote-ref&gt;2&lt;/a&gt;&lt;/sup&gt; about preventing posting dupes on Instagram, through a simple ML model.&lt;/p&gt;
-&lt;p&gt;For now, you can upload an image, and it&apos;ll give the top k (5, at the moment), images that your image is similar to. All uploaded images are stored in a temporary directory, and are immediately deleted, after inference.&lt;/p&gt;
+&lt;p&gt;For now, you can upload an image, and it&apos;ll give the top k (5, at the moment), images that your image is similar to.&lt;/p&gt;
 &lt;p&gt;This approach makes it so that I can use it, which is the main priority, and also lets others have fun with it. Usually if I&apos;m editing photos, I have access to the internet as well. I have thought of an offline- and mobily-only version of how it could be built.&lt;/p&gt;
 &lt;p&gt;Check it out at &lt;a href=&quot;/apps/instagram-dupe-checker&quot;&gt;Instagram dupe checker&lt;/a&gt;.&lt;/p&gt;
 &lt;section class=&quot;footnotes&quot; data-footnotes&gt;
