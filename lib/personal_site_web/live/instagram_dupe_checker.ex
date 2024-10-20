@@ -56,13 +56,31 @@ defmodule PersonalSiteWeb.Live.InstagramDupeChecker do
     end
   end
 
+  # Results
+  # Rank: 1
+  # Filename: 3238857580280753202_3238857575079624524.jpg
+  # Similarity: 24.66%
+  # Rank: 2
+  # Filename: 3420679611513971704_3420679602470933235.jpg
+  # Similarity: 24.26%
+  # Rank: 3
+  # Filename: 3451077162071001732_3451077147542092738.jpg
+  # Similarity: 24.23%
+  # Rank: 4
+  # Filename: 3122222099192925412_3122222094176616185.jpg
+  # Similarity: 24.2%
+  # Rank: 5
+  # Filename: 2097200376928238843_2097200374847777909.jpg
+  # Similarity: 24.09%
+
   def inner_mount(_params, _session, socket) do
     {
       :ok,
       socket
       |> assign(:response, nil)
       |> assign(page_title: "Instagram Dupe Checker")
-      |> allow_upload(:candidate,
+      |> allow_upload(
+        :candidate,
         accept: ~w(.jpg .jpeg),
         max_entries: 1,
         max_file_size: 12_000_000
@@ -73,64 +91,41 @@ defmodule PersonalSiteWeb.Live.InstagramDupeChecker do
   def render(assigns) do
     ~H"""
     <.live_component module={PersonalSiteWeb.Live.Cursors} id="cursors" users={@users} />
-    <div>
-      <h1>Instagram dupe checker</h1>
+    <div class="space-y-3">
+      <h1 class="text-lg">Instagram dupe checker</h1>
+      <p class="text-sm">
+        Upload an image to find the likelihood of me having a posted a picture like this, including similar photos.
+      </p>
+      <div class="lg:w-1/2 font-normal mb-8 p-3 rounded-sm border border-black dark:border-white">
+        <form id="upload-form" phx-submit="save" phx-change="validate" class="space-y-3">
+          <.live_file_input upload={@uploads.candidate} class="rounded-sm text-sm block" />
+          <button
+            type="submit"
+            class="font-normal text-brand hover:text-brand-dark dark:text-brand dark:hover:text-brand-dark underline transition-colors duration-200 text-sm block"
+          >
+            Upload
+          </button>
+        </form>
+      </div>
       <%= if @response do %>
-        <hr />
-        <section class="results">
-          <h2>Results</h2>
-          <%= case @response do %>
-            <% [{:ok, similar_images}] -> %>
-              <ul>
-                <%= for image <- similar_images do %>
-                  <li>
-                    <p>Rank: <%= image["rank"] %></p>
-                    <p>Filename: <%= image["filename"] %></p>
-                    <p>Similarity: <%= Float.round(image["similarity_percentage"], 2) %>%</p>
-                  </li>
-                <% end %>
-              </ul>
-            <% [{:error, message}] -> %>
-              <p class="alert alert-danger">Error: <%= message %></p>
-          <% end %>
-        </section>
-        <hr />
+        <h2 class="text-md">Results</h2>
+        <%= case @response do %>
+          <% [{:ok, similar_images}] -> %>
+            <div class="gap-3 text-sm flex flex-col md:flex-row">
+              <%= for image <- similar_images do %>
+                <div class="w-full lg:w-1/5 p-3 rounded-sm border border-dashed border-black dark:border-white h-16 space-y-3">
+                  <span>
+                    #<%= image["rank"] %> at <%= Float.round(image["similarity_percentage"], 2) %>%
+                  </span>
+                  <img src={"http://#{Application.get_env(:personal_site, PersonalSite.InstagramDupeChecker)[:url]}:#{Application.get_env(:personal_site, PersonalSite.InstagramDupeChecker)[:port]}/images/#{image["filename"]}"} />
+                </div>
+              <% end %>
+            </div>
+          <% [{:error, message}] -> %>
+            <p class="alert alert-danger">Error: <%= message %></p>
+        <% end %>
       <% end %>
     </div>
-    <form id="upload-form" phx-submit="save" phx-change="validate">
-      <.live_file_input upload={@uploads.candidate} />
-      <button type="submit">Upload</button>
-    </form>
-
-    <section phx-drop-target={@uploads.candidate.ref}>
-      <%= for entry <- @uploads.candidate.entries do %>
-        <article class="upload-entry">
-          <figure>
-            <.live_img_preview entry={entry} />
-            <figcaption><%= entry.client_name %></figcaption>
-          </figure>
-
-          <progress value={entry.progress} max="100"><%= entry.progress %>%</progress>
-
-          <button
-            type="button"
-            phx-click="cancel-upload"
-            phx-value-ref={entry.ref}
-            aria-label="cancel"
-          >
-            &times;
-          </button>
-
-          <%= for err <- upload_errors(@uploads.candidate, entry) do %>
-            <p class="alert alert-danger"><%= error_to_string(err) %></p>
-          <% end %>
-        </article>
-      <% end %>
-
-      <%= for err <- upload_errors(@uploads.candidate) do %>
-        <p class="alert alert-danger"><%= error_to_string(err) %></p>
-      <% end %>
-    </section>
     """
   end
 
@@ -214,9 +209,4 @@ defmodule PersonalSiteWeb.Live.InstagramDupeChecker do
   defp print_prediction({:error, message}) do
     IO.puts("Error: #{message}")
   end
-
-  defp error_to_string(error)
-  defp error_to_string(:too_large), do: "Too large"
-  defp error_to_string(:too_many_files), do: "You have selected too many files"
-  defp error_to_string(:not_accepted), do: "You have selected an unacceptable file type"
 end
