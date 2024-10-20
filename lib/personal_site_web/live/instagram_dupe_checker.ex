@@ -79,15 +79,52 @@ defmodule PersonalSiteWeb.Live.InstagramDupeChecker do
       <p class="text-sm">
         Upload an image to find the likelihood of me having a posted a picture like this, including similar photos.
       </p>
-      <div class="lg:w-1/2 font-normal mb-8 p-3 rounded-sm border border-black dark:border-white">
+      <div
+        class="lg:w-1/2 font-normal mb-8 p-3 rounded-sm border border-black dark:border-white"
+        phx-drop-target={@uploads.candidate.ref}
+      >
         <form id="upload-form" phx-submit="save" phx-change="validate" class="space-y-3">
           <.live_file_input upload={@uploads.candidate} class="rounded-sm text-sm block" />
+
           <button
             type="submit"
-            class="border border-solid rounded-sm border-black dark:border-white hover:bg-black dark:hover:bg-white text-black dark:text-white hover:text-white dark:hover:text-black transition-colors p-2 mb-6 text-xs max-w-fit"
+            class="border border-solid rounded-sm border-black dark:border-white hover:bg-black dark:hover:bg-white text-black dark:text-white hover:text-white dark:hover:text-black transition-colors p-2 text-xs max-w-fit"
           >
             Upload
           </button>
+          <%= if length(@uploads.candidate.entries) > 0 do %>
+            <div class="text-sm space-y-3">
+              <hr class="border-dashed" />
+              <h2 class="text-md">Candidate</h2>
+              <%= for entry <- @uploads.candidate.entries do %>
+                <figure>
+                  <.live_img_preview entry={entry} />
+                </figure>
+                <div class="gap-3 text-sm flex flex-col md:flex-row">
+                  <div class="w-100 lg:w-50">
+                    <span><%= String.slice(entry.client_name, 0..9) %>&hellip;</span>
+                  </div>
+                  <div class="w-100 lg:w-50">
+                    <progress value={entry.progress} max="100"><%= entry.progress %>%</progress>
+                    <button
+                      type="button"
+                      phx-click="cancel-upload"
+                      phx-value-ref={entry.ref}
+                      aria-label="cancel"
+                    >
+                      &times;
+                    </button>
+                  </div>
+                </div>
+                <%= for err <- upload_errors(@uploads.candidate, entry) do %>
+                  <p class="alert alert-danger"><%= error_to_string(err) %></p>
+                <% end %>
+              <% end %>
+              <%= for err <- upload_errors(@uploads.candidate) do %>
+                <p class="alert alert-danger"><%= error_to_string(err) %></p>
+              <% end %>
+            </div>
+          <% end %>
         </form>
       </div>
       <%= if @response do %>
@@ -167,4 +204,9 @@ defmodule PersonalSiteWeb.Live.InstagramDupeChecker do
   defp print_prediction({:error, message}) do
     IO.puts("Error: #{message}")
   end
+
+  defp error_to_string(error)
+  defp error_to_string(:too_large), do: "Too large"
+  defp error_to_string(:too_many_files), do: "You have selected too many files"
+  defp error_to_string(:not_accepted), do: "You have selected an unacceptable file type"
 end
