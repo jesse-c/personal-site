@@ -134,9 +134,7 @@ defmodule PersonalSiteWeb.Live.InstagramDupeChecker do
             <div class="gap-3 text-sm flex flex-col md:flex-row">
               <%= for image <- similar_images do %>
                 <div class="w-full lg:w-1/5 p-3 rounded-sm border border-dashed border-black dark:border-white space-y-3">
-                  <span>
-                    #<%= image["rank"] %> at <%= Float.round(image["similarity_percentage"], 2) %>%
-                  </span>
+                  <span>#<%= image["rank"] %></span>
                   <img src={"data:image/jpeg;base64,#{image["image_base64"]}"} class="object-contain" />
                 </div>
               <% end %>
