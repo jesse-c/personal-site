@@ -27,6 +27,7 @@ defmodule PersonalSiteWeb.Router do
       live("/blog/tags/:id", Live.BlogTagsSingle)
       live("/blog/:id", Live.BlogSingle)
       live("/projects", Live.ProjectsIndex)
+      live("/apps", Live.AppsIndex)
       live("/works", Live.WorksIndex)
       live("/contributions", Live.ContributionsIndex)
       live("/colophon", Live.Colophon)
