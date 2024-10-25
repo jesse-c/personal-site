@@ -62,7 +62,9 @@ defmodule PersonalSite.MixProject do
       {:tzdata, "~> 1.1"},
       {:hammer, "~> 6.1"},
       {:nx, "~> 0.9.0"},
-      {:tesla, "~> 1.12"}
+      {:tesla, "~> 1.12"},
+      {:req, "~> 0.5.0"},
+      {:dotenvy, "~> 0.8.0"}
     ]
   end
 

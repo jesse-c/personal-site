@@ -174,6 +174,8 @@ defmodule PersonalSiteWeb.Live.InstagramDupeChecker do
         consume_uploaded_entries(socket, :candidate, fn %{path: image_path}, _entry ->
           response = PredictionClient.get_similar_images(image_path)
 
+          notify()
+
           print_prediction(response)
 
           File.rm(image_path)
@@ -182,6 +184,22 @@ defmodule PersonalSiteWeb.Live.InstagramDupeChecker do
         end)
 
       {:noreply, assign(socket, :response, response)}
+    end
+  end
+
+  defp notify() do
+    if Application.get_env(:personal_site, PersonalSiteWeb.Pushover)[:enabled] do
+      api_key = Application.get_env(:personal_site, PersonalSiteWeb.Pushover)[:api_key]
+      user_key = Application.get_env(:personal_site, PersonalSiteWeb.Pushover)[:user_key]
+
+      Req.post!(
+        "https://api.pushover.net/1/messages.json",
+        json: %{
+          token: api_key,
+          user: user_key,
+          message: "Prediction returned"
+        }
+      )
     end
   end
 
