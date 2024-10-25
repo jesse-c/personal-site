@@ -1,4 +1,7 @@
 import Config
+import Dotenvy
+
+source!([".env", System.get_env()])
 
 # config/runtime.exs is executed for all environments, including
 # during releases. It is executed after compilation and before the
@@ -23,6 +26,11 @@ end
 config :personal_site, PersonalSite.Shoutbox, clear: 10_000
 
 config :personal_site, PersonalSite.Redis, connection_attempts: 50
+
+config :personal_site, PersonalSiteWeb.Pushover,
+  enabled: env!("PUSHOVER_ENABLED", :boolean),
+  api_key: env!("PUSHOVER_API_KEY", :string!),
+  user_key: env!("PUSHOVER_USER_KEY", :string!)
 
 if config_env() == :dev do
   config :personal_site, PersonalSite.Plausible, data_domain: nil
