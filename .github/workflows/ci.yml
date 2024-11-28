@@ -18,8 +18,8 @@ jobs:
     name: Setup (Elixir ${{matrix.elixir}} / OTP ${{matrix.otp}})
     strategy:
       matrix:
-        otp: ["26.2.5"]
-        elixir: ["1.16.2"]
+        otp: ["27.1.2"]
+        elixir: ["1.17.3"]
     steps:
       - name: Set up Elixir
         uses: erlef/setup-beam@v1
@@ -68,8 +68,8 @@ jobs:
     needs: setup
     strategy:
       matrix:
-        otp: ["26.2.5"]
-        elixir: ["1.16.2"]
+        otp: ["27.1.2"]
+        elixir: ["1.17.3"]
     steps:
       - name: Set up Elixir
         uses: erlef/setup-beam@v1
@@ -119,8 +119,8 @@ jobs:
     needs: lint
     strategy:
       matrix:
-        otp: ["26.2.5"]
-        elixir: ["1.16.2"]
+        otp: ["27.1.2"]
+        elixir: ["1.17.3"]
     steps:
       - name: Set up Elixir
         uses: erlef/setup-beam@v1
@@ -167,8 +167,8 @@ jobs:
     needs: build
     strategy:
       matrix:
-        otp: ["26.2.5"]
-        elixir: ["1.16.2"]
+        otp: ["27.1.2"]
+        elixir: ["1.17.3"]
     steps:
       - name: Set up Elixir
         uses: erlef/setup-beam@v1
