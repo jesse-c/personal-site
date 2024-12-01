@@ -17,7 +17,9 @@ defmodule PersonalSiteWeb.Live.Contact do
     <h1 class="text-lg">Contact</h1>
     <div>
       <p class="text-sm">
-        I’m available through <a rel="me" href="https://mastodon.social/@jqk">Mastodon ↗</a>
+        I’m available through
+        <a rel="me" href="https://mastodon.social/@jqk" target="_blank">Mastodon ↗</a>
+        and <a href="https://bsky.app/profile/lzp.bsky.social" target="_blank">Bluesky ↗</a>
         for mixed chat and <a href="https://github.com/jesse-c" target="_blank">GitHub ↗</a>
         for various projects/contributions and collaboration.
       </p>
