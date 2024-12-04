@@ -14,7 +14,7 @@ permissions:
 
 jobs:
   setup:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     name: Setup (Elixir ${{matrix.elixir}} / OTP ${{matrix.otp}})
     strategy:
       matrix:
@@ -63,7 +63,7 @@ jobs:
         run: mix deps.get
 
   lint:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     name: Lint (Elixir ${{matrix.elixir}} / OTP ${{matrix.otp}})
     needs: setup
     strategy:
@@ -117,7 +117,7 @@ jobs:
         uses: crate-ci/typos@master
 
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     name: Build (Elixir ${{matrix.elixir}} / OTP ${{matrix.otp}})
     needs: lint
     strategy:
@@ -165,7 +165,7 @@ jobs:
         run: mix compile --warnings-as-errors
 
   test:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     name: Test (Elixir ${{matrix.elixir}} / OTP ${{matrix.otp}})
     needs: build
     strategy:
