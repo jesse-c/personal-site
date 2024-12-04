@@ -6,7 +6,30 @@
   </author>
   <id>https://j-e-s-s-e.com</id>
   <title>Blog · Jesse Claven</title>
-  <updated>2024-11-28T21:21:21.665371Z</updated>
+  <updated>2024-12-04T00:01:42.387810Z</updated>
+  <entry>
+    <link rel="alternate" href="https://j-e-s-s-e.com/blog/first-versions-of-new-linear-server-for-model-context-protocol"/>
+    <content type="html">&lt;p&gt;With the launch of the Model Context Protocol initiative by Anthropic&lt;sup class=&quot;footnote-ref&quot;&gt;&lt;a href=&quot;#fn-1&quot; id=&quot;fnref-1&quot; data-footnote-ref&gt;1&lt;/a&gt;&lt;/sup&gt;, I thought I&apos;d try my hand at making one—as did many others, also think to do!&lt;/p&gt;
+&lt;p&gt;As I use Linear daily, I thought that would be a good target&lt;sup class=&quot;footnote-ref&quot;&gt;&lt;a href=&quot;#fn-2&quot; id=&quot;fnref-2&quot; data-footnote-ref&gt;2&lt;/a&gt;&lt;/sup&gt;. Next would be Reminders.app for Linear⟷Reminders.app agentic (?) flows. I&apos;ve just tagged a &lt;code&gt;v0.2.0&lt;/code&gt; release, so check it out at &lt;a href=&quot;https://github.com/jesse-c/linear-context-server-ts&quot;&gt;https://github.com/jesse-c/linear-context-server-ts&lt;/a&gt;.&lt;/p&gt;
+&lt;section class=&quot;footnotes&quot; data-footnotes&gt;
+&lt;ol&gt;
+&lt;li id=&quot;fn-1&quot;&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.anthropic.com/news/model-context-protocol&quot;&gt;https://www.anthropic.com/news/model-context-protocol&lt;/a&gt; &lt;a href=&quot;#fnref-1&quot; class=&quot;footnote-backref&quot; data-footnote-backref data-footnote-backref-idx=&quot;1&quot; aria-label=&quot;Back to reference 1&quot;&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&quot;fn-2&quot;&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/jesse-c/linear-context-server-ts&quot;&gt;https://github.com/jesse-c/linear-context-server-ts&lt;/a&gt; &lt;a href=&quot;#fnref-2&quot; class=&quot;footnote-backref&quot; data-footnote-backref data-footnote-backref-idx=&quot;2&quot; aria-label=&quot;Back to reference 2&quot;&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/section&gt;
+</content>
+    <author>
+      <name>Jesse Claven</name>
+      <uri>https://j-e-s-s-e.com</uri>
+    </author>
+    <id>first-versions-of-new-linear-server-for-model-context-protocol</id>
+    <title>First versions of new Linear server for Model Context Protocol</title>
+    <updated>2024-12-03T00:00:00Z</updated>
+  </entry>
   <entry>
     <link rel="alternate" href="https://j-e-s-s-e.com/blog/new-tool-a-local-audio-toolkit-for-macos-with-whisper-and-lm-studio"/>
     <content type="html">&lt;p&gt;I&apos;ve added audio as another interface for regular and useful writing—across daily notes, Git comments, etc. I thought I&apos;d quickly package it up and make it available&lt;sup class=&quot;footnote-ref&quot;&gt;&lt;a href=&quot;#fn-1&quot; id=&quot;fnref-1&quot; data-footnote-ref&gt;1&lt;/a&gt;&lt;/sup&gt;. I shared the snippets originally with my colleagues. It uses an MLX version of a Whisper model.&lt;/p&gt;
