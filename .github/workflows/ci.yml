@@ -113,6 +113,9 @@ jobs:
       - name: Check code analysis
         run: mix credo --all
 
+      - name: Check spelling
+        uses: crate-ci/typos@master
+
   build:
     runs-on: ubuntu-latest
     name: Build (Elixir ${{matrix.elixir}} / OTP ${{matrix.otp}})
