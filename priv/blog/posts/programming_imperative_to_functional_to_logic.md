@@ -154,7 +154,7 @@ An alternative view of the different implementations that highlights the differe
 
 I've already espoused my view that functional programming is generally preferable to imperative. I view logic programming, in a vague sense, as a higher level of thinking in that there's less I need to _instruct_ the computer to do, and can _declare_ (or, describe) what is to be done, and let it figure it out for me.
 
-One potential barrier to logic programming being adopted is that who wants to learn a whole new programming langauge that's very specific, as opposed to Rust, Elixir, Clojure, etc that can solve a wide array of problems.
+One potential barrier to logic programming being adopted is that who wants to learn a whole new programming language that's very specific, as opposed to Rust, Elixir, Clojure, etc that can solve a wide array of problems.
 
 [^1]: [Flix](https://flix.dev)
 [^2]: [Elm](https://elm-lang.org)
