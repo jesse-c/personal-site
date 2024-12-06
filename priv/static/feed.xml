@@ -6,7 +6,61 @@
   </author>
   <id>https://j-e-s-s-e.com</id>
   <title>Blog · Jesse Claven</title>
-  <updated>2024-12-04T00:05:45.749488Z</updated>
+  <updated>2024-12-06T19:09:04.606588Z</updated>
+  <entry>
+    <link rel="alternate" href="https://j-e-s-s-e.com/blog/example-of-anti-decaying-documentation"/>
+    <content type="html">&lt;p&gt;In a previous blog post&lt;sup class=&quot;footnote-ref&quot;&gt;&lt;a href=&quot;#fn-1&quot; id=&quot;fnref-1&quot; data-footnote-ref&gt;1&lt;/a&gt;&lt;/sup&gt;, I wrote about an idea to avoid documentation decay, like links or installation instructions falling out-of-date. I just had a chance to try it out, on a new project&lt;sup class=&quot;footnote-ref&quot;&gt;&lt;a href=&quot;#fn-2&quot; id=&quot;fnref-2&quot; data-footnote-ref&gt;2&lt;/a&gt;&lt;/sup&gt;&lt;sup class=&quot;footnote-ref&quot;&gt;&lt;a href=&quot;#fn-3&quot; id=&quot;fnref-3&quot; data-footnote-ref&gt;3&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
+&lt;p&gt;The README is generated from a Jinja2 template. So far, it&apos;s the tools that are pulled from the actual model context server. Here&apos;s the template for that:&lt;/p&gt;
+&lt;pre class=&quot;autumn-hl&quot; style=&quot;background-color: #282C34; color: #ABB2BF;&quot;&gt;&lt;code class=&quot;language-plaintext&quot; translate=&quot;no&quot;&gt;## Tools
+{% for tool in tools %}
+### `{{ tool.name }}`
+{{ tool.description }}
+{% endfor %}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The script imports the &lt;code&gt;TOOLS&lt;/code&gt;, and then passes it to the template rendering function.&lt;/p&gt;
+&lt;pre class=&quot;autumn-hl&quot; style=&quot;background-color: #282C34; color: #ABB2BF;&quot;&gt;&lt;code class=&quot;language-typescript&quot; translate=&quot;no&quot;&gt;..
+
+import { &lt;span class=&quot;ahl-type&quot; style=&quot;color: #E5C07B;&quot;&gt;TOOLS&lt;/span&gt; } from &amp;#x27;..&amp;#x2f;src&amp;#x2f;tools.js&amp;#x27;;
+
+..
+
+    &amp;#x2f;&amp;#x2f; Define template variables
+    const templateVars = {
+      tools: &lt;span class=&quot;ahl-type&quot; style=&quot;color: #E5C07B;&quot;&gt;TOOLS&lt;/span&gt;.map(tool =&gt; ({
+        name: tool.name,
+        description: tool.description,
+        params: &lt;span class=&quot;ahl-type&quot; style=&quot;color: #E5C07B;&quot;&gt;Object&lt;/span&gt;.keys(tool.inputSchema.properties || {})
+      }))
+    };
+
+    &amp;#x2f;&amp;#x2f; Render the template
+    const output = env.renderString(template, templateVars);
+
+...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Now, it&apos;s effectively impossible to be out-of-date or incorrect. As with any generated code, there&apos;s the &lt;em&gt;annoyance&lt;/em&gt; of having to commit the code, but that is something that&apos;s otherwise solved.&lt;/p&gt;
+&lt;section class=&quot;footnotes&quot; data-footnotes&gt;
+&lt;ol&gt;
+&lt;li id=&quot;fn-1&quot;&gt;
+&lt;p&gt;&lt;a href=&quot;explicitly-showing-and-checking-documentation-decay&quot;&gt;Explicitly showing, and checking, documentation decay&lt;/a&gt; &lt;a href=&quot;#fnref-1&quot; class=&quot;footnote-backref&quot; data-footnote-backref data-footnote-backref-idx=&quot;1&quot; aria-label=&quot;Back to reference 1&quot;&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&quot;fn-2&quot;&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/jesse-c/linear-context-server-ts&quot;&gt;https://github.com/jesse-c/linear-context-server-ts&lt;/a&gt; &lt;a href=&quot;#fnref-2&quot; class=&quot;footnote-backref&quot; data-footnote-backref data-footnote-backref-idx=&quot;2&quot; aria-label=&quot;Back to reference 2&quot;&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&quot;fn-3&quot;&gt;
+&lt;p&gt;&lt;a href=&quot;new-linear-model-context-server&quot;&gt;First versions of new Linear server for Model Context Protocol&lt;/a&gt; &lt;a href=&quot;#fnref-3&quot; class=&quot;footnote-backref&quot; data-footnote-backref data-footnote-backref-idx=&quot;3&quot; aria-label=&quot;Back to reference 3&quot;&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/section&gt;
+</content>
+    <author>
+      <name>Jesse Claven</name>
+      <uri>https://j-e-s-s-e.com</uri>
+    </author>
+    <id>example-of-anti-decaying-documentation</id>
+    <title>Example of anti-decaying documentation</title>
+    <updated>2024-12-06T00:00:00Z</updated>
+  </entry>
   <entry>
     <link rel="alternate" href="https://j-e-s-s-e.com/blog/first-versions-of-new-linear-server-for-model-context-protocol"/>
     <content type="html">&lt;p&gt;With the launch of the Model Context Protocol initiative by Anthropic&lt;sup class=&quot;footnote-ref&quot;&gt;&lt;a href=&quot;#fn-1&quot; id=&quot;fnref-1&quot; data-footnote-ref&gt;1&lt;/a&gt;&lt;/sup&gt;, I thought I&apos;d try my hand at making one—as did many others, also think to do!&lt;/p&gt;
