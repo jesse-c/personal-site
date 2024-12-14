@@ -6,7 +6,7 @@
   </author>
   <id>https://j-e-s-s-e.com</id>
   <title>Blog · Jesse Claven</title>
-  <updated>2024-12-06T19:09:04.606588Z</updated>
+  <updated>2024-12-14T12:52:11.023982Z</updated>
   <entry>
     <link rel="alternate" href="https://j-e-s-s-e.com/blog/example-of-anti-decaying-documentation"/>
     <content type="html">&lt;p&gt;In a previous blog post&lt;sup class=&quot;footnote-ref&quot;&gt;&lt;a href=&quot;#fn-1&quot; id=&quot;fnref-1&quot; data-footnote-ref&gt;1&lt;/a&gt;&lt;/sup&gt;, I wrote about an idea to avoid documentation decay, like links or installation instructions falling out-of-date. I just had a chance to try it out, on a new project&lt;sup class=&quot;footnote-ref&quot;&gt;&lt;a href=&quot;#fn-2&quot; id=&quot;fnref-2&quot; data-footnote-ref&gt;2&lt;/a&gt;&lt;/sup&gt;&lt;sup class=&quot;footnote-ref&quot;&gt;&lt;a href=&quot;#fn-3&quot; id=&quot;fnref-3&quot; data-footnote-ref&gt;3&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
@@ -48,7 +48,7 @@ import { &lt;span class=&quot;ahl-type&quot; style=&quot;color: #E5C07B;&quot;&g
 &lt;p&gt;&lt;a href=&quot;https://github.com/jesse-c/linear-context-server-ts&quot;&gt;https://github.com/jesse-c/linear-context-server-ts&lt;/a&gt; &lt;a href=&quot;#fnref-2&quot; class=&quot;footnote-backref&quot; data-footnote-backref data-footnote-backref-idx=&quot;2&quot; aria-label=&quot;Back to reference 2&quot;&gt;↩&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li id=&quot;fn-3&quot;&gt;
-&lt;p&gt;&lt;a href=&quot;new-linear-model-context-server&quot;&gt;First versions of new Linear server for Model Context Protocol&lt;/a&gt; &lt;a href=&quot;#fnref-3&quot; class=&quot;footnote-backref&quot; data-footnote-backref data-footnote-backref-idx=&quot;3&quot; aria-label=&quot;Back to reference 3&quot;&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;first-versions-of-new-linear-server-for-model-context-protocol&quot;&gt;First versions of new Linear server for Model Context Protocol&lt;/a&gt; &lt;a href=&quot;#fnref-3&quot; class=&quot;footnote-backref&quot; data-footnote-backref data-footnote-backref-idx=&quot;3&quot; aria-label=&quot;Back to reference 3&quot;&gt;↩&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;/section&gt;

@@ -44,5 +44,5 @@ Now, it's effectively impossible to be out-of-date or incorrect. As with any gen
 
 [^1]: [Explicitly showing, and checking, documentation decay](explicitly-showing-and-checking-documentation-decay)
 [^2]: [https://github.com/jesse-c/linear-context-server-ts](https://github.com/jesse-c/linear-context-server-ts)
-[^3]: [First versions of new Linear server for Model Context Protocol](new-linear-model-context-server)
+[^3]: [First versions of new Linear server for Model Context Protocol](first-versions-of-new-linear-server-for-model-context-protocol)
 [^4]: [](https://github.com/jesse-c/personal-site/blob/602728c9e80ea40c94b5fbb4b72c95d63d098f7f/priv/blog/posts/example-of-anti-decaying-documentation.md?plain=1#L9)
