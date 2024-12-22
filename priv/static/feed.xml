@@ -6,7 +6,37 @@
   </author>
   <id>https://j-e-s-s-e.com</id>
   <title>Blog · Jesse Claven</title>
-  <updated>2024-12-14T12:52:11.023982Z</updated>
+  <updated>2024-12-22T13:51:40.636637Z</updated>
+  <entry>
+    <link rel="alternate" href="https://j-e-s-s-e.com/blog/anti-decaying-documentation-framed-as-provenance-by-ink-switch"/>
+    <content type="html">&lt;p&gt;Again on a previous blog post&lt;sup class=&quot;footnote-ref&quot;&gt;&lt;a href=&quot;#fn-1&quot; id=&quot;fnref-1&quot; data-footnote-ref&gt;1&lt;/a&gt;&lt;/sup&gt;, I&apos;ve come across some writings by the inimitable Ink &amp; Switch group on a similar concept&lt;sup class=&quot;footnote-ref&quot;&gt;&lt;a href=&quot;#fn-2&quot; id=&quot;fnref-2&quot; data-footnote-ref&gt;2&lt;/a&gt;&lt;/sup&gt;&lt;sup class=&quot;footnote-ref&quot;&gt;&lt;a href=&quot;#fn-3&quot; id=&quot;fnref-3&quot; data-footnote-ref&gt;3&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
+&lt;p&gt;Here&apos;s a use case they describe:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Every time a chart changes, he needs to manually drag files from his computer into the browser.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;This aligns almost exactly with my original post! It&apos;s fascinating to see the same, otherwise common problem, pointed out and described—with possible solutions proposed.&lt;/p&gt;
+&lt;section class=&quot;footnotes&quot; data-footnotes&gt;
+&lt;ol&gt;
+&lt;li id=&quot;fn-1&quot;&gt;
+&lt;p&gt;&lt;a href=&quot;explicitly-showing-and-checking-documentation-decay&quot;&gt;Explicitly showing, and checking, documentation decay&lt;/a&gt; &lt;a href=&quot;#fnref-1&quot; class=&quot;footnote-backref&quot; data-footnote-backref data-footnote-backref-idx=&quot;1&quot; aria-label=&quot;Back to reference 1&quot;&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&quot;fn-2&quot;&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.inkandswitch.com/jacquard/notebook/02/&quot;&gt;02 · Tracking provenance&lt;/a&gt; &lt;a href=&quot;#fnref-2&quot; class=&quot;footnote-backref&quot; data-footnote-backref data-footnote-backref-idx=&quot;2&quot; aria-label=&quot;Back to reference 2&quot;&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&quot;fn-3&quot;&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.inkandswitch.com/jacquard/notebook/03/&quot;&gt;03 · Fine-grained provenance&lt;/a&gt; &lt;a href=&quot;#fnref-3&quot; class=&quot;footnote-backref&quot; data-footnote-backref data-footnote-backref-idx=&quot;3&quot; aria-label=&quot;Back to reference 3&quot;&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/section&gt;
+</content>
+    <author>
+      <name>Jesse Claven</name>
+      <uri>https://j-e-s-s-e.com</uri>
+    </author>
+    <id>anti-decaying-documentation-framed-as-provenance-by-ink-switch</id>
+    <title>Anti-decaying documentation framed as provenance (by Ink &amp; Switch)</title>
+    <updated>2024-12-06T00:00:00Z</updated>
+  </entry>
   <entry>
     <link rel="alternate" href="https://j-e-s-s-e.com/blog/example-of-anti-decaying-documentation"/>
     <content type="html">&lt;p&gt;In a previous blog post&lt;sup class=&quot;footnote-ref&quot;&gt;&lt;a href=&quot;#fn-1&quot; id=&quot;fnref-1&quot; data-footnote-ref&gt;1&lt;/a&gt;&lt;/sup&gt;, I wrote about an idea to avoid documentation decay, like links or installation instructions falling out-of-date. I just had a chance to try it out, on a new project&lt;sup class=&quot;footnote-ref&quot;&gt;&lt;a href=&quot;#fn-2&quot; id=&quot;fnref-2&quot; data-footnote-ref&gt;2&lt;/a&gt;&lt;/sup&gt;&lt;sup class=&quot;footnote-ref&quot;&gt;&lt;a href=&quot;#fn-3&quot; id=&quot;fnref-3&quot; data-footnote-ref&gt;3&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
@@ -388,7 +418,7 @@ Please check the links above.
 &lt;p&gt;&lt;a href=&quot;https://www.notion.so/help/synced-blocks&quot;&gt;Synced blocks&lt;/a&gt; &lt;a href=&quot;#fnref-2&quot; class=&quot;footnote-backref&quot; data-footnote-backref data-footnote-backref-idx=&quot;2&quot; aria-label=&quot;Back to reference 2&quot;&gt;↩&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li id=&quot;fn-3&quot;&gt;
-&lt;p&gt;&lt;a href=&quot;notes-app-hybrid-search-release&quot;&gt;Initial release of hybrid search for Notes.app&lt;/a&gt; &lt;a href=&quot;#fnref-3&quot; class=&quot;footnote-backref&quot; data-footnote-backref data-footnote-backref-idx=&quot;3&quot; aria-label=&quot;Back to reference 3&quot;&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;initial-release-of-hybrid-search-for-notes-app&quot;&gt;Initial release of hybrid search for Notes.app&lt;/a&gt; &lt;a href=&quot;#fnref-3&quot; class=&quot;footnote-backref&quot; data-footnote-backref data-footnote-backref-idx=&quot;3&quot; aria-label=&quot;Back to reference 3&quot;&gt;↩&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li id=&quot;fn-4&quot;&gt;
 &lt;p&gt;&lt;a href=&quot;https://github.com/jesse-c/notes-app-hybrid-search/pull/1&quot;&gt;notes-app-hybrid-searchl#1&lt;/a&gt; &lt;a href=&quot;#fnref-4&quot; class=&quot;footnote-backref&quot; data-footnote-backref data-footnote-backref-idx=&quot;4&quot; aria-label=&quot;Back to reference 4&quot;&gt;↩&lt;/a&gt;&lt;/p&gt;
