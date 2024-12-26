@@ -42,7 +42,7 @@ defmodule PersonalSiteWeb.Live.BlogSingle do
   def render(assigns) do
     ~H"""
     <.live_component module={PersonalSiteWeb.Live.Cursors} id="cursors" users={@users} />
-    <div class="post space-y-3">
+    <div class="post space-y-3 md:w-1/2 md:max-w-1/2">
       <h1 class="text-lg"><%= @post.title %></h1>
       <p class="text-xs">
         <%= @post.date %> ･ <PersonalSiteWeb.TagsComponents.inline tags={@post.tags} />
@@ -60,7 +60,7 @@ defmodule PersonalSiteWeb.Live.BlogSingle do
     <div>
       <hr />
     </div>
-    <div class="text-xs">
+    <div class="text-xs md:w-1/2 md:max-w-1/2">
       <%= if not is_nil(@prev) do %>
         <div class="float-left">
           <.link navigate={~p"/blog/#{@prev.slug}"} title={@prev.title}>

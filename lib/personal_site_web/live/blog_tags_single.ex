@@ -41,7 +41,7 @@ defmodule PersonalSiteWeb.Live.BlogTagsSingle do
       · <.link navigate={~p"/blog/tags"}>Tags</.link>
       · <%= @tag %>
     </h1>
-    <div class="space-y-3">
+    <div class="space-y-3 md:w-1/2 md:max-w-1/2">
       <div :for={{year, posts} <- @years} class="space-y-1">
         <div><%= year %></div>
         <div class="space-y-3">

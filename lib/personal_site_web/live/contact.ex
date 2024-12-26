@@ -15,7 +15,7 @@ defmodule PersonalSiteWeb.Live.Contact do
     ~H"""
     <.live_component module={PersonalSiteWeb.Live.Cursors} id="cursors" users={@users} />
     <h1 class="text-lg">Contact</h1>
-    <div>
+    <div class="md:w-1/2 md:max-w-1/2">
       <p class="text-sm">
         I’m available through
         <a rel="me" href="https://mastodon.social/@jqk" target="_blank">Mastodon ↗</a>

@@ -28,7 +28,7 @@ defmodule PersonalSiteWeb.Live.ContributionsIndex do
     ~H"""
     <.live_component module={PersonalSiteWeb.Live.Cursors} id="cursors" users={@users} />
     <h1 class="text-lg">Contributions</h1>
-    <div class="space-y-3">
+    <div class="space-y-3 md:w-1/2 md:max-w-1/2">
       <div :for={{_year, contributions} <- @years} class="space-y-1">
         <div class="space-y-3">
           <div :for={contribution <- contributions} class="space-y-1">

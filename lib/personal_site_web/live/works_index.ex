@@ -21,7 +21,7 @@ defmodule PersonalSiteWeb.Live.WorksIndex do
     ~H"""
     <.live_component module={PersonalSiteWeb.Live.Cursors} id="cursors" users={@users} />
     <h1 class="text-lg">Works</h1>
-    <div class="space-y-3">
+    <div class="space-y-3 md:w-1/2 md:max-w-1/2">
       <div :for={work <- @works} class="space-y-1">
         <p class="text-sm"><%= work.title %></p>
         <p class="text-xs"><%= work.role %></p>

@@ -15,7 +15,7 @@ defmodule PersonalSiteWeb.Live.About do
     ~H"""
     <.live_component module={PersonalSiteWeb.Live.Cursors} id="cursors" users={@users} />
     <h1 class="text-lg">About</h1>
-    <div class="space-y-3">
+    <div class="space-y-3 md:w-1/2 md:max-w-1/2">
       <p class="text-sm">
         I'm a multi-disciplinary software engineer, with design experience, in back- and front-end, iOS, prototyping, machine learning, user testing, etc.
       </p>

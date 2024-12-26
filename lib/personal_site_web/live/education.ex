@@ -14,7 +14,7 @@ defmodule PersonalSiteWeb.Live.Education do
   def render(assigns) do
     ~H"""
     <.live_component module={PersonalSiteWeb.Live.Cursors} id="cursors" users={@users} />
-    <div class="space-y-3">
+    <div class="space-y-3 md:w-1/2 md:max-w-1/2">
       <h2 class="text-lg">Education</h2>
       <h3 class="text-base">
         Bachelor of Engineering — Software (Honours) at University of Queensland

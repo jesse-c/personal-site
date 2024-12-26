@@ -74,7 +74,7 @@ defmodule PersonalSiteWeb.Live.InstagramDupeChecker do
   def render(assigns) do
     ~H"""
     <.live_component module={PersonalSiteWeb.Live.Cursors} id="cursors" users={@users} />
-    <div class="space-y-3">
+    <div class="space-y-3 md:w-1/2 md:max-w-1/2">
       <h1 class="text-lg">Instagram dupe checker</h1>
       <p class="text-sm">
         Upload an image to find the likelihood of me having a posted a picture like this, including similar photos.
