@@ -1,6 +1,6 @@
 %{
     title: "v1 release of Rom-to-the-Com",
-    tags: ~w(side-project machine-learning large-language-models),
+    tags: ~w(side-project machine-learning large-language-models rom-to-the-com),
     date: "2024-08-04",
 }
 ---

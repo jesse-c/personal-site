@@ -1,6 +1,6 @@
 %{
     title: "New feature: \"I'm feeling lucky!\" for Rom-to-the-Com",
-    tags: ~w(side-project),
+    tags: ~w(side-project rom-to-the-com),
     date: "2024-08-18",
 }
 ---

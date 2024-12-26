@@ -1,6 +1,6 @@
 %{
     title: "New feature: Suggestions for Rom-to-the-Com",
-    tags: ~w(side-project),
+    tags: ~w(side-project rom-to-the-com),
     date: "2024-08-15",
 }
 ---
