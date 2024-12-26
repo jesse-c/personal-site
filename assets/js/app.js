@@ -31,7 +31,9 @@ let Hooks = {};
 Hooks.TrackClientCursor = {
   mounted() {
     document.addEventListener("mousemove", (e) => {
-      // Do as a percentage as people's windows will be different sizes
+      // Do as a percentage as people's windows will be different sizes.
+      //
+      // Small offset, relative to the cursor.
       const x = ((e.pageX - 8) / window.innerWidth) * 100; // in %
       const y = ((e.pageY - 11) / window.innerHeight) * 100; // in %
 
