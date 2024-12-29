@@ -6,7 +6,72 @@
   </author>
   <id>https://j-e-s-s-e.com</id>
   <title>Blog · Jesse Claven</title>
-  <updated>2024-12-26T22:20:19.973283Z</updated>
+  <updated>2024-12-29T00:03:07.763647Z</updated>
+  <entry>
+    <link rel="alternate" href="https://j-e-s-s-e.com/blog/from-write-up-to-prototype-of-static-checks-for-anti-documentation-decay"/>
+    <content type="html">&lt;p&gt;In &lt;em&gt;Explicitly showing, and checking, documentation decay&lt;/em&gt;&lt;sup class=&quot;footnote-ref&quot;&gt;&lt;a href=&quot;#fn-1&quot; id=&quot;fnref-1&quot; data-footnote-ref&gt;1&lt;/a&gt;&lt;/sup&gt;, I gave a Python snippet for checking some &quot;links&quot; between data in documentation.&lt;/p&gt;
+&lt;p&gt;After doing some recent changes to keep that project easily usable, I had that snippet sitting locally in my workspace. Recently I used this concept for another real-world project&lt;sup class=&quot;footnote-ref&quot;&gt;&lt;a href=&quot;#fn-3&quot; id=&quot;fnref-3&quot; data-footnote-ref&gt;2&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
+&lt;p&gt;The original snippet wasn&apos;t far off! The changeset, including the CI workflow is available&lt;sup class=&quot;footnote-ref&quot;&gt;&lt;a href=&quot;#fn-2&quot; id=&quot;fnref-2&quot; data-footnote-ref&gt;3&lt;/a&gt;&lt;/sup&gt;. The most interesting part isn&apos;t the executing the checks, but how the data is built-up.&lt;/p&gt;
+&lt;h2&gt;Example&lt;/h2&gt;
+&lt;p&gt;Here&apos;s the singular anti-decay link I have so far:&lt;/p&gt;
+&lt;pre class=&quot;autumn-hl&quot; style=&quot;background-color: #282C34; color: #ABB2BF;&quot;&gt;&lt;code class=&quot;language-json&quot; translate=&quot;no&quot;&gt;&lt;span class=&quot;ahl-punctuation ahl-bracket&quot; style=&quot;color: #ABB2BF;&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;ahl-keyword&quot; style=&quot;color: #E06C75;&quot;&gt;&quot;data-to-search-path&quot;&lt;/span&gt;: &lt;span class=&quot;ahl-punctuation ahl-bracket&quot; style=&quot;color: #ABB2BF;&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;ahl-keyword&quot; style=&quot;color: #E06C75;&quot;&gt;&quot;value&quot;&lt;/span&gt;: &lt;span class=&quot;ahl-string&quot; style=&quot;color: #98C379;&quot;&gt;&quot;data&amp;#x2f;02-plaintext-to-vespa-documents&amp;#x2f;output&amp;#x2f;vespa-all.jsonl&quot;&lt;/span&gt;&lt;span class=&quot;ahl-punctuation ahl-delimiter&quot; style=&quot;color: #ABB2BF;&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;ahl-keyword&quot; style=&quot;color: #E06C75;&quot;&gt;&quot;a&quot;&lt;/span&gt;: &lt;span class=&quot;ahl-punctuation ahl-bracket&quot; style=&quot;color: #ABB2BF;&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;ahl-keyword&quot; style=&quot;color: #E06C75;&quot;&gt;&quot;link&quot;&lt;/span&gt;: &lt;span class=&quot;ahl-punctuation ahl-bracket&quot; style=&quot;color: #ABB2BF;&quot;&gt;[&lt;/span&gt;
+        &lt;span class=&quot;ahl-punctuation ahl-bracket&quot; style=&quot;color: #ABB2BF;&quot;&gt;{&lt;/span&gt;
+          &lt;span class=&quot;ahl-keyword&quot; style=&quot;color: #E06C75;&quot;&gt;&quot;type&quot;&lt;/span&gt;: &lt;span class=&quot;ahl-string&quot; style=&quot;color: #98C379;&quot;&gt;&quot;path&quot;&lt;/span&gt;&lt;span class=&quot;ahl-punctuation ahl-delimiter&quot; style=&quot;color: #ABB2BF;&quot;&gt;,&lt;/span&gt;
+          &lt;span class=&quot;ahl-keyword&quot; style=&quot;color: #E06C75;&quot;&gt;&quot;value&quot;&lt;/span&gt;: &lt;span class=&quot;ahl-string&quot; style=&quot;color: #98C379;&quot;&gt;&quot;data&amp;#x2f;02-plaintext-to-vespa-documents&amp;#x2f;&quot;&lt;/span&gt;
+        &lt;span class=&quot;ahl-punctuation ahl-bracket&quot; style=&quot;color: #ABB2BF;&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;ahl-punctuation ahl-delimiter&quot; style=&quot;color: #ABB2BF;&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;ahl-punctuation ahl-bracket&quot; style=&quot;color: #ABB2BF;&quot;&gt;{&lt;/span&gt;
+          &lt;span class=&quot;ahl-keyword&quot; style=&quot;color: #E06C75;&quot;&gt;&quot;type&quot;&lt;/span&gt;: &lt;span class=&quot;ahl-string&quot; style=&quot;color: #98C379;&quot;&gt;&quot;toml&quot;&lt;/span&gt;&lt;span class=&quot;ahl-punctuation ahl-delimiter&quot; style=&quot;color: #ABB2BF;&quot;&gt;,&lt;/span&gt;
+          &lt;span class=&quot;ahl-keyword&quot; style=&quot;color: #E06C75;&quot;&gt;&quot;file&quot;&lt;/span&gt;: &lt;span class=&quot;ahl-string&quot; style=&quot;color: #98C379;&quot;&gt;&quot;data&amp;#x2f;02-plaintext-to-vespa-documents&amp;#x2f;config.toml&quot;&lt;/span&gt;&lt;span class=&quot;ahl-punctuation ahl-delimiter&quot; style=&quot;color: #ABB2BF;&quot;&gt;,&lt;/span&gt;
+          &lt;span class=&quot;ahl-keyword&quot; style=&quot;color: #E06C75;&quot;&gt;&quot;key&quot;&lt;/span&gt;: &lt;span class=&quot;ahl-string&quot; style=&quot;color: #98C379;&quot;&gt;&quot;data.output_file&quot;&lt;/span&gt;
+        &lt;span class=&quot;ahl-punctuation ahl-bracket&quot; style=&quot;color: #ABB2BF;&quot;&gt;}&lt;/span&gt;
+      &lt;span class=&quot;ahl-punctuation ahl-bracket&quot; style=&quot;color: #ABB2BF;&quot;&gt;]&lt;/span&gt;
+    &lt;span class=&quot;ahl-punctuation ahl-bracket&quot; style=&quot;color: #ABB2BF;&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;ahl-punctuation ahl-delimiter&quot; style=&quot;color: #ABB2BF;&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;ahl-keyword&quot; style=&quot;color: #E06C75;&quot;&gt;&quot;b&quot;&lt;/span&gt;: &lt;span class=&quot;ahl-punctuation ahl-bracket&quot; style=&quot;color: #ABB2BF;&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;ahl-keyword&quot; style=&quot;color: #E06C75;&quot;&gt;&quot;link&quot;&lt;/span&gt;: &lt;span class=&quot;ahl-punctuation ahl-bracket&quot; style=&quot;color: #ABB2BF;&quot;&gt;[&lt;/span&gt;
+        &lt;span class=&quot;ahl-punctuation ahl-bracket&quot; style=&quot;color: #ABB2BF;&quot;&gt;{&lt;/span&gt;
+          &lt;span class=&quot;ahl-keyword&quot; style=&quot;color: #E06C75;&quot;&gt;&quot;type&quot;&lt;/span&gt;: &lt;span class=&quot;ahl-string&quot; style=&quot;color: #98C379;&quot;&gt;&quot;span&quot;&lt;/span&gt;&lt;span class=&quot;ahl-punctuation ahl-delimiter&quot; style=&quot;color: #ABB2BF;&quot;&gt;,&lt;/span&gt;
+          &lt;span class=&quot;ahl-keyword&quot; style=&quot;color: #E06C75;&quot;&gt;&quot;file&quot;&lt;/span&gt;: &lt;span class=&quot;ahl-string&quot; style=&quot;color: #98C379;&quot;&gt;&quot;justfile&quot;&lt;/span&gt;&lt;span class=&quot;ahl-punctuation ahl-delimiter&quot; style=&quot;color: #ABB2BF;&quot;&gt;,&lt;/span&gt;
+          &lt;span class=&quot;ahl-keyword&quot; style=&quot;color: #E06C75;&quot;&gt;&quot;key&quot;&lt;/span&gt;: &lt;span class=&quot;ahl-string&quot; style=&quot;color: #98C379;&quot;&gt;&quot;5:6-64&quot;&lt;/span&gt;
+        &lt;span class=&quot;ahl-punctuation ahl-bracket&quot; style=&quot;color: #ABB2BF;&quot;&gt;}&lt;/span&gt;
+      &lt;span class=&quot;ahl-punctuation ahl-bracket&quot; style=&quot;color: #ABB2BF;&quot;&gt;]&lt;/span&gt;
+    &lt;span class=&quot;ahl-punctuation ahl-bracket&quot; style=&quot;color: #ABB2BF;&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;ahl-punctuation ahl-bracket&quot; style=&quot;color: #ABB2BF;&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;ahl-punctuation ahl-bracket&quot; style=&quot;color: #ABB2BF;&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Each check has A and B, which could also be source and destination, and the link each part. The idea is that both links would construct the same value.&lt;/p&gt;
+&lt;p&gt;In this case, it&apos;s &lt;code&gt;&quot;data/02-plaintext-to-vespa-documents/output/vespa-all.jsonl&quot;&lt;/code&gt;. The A link has more than 1 step. It combines all the steps (&lt;code&gt;|steps| = 2&lt;/code&gt;), to get the complete value. There&apos;s different operations, with there being 3 needed for this.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;path&lt;/code&gt;: A path, and its existence is checked for.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;toml&lt;/code&gt;: A path to a TOML file, and the accessor key.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;span&lt;/code&gt;: A path to a file, and a span, which is a line and start and end indices.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;This was quick to put together, even from my small base snippet! Imagine a world where all you need to do is define the links, and not implement anything else. You could even expand upon the built-in operations with your own.&lt;/p&gt;
+&lt;section class=&quot;footnotes&quot; data-footnotes&gt;
+&lt;ol&gt;
+&lt;li id=&quot;fn-1&quot;&gt;
+&lt;p&gt;&lt;a href=&quot;explicitly-showing-and-checking-documentation-decay&quot;&gt;Explicitly showing, and checking, documentation decay&lt;/a&gt; &lt;a href=&quot;#fnref-1&quot; class=&quot;footnote-backref&quot; data-footnote-backref data-footnote-backref-idx=&quot;1&quot; aria-label=&quot;Back to reference 1&quot;&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&quot;fn-3&quot;&gt;
+&lt;p&gt;&lt;a href=&quot;example-of-anti-decaying-documentation&quot;&gt;Example of anti-decaying documentation&lt;/a&gt; &lt;a href=&quot;#fnref-3&quot; class=&quot;footnote-backref&quot; data-footnote-backref data-footnote-backref-idx=&quot;2&quot; aria-label=&quot;Back to reference 2&quot;&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&quot;fn-2&quot;&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/jesse-c/notes-app-hybrid-search/pull/3&quot;&gt;notes-app-hybrid-search#3: feat: Add anti-decay checks&lt;/a&gt; &lt;a href=&quot;#fnref-2&quot; class=&quot;footnote-backref&quot; data-footnote-backref data-footnote-backref-idx=&quot;3&quot; aria-label=&quot;Back to reference 3&quot;&gt;↩&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/section&gt;
+</content>
+    <author>
+      <name>Jesse Claven</name>
+      <uri>https://j-e-s-s-e.com</uri>
+    </author>
+    <id>from-write-up-to-prototype-of-static-checks-for-anti-documentation-decay</id>
+    <title>From write-up to prototype of static checks for anti-documentation decay </title>
+    <updated>2024-12-28T00:00:00Z</updated>
+  </entry>
   <entry>
     <link rel="alternate" href="https://j-e-s-s-e.com/blog/new-feature-search-for-rom-to-the-com"/>
     <content type="html">&lt;p&gt;Are you curious about what the ranking for a specific film may be?&lt;/p&gt;
