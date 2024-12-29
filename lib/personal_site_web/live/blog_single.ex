@@ -60,17 +60,17 @@ defmodule PersonalSiteWeb.Live.BlogSingle do
     <div>
       <hr />
     </div>
-    <div class="text-xs md:w-1/2 md:max-w-1/2">
+    <div class="flex flex-col md:flex-row text-xs">
       <%= if not is_nil(@prev) do %>
-        <div class="float-left">
-          <.link navigate={~p"/blog/#{@prev.slug}"} title={@prev.title}>
+        <div class="w-full md:w-1/2 text-left">
+          <.link navigate={~p"/blog/#{@prev.slug}"} title={@prev.title} class="truncate">
             ← {truncate(@prev.title)}
           </.link>
         </div>
       <% end %>
       <%= if not is_nil(@next) do %>
-        <div class="float-right">
-          <.link navigate={~p"/blog/#{@next.slug}"} title={@next.title}>
+        <div class="w-full md:w-1/2 text-right">
+          <.link navigate={~p"/blog/#{@next.slug}"} title={@next.title} class="truncate">
             {truncate(@next.title)} →
           </.link>
         </div>
