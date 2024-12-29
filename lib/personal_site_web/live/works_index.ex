@@ -23,11 +23,11 @@ defmodule PersonalSiteWeb.Live.WorksIndex do
     <h1 class="text-lg">Works</h1>
     <div class="space-y-3 md:w-1/2 md:max-w-1/2">
       <div :for={work <- @works} class="space-y-1">
-        <p class="text-sm"><%= work.title %></p>
-        <p class="text-xs"><%= work.role %></p>
-        <p class="text-xs"><%= Work.date(work.date_start) %> — <%= Work.date(work.date_end) %></p>
-        <p class="text-xs"><%= work.description %></p>
-        <p class="text-xs"><%= Enum.join(work.tags, ", ") %></p>
+        <p class="text-sm">{work.title}</p>
+        <p class="text-xs">{work.role}</p>
+        <p class="text-xs">{Work.date(work.date_start)} — {Work.date(work.date_end)}</p>
+        <p class="text-xs">{work.description}</p>
+        <p class="text-xs">{Enum.join(work.tags, ", ")}</p>
       </div>
     </div>
     """

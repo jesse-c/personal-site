@@ -43,12 +43,12 @@ defmodule PersonalSiteWeb.Live.BlogSingle do
     ~H"""
     <.live_component module={PersonalSiteWeb.Live.Cursors} id="cursors" users={@users} />
     <div class="post space-y-3 md:w-1/2 md:max-w-1/2">
-      <h1 class="text-lg"><%= @post.title %></h1>
+      <h1 class="text-lg">{@post.title}</h1>
       <p class="text-xs">
-        <%= @post.date %> ･ <PersonalSiteWeb.TagsComponents.inline tags={@post.tags} />
+        {@post.date} ･ <PersonalSiteWeb.TagsComponents.inline tags={@post.tags} />
       </p>
       <div class="space-y-3">
-        <%= raw(@post.body) %>
+        {raw(@post.body)}
       </div>
       <.prev_next prev={assigns[:prev]} next={assigns[:next]} />
     </div>
@@ -64,14 +64,14 @@ defmodule PersonalSiteWeb.Live.BlogSingle do
       <%= if not is_nil(@prev) do %>
         <div class="float-left">
           <.link navigate={~p"/blog/#{@prev.slug}"} title={@prev.title}>
-            ← <%= truncate(@prev.title) %>
+            ← {truncate(@prev.title)}
           </.link>
         </div>
       <% end %>
       <%= if not is_nil(@next) do %>
         <div class="float-right">
           <.link navigate={~p"/blog/#{@next.slug}"} title={@next.title}>
-            <%= truncate(@next.title) %> →
+            {truncate(@next.title)} →
           </.link>
         </div>
       <% end %>

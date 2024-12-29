@@ -99,10 +99,10 @@ defmodule PersonalSiteWeb.Live.InstagramDupeChecker do
               <%= for entry <- @uploads.candidate.entries do %>
                 <div class="gap-3 text-sm flex flex-col md:flex-row">
                   <div class="w-100 lg:w-50">
-                    <span><%= String.slice(entry.client_name, 0..9) %>&hellip;</span>
+                    <span>{String.slice(entry.client_name, 0..9)}&hellip;</span>
                   </div>
                   <div class="w-100 lg:w-50">
-                    <progress value={entry.progress} max="100"><%= entry.progress %>%</progress>
+                    <progress value={entry.progress} max="100">{entry.progress}%</progress>
                     <button
                       type="button"
                       phx-click="cancel-upload"
@@ -114,14 +114,14 @@ defmodule PersonalSiteWeb.Live.InstagramDupeChecker do
                   </div>
                 </div>
                 <%= for err <- upload_errors(@uploads.candidate, entry) do %>
-                  <p class="alert alert-danger"><%= error_to_string(err) %></p>
+                  <p class="alert alert-danger">{error_to_string(err)}</p>
                 <% end %>
                 <figure>
                   <.live_img_preview entry={entry} />
                 </figure>
               <% end %>
               <%= for err <- upload_errors(@uploads.candidate) do %>
-                <p class="alert alert-danger"><%= error_to_string(err) %></p>
+                <p class="alert alert-danger">{error_to_string(err)}</p>
               <% end %>
             </div>
           <% end %>
@@ -134,13 +134,13 @@ defmodule PersonalSiteWeb.Live.InstagramDupeChecker do
             <div class="gap-3 text-sm flex flex-col md:flex-row">
               <%= for image <- similar_images do %>
                 <div class="w-full lg:w-1/5 p-3 rounded-sm border border-dashed border-black dark:border-white space-y-3">
-                  <span>#<%= image["rank"] %></span>
+                  <span>#{image["rank"]}</span>
                   <img src={"data:image/jpeg;base64,#{image["image_base64"]}"} class="object-contain" />
                 </div>
               <% end %>
             </div>
           <% [{:error, message}] -> %>
-            <p class="alert alert-danger">Error: <%= message %></p>
+            <p class="alert alert-danger">Error: {message}</p>
         <% end %>
       <% end %>
     </div>

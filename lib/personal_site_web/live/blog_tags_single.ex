@@ -39,20 +39,20 @@ defmodule PersonalSiteWeb.Live.BlogTagsSingle do
     <h1 class="text-lg">
       <.link navigate={~p"/blog"}>Blog</.link>
       · <.link navigate={~p"/blog/tags"}>Tags</.link>
-      · <%= @tag %>
+      · {@tag}
     </h1>
     <div class="space-y-3 md:w-1/2 md:max-w-1/2">
       <div :for={{year, posts} <- @years} class="space-y-1">
-        <div><%= year %></div>
+        <div>{year}</div>
         <div class="space-y-3">
           <div :for={post <- posts} class="space-y-1">
             <p class="text-sm">
               <.link navigate={~p"/blog/#{post.slug}"}>
-                <%= post.title %>
+                {post.title}
               </.link>
             </p>
             <p class="text-xs">
-              <%= post.date %> ･ <PersonalSiteWeb.TagsComponents.inline tags={post.tags} />
+              {post.date} ･ <PersonalSiteWeb.TagsComponents.inline tags={post.tags} />
             </p>
           </div>
         </div>
