@@ -32,18 +32,18 @@ defmodule PersonalSiteWeb.Live.ProjectsIndex do
       <div :for={{_year, projects} <- @years} class="space-y-1">
         <div class="space-y-3">
           <div :for={project <- projects} class="space-y-1">
-            <p class="text-md"><%= project.title %></p>
+            <p class="text-md">{project.title}</p>
             <p class="text-xs">
-              <.link href={project.source_link}><%= project.source_link %></.link>
+              <.link href={project.source_link}>{project.source_link}</.link>
             </p>
             <%= if not is_nil(project.external_link) do %>
               <p class="text-xs">
-                <.link href={project.external_link}><%= project.external_link %></.link>
+                <.link href={project.external_link}>{project.external_link}</.link>
               </p>
             <% end %>
-            <p class="text-xs"><%= Enum.join(project.tags, ", ") %></p>
+            <p class="text-xs">{Enum.join(project.tags, ", ")}</p>
             <div class="space-y-3 text-sm">
-              <%= raw(project.description) %>
+              {raw(project.description)}
             </div>
           </div>
         </div>

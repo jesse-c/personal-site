@@ -24,7 +24,7 @@ defmodule PersonalSiteWeb.Live.Cursors do
           <circle cx="5" cy="5" r="5" fill="currentColor" />
         </svg>
         <span style={"background-color: #{user.hsl};"} class="mt-1 ml-4 px-1 text-sm text-white">
-          <%= user.name %>
+          {user.name}
         </span>
       </li>
     </ul>

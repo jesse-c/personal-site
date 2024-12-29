@@ -32,18 +32,18 @@ defmodule PersonalSiteWeb.Live.ContributionsIndex do
       <div :for={{_year, contributions} <- @years} class="space-y-1">
         <div class="space-y-3">
           <div :for={contribution <- contributions} class="space-y-1">
-            <p class="text-md"><%= contribution.title %></p>
+            <p class="text-md">{contribution.title}</p>
             <p class="text-xs">
-              <.link href={contribution.source_link}><%= contribution.source_link %></.link>
+              <.link href={contribution.source_link}>{contribution.source_link}</.link>
             </p>
             <%= if not is_nil(contribution.external_link) do %>
               <p class="text-xs">
-                <.link href={contribution.external_link}><%= contribution.external_link %></.link>
+                <.link href={contribution.external_link}>{contribution.external_link}</.link>
               </p>
             <% end %>
-            <p class="text-xs"><%= Enum.join(contribution.tags, ", ") %></p>
+            <p class="text-xs">{Enum.join(contribution.tags, ", ")}</p>
             <div class="space-y-3 text-sm">
-              <%= raw(contribution.description) %>
+              {raw(contribution.description)}
             </div>
           </div>
         </div>

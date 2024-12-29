@@ -30,16 +30,16 @@ defmodule PersonalSiteWeb.Live.BlogIndex do
     <div class="space-y-3 mt-3">
       <p class="text-sm"><.link navigate={~p"/blog/tags"}>All tags</.link></p>
       <div :for={{year, posts} <- @years} class="space-y-1">
-        <div><%= year %></div>
+        <div>{year}</div>
         <div class="space-y-3">
           <div :for={post <- posts} class="space-y-1">
             <p class="text-sm">
               <.link navigate={~p"/blog/#{post.slug}"}>
-                <%= post.title %>
+                {post.title}
               </.link>
             </p>
             <p class="text-xs">
-              <%= post.date %> ･ <PersonalSiteWeb.TagsComponents.inline tags={post.tags} />
+              {post.date} ･ <PersonalSiteWeb.TagsComponents.inline tags={post.tags} />
             </p>
           </div>
         </div>

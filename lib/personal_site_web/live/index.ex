@@ -118,11 +118,11 @@ defmodule PersonalSiteWeb.Live.Index do
             <div :for={post <- Enum.take(@posts, 5)} class="space-y-1">
               <p class="text-sm">
                 <.link navigate={~p"/blog/#{post.slug}"}>
-                  <%= post.title %>
+                  {post.title}
                 </.link>
               </p>
               <p class="text-xs">
-                <%= post.date %> ･ <PersonalSiteWeb.TagsComponents.inline tags={post.tags} />
+                {post.date} ･ <PersonalSiteWeb.TagsComponents.inline tags={post.tags} />
               </p>
             </div>
           </div>
@@ -136,13 +136,13 @@ defmodule PersonalSiteWeb.Live.Index do
           <h2 class="text-lg">Works</h2>
           <div class="space-y-3">
             <div :for={work <- Enum.take(@works, 5)} class="space-y-1">
-              <p class="text-sm"><%= work.title %></p>
-              <p class="text-xs"><%= work.role %></p>
+              <p class="text-sm">{work.title}</p>
+              <p class="text-xs">{work.role}</p>
               <p class="text-xs">
-                <%= Work.date(work.date_start) %> — <%= Work.date(work.date_end) %>
+                {Work.date(work.date_start)} — {Work.date(work.date_end)}
               </p>
-              <p class="text-xs"><%= work.description %></p>
-              <p class="text-xs"><%= Enum.join(work.tags, ", ") %></p>
+              <p class="text-xs">{work.description}</p>
+              <p class="text-xs">{Enum.join(work.tags, ", ")}</p>
             </div>
           </div>
           <div>
@@ -155,9 +155,9 @@ defmodule PersonalSiteWeb.Live.Index do
           <h2 class="text-lg">Projects</h2>
           <div class="space-y-3">
             <div :for={project <- Enum.take(@projects, 5)} class="space-y-1">
-              <p class="text-sm"><%= project.title %></p>
-              <p class="text-xs"><%= project.description %></p>
-              <p class="text-xs"><%= Enum.join(project.tags, ", ") %></p>
+              <p class="text-sm">{project.title}</p>
+              <p class="text-xs">{project.description}</p>
+              <p class="text-xs">{Enum.join(project.tags, ", ")}</p>
             </div>
           </div>
           <div>
@@ -170,9 +170,9 @@ defmodule PersonalSiteWeb.Live.Index do
           <h2 class="text-lg">Contributions</h2>
           <div class="space-y-3">
             <div :for={contribution <- Enum.take(@contributions, 5)} class="space-y-1">
-              <p class="text-sm"><%= contribution.title %></p>
-              <p class="text-xs"><%= contribution.description %></p>
-              <p class="text-xs"><%= Enum.join(contribution.tags, ", ") %></p>
+              <p class="text-sm">{contribution.title}</p>
+              <p class="text-xs">{contribution.description}</p>
+              <p class="text-xs">{Enum.join(contribution.tags, ", ")}</p>
             </div>
           </div>
           <div>
@@ -230,9 +230,9 @@ defmodule PersonalSiteWeb.Live.Index do
             <div class="space-y-3">
               <div :for={shout <- Enum.take(@shouts, 10)} class="space-y-1">
                 <p class="text-xs">
-                  &#9786; <%= shout.name %> ･ &#9200; <%= Timex.from_now(shout.timestamp) %>
+                  &#9786; {shout.name} ･ &#9200; {Timex.from_now(shout.timestamp)}
                 </p>
-                <p class="text-xs"><%= shout.message %></p>
+                <p class="text-xs">{shout.message}</p>
               </div>
             </div>
           <% end %>
