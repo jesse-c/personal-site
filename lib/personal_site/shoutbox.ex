@@ -152,6 +152,8 @@ defmodule PersonalSite.Shoutbox do
 
       state = [shout | state]
 
+      notify(shout)
+
       {:reply, :ok, state}
     end
   end
@@ -189,6 +191,22 @@ defmodule PersonalSite.Shoutbox do
 
       {:error, error} ->
         Logger.debug("failed to trim shouts: #{inspect(error)}")
+    end
+  end
+
+  defp notify(shout) do
+    if Application.get_env(:personal_site, PersonalSiteWeb.Pushover)[:enabled] do
+      api_key = Application.get_env(:personal_site, PersonalSiteWeb.Pushover)[:api_key]
+      user_key = Application.get_env(:personal_site, PersonalSiteWeb.Pushover)[:user_key]
+
+      Req.post!(
+        "https://api.pushover.net/1/messages.json",
+        json: %{
+          token: api_key,
+          user: user_key,
+          message: "Shout sent: #{shout}"
+        }
+      )
     end
   end
 end
