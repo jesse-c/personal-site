@@ -12,12 +12,16 @@ defmodule PersonalSiteWeb.Live.InstagramDupeChecker do
 
     use Tesla
 
+    @timeout_ms 2 * 60 * 1_000
+
     plug Tesla.Middleware.Logger
+    plug Tesla.Middleware.Timeout, timeout: @timeout_ms
 
     adapter(Tesla.Adapter.Hackney,
       transport_opts: [
         inet6: true
-      ]
+      ],
+      recv_timeout: @timeout_ms
     )
 
     def get_similar_images(image_path) do
