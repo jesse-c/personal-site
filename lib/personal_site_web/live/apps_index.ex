@@ -14,7 +14,7 @@ defmodule PersonalSiteWeb.Live.AppsIndex do
     <.live_component module={PersonalSiteWeb.Live.Cursors} id="cursors" users={@users} />
     <h1 class="text-lg">Apps</h1>
     <div class="space-y-3 md:w-1/2 md:max-w-1/2">
-      <div>
+      <div class="text-sm">
         <.link href={~p"/apps/instagram-dupe-checker"}>
           <p class="text-md">Instagram Dupe Checker</p>
         </.link>
