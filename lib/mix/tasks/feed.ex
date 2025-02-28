@@ -25,7 +25,7 @@ defmodule Mix.Tasks.Feed do
 
   defp get_entry(post) do
     # Fake writing time for now
-    {:ok, datetime, _offset} = DateTime.from_iso8601("#{post.date}T#{~T[00:00:00]}Z")
+    {:ok, datetime, _offset} = DateTime.from_iso8601("#{post.date_created}T#{~T[00:00:00]}Z")
 
     Entry.new(
       post.id,
