@@ -1,7 +1,7 @@
 %{
     title: "My trivial, but first, model on HuggingFace",
     tags: ~w(side-project machine-learning image-feature-extraction huggingface resnet-50),
-    date: "2024-09-30",
+    date_created: "2024-09-30",
 }
 ---
 # Welcome to ResNet-50 Embeddings Only

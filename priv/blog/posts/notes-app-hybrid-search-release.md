@@ -1,7 +1,7 @@
 %{
     title: "Initial release of hybrid search for Notes.app",
     tags: ~w(side-project machine-learning vespa macos),
-    date: "2024-09-08",
+    date_created: "2024-09-08",
 }
 ---
 # Introduction

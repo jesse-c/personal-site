@@ -1,7 +1,7 @@
 %{
     title: "Fine-tuning an LLM on my messages (WhatsApp, Instagram, and Messenger)",
     tags: ~w(large-language-models prototype side-project retrospective),
-    date: "2024-06-25",
+    date_created: "2024-06-25",
 }
 ---
 This will be a brief overview of how I _attempted_ to fine-tune an LLM on my personal messages. The goal was to 1) go through the data preparation, experimentation, and evaluation loop end-to-end, and 2) be able to side-by-side evaluate my responses to responses from the LLM. This was out of curiosity and also to practice some data and ML engineering! I'm in the process of transitioning professionally from software engineer to _eventually_ something ML engineer-esque.

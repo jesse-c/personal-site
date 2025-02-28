@@ -1,7 +1,7 @@
 %{
     title: "Hyper key without Karabiner Elements",
     tags: ~w(hyper macos),
-    date: "2023-04-13",
+    date_created: "2023-04-13",
 }
 ---
 I came across a blog post[^1] about using `hidutil` on macOS. As much as I'm thankful for those who worked on Karabiner Elements, I'm happy to remove a dependency!

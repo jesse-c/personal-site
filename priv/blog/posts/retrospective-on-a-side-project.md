@@ -1,7 +1,7 @@
 %{
     title: "Retrospective on a side-project: AutoVolume for macOS",
     tags: ~w(swift macos side-project retrospective),
-    date: "2017-04-19",
+    date_created: "2017-04-19",
 }
 ---
 [AutoVolume](http://www.jesseclaven.com/projects/AutoVolume/) is a free and open source app that automatically changes the volume when your Mac wakes from sleep. I'm going to give a brief overview from how it started, to being released.

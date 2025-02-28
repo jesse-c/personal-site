@@ -1,7 +1,7 @@
 %{
     title: "Safari opening without windows",
     tags: ~w(macos safari appcleaner),
-    date: "2023-01-23",
+    date_created: "2023-01-23",
 }
 ---
 This is one of those, "I don't know why it broke but here's what fixed it". Safari started opening without any windows—private or otherwise.

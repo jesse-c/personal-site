@@ -12,7 +12,7 @@ defmodule PersonalSiteWeb.Live.BlogIndex do
 
     years =
       all_posts
-      |> Enum.group_by(& &1.date.year)
+      |> Enum.group_by(& &1.date_created.year)
       |> Enum.sort_by(&elem(&1, 0), :desc)
 
     updated =
@@ -39,7 +39,11 @@ defmodule PersonalSiteWeb.Live.BlogIndex do
               </.link>
             </p>
             <p class="text-xs">
-              {post.date} ･ <PersonalSiteWeb.TagsComponents.inline tags={post.tags} />
+              {post.date_created}
+              <%= if post.date_updated do %>
+                (updated: {post.date_updated})
+              <% end %>
+              ･ <PersonalSiteWeb.TagsComponents.inline tags={post.tags} />
             </p>
           </div>
         </div>

@@ -1,7 +1,7 @@
 %{
     title: "Using Autumn with NimblePublisher for syntax highlighting",
     tags: ~w(elixir nimblepublisher),
-    date: "2024-05-22",
+    date_created: "2024-05-22",
 }
 ---
 For this website, I currently use NimblePublisher[^1] for the content management. By default, it uses Earmark for Markdown and different Makeup packages for syntax highlighting.

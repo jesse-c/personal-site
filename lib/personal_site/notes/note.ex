@@ -7,7 +7,8 @@ defmodule PersonalSite.Blog.Post do
     :id,
     :title,
     :slug,
-    :date,
+    :date_created,
+    :date_updated,
     :tags,
     :body
   ]
@@ -15,7 +16,8 @@ defmodule PersonalSite.Blog.Post do
     :id,
     :title,
     :slug,
-    :date,
+    :date_created,
+    :date_updated,
     :tags,
     :body
   ]
@@ -23,7 +25,14 @@ defmodule PersonalSite.Blog.Post do
   @type t() :: any()
 
   def build(_filename, attrs, body) do
-    date = Date.from_iso8601!(attrs.date)
+    date_created = Date.from_iso8601!(attrs.date_created)
+
+    date_updated =
+      Map.get(attrs, :date_updated)
+      |> then(fn
+        nil -> nil
+        date_str -> Date.from_iso8601!(date_str)
+      end)
 
     slug = Slug.slugify(attrs.title)
 
@@ -31,7 +40,8 @@ defmodule PersonalSite.Blog.Post do
       [
         id: slug,
         slug: slug,
-        date: date,
+        date_created: date_created,
+        date_updated: date_updated,
         body: body
       ] ++ (attrs |> Map.take(~w(title tags)a) |> Map.to_list())
 

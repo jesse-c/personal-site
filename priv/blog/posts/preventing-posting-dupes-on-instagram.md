@@ -1,7 +1,7 @@
 %{
     title: "Preventing posting dupes on Instagram",
     tags: ~w(side-project machine-learning instagram photography),
-    date: "2024-09-27",
+    date_created: "2024-09-27",
 }
 ---
 # What's now simple

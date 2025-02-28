@@ -1,7 +1,7 @@
 %{
     title: "First versions of new Linear server for Model Context Protocol",
     tags: ~w(side-project machine-learning typescript claude anthropic large-language-models model-context-protocol linear),
-    date: "2024-12-03",
+    date_created: "2024-12-03",
 }
 ---
 With the launch of the Model Context Protocol initiative by Anthropic[^1], I thought I'd try my hand at making one—as did many others, also think to do!

@@ -1,7 +1,7 @@
 %{
     title: "v1 release of Rom-to-the-Com",
     tags: ~w(side-project machine-learning large-language-models rom-to-the-com),
-    date: "2024-08-04",
+    date_created: "2024-08-04",
 }
 ---
 A few years ago, some friends and I went on a road-trip to Wales. How we came up with the idea has long been forgotten, but the idea lived on. I bough the domains immediately after that trip, and held onto them until now!

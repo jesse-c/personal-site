@@ -1,7 +1,7 @@
 %{
     title: "v1 release of AppearanceNotifier",
     tags: ~w(swift appearancenotifier),
-    date: "2022-12-08",
+    date_created: "2022-12-08",
 }
 ---
 v0.0.1 was released on 2021-06-09[^1]. Since then, I've been using it daily both at home and at work. After a lazy approach to auto-starting it[^2], I added a daemon definition for macOS with `launchd`. Recently as well, I added Emacs support.

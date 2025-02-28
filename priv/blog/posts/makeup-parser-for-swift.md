@@ -1,7 +1,7 @@
 %{
     title: "Makeup parser for Swift",
     tags: ~w(swift makeup parser nimblepublisher nimbleparsec),
-    date: "2023-08-25",
+    date_created: "2023-08-25",
 }
 ---
 Having switched to using Elixir and NimblePublisher for the backend of my personal website, I've needed to improve the availability of Makeup parsers. Firstly, starting with Swift, with [`makeup_swift`](https://github.com/jesse-c/makeup_swift).

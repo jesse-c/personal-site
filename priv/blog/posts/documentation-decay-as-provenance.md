@@ -1,7 +1,7 @@
 %{
     title: "Anti-decaying documentation framed as provenance (by Ink & Switch)",
     tags: ~w(documentation readme research),
-    date: "2024-12-06",
+    date_created: "2024-12-06",
 }
 ---
 Again on a previous blog post[^1], I've come across some writings by the inimitable Ink & Switch group on a similar concept[^2][^3].

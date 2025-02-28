@@ -1,7 +1,7 @@
 %{
     title: "New tool: A local audio toolkit for macOS with Whisper and LM Studio",
     tags: ~w(side-project machine-learning audio macos whisper lm-studio),
-    date: "2024-11-28",
+    date_created: "2024-11-28",
 }
 ---
 I've added audio as another interface for regular and useful writing—across daily notes, Git comments, etc. I thought I'd quickly package it up and make it available[^1]. I shared the snippets originally with my colleagues. It uses an MLX version of a Whisper model.

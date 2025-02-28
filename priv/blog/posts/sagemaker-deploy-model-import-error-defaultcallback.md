@@ -1,7 +1,7 @@
 %{
     title: "Missing `s3fs` for SageMaker real-time inference tutorial",
     tags: ~w(aws tip),
-    date: "2024-03-31",
+    date_created: "2024-03-31",
 }
 ---
 If you're getting the following error when going through a AWS SageMaker Studio tutorial[^1], here's a quick solution I'm writing down, to save someone else searching. It's as obvious as you'd expect!

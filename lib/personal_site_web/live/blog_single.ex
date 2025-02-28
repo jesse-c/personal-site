@@ -45,7 +45,11 @@ defmodule PersonalSiteWeb.Live.BlogSingle do
     <div class="post space-y-3 md:w-1/2 md:max-w-1/2">
       <h1 class="text-lg">{@post.title}</h1>
       <p class="text-xs">
-        {@post.date} ･ <PersonalSiteWeb.TagsComponents.inline tags={@post.tags} />
+        {@post.date_created}
+        <%= if @post.date_updated do %>
+          (updated: {@post.date_updated})
+        <% end %>
+        ･ <PersonalSiteWeb.TagsComponents.inline tags={@post.tags} />
       </p>
       <div class="space-y-3">
         {raw(@post.body)}

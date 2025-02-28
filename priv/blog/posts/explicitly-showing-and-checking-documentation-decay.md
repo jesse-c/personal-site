@@ -1,7 +1,7 @@
 %{
     title: "Explicitly showing, and checking, documentation decay",
     tags: ~w(documentation readme),
-    date: "2024-09-14",
+    date_created: "2024-09-14",
 }
 ---
 # The problem with manual links

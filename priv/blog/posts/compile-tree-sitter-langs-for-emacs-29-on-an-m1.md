@@ -1,7 +1,7 @@
 %{
     title: "Compile Tree-sitter langs for Emacs 29 on an M1",
     tags: ~w(tree-sitter emacs),
-    date: "2022-12-20",
+    date_created: "2022-12-20",
 }
 ---
 Recently I tried Emacs 29[^1] and began slimming down my config[^2]. Following the Tree-sitter starter guide[^3], I couldn't figure out why I wasn't able to start the appropriate mode. I would get errors along the lines of, `Cannot activate tree-sitter, because language definition for ...`.

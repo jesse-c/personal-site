@@ -1,7 +1,8 @@
 %{
     title: "Example of anti-decaying documentation",
     tags: ~w(documentation readme typescript),
-    date: "2024-12-06",
+    date_created: "2024-12-06",
+    date_updated: "2024-12-14",
 }
 ---
 In a previous blog post[^1], I wrote about an idea to avoid documentation decay, like links or installation instructions falling out-of-date. I just had a chance to try it out, on a new project[^2][^3].

@@ -1,7 +1,7 @@
 %{
     title: "New app: Check if I would've posted an image on Instagram",
     tags: ~w(side-project machine-learning instagram photography),
-    date: "2024-10-20",
+    date_created: "2024-10-20",
 }
 ---
 This is an implementation[^1] as a follow-up to a previous post[^2] about preventing posting dupes on Instagram, through a simple ML model.

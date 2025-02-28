@@ -1,7 +1,7 @@
 %{
     title: "Serialise and deserialise enums with named associated values from Rust → Swift",
     tags: ~w(swift rust json),
-    date: "2023-01-02",
+    date_created: "2023-01-02",
 }
 ---
 Between Rust and Serde and Swift and `Codable`, it's _relatively_ easy to serialise and deserialise between the 2, using JSON. Whilst there aren't shared definitions through a common format, such as Protobuf or MessagePack, for simple data it looks to be maintainable.
