@@ -1,7 +1,7 @@
 %{
     title: "Programming: Imperative to Functional to Logic",
     tags: ~w(functional imperative logic programming),
-    date: "2024-02-23",
+    date_created: "2024-02-23",
 }
 ---
 # How I started programming

@@ -1,7 +1,7 @@
 %{
     title: "New feature: Search for Rom-to-the-Com",
     tags: ~w(side-project rom-to-the-com),
-    date: "2024-12-26",
+    date_created: "2024-12-26",
 }
 ---
 Are you curious about what the ranking for a specific film may be?

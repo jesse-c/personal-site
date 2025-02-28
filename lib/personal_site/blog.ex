@@ -10,7 +10,7 @@ defmodule PersonalSite.Blog do
     as: :posts,
     html_converter: MDExConverter
 
-  @posts Enum.sort_by(@posts, & &1.date, {:desc, Date})
+  @posts Enum.sort_by(@posts, & &1.date_created, {:desc, Date})
 
   @tags @posts
         |> Enum.flat_map(& &1.tags)

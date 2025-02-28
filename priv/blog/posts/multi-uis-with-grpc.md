@@ -1,7 +1,7 @@
 %{
     title: "Multi-UIs for a daemon and using gRPC to communicate locally from Rust <> Swift",
     tags: ~w(rust swift grpc ui),
-    date: "2022-06-24",
+    date_created: "2022-06-24",
 }
 ---
 # Multi-UIs Discovery of a paradigm

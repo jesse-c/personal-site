@@ -1,7 +1,7 @@
 %{
     title: "A partially wrong TF-IDF in Flix",
     tags: ~w(tf-idf natural-language-processing flix side-project retrospective),
-    date: "2024-05-05",
+    date_created: "2024-05-05",
 }
 ---
 Recently I reminded myself of TF-IDF and the relatively simplicity of it, in and of itself. Having considered a Python implementation, and wanting to write _something_ in Flix[^1][^2], I thought this could be a good opportunity.

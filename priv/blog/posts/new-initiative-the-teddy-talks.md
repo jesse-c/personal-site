@@ -1,7 +1,7 @@
 %{
     title: "New initiative launched: The Teddy Talks",
     tags: ~w(side-project initiative),
-    date: "2024-09-05",
+    date_created: "2024-09-05",
 }
 ---
 Around 3 years ago, a friend of mine told me about something they've been doing, called [The Teddy Talks](https://www.instagram.com/the.teddytalks/). I loved the idea, and have run it annually where I live, for the last 4 years!

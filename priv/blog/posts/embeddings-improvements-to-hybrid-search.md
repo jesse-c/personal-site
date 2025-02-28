@@ -1,7 +1,7 @@
 %{
     title: "Embeddings improvements to hybrid search for Notes.app",
     tags: ~w(side-project machine-learning vespa macos huggingface),
-    date: "2024-09-13",
+    date_created: "2024-09-13",
 }
 ---
 To reduce use of embeddings outside of Vespa itself, I've removed it from the data transformation pipeline [^2] and the querying CLI [^1].

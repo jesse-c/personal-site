@@ -1,7 +1,7 @@
 %{
     title: "Brewfile app relaunched",
     tags: ~w(brewfile.app ruby homebrew),
-    date: "2022-12-15",
+    date_created: "2022-12-15",
 }
 ---
 I've relaunched this app![^1] The short version is that it's the [gitignore.io](https://gitignore.io) equivalent for Homebrew Brewfiles.

@@ -122,7 +122,11 @@ defmodule PersonalSiteWeb.Live.Index do
                 </.link>
               </p>
               <p class="text-xs">
-                {post.date} ･ <PersonalSiteWeb.TagsComponents.inline tags={post.tags} />
+                {post.date_created}
+                <%= if post.date_updated do %>
+                  (updated: {post.date_updated})
+                <% end %>
+                ･ <PersonalSiteWeb.TagsComponents.inline tags={post.tags} />
               </p>
             </div>
           </div>

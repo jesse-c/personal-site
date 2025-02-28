@@ -1,7 +1,7 @@
 %{
     title: "Raycast extension for Himalaya released",
     tags: ~w(macos email raycast himalaya),
-    date: "2023-04-29",
+    date_created: "2023-04-29",
 }
 ---
 Previously[^1][^2], I wrote about a paradigm where you had daemon which had multi-UIs that interacted with it. For some time I had wanted to quickly be able to act on emails as they come in. Someone is working on a Raycast extension that uses AppleScript to interact with Mail.app[^3]. Whilst it's tractable, it was taking some time&mdash;and then I remembered Himalaya[^4]!

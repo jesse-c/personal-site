@@ -1,7 +1,7 @@
 %{
     title: "New feature: \"I'm feeling lucky!\" for Rom-to-the-Com",
     tags: ~w(side-project rom-to-the-com),
-    date: "2024-08-18",
+    date_created: "2024-08-18",
 }
 ---
 Part of the reason this project was made, was because of indecision/conflicts of what should be watched.
