@@ -247,7 +247,7 @@ defmodule PersonalSiteWeb.Live.Index do
                 <.input type="text" field={@form[:message]} maxlength="255" />
               </div>
               <div>
-                <button class="border border-solid rounded-sm border-black dark:border-white hover:bg-black dark:hover:bg-white text-black dark:text-white hover:text-white dark:hover:text-black transition-colors p-2 mb-6 text-xs max-w-fit">
+                <button class="border border-solid rounded-sm border-black dark:border-white hover:bg-black dark:hover:bg-white text-black dark:text-white hover:text-white dark:hover:text-black transition-colors py-1 px-1 mb-6 text-xs max-w-fit">
                   Save
                 </button>
               </div>
