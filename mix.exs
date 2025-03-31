@@ -60,7 +60,7 @@ defmodule PersonalSite.MixProject do
       {:sentry, "~> 10.8.0"},
       {:hackney, "~> 1.20.1"},
       {:tzdata, "~> 1.1"},
-      {:hammer, "~> 6.1"},
+      {:hammer, "~> 7.0"},
       {:nx, "~> 0.9.0"},
       {:tesla, "~> 1.12"},
       {:req, "~> 0.5.0"},
