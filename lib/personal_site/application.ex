@@ -27,7 +27,8 @@ defmodule PersonalSite.Application do
         }
       },
       # Start after the Redix supervisor
-      {PersonalSite.Shoutbox, []}
+      {PersonalSite.Shoutbox, []},
+      {PersonalSite.RateLimit, [clean_period: :timer.minutes(10)]}
     ]
 
     isolated_shoutbox_supervisor = %{

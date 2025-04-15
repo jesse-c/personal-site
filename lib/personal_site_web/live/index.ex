@@ -31,8 +31,8 @@ defmodule PersonalSiteWeb.Live.Index do
 
   def handle_event("save", %{"message" => message}, socket) do
     if match?(
-         {:deny, _limit},
-         Hammer.check_rate("save:#{socket.assigns[:client_ip]}", 60_000, 10)
+         {:deny, _ms_until_next_window},
+         PersonalSite.RateLimit.hit("save:#{socket.assigns[:client_ip]}", :timer.minutes(10), 10)
        ) do
       socket =
         socket
