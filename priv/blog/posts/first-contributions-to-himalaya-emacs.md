@@ -13,7 +13,7 @@ That took me to [himalaya-emacs](https://github.com/dantecatalfamo/himalaya-emac
 There's more on the way[^5][^6]!
 
 [^1]: [Raycast extension for Himalaya released](raycast-extension-for-himalaya-released)
-[^2]: [v1 of Raycast extension for Himalaya released](v1-of-raycast-extension-for-himalaya)
+[^2]: [v1 of Raycast extension for Himalaya released](v1-of-raycast-extension-for-himalaya-released)
 [^3]: [fix: Disable Rust logging via env (himalay-emacs#29)](https://github.com/dantecatalfamo/himalaya-emacs/pull/29)
 [^4]: [feat: Read HTML version in EWW (himalaya-emacs#32)](https://github.com/dantecatalfamo/himalaya-emacs/pull/32)
 [^5]: [feat: Add transient menus (himalaya-emacs#31)](https://github.com/dantecatalfamo/himalaya-emacs/pull/31)

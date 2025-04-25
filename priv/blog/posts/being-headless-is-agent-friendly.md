@@ -10,5 +10,5 @@ For at least 8 years[^2], I've occasionally had the thought of agents. Today I n
 
 Another WIP side-project about a continuous (AKA ambient) agent. My clipboard history could be a source for that.
 
-[^1]: [Alpha release of Kopya](kopya-release)
+[^1]: [Alpha release of Kopya](alpha-release-of-kopya)
 [^2]: I have a bookmark to [Pandemonium architecture](https://en.wikipedia.org/wiki/Pandemonium_architecture) from 8 years ago
