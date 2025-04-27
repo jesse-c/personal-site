@@ -11,6 +11,9 @@ defmodule PersonalSiteWeb.NotesController do
         "initial-release-of-semantic-search-for-notes-app" ->
           "initial-release-of-hybrid-search-for-notes-app"
 
+        "v1-of-raycast-extension-for-himalaya" ->
+          "v1-of-raycast-extension-for-himalaya-released"
+
         slug ->
           slug
       end
