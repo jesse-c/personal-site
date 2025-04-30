@@ -4,13 +4,15 @@ defmodule PersonalSite.Contributions do
   """
 
   alias PersonalSite.Contributions.Contribution
-  alias PersonalSite.MDExConverter
+  alias PersonalSite.MDEx
 
   use NimblePublisher,
     build: Contribution,
     from: Application.app_dir(:personal_site, "priv/contributions/*.md"),
     as: :contributions,
-    html_converter: MDExConverter
+    parser: MDEx.Parser,
+    html_converter: MDEx.HTMLConverter,
+    highlighters: []
 
   @contributions Enum.sort_by(@contributions, & &1.date, {:desc, Date})
 

@@ -2,13 +2,15 @@ defmodule PersonalSite.Blog do
   @moduledoc false
 
   alias PersonalSite.Blog.Post
-  alias PersonalSite.MDExConverter
+  alias PersonalSite.MDEx
 
   use NimblePublisher,
     build: Post,
     from: Application.app_dir(:personal_site, "priv/blog/posts/*.md"),
     as: :posts,
-    html_converter: MDExConverter
+    parser: MDEx.Parser,
+    html_converter: MDEx.HTMLConverter,
+    highlighters: []
 
   @posts Enum.sort_by(@posts, & &1.date_created, {:desc, Date})
 
