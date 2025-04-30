@@ -2,6 +2,7 @@
     title: "Programming: Imperative to Functional to Logic",
     tags: ~w(functional imperative logic programming),
     date_created: "2024-02-23",
+    date_updated: "2025-04-30",
 }
 ---
 # How I started programming
@@ -156,6 +157,9 @@ I've already espoused my view that functional programming is generally preferabl
 
 One potential barrier to logic programming being adopted is that who wants to learn a whole new programming language that's very specific, as opposed to Rust, Elixir, Clojure, etc that can solve a wide array of problems.
 
+I'm honoured to have this linked to from the blog posts section of the official documentation[^4]!
+
 [^1]: [Flix](https://flix.dev)
 [^2]: [Elm](https://elm-lang.org)
 [^3]: [Fixpoints](https://doc.flix.dev/fixpoints.html)
+[^4]: [https://doc.flix.dev/blog-posts.html](https://doc.flix.dev/blog-posts.html)
