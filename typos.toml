@@ -1,2 +1,2 @@
 [files]
-extend-exclude=["*.excalidraw", "*.xml"]
+extend-exclude=["*.excalidraw", "*.xml", "lib/personal_site_web/live/blog_redirects.ex"]
