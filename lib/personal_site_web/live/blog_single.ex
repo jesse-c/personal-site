@@ -15,6 +15,9 @@ defmodule PersonalSiteWeb.Live.BlogSingle do
 
   def maybe_redirect(slug, socket)
 
+  def maybe_redirect("kopya-release", socket),
+    do: {:ok, push_navigate(socket, to: ~p"/blog/alpha-release-of-kopya")}
+
   def maybe_redirect("initial-release-of-semantic-search-for-notes-app", socket),
     do: {:ok, push_navigate(socket, to: ~p"/blog/initial-release-of-hybrid-search-for-notes-app")}
 
