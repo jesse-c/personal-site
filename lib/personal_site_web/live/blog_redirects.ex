@@ -8,23 +8,19 @@ defmodule PersonalSiteWeb.Live.Blog.Redirects do
 
   alias PersonalSite.Blog
 
+  @redirects_maps %{
+    "kopya-release" => "alpha-release-of-kopya",
+    "initial-release-of-semantic-search-for-notes-app" =>
+      "initial-release-of-hybrid-search-for-notes-app",
+    "v1-of-raycast-extension-for-himalaya" => "v1-of-raycast-extension-for-himalaya-released",
+    "using-autumn-with-nimblepublisher-for-synax-highlighting" =>
+      "using-autumn-with-nimblepublisher-for-syntax-highlighting"
+  }
+
   def maybe_redirect(slug, socket)
 
-  def maybe_redirect("kopya-release", socket),
-    do: {:ok, push_navigate(socket, to: ~p"/blog/alpha-release-of-kopya")}
-
-  def maybe_redirect("initial-release-of-semantic-search-for-notes-app", socket),
-    do: {:ok, push_navigate(socket, to: ~p"/blog/initial-release-of-hybrid-search-for-notes-app")}
-
-  def maybe_redirect("v1-of-raycast-extension-for-himalaya", socket),
-    do: {:ok, push_navigate(socket, to: ~p"/blog/v1-of-raycast-extension-for-himalaya-released")}
-
-  def maybe_redirect("using-autumn-with-nimblepublisher-for-synax-highlighting", socket),
-    do:
-      {:ok,
-       push_navigate(socket,
-         to: ~p"/blog/using-autumn-with-nimblepublisher-for-syntax-highlighting"
-       )}
+  def maybe_redirect(slug, socket) when is_map_key(@redirects_maps, slug),
+    do: {:ok, push_navigate(socket, to: ~p"/blog/#{@redirects_maps[slug]}")}
 
   def maybe_redirect(slug, socket) do
     post = Blog.get_post_by_slug!(slug)
