@@ -15,9 +15,7 @@ defmodule PersonalSiteWeb.Live.Kopya do
     <div class="fixed right-2 mt-2 border border-gray-200 rounded text-black dark:text-white bg-white dark:bg-black p-4 text-sm z-10">
       <h2 class="font-bold">Table of Contents</h2>
       <ol class="mt-2 list-decimal">
-        <li>
-          <a href="#introduction" class="hover:text-blue-600 transition-colors">Introduction</a>
-        </li>
+        <li><a href="#introduction">Introduction</a></li>
         <li><a href="#integrations">Integrations</a></li>
         <li><a href="#features">Features</a></li>
         <li><a href="#roadmap">Roadmap</a></li>
