@@ -37,6 +37,10 @@ defmodule PersonalSiteWeb.Router do
       live("/apps/instagram-dupe-checker", Live.InstagramDupeChecker)
     end
 
+    live_session :mini, root_layout: {PersonalSiteWeb.Layouts, :mini} do
+      live("/apps/kopya", Live.Kopya)
+    end
+
     get "/feed.xml", FeedController, :index
   end
 end

@@ -18,6 +18,9 @@ defmodule PersonalSiteWeb.Live.AppsIndex do
         <.link href={~p"/apps/instagram-dupe-checker"}>
           <p class="text-md">Instagram Dupe Checker</p>
         </.link>
+        <.link href={~p"/apps/kopya"}>
+          <p class="text-md">Kopya</p>
+        </.link>
       </div>
     </div>
     """
