@@ -1,6 +1,6 @@
 %{
     title: "Expedia",
-    tags: ~w(Java JavaScript Swift design natural-language-processing machine-learning),
+    tags: ~w(java javascript swift design natural-language-processing machine-learning),
 	date_start: "2015-05",
 	date_end: "2016-06",
 	role: "Software Engineer",

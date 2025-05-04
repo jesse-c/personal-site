@@ -1,6 +1,6 @@
 %{
     title: "Duffel",
-    tags: ~w(Elixir API),
+    tags: ~w(elixir api),
 	date_start: "2019-12",
 	date_end: "2023-07",
 	role: "Senior Software Engineer",

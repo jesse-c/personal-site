@@ -1,6 +1,6 @@
 %{
     title: "Ava (Jazz Networks)",
-    tags: ~w(Go Elm event-streaming API machine-learning),
+    tags: ~w(go elm event-streaming api machine-learning),
 	date_start: "2016-12",
 	date_end: "2019-10",
 	role: "Software Engineer",
