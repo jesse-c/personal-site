@@ -1,6 +1,6 @@
 %{
     title: "An Emacs menu for Justfiles",
-    tags: ~w(magit emacs justfile),
+    tags: ~w(magit emacs justfile tip),
     date_created: "2025-05-04",
 }
 ---
