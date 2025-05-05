@@ -64,7 +64,7 @@ defmodule PersonalSite.MixProject do
       {:nx, "~> 0.9.0"},
       {:tesla, "~> 1.12"},
       {:req, "~> 0.5.0"},
-      {:dotenvy, "~> 0.9.0"}
+      {:dotenvy, "~> 1.1.0"}
     ]
   end
 
