@@ -14,7 +14,8 @@ defmodule PersonalSiteWeb.Live.Blog.Redirects do
       "initial-release-of-hybrid-search-for-notes-app",
     "v1-of-raycast-extension-for-himalaya" => "v1-of-raycast-extension-for-himalaya-released",
     "using-autumn-with-nimblepublisher-for-synax-highlighting" =>
-      "using-autumn-with-nimblepublisher-for-syntax-highlighting"
+      "using-autumn-with-nimblepublisher-for-syntax-highlighting",
+    "notes-app-hybrid-search-release" => "initial-release-of-hybrid-search-for-notes-app"
   }
 
   def maybe_redirect(slug, socket)
