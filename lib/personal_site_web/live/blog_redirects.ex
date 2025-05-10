@@ -15,7 +15,9 @@ defmodule PersonalSiteWeb.Live.Blog.Redirects do
     "v1-of-raycast-extension-for-himalaya" => "v1-of-raycast-extension-for-himalaya-released",
     "using-autumn-with-nimblepublisher-for-synax-highlighting" =>
       "using-autumn-with-nimblepublisher-for-syntax-highlighting",
-    "notes-app-hybrid-search-release" => "initial-release-of-hybrid-search-for-notes-app"
+    "notes-app-hybrid-search-release" => "initial-release-of-hybrid-search-for-notes-app",
+    "serialise-deserialise-enum-from-rust-to-swift" =>
+      "serialise-and-deserialise-enums-with-named-associated-values-from-rust-swift"
   }
 
   def maybe_redirect(slug, socket)
