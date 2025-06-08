@@ -74,6 +74,10 @@ if config_env() == :prod do
       environment variable PHX_HOST is missing.
       """
 
+  host_alt = System.get_env("PHX_HOST_ALT")
+
+  hosts = Enum.filter([host, host_alt], &(&1 != nil))
+
   port =
     String.to_integer(
       System.get_env("PORT") ||
@@ -82,7 +86,8 @@ if config_env() == :prod do
         """)
     )
 
-  config :personal_site, PersonalSite.Plausible, data_domain: host
+  # https://plausible.io/docs/plausible-script#can-i-send-stats-to-multiple-dashboards-at-the-same-time
+  config :personal_site, PersonalSite.Plausible, data_domain: Enum.join(hosts, ",")
 
   config :personal_site, PersonalSite.Redis,
     url:
@@ -100,8 +105,19 @@ if config_env() == :prod do
     url: System.get_env("INSTAGRAM_DUPE_CHECKER_URL"),
     port: System.get_env("INSTAGRAM_DUPE_CHECKER_PORT")
 
+  check_origin =
+    [host, host_alt]
+    |> Enum.filter(&(&1 != nil))
+    |> Enum.flat_map(fn host ->
+      [
+        # Expects `host` to be "xxxx.com"
+        "https://#{host}",
+        "https://www.#{host}"
+      ]
+    end)
+
   config :personal_site, PersonalSiteWeb.Endpoint,
-    url: [host: host, port: 443, scheme: "https"],
+    url: [host: nil, port: 443, scheme: "https"],
     http: [
       # Enable IPv6 and bind on all interfaces.
       # Set it to  {0, 0, 0, 0, 0, 0, 0, 1} for local network only access.
@@ -111,11 +127,7 @@ if config_env() == :prod do
       port: port
     ],
     secret_key_base: secret_key_base,
-    check_origin: [
-      # Expects `host` to be "xxxx.com"
-      "https://#{host}",
-      "https://www.#{host}"
-    ]
+    check_origin: check_origin
 
   # ## SSL Support
   #
