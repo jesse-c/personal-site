@@ -49,7 +49,7 @@ defmodule PersonalSite.MixProject do
       {:nimble_publisher, "~> 1.1.0"},
       {:yaml_front_matter, "~> 1.0.0"},
       {:autumn, "~> 0.3.2"},
-      {:mdex, "~> 0.6.1"},
+      {:mdex, "~> 0.7.0"},
       {:slugify, "~> 1.3"},
       {:credo, "~> 1.7", only: [:dev, :test], runtime: false},
       {:redix, "~> 1.1"},
