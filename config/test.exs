@@ -13,4 +13,7 @@ config :logger, level: :warning
 # Initialize plugs at runtime for faster test compilation
 config :phoenix, :plug_init_mode, :runtime
 
-config :testcontainers, enabled: true
+# Use local Redis for tests instead of testcontainers
+config :personal_site, PersonalSite.Redis,
+  url: "redis://localhost:6379/0",
+  opts: []

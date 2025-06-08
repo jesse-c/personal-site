@@ -11,7 +11,7 @@ defmodule PersonalSite.Application do
       config: %{metadata: [:file, :line]}
     })
 
-    redis_env = redis_env()
+    redis_env = Application.get_env(:personal_site, PersonalSite.Redis)
 
     shoutbox_children = [
       {
@@ -61,20 +61,5 @@ defmodule PersonalSite.Application do
   def config_change(changed, _new, removed) do
     PersonalSiteWeb.Endpoint.config_change(changed, removed)
     :ok
-  end
-
-  def redis_env do
-    if Application.get_env(:testcontainers, :enabled, false) do
-      {:ok, _} = Testcontainers.start_link()
-      config = Testcontainers.RedisContainer.new()
-      {:ok, container} = Testcontainers.start_container(config)
-
-      [
-        url: Testcontainers.RedisContainer.connection_url(container),
-        opts: []
-      ]
-    else
-      Application.get_env(:personal_site, PersonalSite.Redis)
-    end
   end
 end

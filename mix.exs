@@ -56,7 +56,6 @@ defmodule PersonalSite.MixProject do
       {:castore, ">= 0.0.0"},
       {:timex, "~> 3.7"},
       {:atomex, "0.5.1"},
-      {:testcontainers, "~> 1.12.0"},
       {:sentry, "~> 10.10.0"},
       {:hackney, "~> 1.23.0"},
       {:tzdata, "~> 1.1"},
@@ -64,7 +63,8 @@ defmodule PersonalSite.MixProject do
       {:nx, "~> 0.9.0"},
       {:tesla, "~> 1.12"},
       {:req, "~> 0.5.0"},
-      {:dotenvy, "~> 1.1.0"}
+      {:dotenvy, "~> 1.1.0"},
+      {:earmark, "1.5.0-pre1", override: true}
     ]
   end
 
