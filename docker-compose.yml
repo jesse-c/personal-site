@@ -1,6 +1,6 @@
 services:
   redis:
-    image: docker.io/bitnami/redis:7.2
+    image: docker.io/bitnami/redis:7.4
     environment:
       # ALLOW_EMPTY_PASSWORD is recommended only for development.
       - ALLOW_EMPTY_PASSWORD=yes
@@ -11,7 +11,7 @@ services:
       - 'redis_data:/bitnami/redis/data'
 
   redisinsight:
-    image: redis/redisinsight:2.48.0
+    image: redis/redisinsight:2.70.0
     depends_on:
       - redis
     ports:
