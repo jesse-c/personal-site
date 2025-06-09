@@ -1,7 +1,8 @@
 %{
     title: "From write-up to prototype of static checks for anti-documentation decay",
-    tags: ~w(documentation readme research),
+    tags: ~w(documentation readme research clevis),
     date_created: "2024-12-28",
+    date_updated: "2025-06-09",
 }
 ---
 In _Explicitly showing, and checking, documentation decay_[^1], I gave a Python snippet for checking some "links" between data in documentation.
