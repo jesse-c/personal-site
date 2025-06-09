@@ -21,6 +21,9 @@ defmodule PersonalSiteWeb.Live.AppsIndex do
         <.link href={~p"/apps/kopya"}>
           <p class="text-md">Kopya</p>
         </.link>
+        <.link href="https://brewfile.app" target="_blank" rel="noopener noreferrer">
+          <p class="text-md">Brewfile</p>
+        </.link>
       </div>
     </div>
     """
