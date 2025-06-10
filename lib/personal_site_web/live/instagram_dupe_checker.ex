@@ -10,19 +10,23 @@ defmodule PersonalSiteWeb.Live.InstagramDupeChecker do
     The prediction client for the service.
     """
 
-    use Tesla
-
     @timeout_ms 2 * 60 * 1_000
 
-    plug Tesla.Middleware.Logger
-    plug Tesla.Middleware.Timeout, timeout: @timeout_ms
+    def middleware,
+      do: [
+        Tesla.Middleware.Logger,
+        {Tesla.Middleware.Timeout, timeout: @timeout_ms}
+      ]
 
-    adapter(Tesla.Adapter.Hackney,
-      transport_opts: [
-        inet6: true
-      ],
-      recv_timeout: @timeout_ms
-    )
+    def adapter,
+      do:
+        {Tesla.Adapter.Hackney,
+         transport_opts: [
+           inet6: true
+         ],
+         recv_timeout: @timeout_ms}
+
+    def client, do: Tesla.client(middleware(), adapter())
 
     def get_similar_images(image_path) do
       url = Application.get_env(:personal_site, PersonalSite.InstagramDupeChecker)[:url]
@@ -41,7 +45,7 @@ defmodule PersonalSiteWeb.Live.InstagramDupeChecker do
           name: "image"
         )
 
-      case post(endpoint, mp) do
+      case Tesla.post(client(), endpoint, mp) do
         {:ok, %{status: 200, body: body}} ->
           case Jason.decode(body) do
             {:ok, %{"similar_images" => similar_images}} ->
