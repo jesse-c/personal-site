@@ -14,6 +14,10 @@ defmodule PersonalSiteWeb.Router do
     plug(:accepts, ["json"])
   end
 
+  pipeline :mcp do
+    plug(:accepts, ["json"])
+  end
+
   scope "/", PersonalSiteWeb do
     pipe_through(:browser)
 
@@ -42,5 +46,13 @@ defmodule PersonalSiteWeb.Router do
     end
 
     get "/feed.xml", FeedController, :index
+  end
+
+  scope "/mcp", PersonalSiteWeb do
+    pipe_through(:mcp)
+
+    get "/", MCPController, :get_info
+    post "/", MCPController, :handle_request
+    delete "/", MCPController, :terminate_session
   end
 end
