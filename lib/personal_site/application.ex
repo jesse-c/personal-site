@@ -39,14 +39,13 @@ defmodule PersonalSite.Application do
     }
 
     children = [
-      # Start the Telemetry supervisor
       PersonalSiteWeb.Telemetry,
-      # Start the PubSub system
       {Phoenix.PubSub, name: PersonalSite.PubSub},
-      # Start the Endpoint (http/https)
+      # http/https
       PersonalSiteWeb.Endpoint,
       PersonalSiteWeb.Presence,
-      isolated_shoutbox_supervisor
+      isolated_shoutbox_supervisor,
+      PersonalSiteWeb.MCPServer
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
