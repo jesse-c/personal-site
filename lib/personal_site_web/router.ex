@@ -55,4 +55,10 @@ defmodule PersonalSiteWeb.Router do
     post "/", MCPController, :handle_request
     delete "/", MCPController, :terminate_session
   end
+
+  scope "/", PersonalSiteWeb do
+    pipe_through(:api)
+
+    get "/healthz", HealthController, :healthz
+  end
 end
