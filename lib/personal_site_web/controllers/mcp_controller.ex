@@ -4,15 +4,30 @@ defmodule PersonalSiteWeb.MCPController do
   alias PersonalSiteWeb.MCPErrors
   alias PersonalSiteWeb.MCPServer
 
-  def handle_request(conn, _params) do
-    if match?(
-         {:deny, _ms_until_next_window},
-         PersonalSite.RateLimit.hit("save:#{:inet.ntoa(conn.remote_ip)}", :timer.minutes(10), 10)
-       ) do
-      conn
-      |> put_status(429)
-      |> json(%{"error" => "Try again later"})
-    else
+  defmacro with_rate_limit(conn, params, do: block) do
+    quote do
+      conn = unquote(conn)
+      _params = unquote(params)
+
+      if match?(
+           {:deny, _ms_until_next_window},
+           PersonalSite.RateLimit.hit(
+             "save:#{:inet.ntoa(conn.remote_ip)}",
+             :timer.minutes(10),
+             10
+           )
+         ) do
+        conn
+        |> put_status(429)
+        |> json(%{"error" => "Try again later"})
+      else
+        unquote(block)
+      end
+    end
+  end
+
+  def handle_request(conn, params) do
+    with_rate_limit conn, params do
       wants_stream = wants_streaming?(conn)
       {raw_body, parsed_data} = extract_request_data(conn)
 
@@ -86,15 +101,8 @@ defmodule PersonalSiteWeb.MCPController do
   end
 
   # Handle GET requests - can return info or open SSE stream (Streamable HTTP spec)
-  def get_info(conn, _params) do
-    if match?(
-         {:deny, _ms_until_next_window},
-         PersonalSite.RateLimit.hit("save:#{:inet.ntoa(conn.remote_ip)}", :timer.minutes(10), 10)
-       ) do
-      conn
-      |> put_status(429)
-      |> json(%{"error" => "Try again later"})
-    else
+  def get_info(conn, params) do
+    with_rate_limit conn, params do
       # Check Accept header to determine response format
       accept_header = get_req_header(conn, "accept") |> List.first() || ""
       wants_stream = String.starts_with?(accept_header, "text/event-stream")
@@ -213,15 +221,8 @@ defmodule PersonalSiteWeb.MCPController do
   end
 
   # Handle DELETE requests for session termination (MCP spec requirement)
-  def terminate_session(conn, _params) do
-    if match?(
-         {:deny, _ms_until_next_window},
-         PersonalSite.RateLimit.hit("save:#{:inet.ntoa(conn.remote_ip)}", :timer.minutes(10), 10)
-       ) do
-      conn
-      |> put_status(429)
-      |> json(%{"error" => "Try again later"})
-    else
+  def terminate_session(conn, params) do
+    with_rate_limit conn, params do
       # Get session ID from header
       session_id = get_req_header(conn, "mcp-session-id") |> List.first()
 
