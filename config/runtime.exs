@@ -32,8 +32,15 @@ config :personal_site, PersonalSiteWeb.Pushover,
   api_key: env!("PUSHOVER_API_KEY", :string!, ""),
   user_key: env!("PUSHOVER_USER_KEY", :string!, "")
 
+config :personal_site, PersonalSite.Plausible,
+  enabled: true,
+  api_key: env!("PLAUSIBLE_API_KEY", :string, "")
+
 if config_env() == :dev do
-  config :personal_site, PersonalSite.Plausible, data_domain: nil
+  config :personal_site, PersonalSite.Plausible,
+    enabled: false,
+    data_domain: nil,
+    api_key: ""
 
   config :personal_site, PersonalSite.Redis,
     url: "redis://localhost:6379/3",
@@ -46,7 +53,10 @@ if config_env() == :dev do
 end
 
 if config_env() == :test do
-  config :personal_site, PersonalSite.Plausible, data_domain: nil
+  config :personal_site, PersonalSite.Plausible,
+    enabled: false,
+    data_domain: nil,
+    api_key: ""
 
   config :personal_site, PersonalSite.Shoutbox, max: 2
 
