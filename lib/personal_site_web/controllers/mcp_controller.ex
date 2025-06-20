@@ -5,10 +5,19 @@ defmodule PersonalSiteWeb.MCPController do
   alias PersonalSiteWeb.MCPServer
 
   def handle_request(conn, _params) do
-    wants_stream = wants_streaming?(conn)
-    {raw_body, parsed_data} = extract_request_data(conn)
+    if match?(
+         {:deny, _ms_until_next_window},
+         PersonalSite.RateLimit.hit("save:#{:inet.ntoa(conn.remote_ip)}", :timer.minutes(10), 10)
+       ) do
+      conn
+      |> put_status(429)
+      |> json(%{"error" => "Try again later"})
+    else
+      wants_stream = wants_streaming?(conn)
+      {raw_body, parsed_data} = extract_request_data(conn)
 
-    process_mcp_request(conn, raw_body, parsed_data, wants_stream)
+      process_mcp_request(conn, raw_body, parsed_data, wants_stream)
+    end
   end
 
   defp wants_streaming?(conn) do
@@ -78,28 +87,37 @@ defmodule PersonalSiteWeb.MCPController do
 
   # Handle GET requests - can return info or open SSE stream (Streamable HTTP spec)
   def get_info(conn, _params) do
-    # Check Accept header to determine response format
-    accept_header = get_req_header(conn, "accept") |> List.first() || ""
-    wants_stream = String.starts_with?(accept_header, "text/event-stream")
-
-    # Handle session ID if provided
-    session_id = get_req_header(conn, "mcp-session-id") |> List.first()
-
-    if wants_stream do
-      # Open SSE stream for GET requests (new in streamable HTTP spec)
-      send_sse_stream_for_get(conn, session_id)
-    else
-      # Return server metadata (traditional behavior)
+    if match?(
+         {:deny, _ms_until_next_window},
+         PersonalSite.RateLimit.hit("save:#{:inet.ntoa(conn.remote_ip)}", :timer.minutes(10), 10)
+       ) do
       conn
-      |> json(%{
-        "transport" => "streamable-http",
-        "version" => "2025-03-26",
-        "capabilities" => %{
-          "tools" => %{},
-          "streaming" => true,
-          "sessions" => session_id != nil
-        }
-      })
+      |> put_status(429)
+      |> json(%{"error" => "Try again later"})
+    else
+      # Check Accept header to determine response format
+      accept_header = get_req_header(conn, "accept") |> List.first() || ""
+      wants_stream = String.starts_with?(accept_header, "text/event-stream")
+
+      # Handle session ID if provided
+      session_id = get_req_header(conn, "mcp-session-id") |> List.first()
+
+      if wants_stream do
+        # Open SSE stream for GET requests (new in streamable HTTP spec)
+        send_sse_stream_for_get(conn, session_id)
+      else
+        # Return server metadata (traditional behavior)
+        conn
+        |> json(%{
+          "transport" => "streamable-http",
+          "version" => "2025-03-26",
+          "capabilities" => %{
+            "tools" => %{},
+            "streaming" => true,
+            "sessions" => session_id != nil
+          }
+        })
+      end
     end
   end
 
@@ -196,18 +214,27 @@ defmodule PersonalSiteWeb.MCPController do
 
   # Handle DELETE requests for session termination (MCP spec requirement)
   def terminate_session(conn, _params) do
-    # Get session ID from header
-    session_id = get_req_header(conn, "mcp-session-id") |> List.first()
-
-    if session_id do
-      # Terminate the session (implementation specific)
-      # For now, just return 200 OK to indicate successful termination
-      send_resp(conn, 200, "")
-    else
-      # No session ID provided, return 400 Bad Request
+    if match?(
+         {:deny, _ms_until_next_window},
+         PersonalSite.RateLimit.hit("save:#{:inet.ntoa(conn.remote_ip)}", :timer.minutes(10), 10)
+       ) do
       conn
-      |> put_status(400)
-      |> json(%{"error" => "Missing Mcp-Session-Id header"})
+      |> put_status(429)
+      |> json(%{"error" => "Try again later"})
+    else
+      # Get session ID from header
+      session_id = get_req_header(conn, "mcp-session-id") |> List.first()
+
+      if session_id do
+        # Terminate the session (implementation specific)
+        # For now, just return 200 OK to indicate successful termination
+        send_resp(conn, 200, "")
+      else
+        # No session ID provided, return 400 Bad Request
+        conn
+        |> put_status(400)
+        |> json(%{"error" => "Missing Mcp-Session-Id header"})
+      end
     end
   end
 end
