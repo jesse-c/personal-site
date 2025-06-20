@@ -3,6 +3,7 @@ defmodule PersonalSiteWeb.MCPController do
 
   alias PersonalSiteWeb.MCPErrors
   alias PersonalSiteWeb.MCPServer
+  alias PersonalSite.Plausible
 
   defmacro with_rate_limit(conn, params, do: block) do
     quote do
@@ -28,6 +29,8 @@ defmodule PersonalSiteWeb.MCPController do
 
   def handle_request(conn, params) do
     with_rate_limit conn, params do
+      track_pageview(conn, "/mcp")
+
       wants_stream = wants_streaming?(conn)
       {raw_body, parsed_data} = extract_request_data(conn)
 
@@ -103,6 +106,8 @@ defmodule PersonalSiteWeb.MCPController do
   # Handle GET requests - can return info or open SSE stream (Streamable HTTP spec)
   def get_info(conn, params) do
     with_rate_limit conn, params do
+      track_pageview(conn, "/mcp")
+
       # Check Accept header to determine response format
       accept_header = get_req_header(conn, "accept") |> List.first() || ""
       wants_stream = String.starts_with?(accept_header, "text/event-stream")
@@ -223,6 +228,8 @@ defmodule PersonalSiteWeb.MCPController do
   # Handle DELETE requests for session termination (MCP spec requirement)
   def terminate_session(conn, params) do
     with_rate_limit conn, params do
+      track_pageview(conn, "/mcp")
+
       # Get session ID from header
       session_id = get_req_header(conn, "mcp-session-id") |> List.first()
 
@@ -237,5 +244,12 @@ defmodule PersonalSiteWeb.MCPController do
         |> json(%{"error" => "Missing Mcp-Session-Id header"})
       end
     end
+  end
+
+  defp track_pageview(conn, path) do
+    user_agent = conn |> get_req_header("user-agent") |> List.first()
+    ip_address = conn.remote_ip
+    method = conn.method
+    Plausible.track_pageview(path, user_agent, ip_address, method)
   end
 end
