@@ -17,7 +17,9 @@ defmodule PersonalSiteWeb.Live.Blog.Redirects do
       "using-autumn-with-nimblepublisher-for-syntax-highlighting",
     "notes-app-hybrid-search-release" => "initial-release-of-hybrid-search-for-notes-app",
     "serialise-deserialise-enum-from-rust-to-swift" =>
-      "serialise-and-deserialise-enums-with-named-associated-values-from-rust-swift"
+      "serialise-and-deserialise-enums-with-named-associated-values-from-rust-swift",
+    "multi-uis-with-grpc" =>
+      "multi-uis-for-a-daemon-and-using-grpc-to-communicate-locally-from-rust-swift"
   }
 
   def maybe_redirect(slug, socket)
