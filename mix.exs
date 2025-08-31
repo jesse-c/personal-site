@@ -9,7 +9,9 @@ defmodule PersonalSite.MixProject do
       elixirc_paths: elixirc_paths(Mix.env()),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
-      deps: deps()
+      deps: deps(),
+      listeners: [Phoenix.CodeReloader],
+      compilers: [:phoenix_live_view] ++ Mix.compilers()
     ]
   end
 
@@ -32,10 +34,10 @@ defmodule PersonalSite.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
+      {:lazy_html, ">= 0.1.7", only: :test},
       {:phoenix, "~> 1.8.0"},
       {:phoenix_html, "~> 4.1"},
       {:phoenix_live_reload, "~> 1.2", only: :dev},
-      # TODO bump on release to {:phoenix_live_view, "~> 1.0.0"},
       {:phoenix_live_view, "~> 1.1.2", override: true},
       {:floki, ">= 0.30.0", only: :test},
       {:esbuild, "~> 0.7", runtime: Mix.env() == :dev},
