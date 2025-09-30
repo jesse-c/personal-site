@@ -220,7 +220,7 @@ defmodule PersonalSiteWeb.Live.Index do
           </p>
         </div>
       </div>
-      <div class="space-y-10 md:w-1/2">
+      <div class="space-y-10 md:w-1/2 mt-10 md:mt-0">
         <div class="space-y-3">
           <h2 id="shoutbox" class="text-lg">Shoutbox</h2>
           <h3 class="text-sm">
