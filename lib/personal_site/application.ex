@@ -21,8 +21,10 @@ defmodule PersonalSite.Application do
           Keyword.merge(
             redis_env[:opts],
             name: PersonalSite.Redis.name(),
-            sync_connect: true,
-            exit_on_disconnection: true
+            sync_connect: false,
+            exit_on_disconnection: false,
+            backoff_initial: :timer.seconds(30),
+            backoff_max: :timer.minutes(5)
           )
         }
       },
