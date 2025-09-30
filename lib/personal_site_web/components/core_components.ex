@@ -124,8 +124,8 @@ defmodule PersonalSiteWeb.CoreComponents do
         {@title}
       </p>
       <p class="mt-2 text-sm leading-5">{msg}</p>
-      <button type="button" class="group absolute top-1 right-1 p-2" aria-label="close">
-        <.icon name="hero-x-mark-solid" class="h-5 w-5 opacity-40 group-hover:opacity-70" />
+      <button type="button" class="group absolute top-1 right-1 p-2 text-sm" aria-label="close">
+        &times;
       </button>
     </div>
     """
@@ -368,9 +368,11 @@ defmodule PersonalSiteWeb.CoreComponents do
         id={@id}
         value={Phoenix.HTML.Form.normalize_value(@type, @value)}
         class={[
-          "mt-2 block w-full rounded-lg text-zinc-900 focus:ring-0 sm:text-sm sm:leading-6",
-          "phx-no-feedback:border-zinc-300 phx-no-feedback:focus:border-zinc-400",
-          @errors == [] && "border-zinc-300 focus:border-zinc-400",
+          @type == "file" && "mt-2 block w-full text-sm",
+          @type != "file" &&
+            "mt-2 block w-full rounded-sm border border-black dark:border-white bg-white dark:bg-black text-black dark:text-white focus:ring-0 text-sm p-2",
+          @type != "file" && "phx-no-feedback:border-black dark:phx-no-feedback:border-white",
+          @type != "file" && @errors == [] && "border-black dark:border-white",
           @errors != [] && "border-rose-400 focus:border-rose-400"
         ]}
         {@rest}
