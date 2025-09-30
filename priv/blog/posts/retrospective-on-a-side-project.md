@@ -24,7 +24,7 @@ A relatively large amount of time was spent on the animation. I searched for dif
 
 The common saying of build something for your own problem was true&mdash;and it was satisfying seeing people say thank you, and that it was just what they wanted, either knowingly, or after reading what it did. I personally always have it running and have found it useful.
 
-It reached the #1 spot on Designer News which was cool to see. Someone posted it to Product Hunt on my behalf as well. I posted it to a private forum I'm apart of as well. What was also satisying was seeing all the people star the repository on GitHub.
+It reached the #1 spot on Designer News which was cool to see. Someone posted it to Product Hunt on my behalf as well. I posted it to a private forum I'm apart of as well. What was also satisfying was seeing all the people star the repository on GitHub.
 
 ## What's next
 
