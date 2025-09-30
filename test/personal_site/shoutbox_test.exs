@@ -11,15 +11,15 @@ defmodule PersonalSite.ShoutboxTest do
   end
 
   test "new/3 adds a new shout" do
-    timestamp = DateTime.utc_now() |> DateTime.to_iso8601()
+    timestamp = DateTime.utc_now()
     assert :ok = Shoutbox.new("John", timestamp, "Hello, world!")
     assert [%{name: "John", timestamp: ^timestamp, message: "Hello, world!"}] = Shoutbox.list()
   end
 
   test "new/3 adds multiple new shouts which trims" do
-    timestamp1 = DateTime.utc_now() |> DateTime.to_iso8601()
-    timestamp2 = DateTime.utc_now() |> DateTime.to_iso8601()
-    timestamp3 = DateTime.utc_now() |> DateTime.to_iso8601()
+    timestamp1 = DateTime.utc_now()
+    timestamp2 = DateTime.utc_now()
+    timestamp3 = DateTime.utc_now()
 
     Shoutbox.new("Alice", timestamp1, "First shout")
     Shoutbox.new("Bob", timestamp2, "Second shout")
@@ -32,8 +32,8 @@ defmodule PersonalSite.ShoutboxTest do
   end
 
   test "list/0 returns all current shouts" do
-    timestamp1 = DateTime.utc_now() |> DateTime.to_iso8601()
-    timestamp2 = DateTime.utc_now() |> DateTime.to_iso8601()
+    timestamp1 = DateTime.utc_now()
+    timestamp2 = DateTime.utc_now()
 
     Shoutbox.new("Alice", timestamp1, "First shout")
     Shoutbox.new("Bob", timestamp2, "Second shout")
@@ -45,7 +45,7 @@ defmodule PersonalSite.ShoutboxTest do
   end
 
   test "clear/0 removes all current shouts" do
-    timestamp = DateTime.utc_now() |> DateTime.to_iso8601()
+    timestamp = DateTime.utc_now()
     Shoutbox.new("John", timestamp, "Hello, world!")
     assert :ok = Shoutbox.clear()
   end

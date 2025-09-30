@@ -195,6 +195,11 @@ defmodule PersonalSite.Shoutbox do
   end
 
   defp notify(shout) do
+    message =
+      "shout sent from #{shout.name} at #{DateTime.to_iso8601(shout.timestamp)}: #{shout.message}"
+
+    Logger.debug(message)
+
     if Application.get_env(:personal_site, PersonalSiteWeb.Pushover)[:enabled] do
       api_key = Application.get_env(:personal_site, PersonalSiteWeb.Pushover)[:api_key]
       user_key = Application.get_env(:personal_site, PersonalSiteWeb.Pushover)[:user_key]
@@ -204,7 +209,7 @@ defmodule PersonalSite.Shoutbox do
         json: %{
           token: api_key,
           user: user_key,
-          message: "Shout sent: #{shout}"
+          message: message
         }
       )
     end
