@@ -43,7 +43,7 @@ if config_env() == :dev do
     api_key: ""
 
   config :personal_site, PersonalSite.Redis,
-    url: "redis://localhost:6379/3",
+    url: "redis://localhost:6379/0",
     # No options to overwrite from the URI
     opts: []
 
