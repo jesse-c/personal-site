@@ -150,6 +150,8 @@ defmodule PersonalSiteWeb.Live.InstagramDupeChecker do
             </div>
           <% [{:error, message}] -> %>
             <p class="alert alert-danger">Error: {message}</p>
+          <% [] -> %>
+            <p class="text-sm">No results</p>
         <% end %>
       <% end %>
     </div>
