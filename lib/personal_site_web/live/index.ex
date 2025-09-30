@@ -6,7 +6,6 @@ defmodule PersonalSiteWeb.Live.Index do
   use PersonalSiteWeb, :live_view
 
   alias PersonalSite.Shoutbox
-  alias PersonalSite.Works.Work
   alias PersonalSiteWeb.Live.Cursors
 
   require Logger
@@ -106,7 +105,7 @@ defmodule PersonalSiteWeb.Live.Index do
         <div class="space-y-3">
           <h2 class="text-lg">Hello,</h2>
           <p class="text-sm">
-            I’m a ⍚ software and ML engineer—and sometimes a ⛰ photographer or ♤ designer.
+            I’m a software and ML engineer—and sometimes a photographer or designer.
           </p>
           <div>
             <.link class="text-xs" navigate={~p"/about"}>More →</.link>
@@ -135,89 +134,6 @@ defmodule PersonalSiteWeb.Live.Index do
               Index<span class="sup pl-0.5"><%= Enum.count(@posts) %></span> →
             </.link>
           </div>
-        </div>
-        <div class="space-y-3">
-          <h2 class="text-lg">Works</h2>
-          <div class="space-y-3">
-            <div :for={work <- Enum.take(@works, 5)} class="space-y-1">
-              <p class="text-sm">{work.title}</p>
-              <p class="text-xs">{work.role}</p>
-              <p class="text-xs">
-                {Work.date(work.date_start)} — {Work.date(work.date_end)}
-              </p>
-              <p class="text-xs">{work.description}</p>
-              <p class="text-xs">{Enum.join(work.tags, ", ")}</p>
-            </div>
-          </div>
-          <div>
-            <.link class="text-xs" navigate={~p"/works"}>
-              Index<span class="sup pl-0.5"><%= Enum.count(@works) %></span> →
-            </.link>
-          </div>
-        </div>
-        <div class="space-y-3">
-          <h2 class="text-lg">Projects</h2>
-          <div class="space-y-3">
-            <div :for={project <- Enum.take(@projects, 5)} class="space-y-1">
-              <p class="text-sm">{project.title}</p>
-              <p class="text-xs">{project.description}</p>
-              <p class="text-xs">{Enum.join(project.tags, ", ")}</p>
-            </div>
-          </div>
-          <div>
-            <.link class="text-xs" navigate={~p"/projects"}>
-              Index<span class="sup pl-0.5"><%= Enum.count(@projects) %></span> →
-            </.link>
-          </div>
-        </div>
-        <div class="space-y-3">
-          <h2 class="text-lg">Contributions</h2>
-          <div class="space-y-3">
-            <div :for={contribution <- Enum.take(@contributions, 5)} class="space-y-1">
-              <p class="text-sm">{contribution.title}</p>
-              <p class="text-xs">{contribution.description}</p>
-              <p class="text-xs">{Enum.join(contribution.tags, ", ")}</p>
-            </div>
-          </div>
-          <div>
-            <.link class="text-xs" navigate={~p"/contributions"}>
-              Index<span class="sup pl-0.5"><%= Enum.count(@contributions) %></span> →
-            </.link>
-          </div>
-        </div>
-        <div class="space-y-3">
-          <h2 class="text-lg">Education</h2>
-          <h3 class="text-base">
-            Bachelor of Engineering — Software (Honours) at University of Queensland
-          </h3>
-          <h4 class="text-sm font-bold">Thesis (Undergraduate)</h4>
-          <p class="text-sm">
-            Technology-supported activities through realtime, distributed, and collaborative interfaces
-          </p>
-          <p class="text-sm">Abstract</p>
-          <p class="text-xs">
-            Traditionally user interfaces have been designed for a single user using one common device type—e.g. someone on a computer visiting a website. With the internet and mobile devices now being commonplace, interfaces could take advantage of being distributed across devices and working collaboratively with others in real-time. While there have been attempts to to handle this (e.g. Google Docs), they have so far been in a limited, prescribed manner. A proposed concept is put forward to design and build a new approach for a distributed and real-time collaborative user interface focusing on the concept of having a workspace with components that the user is able to freely use in a real-time manner. It is based upon existing web browsers and devices. Parts of the UI can be distributed across separate platforms. A prototype of a workspace for education is included and user testing of the prototype shows positive experiences and results for the users.
-          </p>
-          <p class="text-xs">
-            <a href="https://github.com/jesse-c/thesis" target="_blank">
-              Full thesis ↗
-            </a>
-          </p>
-          <p class="text-xs">
-            <a href="https://github.com/jesse-c/thesis-workspace" target="_blank">
-              Prototype ↗
-            </a>
-          </p>
-        </div>
-        <div class="space-y-3">
-          <h2 class="text-lg">Contact</h2>
-          <p class="text-sm">
-            I’m available through
-            <a rel="me" href="https://mastodon.social/@jqk" target="_blank">Mastodon ↗</a>
-            and <a href="https://bsky.app/profile/lzp.bsky.social" target="_blank">Bluesky ↗</a>
-            for mixed chat and <a href="https://github.com/jesse-c" target="_blank">GitHub ↗</a>
-            for various projects/contributions and collaboration.
-          </p>
         </div>
       </div>
       <div class="space-y-10 md:w-1/2 mt-10 md:mt-0">
