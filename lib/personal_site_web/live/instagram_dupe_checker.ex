@@ -96,7 +96,8 @@ defmodule PersonalSiteWeb.Live.InstagramDupeChecker do
 
           <button
             type="submit"
-            class="border border-solid rounded-sm border-black dark:border-white hover:bg-black dark:hover:bg-white text-black dark:text-white hover:text-white dark:hover:text-black transition-colors py-1 px-1 text-xs max-w-fit"
+            disabled={length(@uploads.candidate.entries) == 0}
+            class="border border-solid rounded-sm border-black dark:border-white hover:bg-black dark:hover:bg-white text-black dark:text-white hover:text-white dark:hover:text-black transition-colors py-1 px-1 text-xs max-w-fit disabled:opacity-50 disabled:cursor-not-allowed"
           >
             Upload
           </button>

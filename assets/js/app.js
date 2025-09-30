@@ -62,7 +62,7 @@ liveSocket.connect();
 // >> liveSocket.disableLatencySim()
 window.liveSocket = liveSocket;
 
-// Dark mode from Tailwincss [1]
+// Dark mode from Tailwind [1]
 //
 // [1] https://tailwindcss.com/docs/dark-mode
 

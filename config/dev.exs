@@ -45,6 +45,7 @@ config :personal_site, PersonalSiteWeb.Endpoint,
 # Watch static and templates for browser reloading.
 config :personal_site, PersonalSiteWeb.Endpoint,
   live_reload: [
+    web_console_logger: true,
     patterns: [
       ~r"priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$",
       ~r"priv/blog/posts/.*(md)$",

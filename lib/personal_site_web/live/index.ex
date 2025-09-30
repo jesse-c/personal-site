@@ -163,7 +163,10 @@ defmodule PersonalSiteWeb.Live.Index do
                 <.input type="text" field={@form[:message]} maxlength="255" />
               </div>
               <div>
-                <button class="border border-solid rounded-sm border-black dark:border-white hover:bg-black dark:hover:bg-white text-black dark:text-white hover:text-white dark:hover:text-black transition-colors py-1 px-1 mb-6 text-xs max-w-fit">
+                <button
+                  disabled={is_nil(@form[:message].value) or @form[:message].value == ""}
+                  class="border border-solid rounded-sm border-black dark:border-white hover:bg-black dark:hover:bg-white text-black dark:text-white hover:text-white dark:hover:text-black transition-colors py-1 px-1 mb-6 text-xs max-w-fit disabled:opacity-50 disabled:cursor-not-allowed"
+                >
                   Save
                 </button>
               </div>
