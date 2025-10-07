@@ -8,10 +8,13 @@ defmodule PersonalSite.Shoutbox do
   require Logger
 
   @topic "shoutbox"
+  @connection_topic "shoutbox:connection"
+  @health_check_interval 5_000
 
   alias PersonalSite.Redis
 
   def topic, do: @topic
+  def connection_topic, do: @connection_topic
 
   # Client
 
@@ -34,6 +37,13 @@ defmodule PersonalSite.Shoutbox do
   end
 
   @doc """
+  Check if Redis is connected
+  """
+  def connected?() do
+    GenServer.call(__MODULE__, :connected?)
+  end
+
+  @doc """
   Clear all the current shouts
   """
   def clear() do
@@ -44,8 +54,13 @@ defmodule PersonalSite.Shoutbox do
 
   @impl true
   def init(_opts) do
-    # No shouts
-    initial_state = []
+    # Schedule periodic health checks
+    schedule_health_check()
+
+    initial_state = %{
+      shouts: [],
+      connected?: false
+    }
 
     {:ok, initial_state, {:continue, {:load, 0}}}
   end
@@ -61,12 +76,15 @@ defmodule PersonalSite.Shoutbox do
 
           Logger.debug("loaded shouts: #{Enum.count(value)}")
 
-          :ok = trim_by_state(state)
+          :ok = trim_by_state(state.shouts)
 
-          value =
+          shouts =
             Enum.take(value, Application.get_env(:personal_site, PersonalSite.Shoutbox)[:max])
 
-          {:noreply, value}
+          new_state = %{state | shouts: shouts, connected?: true}
+          broadcast_connection_status(true)
+
+          {:noreply, new_state}
 
         {:error, error} ->
           Logger.debug("failed to load shouts: #{inspect(error)}")
@@ -75,6 +93,7 @@ defmodule PersonalSite.Shoutbox do
       end
     else
       Logger.debug("load attempt threshold reached")
+      broadcast_connection_status(false)
 
       {:noreply, state}
     end
@@ -110,19 +129,22 @@ defmodule PersonalSite.Shoutbox do
 
   @impl true
   def handle_call({:new, name, timestamp, message}, _from, state) do
-    state =
-      if Enum.count(state) >=
+    shouts =
+      if Enum.count(state.shouts) >=
            Application.get_env(:personal_site, PersonalSite.Shoutbox)[:max] do
-        Logger.debug("hit limit: #{Enum.count(state)}")
+        Logger.debug("hit limit: #{Enum.count(state.shouts)}")
 
         trim()
 
         # Take the max
-        Enum.take(state, Application.get_env(:personal_site, PersonalSite.Shoutbox)[:max] - 1)
+        Enum.take(
+          state.shouts,
+          Application.get_env(:personal_site, PersonalSite.Shoutbox)[:max] - 1
+        )
       else
-        Logger.debug("didn't hit limit: #{Enum.count(state)}")
+        Logger.debug("didn't hit limit: #{Enum.count(state.shouts)}")
 
-        state
+        state.shouts
       end
 
     message = message |> String.trim() |> String.slice(0..255)
@@ -150,23 +172,26 @@ defmodule PersonalSite.Shoutbox do
           Logger.debug("failed to store in Redis: #{inspect(unexpected)}")
       end
 
-      state = [shout | state]
+      shouts = [shout | shouts]
 
       notify(shout)
 
-      {:reply, :ok, state}
+      {:reply, :ok, %{state | shouts: shouts}}
     end
   end
 
   @impl true
   def handle_call(:list, _from, state) do
-    {:reply, state, state}
+    {:reply, state.shouts, state}
   end
 
   @impl true
-  def handle_call(:clear, _from, _state) do
-    state = []
+  def handle_call(:connected?, _from, state) do
+    {:reply, state.connected?, state}
+  end
 
+  @impl true
+  def handle_call(:clear, _from, state) do
     case Redis.command(["DEL", "shouts"]) do
       {:ok, _list_length_deleted} ->
         Logger.debug("cleared shouts")
@@ -175,7 +200,26 @@ defmodule PersonalSite.Shoutbox do
         Logger.debug("failed to clear shouts in Redis: #{inspect(error)}")
     end
 
-    {:reply, :ok, state}
+    {:reply, :ok, %{state | shouts: []}}
+  end
+
+  @impl true
+  def handle_info(:health_check, state) do
+    new_connected? =
+      case Redis.command(["PING"]) do
+        {:ok, "PONG"} -> true
+        _ -> false
+      end
+
+    # Only broadcast if status changed
+    if new_connected? != state.connected? do
+      Logger.debug("Redis connection status changed: #{new_connected?}")
+      broadcast_connection_status(new_connected?)
+    end
+
+    schedule_health_check()
+
+    {:noreply, %{state | connected?: new_connected?}}
   end
 
   defp trim do
@@ -213,5 +257,17 @@ defmodule PersonalSite.Shoutbox do
         }
       )
     end
+  end
+
+  defp schedule_health_check do
+    Process.send_after(self(), :health_check, @health_check_interval)
+  end
+
+  defp broadcast_connection_status(connected?) do
+    Phoenix.PubSub.broadcast(
+      PersonalSite.PubSub,
+      @connection_topic,
+      {:connection_status, connected?}
+    )
   end
 end

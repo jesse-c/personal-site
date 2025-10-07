@@ -12,11 +12,13 @@ defmodule PersonalSiteWeb.Live.Index do
 
   def inner_mount(_params, _session, socket) do
     Endpoint.subscribe(Shoutbox.topic())
+    Endpoint.subscribe(Shoutbox.connection_topic())
 
     socket =
       socket
       |> assign(form: to_form(%{"message" => nil}))
       |> assign(shouts: Shoutbox.list())
+      |> assign(redis_connected?: Shoutbox.connected?())
       |> assign(page_title: "Home")
 
     {:ok, socket}
@@ -94,6 +96,10 @@ defmodule PersonalSiteWeb.Live.Index do
     {:noreply, socket}
   end
 
+  def handle_info({:connection_status, connected?}, socket) do
+    {:noreply, assign(socket, redis_connected?: connected?)}
+  end
+
   def render(assigns) do
     ~H"""
     <.live_component module={Cursors} id="cursors" users={@users} />
@@ -138,7 +144,19 @@ defmodule PersonalSiteWeb.Live.Index do
       </div>
       <div class="space-y-10 md:w-1/2 mt-10 md:mt-0">
         <div class="space-y-3">
-          <h2 id="shoutbox" class="text-lg">Shoutbox</h2>
+          <div class="flex items-center gap-2">
+            <h2 id="shoutbox" class="text-lg">Shoutbox</h2>
+            <span
+              class={"database-status #{if @redis_connected?, do: "connected", else: "disconnected"}"}
+              data-tooltip={
+                if @redis_connected?, do: "Connected to database", else: "Disconnected from database"
+              }
+              aria-label={
+                if @redis_connected?, do: "Connected to database", else: "Disconnected from database"
+              }
+            >
+            </span>
+          </div>
           <h3 class="text-sm">
             Latest<span class="sup pl-0.5"><%= min(Enum.count(@shouts), 10) %> of <%= Enum.count(@shouts) %></span>
           </h3>
@@ -160,11 +178,18 @@ defmodule PersonalSiteWeb.Live.Index do
             <h3 class="text-sm">New</h3>
             <.form class="space-y-3" for={@form} phx-change="validate" phx-submit="save">
               <div class="md:w-96">
-                <.input type="text" field={@form[:message]} maxlength="255" />
+                <.input
+                  type="text"
+                  field={@form[:message]}
+                  maxlength="255"
+                  disabled={!@redis_connected?}
+                />
               </div>
               <div>
                 <button
-                  disabled={is_nil(@form[:message].value) or @form[:message].value == ""}
+                  disabled={
+                    !@redis_connected? or is_nil(@form[:message].value) or @form[:message].value == ""
+                  }
                   class="border border-solid rounded-sm border-black dark:border-white hover:bg-black dark:hover:bg-white text-black dark:text-white hover:text-white dark:hover:text-black transition-colors py-1 px-1 mb-6 text-xs max-w-fit disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   Save
