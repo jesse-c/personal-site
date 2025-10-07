@@ -1,5 +1,7 @@
 import Config
 
+config :personal_site, enable_sentry: false
+
 # For development, we disable any cache and enable
 # debugging and code reloading.
 #

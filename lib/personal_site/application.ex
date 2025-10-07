@@ -7,9 +7,12 @@ defmodule PersonalSite.Application do
 
   @impl true
   def start(_type, _args) do
-    :logger.add_handler(:my_sentry_handler, Sentry.LoggerHandler, %{
-      config: %{metadata: [:file, :line]}
-    })
+    if Application.get_env(:personal_site, :enable_sentry, false) do
+      Logger.add_handlers(:personal_site)
+
+      OpentelemetryBandit.setup()
+      OpentelemetryPhoenix.setup(adapter: :bandit)
+    end
 
     redis_env = Application.get_env(:personal_site, PersonalSite.Redis)
 

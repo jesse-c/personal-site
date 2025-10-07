@@ -66,6 +66,32 @@ end
 config :tzdata, :autoupdate, :disabled
 
 if config_env() == :prod do
+  config :sentry,
+    dsn: env!("SENTRY_DSN", :string!),
+    environment_name: :prod,
+    enable_source_code_context: true,
+    root_source_code_paths: [File.cwd!()],
+    traces_sample_rate: 1.0,
+    integrations: [
+      telemetry: [
+        report_handler_failures: true
+      ]
+    ]
+
+  config :personal_site, :logger, [
+    {:handler, :my_sentry_handler, Sentry.LoggerHandler,
+     %{
+       config: %{
+         capture_log_messages: true,
+         level: :error,
+         metadata: [:file, :line]
+       }
+     }}
+  ]
+
+  config :opentelemetry, span_processor: {Sentry.OpenTelemetry.SpanProcessor, []}
+  config :opentelemetry, sampler: {Sentry.OpenTelemetry.Sampler, []}
+
   # The secret key base is used to sign/encrypt cookies and other secrets.
   # A default value is used in config/dev.exs and config/test.exs but you
   # want to use a different value for prod and you most likely don't want

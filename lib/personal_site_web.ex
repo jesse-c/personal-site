@@ -17,6 +17,8 @@ defmodule PersonalSiteWeb do
   those modules here.
   """
 
+  @enable_sentry Application.compile_env(:personal_site, :enable_sentry, false)
+
   def static_paths, do: ~w(assets fonts images favicon.ico robots.txt)
 
   def router do
@@ -52,6 +54,10 @@ defmodule PersonalSiteWeb do
     quote do
       use Phoenix.LiveView,
         layout: {PersonalSiteWeb.Layouts, :app}
+
+      if unquote(@enable_sentry) do
+        on_mount Sentry.LiveViewHook
+      end
 
       # Start: Cursors
 
