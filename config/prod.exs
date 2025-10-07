@@ -11,11 +11,7 @@ config :personal_site, PersonalSiteWeb.Endpoint,
 # Do not print debug messages in production
 config :logger, level: :info
 
+config :personal_site, enable_sentry: true
+
 # Runtime production configuration, including reading
 # of environment variables, is done on config/runtime.exs.
-config :sentry,
-  dsn:
-    "https://aa877ce6204ac893a06e5eb6f877a81e@o4504930484682752.ingest.us.sentry.io/4507945900769280",
-  environment_name: Mix.env(),
-  enable_source_code_context: true,
-  root_source_code_paths: [File.cwd!()]

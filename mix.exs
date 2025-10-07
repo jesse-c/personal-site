@@ -65,7 +65,6 @@ defmodule PersonalSite.MixProject do
       {:castore, ">= 0.0.0"},
       {:timex, "~> 3.7"},
       {:atomex, "0.5.1"},
-      {:sentry, "~> 11.0.1"},
       {:hackney, "~> 1.25.0"},
       {:tzdata, "~> 1.1"},
       {:hammer, "~> 7.0"},
@@ -73,7 +72,14 @@ defmodule PersonalSite.MixProject do
       {:tesla, "~> 1.12"},
       {:req, "~> 0.5.0"},
       {:dotenvy, "~> 1.1.0"},
-      {:earmark, "1.5.0-pre1", override: true}
+      {:earmark, "1.5.0-pre1", override: true},
+      {:sentry, "~> 11.0.4"},
+      {:opentelemetry, "~> 1.5"},
+      {:opentelemetry_api, "~> 1.4"},
+      {:opentelemetry_exporter, "~> 1.0"},
+      {:opentelemetry_semantic_conventions, "~> 1.27"},
+      {:opentelemetry_phoenix, "~> 2.0"},
+      {:opentelemetry_bandit, "~> 0.1"}
     ]
   end
 

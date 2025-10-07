@@ -1,5 +1,8 @@
 defmodule PersonalSiteWeb.Endpoint do
-  use Sentry.PlugCapture
+  if Application.compile_env(:personal_site, :enable_sentry, false) do
+    use Sentry.PlugCapture
+  end
+
   use Phoenix.Endpoint, otp_app: :personal_site
 
   # The session will be stored in the cookie and signed,
@@ -27,7 +30,9 @@ defmodule PersonalSiteWeb.Endpoint do
 
   # plug(PlugCanonicalHost, canonical_host: "www.j-e-s-s-e.com")
 
-  plug Sentry.PlugContext
+  if Application.compile_env(:personal_site, :enable_sentry, false) do
+    plug Sentry.PlugContext
+  end
 
   # Code reloading can be explicitly enabled under the
   # :code_reloader configuration of your endpoint.
