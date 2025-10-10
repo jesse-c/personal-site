@@ -1,0 +1,20 @@
+{
+  "$schema": "https://schema.railpack.com",
+  "steps": {
+    "build": {
+      "inputs": [
+        { "step": "install" },
+        {
+          "local": true,
+          "include": ["."]
+        }
+      ],
+      "commands": [
+        "mix compile",
+        "mix assets.deploy",
+        "mix sentry.package_source_code",
+        "mix release"
+      ]
+    }
+  }
+}
