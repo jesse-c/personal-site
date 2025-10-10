@@ -69,8 +69,6 @@ if config_env() == :prod do
   config :sentry,
     dsn: env!("SENTRY_DSN", :string!),
     environment_name: :prod,
-    enable_source_code_context: true,
-    root_source_code_paths: [File.cwd!()],
     traces_sample_rate: 1.0,
     integrations: [
       telemetry: [
