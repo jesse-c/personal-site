@@ -24,9 +24,13 @@ defmodule PersonalSiteWeb.Live.Index do
     {:ok, socket}
   end
 
-  def handle_event("validate", %{"message" => message}, socket) do
+  def handle_event("validate", %{"message" => message} = _params, socket) do
     socket = assign(socket, form: to_form(%{"message" => message}))
+    {:noreply, socket}
+  end
 
+  def handle_event("validate", params, socket) do
+    Logger.warning("malformed validate params: #{inspect(params)}")
     {:noreply, socket}
   end
 
