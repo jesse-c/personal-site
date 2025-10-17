@@ -109,6 +109,9 @@ jobs:
       - name: Check code analysis
         run: mix credo --all
 
+      - name: Check links
+        run: mix check_links
+
       - name: Check spelling
         uses: crate-ci/typos@master
 
