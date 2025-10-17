@@ -20,35 +20,192 @@
     </script>
   </head>
   <body class="bg-white dark:bg-black text-black dark:text-white p-14">
-    <header class="md:flex md:flex-row md:gap-6 items-center">
-      <img
-        src={~p"/images/avatar.jpg"}
-        alt="Jesse Claven"
-        class="w-8 h-8 rounded-full object-cover border border-black dark:border-white"
-      />
-      <h1 class="font-bold">Jesse Claven</h1>
-      <nav class="list-none flex flex-col md:flex-row gap-1 md:gap-6 text-sm">
-        <.link navigate={~p"/"}>Home</.link>
-        <.link navigate={~p"/blog"}>
-          Blog<span class="sup pl-0.5"><%= Enum.count(@posts) %></span>
-        </.link>
-        <.link navigate={~p"/projects"}>
-          Projects<span class="sup pl-0.5"><%= Enum.count(@projects) %></span>
-        </.link>
-        <.link navigate={~p"/apps"}>
-          Apps<span class="sup pl-0.5">3</span>
-        </.link>
-        <.link navigate={~p"/contributions"}>
-          Contributions<span class="sup pl-0.5"><%= Enum.count(@contributions) %></span>
-        </.link>
-        <.link navigate={~p"/works"}>
-          Works<span class="sup pl-0.5"><%= Enum.count(@works) %></span>
-        </.link>
-        <.link navigate={~p"/education"}>Education</.link>
-        <.link navigate={~p"/about"}>About</.link>
-        <.link navigate={~p"/contact"}>Contact</.link>
-      </nav>
-    </header>
+    <div class="flex items-center justify-between">
+      <div class="flex items-center gap-6">
+        <div class="flex items-center gap-3">
+          <img
+            src={~p"/images/avatar.jpg"}
+            alt="Jesse Claven"
+            class="w-8 h-8 rounded-full object-cover border border-black dark:border-white"
+          />
+          <h1 class="font-bold">Jesse Claven</h1>
+        </div>
+        <nav class="hidden lg:flex">
+          <ul class="flex items-center gap-6 text-sm">
+            <li class="list-none ml-0"><.link navigate={~p"/"}>Home</.link></li>
+            <li class="list-none ml-0">
+              <.link navigate={~p"/blog"}>
+                Blog<span class="sup pl-0.5"><%= Enum.count(@posts) %></span>
+              </.link>
+            </li>
+            <li class="list-none ml-0">
+              <.link navigate={~p"/projects"}>
+                Projects<span class="sup pl-0.5"><%= Enum.count(@projects) %></span>
+              </.link>
+            </li>
+            <li class="list-none ml-0">
+              <.link navigate={~p"/apps"}>
+                Apps<span class="sup pl-0.5">3</span>
+              </.link>
+            </li>
+            <li class="list-none ml-0">
+              <.link navigate={~p"/contributions"}>
+                Contributions<span class="sup pl-0.5"><%= Enum.count(@contributions) %></span>
+              </.link>
+            </li>
+            <li class="list-none ml-0">
+              <.link navigate={~p"/works"}>
+                Works<span class="sup pl-0.5"><%= Enum.count(@works) %></span>
+              </.link>
+            </li>
+            <li class="list-none ml-0"><.link navigate={~p"/education"}>Education</.link></li>
+            <li class="list-none ml-0"><.link navigate={~p"/about"}>About</.link></li>
+            <li class="list-none ml-0"><.link navigate={~p"/contact"}>Contact</.link></li>
+          </ul>
+        </nav>
+      </div>
+      <button
+        phx-click={JS.toggle_class("translate-x-full", to: "#mobile-menu")}
+        class="lg:hidden"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-6 w-6"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M4 6h16M4 12h16M4 18h16"
+          />
+        </svg>
+      </button>
+    </div>
+    <!-- Mobile Menu Overlay -->
+    <div
+      id="mobile-menu"
+      class="fixed inset-0 bg-black z-40 transition-transform duration-300 ease-in-out translate-x-full lg:hidden overflow-y-auto"
+    >
+      <div class="flex flex-col min-h-full p-8">
+        <div class="flex justify-between items-center mb-12">
+          <div class="flex items-center gap-3">
+            <img
+              src={~p"/images/avatar.jpg"}
+              alt="Jesse Claven"
+              class="w-8 h-8 rounded-full object-cover border border-white"
+            />
+            <h1 class="text-white font-bold">Jesse Claven</h1>
+          </div>
+          <button
+            phx-click={JS.add_class("translate-x-full", to: "#mobile-menu")}
+            class="text-white"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+          </button>
+        </div>
+        <nav class="flex-1">
+          <ul class="space-y-3 list-none ml-0">
+            <li class="list-none ml-0">
+              <.link
+                navigate={~p"/"}
+                phx-click={JS.add_class("translate-x-full", to: "#mobile-menu")}
+                class="text-white text-xl font-medium hover:underline transition-colors block"
+              >
+                Home
+              </.link>
+            </li>
+            <li class="list-none ml-0">
+              <.link
+                navigate={~p"/blog"}
+                phx-click={JS.add_class("translate-x-full", to: "#mobile-menu")}
+                class="text-white text-xl font-medium hover:underline transition-colors block"
+              >
+                Blog<span class="sup pl-0.5"><%= Enum.count(@posts) %></span>
+              </.link>
+            </li>
+            <li class="list-none ml-0">
+              <.link
+                navigate={~p"/projects"}
+                phx-click={JS.add_class("translate-x-full", to: "#mobile-menu")}
+                class="text-white text-xl font-medium hover:underline transition-colors block"
+              >
+                Projects<span class="sup pl-0.5"><%= Enum.count(@projects) %></span>
+              </.link>
+            </li>
+            <li class="list-none ml-0">
+              <.link
+                navigate={~p"/apps"}
+                phx-click={JS.add_class("translate-x-full", to: "#mobile-menu")}
+                class="text-white text-xl font-medium hover:underline transition-colors block"
+              >
+                Apps<span class="sup pl-0.5">3</span>
+              </.link>
+            </li>
+            <li class="list-none ml-0">
+              <.link
+                navigate={~p"/contributions"}
+                phx-click={JS.add_class("translate-x-full", to: "#mobile-menu")}
+                class="text-white text-xl font-medium hover:underline transition-colors block"
+              >
+                Contributions<span class="sup pl-0.5"><%= Enum.count(@contributions) %></span>
+              </.link>
+            </li>
+            <li class="list-none ml-0">
+              <.link
+                navigate={~p"/works"}
+                phx-click={JS.add_class("translate-x-full", to: "#mobile-menu")}
+                class="text-white text-xl font-medium hover:underline transition-colors block"
+              >
+                Works<span class="sup pl-0.5"><%= Enum.count(@works) %></span>
+              </.link>
+            </li>
+            <li class="list-none ml-0">
+              <.link
+                navigate={~p"/education"}
+                phx-click={JS.add_class("translate-x-full", to: "#mobile-menu")}
+                class="text-white text-xl font-medium hover:underline transition-colors block"
+              >
+                Education
+              </.link>
+            </li>
+            <li class="list-none ml-0">
+              <.link
+                navigate={~p"/about"}
+                phx-click={JS.add_class("translate-x-full", to: "#mobile-menu")}
+                class="text-white text-xl font-medium hover:underline transition-colors block"
+              >
+                About
+              </.link>
+            </li>
+            <li class="list-none ml-0">
+              <.link
+                navigate={~p"/contact"}
+                phx-click={JS.add_class("translate-x-full", to: "#mobile-menu")}
+                class="text-white text-xl font-medium hover:underline transition-colors block"
+              >
+                Contact
+              </.link>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
     <hr class="my-6 border-black dark:border-white" />
     <main>
       {@inner_content}
