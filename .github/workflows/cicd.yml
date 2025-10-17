@@ -63,7 +63,7 @@ jobs:
   lint:
     runs-on: ubuntu-24.04
     name: Lint
-    needs: setup
+    needs: build
     steps:
       - name: Checkout code
         uses: actions/checkout@v5
@@ -118,7 +118,7 @@ jobs:
   build:
     runs-on: ubuntu-24.04
     name: Build
-    needs: lint
+    needs: setup
     steps:
       - name: Checkout code
         uses: actions/checkout@v5
