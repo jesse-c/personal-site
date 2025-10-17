@@ -1,5 +1,5 @@
 defmodule Mix.Tasks.Feed do
-  @moduledoc "The hello mix task: `mix help hello`"
+  @moduledoc "Task to build the RSS feed of blog posts: `mix help feed` or `mix feed`"
   use Mix.Task
 
   alias PersonalSite.Blog
