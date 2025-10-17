@@ -124,6 +124,10 @@
     .post hr {
         @apply my-6 border-dashed;
     }
+
+    .dropdown-content.menu li a {
+        @apply px-2;
+    }
 }
 
 @layer utilities {
