@@ -11,5 +11,5 @@ Following this, I've released an alpha version of git-spice.el[^5]. Feel free to
 [^1]: https://abhinav.github.io/git-spice/community/integrations/#emacs-magit-support
 [^2]: https://github.com/abhinav/git-spice/issues/780#issuecomment-3399509939
 [^3]: [git-spice](https://abhinav.github.io/git-spice/)
-[^4]: [Magit plugin for git-spice (for stacked pull requests)](magit-plugin-for-git-spice)
+[^4]: [Magit plugin for git-spice (for stacked pull requests)](magit-plugin-for-git-spice-for-stacked-pull-requests)
 [^5]: [git-spice.el](https://github.com/jesse-c/git-spice.el)
