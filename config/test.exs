@@ -19,3 +19,6 @@ config :phoenix, :plug_init_mode, :runtime
 config :personal_site, PersonalSite.Redis,
   url: "redis://localhost:6379/0",
   opts: []
+
+# Disable OpenTelemetry exporter during tests
+config :opentelemetry, traces_exporter: :none
