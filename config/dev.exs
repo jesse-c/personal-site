@@ -77,3 +77,6 @@ config :phoenix_live_view,
   # Enable helpful, but potentially expensive runtime checks
   enable_expensive_runtime_checks: true,
   debug_attributes: true
+
+# Disable OpenTelemetry exporter during development
+config :opentelemetry, traces_exporter: :none
