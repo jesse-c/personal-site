@@ -31,7 +31,7 @@ jobs:
       # Define how to cache deps. Restores existing cache if present.
       - name: Cache deps
         id: cache-deps
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         env:
           cache-name: cache-elixir-deps
         with:
@@ -45,7 +45,7 @@ jobs:
       # project's downloaded deps every run.
       - name: Cache compiled build
         id: cache-build
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         env:
           cache-name: cache-compiled-build
         with:
@@ -79,7 +79,7 @@ jobs:
       # Define how to cache deps. Restores existing cache if present.
       - name: Cache deps
         id: cache-deps
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         env:
           cache-name: cache-elixir-deps
         with:
@@ -93,7 +93,7 @@ jobs:
       # project's downloaded deps every run.
       - name: Cache compiled build
         id: cache-build
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         env:
           cache-name: cache-compiled-build
         with:
@@ -134,7 +134,7 @@ jobs:
       # Define how to cache deps. Restores existing cache if present.
       - name: Cache deps
         id: cache-deps
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         env:
           cache-name: cache-elixir-deps
         with:
@@ -148,7 +148,7 @@ jobs:
       # project's downloaded deps every run.
       - name: Cache compiled build
         id: cache-build
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         env:
           cache-name: cache-compiled-build
         with:
@@ -190,7 +190,7 @@ jobs:
       # Define how to cache deps. Restores existing cache if present.
       - name: Cache deps
         id: cache-deps
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         env:
           cache-name: cache-elixir-deps
         with:
@@ -204,7 +204,7 @@ jobs:
       # project's downloaded deps every run.
       - name: Cache compiled build
         id: cache-build
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         env:
           cache-name: cache-compiled-build
         with:
