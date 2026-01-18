@@ -72,7 +72,7 @@ defmodule PersonalSiteWeb.Live.Index do
       Process.send_after(
         self(),
         :clear_flash,
-        Application.get_env(:personal_site, PersonalSite.Shoutbox)[:clear]
+        3_000
       )
 
       {:noreply, socket}
