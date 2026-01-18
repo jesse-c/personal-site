@@ -89,8 +89,11 @@ defmodule PersonalSiteWeb.Live.ShoutboxIndex do
               <div class="text-sm">{day}</div>
               <div :for={shout <- shouts} class="space-y-1">
                 <p class="text-sm">
-                  <span class="text-xs">{format_time(shout.timestamp)}</span>
-                  <strong>{shout.name}:</strong> {shout.message}
+                  {format_time(shout.timestamp)}
+                  {shout.name}
+                </p>
+                <p class="text-sm">
+                  {shout.message}
                 </p>
               </div>
             </div>
