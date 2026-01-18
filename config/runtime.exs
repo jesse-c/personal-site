@@ -23,8 +23,6 @@ if System.get_env("PHX_SERVER") do
   config :personal_site, PersonalSiteWeb.Endpoint, server: true
 end
 
-config :personal_site, PersonalSite.Shoutbox, clear: 10_000
-
 config :personal_site, PersonalSite.Redis, connection_attempts: 50
 
 config :personal_site, PersonalSiteWeb.Pushover,
@@ -47,7 +45,11 @@ if config_env() == :dev do
     # No options to overwrite from the URI
     opts: []
 
-  config :personal_site, PersonalSite.Shoutbox, max: 5
+  # Max number of shouts to store
+  config :personal_site, PersonalSite.Shoutbox, max: 10
+
+  # Max number of shouts to display
+  config :personal_site, PersonalSite.Shoutbox, max_display: 2
 
   config :personal_site, PersonalSite.InstagramDupeChecker, url: "[::1]", port: 8800
 end
@@ -58,7 +60,11 @@ if config_env() == :test do
     data_domain: nil,
     api_key: ""
 
+  # Max number of shouts to store
   config :personal_site, PersonalSite.Shoutbox, max: 2
+
+  # Max number of shouts to display
+  config :personal_site, PersonalSite.Shoutbox, max_display: 2
 
   config :personal_site, PersonalSite.InstagramDupeChecker, url: "[::1]", port: 8800
 end
@@ -134,7 +140,11 @@ if config_env() == :prod do
       socket_opts: [:inet6]
     ]
 
-  config :personal_site, PersonalSite.Shoutbox, max: 100
+  # Max number of shouts to store
+  config :personal_site, PersonalSite.Shoutbox, max: 1_000_000
+
+  # Max number of shouts to display
+  config :personal_site, PersonalSite.Shoutbox, max_display: 10
 
   config :personal_site, PersonalSite.InstagramDupeChecker,
     url: System.get_env("INSTAGRAM_DUPE_CHECKER_URL"),

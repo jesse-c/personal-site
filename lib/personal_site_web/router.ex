@@ -39,6 +39,7 @@ defmodule PersonalSiteWeb.Router do
       live("/contact", Live.Contact)
       live("/education", Live.Education)
       live("/apps/instagram-dupe-checker", Live.InstagramDupeChecker)
+      live("/apps/shoutbox", Live.ShoutboxIndex)
     end
 
     live_session :mini, root_layout: {PersonalSiteWeb.Layouts, :mini} do

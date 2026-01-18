@@ -18,6 +18,10 @@ defmodule PersonalSiteWeb.Live.Index do
       socket
       |> assign(form: to_form(%{"message" => nil}))
       |> assign(shouts: Shoutbox.list())
+      |> assign(
+        shouts_max_display:
+          Application.get_env(:personal_site, PersonalSite.Shoutbox)[:max_display]
+      )
       |> assign(redis_connected?: Shoutbox.connected?())
       |> assign(page_title: "Home")
 
@@ -162,7 +166,7 @@ defmodule PersonalSiteWeb.Live.Index do
             </span>
           </div>
           <h3 class="text-sm">
-            Latest<span class="sup pl-0.5"><%= min(Enum.count(@shouts), 10) %> of <%= Enum.count(@shouts) %></span>
+            Latest<span class="sup pl-0.5"><%= min(Enum.count(@shouts), @shouts_max_display) %> of <%= Enum.count(@shouts) %></span>
           </h3>
           <%= if Enum.empty?(@shouts) do %>
             <div>
@@ -170,7 +174,7 @@ defmodule PersonalSiteWeb.Live.Index do
             </div>
           <% else %>
             <div class="space-y-3">
-              <div :for={shout <- Enum.take(@shouts, 10)} class="space-y-1">
+              <div :for={shout <- Enum.take(@shouts, @shouts_max_display)} class="space-y-1">
                 <p class="text-xs">
                   &#9786; {shout.name} ･ &#9200; {Timex.from_now(shout.timestamp)}
                 </p>
@@ -178,6 +182,11 @@ defmodule PersonalSiteWeb.Live.Index do
               </div>
             </div>
           <% end %>
+          <div class="space-y-3">
+            <.link class="text-xs" navigate={~p"/apps/shoutbox"}>
+              View all<span class="sup pl-0.5"><%= Enum.count(@shouts) %></span> →
+            </.link>
+          </div>
           <div class="space-y-3">
             <h3 class="text-sm">New</h3>
             <.form class="space-y-3" for={@form} phx-change="validate" phx-submit="save">

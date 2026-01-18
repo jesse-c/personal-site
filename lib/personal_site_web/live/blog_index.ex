@@ -35,7 +35,7 @@ defmodule PersonalSiteWeb.Live.BlogIndex do
   def render(assigns) do
     ~H"""
     <.live_component module={PersonalSiteWeb.Live.Cursors} id="cursors" users={@users} />
-    <h1 class="text-lg"><.link navigate={~p"/blog"}>Blog</.link></h1>
+    <h1 class="text-lg">Blog</h1>
     <div class="space-y-3 mt-3">
       <p class="text-sm"><.link navigate={~p"/blog/tags"}>All tags</.link></p>
       <div :for={{year, months} <- @years} class="space-y-1">
