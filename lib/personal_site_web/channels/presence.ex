@@ -18,11 +18,21 @@ defmodule PersonalSiteWeb.Presence do
 
     key = socket.id
 
-    user = MnemonicSlugs.generate_slug()
-    hsl = Cursors.get_hsl(user)
+    # Check if user already exists in presence
+    {user, hsl} =
+      case get_by_key(Cursors.topic(), key) do
+        %{metas: [meta | _]} ->
+          # Found existing user, keep their name and color
+          {meta.name, meta.hsl}
 
-    # Track this new presence, so that it's apart of the overall
-    # list of users' presences.
+        _ ->
+          # New user, generate name and color
+          name = MnemonicSlugs.generate_slug()
+
+          {name, Cursors.get_hsl(name)}
+      end
+
+    # Track this presence
     track(
       pid,
       Cursors.topic(),
@@ -39,7 +49,7 @@ defmodule PersonalSiteWeb.Presence do
     # Get the current list of users
     users = users()
 
-    Logger.debug("initialised presence")
+    Logger.debug("initialised presence: user=#{user}")
 
     %{
       user: user,
