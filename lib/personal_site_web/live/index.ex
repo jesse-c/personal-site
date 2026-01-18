@@ -111,8 +111,13 @@ defmodule PersonalSiteWeb.Live.Index do
   def render(assigns) do
     ~H"""
     <.live_component module={Cursors} id="cursors" users={@users} />
-    <div class="border border-dashed rounded-sm border-black dark:border-white p-2 mb-6 text-xs max-w-fit">
-      &#9788; Remember to try the <a href="#shoutbox">shoutbox</a>! &#8595
+    <div class="flex flex-col md:flex-row md:gap-4 mb-6">
+      <div class="border border-dashed rounded-sm border-black dark:border-white p-2 mb-2 md:mb-0 text-xs max-w-fit">
+        Remember to try the <a href="#shoutbox">shoutbox</a>! &#8595
+      </div>
+      <div class="border border-dashed rounded-sm border-black dark:border-white p-2 text-xs max-w-fit">
+        See each others' cursors! &#9758;
+      </div>
     </div>
     <div class="flex flex-col md:flex-row">
       <div class="space-y-10 md:w-1/2 md:max-w-1/2">
