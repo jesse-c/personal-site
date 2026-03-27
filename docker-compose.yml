@@ -1,4 +1,19 @@
 services:
+  app:
+    profiles: ["app"]
+    build: .
+    ports:
+      - "4000:4000"
+    depends_on:
+      - redis
+    environment:
+      - PHX_HOST=${PHX_HOST:-localhost}
+      - PORT=4000
+      - REDIS_PRIVATE_URL=redis://redis:6379/0
+      - SECRET_KEY_BASE=${SECRET_KEY_BASE:-dev_only_secret_key_base_not_for_production}
+      - SENTRY_DSN=${SENTRY_DSN:-https://fake@sentry.io/1}
+      - PUSHOVER_ENABLED=${PUSHOVER_ENABLED:-false}
+
   redis:
     image: redis:8.2
     environment:

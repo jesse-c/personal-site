@@ -1,5 +1,23 @@
 # personal-site
 
+## Local development
+
+Start Redis (required for the shoutbox):
+
+```bash
+docker compose up
+```
+
+## Docker
+
+To build and run the full production image locally:
+
+```bash
+docker compose --profile app up
+```
+
+Real secrets (`SECRET_KEY_BASE`, `SENTRY_DSN`, etc.) can be set in your environment or `.env` to override the placeholder defaults.
+
 ## D2 diagrams
 
 Blog posts support inline [D2](https://d2lang.com) diagrams, rendered to SVG at compile time — no JavaScript, no CDN, instant render, with light/dark mode via `prefers-color-scheme`.
