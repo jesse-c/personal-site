@@ -26,7 +26,9 @@ defmodule PersonalSiteWeb.Live.BlogSingle do
         <% end %>
         ･ <PersonalSiteWeb.TagsComponents.inline tags={@post.tags} />
       </p>
-      <div class="space-y-3">
+      <%!-- `phx-update="ignore"` prevents LiveView from patching this div on
+           cursor-tracking updates, which would reset `<details>` open state. --%>
+      <div class="space-y-3" phx-update="ignore" id="post-body">
         {raw(@post.body)}
       </div>
       <.prev_next prev={assigns[:prev]} next={assigns[:next]} />

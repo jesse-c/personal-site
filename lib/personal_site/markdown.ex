@@ -28,7 +28,16 @@ defmodule PersonalSite.MDExConverter do
         ]
       ]
 
-      MDEx.to_html!(body, opts)
+      # Initialise the rendered
+      MDEx.new(
+        markdown: body,
+        extension: opts[:extension],
+        parse: opts[:parse],
+        render: opts[:render]
+      )
+      # Attach the diagram compiler
+      |> PersonalSite.MDExD2.attach()
+      |> MDEx.to_html!()
     end
   end
 end
