@@ -60,6 +60,19 @@ jobs:
       - name: Install dependencies
         run: mix deps.get
 
+  conformancy:
+    runs-on: ubuntu-24.04
+    name: Conformancy
+    needs: build
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+
+      - name: Check links
+        uses: jesse-c/clevis-action@v0.2.1
+        with:
+          command: 'check'
+
   lint:
     runs-on: ubuntu-24.04
     name: Lint
@@ -102,6 +115,9 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-mix-${{ env.cache-name }}-
             ${{ runner.os }}-mix-
+
+      - name: Install D2
+        run: curl -fsSL https://d2lang.com/install.sh | sh -s --
 
       - name: Check formatting
         run: mix format --check-formatted
@@ -158,6 +174,9 @@ jobs:
             ${{ runner.os }}-mix-${{ env.cache-name }}-
             ${{ runner.os }}-mix-
 
+      - name: Install D2
+        run: curl -fsSL https://d2lang.com/install.sh | sh -s --
+
       - name: Compiles without warnings
         run: mix compile --warnings-as-errors
 
@@ -213,6 +232,9 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-mix-${{ env.cache-name }}-
             ${{ runner.os }}-mix-
+
+      - name: Install D2
+        run: curl -fsSL https://d2lang.com/install.sh | sh -s --
 
       - name: Run tests
         run: mix test

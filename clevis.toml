@@ -1,0 +1,59 @@
+[links.default_light_theme.a]
+kind = "query"
+file_path = "lib/personal_site/mdex_d2.ex"
+query = "@default_light_theme 1"
+
+[links.default_light_theme.b]
+kind = "query"
+file_path = "README.md"
+query = "@default_light_theme 1"
+
+[links.default_dark_theme.a]
+kind = "query"
+file_path = "lib/personal_site/mdex_d2.ex"
+query = "@default_dark_theme 201"
+
+[links.default_dark_theme.b]
+kind = "query"
+file_path = "README.md"
+query = "@default_dark_theme 201"
+
+[links.default_scale.a]
+kind = "query"
+file_path = "lib/personal_site/mdex_d2.ex"
+query = "@default_scale_percentage 65"
+
+[links.default_scale.b]
+kind = "query"
+file_path = "README.md"
+query = "@default_scale_percentage 65"
+
+[links.option_light_theme.a]
+kind = "query"
+file_path = "lib/personal_site/mdex_d2.ex"
+query = ":d2_light_theme"
+
+[links.option_light_theme.b]
+kind = "query"
+file_path = "README.md"
+query = ":d2_light_theme"
+
+[links.option_dark_theme.a]
+kind = "query"
+file_path = "lib/personal_site/mdex_d2.ex"
+query = ":d2_dark_theme"
+
+[links.option_dark_theme.b]
+kind = "query"
+file_path = "README.md"
+query = ":d2_dark_theme"
+
+[links.option_scale.a]
+kind = "query"
+file_path = "lib/personal_site/mdex_d2.ex"
+query = ":d2_scale"
+
+[links.option_scale.b]
+kind = "query"
+file_path = "README.md"
+query = ":d2_scale"

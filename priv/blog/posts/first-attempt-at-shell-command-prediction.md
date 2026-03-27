@@ -21,6 +21,20 @@ I've started experimenting with some of the dimensions, in particular the first.
 
 An LSTM was the first architecture I've decided to try. A few possible reasons it's a good fit:
 
+<details>
+<summary>Diagram</summary>
+
+```d2 border
+Input -> Embedding
+Embedding -> LSTM
+LSTM -> Dropout
+Dropout -> Linear
+Linear -> Softmax
+Softmax -> "Predicted token"
+```
+
+</details>
+
 1. Sequential dependencies of tokens in a shell command could be a good fit
 2. Long-range context, to remember things such as piped commands dependencies
 3. Variable length of commands from a token (`ls`) to long ones

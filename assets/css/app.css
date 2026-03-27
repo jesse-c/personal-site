@@ -125,6 +125,10 @@
         @apply my-6 border-dashed;
     }
 
+    .post details summary {
+        font-size: 0.75em;
+    }
+
     .dropdown-content.menu li a {
         @apply px-2;
     }
