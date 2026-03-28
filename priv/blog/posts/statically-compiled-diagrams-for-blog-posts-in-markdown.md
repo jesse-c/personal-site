@@ -53,9 +53,10 @@ author -> post -> tag
 
 The plugin is a single file — `lib/personal_site/mdex_d2.ex` — attached in the markdown converter before calling `MDEx.to_html!/1`. The `d2` binary is a prerequisite (installed via `brew install d2` locally, and via the install script in CI).
 
-You can see it in use in an existing post[^3], and the full implementation is in PR #184[^4].
+You can see it in use in an existing post[^3], and the implementation spans two commits[^4][^5].
 
 [^1]: [D2](https://d2lang.com)
 [^2]: [MDEx](https://github.com/leandrocp/mdex)
 [^3]: [First shell command prediction model](first-shell-command-prediction-model)
-[^4]: [feat(blog): Add statically compiled diagrams](https://github.com/jesse-c/personal-site/pull/184)
+[^4]: [feat(blog): Add statically compiled diagrams](https://github.com/jesse-c/personal-site/commit/091745b)
+[^5]: [build: Use Docker over Railpack](https://github.com/jesse-c/personal-site/commit/4dad1bf)
