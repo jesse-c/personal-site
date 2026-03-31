@@ -23,6 +23,7 @@ RUN /bin/bash -o pipefail -c "curl -fsSL https://d2lang.com/install.sh | sh -s -
 WORKDIR /app
 
 ENV MIX_ENV=prod
+ENV ELIXIR_ERL_OPTIONS="+fnu"
 
 # Install hex + rebar
 RUN mix local.hex --force && mix local.rebar --force
@@ -60,6 +61,7 @@ RUN apt-get update -y && apt-get install -y --no-install-recommends \
 ENV LANG=en_US.UTF-8
 ENV LANGUAGE=en_US:en
 ENV LC_ALL=en_US.UTF-8
+ENV ELIXIR_ERL_OPTIONS="+fnu"
 ENV PHX_SERVER=true
 
 WORKDIR /app
