@@ -15,7 +15,10 @@ defmodule PersonalSite.MDExConverter do
           autolink: true,
           tasklist: true,
           footnotes: true,
-          shortcodes: true
+          shortcodes: true,
+          highlight: true,
+          insert: true,
+          subtext: true
         ],
         parse: [
           smart: true,
@@ -28,6 +31,11 @@ defmodule PersonalSite.MDExConverter do
           # Allow raw HTML (e.g. <details>/<summary>) and codefence
           # renderer SVG output to pass through unescaped.
           unsafe: true
+        ],
+        syntax_highlight: [
+          formatter:
+            {:html_multi_themes,
+             themes: [light: "github_light", dark: "github_dark"], default_theme: "light-dark()"}
         ]
       )
       |> MDEx.to_html!(codefence_renderers: %{"d2" => PersonalSite.MDExD2.renderer()})

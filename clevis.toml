@@ -57,3 +57,13 @@ query = ":d2_scale"
 kind = "query"
 file_path = "README.md"
 query = ":d2_scale"
+
+[links.copy_button.a]
+kind = "query"
+file_path = "assets/js/app.js"
+query = "copy-button"
+
+[links.copy_button.b]
+kind = "query"
+file_path = "assets/css/app.css"
+query = "copy-button"

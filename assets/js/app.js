@@ -62,6 +62,59 @@ liveSocket.connect();
 // >> liveSocket.disableLatencySim()
 window.liveSocket = liveSocket;
 
+// Copy button for code blocks
+let copyScrollHandlers = [];
+
+function addCopyButtons() {
+  document.querySelectorAll("pre").forEach((pre) => {
+    if (pre.querySelector(".copy-button")) return;
+
+    const button = document.createElement("button");
+    button.className = "copy-button";
+    button.textContent = "Copy";
+
+    // Handle the actual copying
+    button.addEventListener("click", () => {
+      const code = pre.querySelector("code") ?? pre;
+      navigator.clipboard.writeText(code.innerText).then(() => {
+        button.textContent = "Copied!";
+        setTimeout(() => {
+          button.textContent = "Copy";
+        }, 2000);
+      });
+    });
+
+    // Attach it to the code block
+    pre.appendChild(button);
+
+    // Float the button at the top when scrolling past the `pre`'s top
+    // edge.
+    const onScroll = () => {
+      const rect = pre.getBoundingClientRect();
+      if (rect.top < 0 && rect.bottom > 32) {
+        // The magic number at the end was tweaked via testing
+        const rightPx = Math.max(0, window.innerWidth - rect.right) + 5;
+        button.style.cssText = `position:fixed;top:0.25rem;right:${rightPx}px;opacity:1;`;
+      } else {
+        button.style.cssText = "";
+      }
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    copyScrollHandlers.push(onScroll);
+  });
+}
+
+function removeCopyButtons() {
+  copyScrollHandlers.forEach((h) => window.removeEventListener("scroll", h));
+  copyScrollHandlers = [];
+}
+
+// Setup and teardown copy buttons
+document.addEventListener("DOMContentLoaded", addCopyButtons);
+window.addEventListener("phx:page-loading-start", removeCopyButtons);
+window.addEventListener("phx:page-loading-stop", addCopyButtons);
+
 // Dark mode from Tailwind [1]
 //
 // [1] https://tailwindcss.com/docs/dark-mode
