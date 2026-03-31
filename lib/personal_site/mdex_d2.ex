@@ -1,11 +1,9 @@
 defmodule PersonalSite.MDExD2 do
   @moduledoc """
-  MDEx pipeline plugin that renders `d2` fenced code blocks to inline SVG at
-  compile time. Supports light/dark themes, percentage-width scaling, float
-  layout, and optional borders.
+  MDEx codefence renderer for `d2` fenced code blocks. Renders d2
+  source to inline SVG at compile time. Supports light/dark themes,
+  percentage-width scaling, float layout, and optional borders.
   """
-
-  alias MDEx.Document
 
   # Themes
   #
@@ -23,69 +21,35 @@ defmodule PersonalSite.MDExD2 do
   @default_scale_percentage 65
 
   @doc """
-  Attach the D2 pipeline plugin to an `MDEx` document.
+  Returns a codefence renderer function for the `"d2"` language
+  identifier.
+
+  Pass the result to MDEx's `codefence_renderers: %{"d2" =>
+  renderer()}` option. Requires `render: [unsafe: true]` to allow the
+  SVG HTML to pass through.
   """
-  def attach(document, opts \\ []) do
-    document
-    |> Document.register_options([:d2_light_theme, :d2_dark_theme, :d2_scale])
-    |> Document.put_options(opts)
-    |> Document.append_steps(enable_unsafe: &enable_unsafe/1)
-    |> Document.append_steps(render_d2_blocks: &render_d2_blocks/1)
-  end
+  def renderer(opts \\ []) do
+    theme = Keyword.get(opts, :d2_light_theme, @default_light_theme)
+    dark_theme = Keyword.get(opts, :d2_dark_theme, @default_dark_theme)
+    scale = Keyword.get(opts, :d2_scale, @default_scale_percentage)
 
-  # Enable the render options needed to inject raw SVG into the
-  # document.
-  defp enable_unsafe(document) do
-    document
-    |> Document.put_render_options(
-      # Allow `HtmlBlock` nodes to render as raw HTML
-      unsafe: true,
-      # Override any caller-set escape: true that would escape our SVG
-      escape: false
-    )
-    # `tagfilter` strips `<style>` tags, which breaks
-    # D2's embedded CSS.
-    |> Document.put_extension_options(tagfilter: false)
-  end
+    fn _lang, meta, code ->
+      float = parse_float(meta)
+      border = meta =~ "border"
 
-  # Replace every `d2` fenced code block in the document with a
-  # rendered SVG wrapped in a sizing/layout `div`. Info string options
-  # are parsed from each node's info string.
-  defp render_d2_blocks(document) do
-    theme = Document.get_option(document, :d2_light_theme, @default_light_theme)
-    dark_theme = Document.get_option(document, :d2_dark_theme, @default_dark_theme)
-    scale = Document.get_option(document, :d2_scale, @default_scale_percentage)
-
-    # Walk every node in the document AST, looking for D2 nodes
-    Document.update_nodes(
-      document,
-      fn
-        # Selects nodes to transform
-        %MDEx.CodeBlock{info: "d2" <> _} -> true
-        _ -> false
-      end,
-      # Replaces each selected node with a new one
-      fn node ->
-        float = parse_float(node.info)
-        border = node.info =~ "border"
-
-        # Replace `d2` code blocks with HTML, raising on failure so that
-        # invalid diagrams are caught at compile time rather than silently
-        # rendering an error in the page.
-        case render_d2(node.literal, theme, dark_theme) do
-          {:ok, svg} -> %MDEx.HtmlBlock{literal: constrain(svg, scale, float, border)}
-          {:error, reason} -> raise "D2 render failed: #{reason}"
-        end
+      case render_d2(code, theme, dark_theme) do
+        {:ok, svg} -> constrain(svg, scale, float, border)
+        {:error, reason} -> raise "D2 render failed: #{reason}"
       end
-    )
+    end
   end
 
-  # Parse optional float options
+  # Parse optional float options from the info string meta.
   @spec parse_float(String.t()) :: :left | :right | nil
-  defp parse_float(info) do
+  defp parse_float(meta) do
     cond do
-      info =~ "float=left" -> :left
-      info =~ "float=right" -> :right
+      meta =~ "float=left" -> :left
+      meta =~ "float=right" -> :right
       true -> nil
     end
   end

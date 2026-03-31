@@ -5,7 +5,8 @@ defmodule PersonalSite.MDExConverter do
 
   def convert(filepath, body, _attrs, _opts) do
     if Path.extname(filepath) in [".md", ".markdown"] do
-      opts = [
+      MDEx.new(
+        markdown: body,
         extension: [
           strikethrough: true,
           underline: true,
@@ -23,21 +24,13 @@ defmodule PersonalSite.MDExConverter do
         ],
         render: [
           github_pre_lang: true,
-          escape: true,
-          hardbreaks: true
+          hardbreaks: true,
+          # Allow raw HTML (e.g. <details>/<summary>) and codefence
+          # renderer SVG output to pass through unescaped.
+          unsafe: true
         ]
-      ]
-
-      # Initialise the rendered
-      MDEx.new(
-        markdown: body,
-        extension: opts[:extension],
-        parse: opts[:parse],
-        render: opts[:render]
       )
-      # Attach the diagram compiler
-      |> PersonalSite.MDExD2.attach()
-      |> MDEx.to_html!()
+      |> MDEx.to_html!(codefence_renderers: %{"d2" => PersonalSite.MDExD2.renderer()})
     end
   end
 end

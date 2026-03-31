@@ -47,10 +47,12 @@ defmodule PersonalSite.MDExD2Test do
 
   defp fixture(name), do: File.read!(Path.join(@fixtures_dir, name))
 
-  defp to_html(markdown) do
+  defp to_html(markdown, opts \\ []) do
     MDEx.new(markdown: markdown)
-    |> MDExD2.attach()
-    |> MDEx.to_html!()
+    |> MDEx.to_html!(
+      render: [unsafe: true],
+      codefence_renderers: %{"d2" => MDExD2.renderer(opts)}
+    )
   end
 
   describe "non-d2 content" do
