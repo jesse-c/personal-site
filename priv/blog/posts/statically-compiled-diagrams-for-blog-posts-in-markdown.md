@@ -19,17 +19,50 @@ A custom MDEx[^2] pipeline plugin walks the document AST at compile time, finds 
 
 A basic diagram:
 
+<details>
+<summary>Source</summary>
+
+````
+```d2
+x -> y -> z
+```
+````
+
+</details>
+
 ```d2
 x -> y -> z
 ```
 
 Diagrams support a few options in the info string. A border:
 
+<details>
+<summary>Source</summary>
+
+````
+```d2 border
+client -> server -> database
+```
+````
+
+</details>
+
 ```d2 border
 client -> server -> database
 ```
 
 Float layout, so text flows alongside the diagram:
+
+<details>
+<summary>Source</summary>
+
+````
+```d2 float=right border
+web -> api -> db
+```
+````
+
+</details>
 
 ```d2 float=right border
 web -> api -> db
