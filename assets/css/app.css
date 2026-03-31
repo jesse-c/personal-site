@@ -104,7 +104,7 @@
 
     @media (prefers-color-scheme: dark) {
         pre .line::before {
-            color: oklch(60% 0 0);
+            color: oklch(40% 0 0);
         }
     }
 
@@ -115,7 +115,7 @@
 
     @media (prefers-color-scheme: dark) {
         pre .line:hover {
-            background: oklch(80% 0 0 / 8%);
+            background: oklch(100% 0 0 / 5%);
         }
     }
 

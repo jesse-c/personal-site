@@ -35,7 +35,7 @@ defmodule PersonalSite.MDExConverter do
         syntax_highlight: [
           formatter:
             {:html_multi_themes,
-             themes: [light: "github_light", dark: "github_dark"], default_theme: "light-dark()"}
+             themes: [light: "onelight", dark: "onedark"], default_theme: "light-dark()"}
         ]
       )
       |> MDEx.to_html!(codefence_renderers: %{"d2" => PersonalSite.MDExD2.renderer()})
