@@ -1,6 +1,6 @@
 %{
     title: "Statically compile diagrams for blog posts in Markdown",
-    tags: ~w(elixir side-project),
+    tags: ~w(elixir side-project blog d2 mdex markdown),
     date_created: "2026-03-27",
     date_updated: "2026-03-31",
 }
