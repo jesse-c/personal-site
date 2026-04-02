@@ -178,6 +178,18 @@
         @apply underline;
     }
 
+    .post h1 {
+        @apply text-lg mt-6 mb-3;
+    }
+
+    .post h2 {
+        @apply text-base mt-5 mb-2;
+    }
+
+    .post h3 {
+        @apply text-sm mt-4 mb-2;
+    }
+
     .post p {
         @apply text-sm;
     }

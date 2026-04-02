@@ -18,7 +18,7 @@ defmodule PersonalSiteWeb.Live.BlogSingle do
     ~H"""
     <.live_component module={PersonalSiteWeb.Live.Cursors} id="cursors" users={@users} />
     <div class="post space-y-3 md:w-1/2 md:max-w-1/2">
-      <h1 class="text-lg">{@post.title}</h1>
+      <h1 class="text-xl">{@post.title}</h1>
       <p class="text-xs">
         {@post.date_created}
         <%= if @post.date_updated do %>
