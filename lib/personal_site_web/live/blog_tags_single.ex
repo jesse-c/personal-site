@@ -15,6 +15,8 @@ defmodule PersonalSiteWeb.Live.BlogTagsSingle do
 
     Blog.tag_exists!(tag)
 
+    freqs_tags = all_posts |> Enum.flat_map(& &1.tags) |> Enum.frequencies()
+
     years =
       all_posts
       |> Enum.filter(fn post ->
@@ -27,6 +29,7 @@ defmodule PersonalSiteWeb.Live.BlogTagsSingle do
       socket
       |> assign(years: years)
       |> assign(tags: all_tags)
+      |> assign(freqs_tags: freqs_tags)
       |> assign(tag: tag)
       |> assign(page_title: "Blog · Tags · #{tag}")
 
@@ -39,7 +42,7 @@ defmodule PersonalSiteWeb.Live.BlogTagsSingle do
     <h1 class="text-lg">
       <.link navigate={~p"/blog"}>Blog</.link>
       · <.link navigate={~p"/blog/tags"}>Tags</.link>
-      · {@tag}
+      · {@tag}<span class="sup pl-0.5"><%= @freqs_tags[@tag] %></span>
     </h1>
     <div class="space-y-3 md:w-1/2 md:max-w-1/2">
       <div :for={{year, posts} <- @years} class="space-y-1">
