@@ -202,6 +202,35 @@
         font-size: 0.75em;
     }
 
+    .vega-bind {
+        @apply text-xs;
+    }
+
+    .vega-bind label {
+        @apply flex items-center gap-2;
+    }
+
+    .vega-bind-name {
+        @apply text-xs opacity-60 mr-1;
+    }
+
+    .vega-bind span {
+        @apply text-xs opacity-60;
+    }
+
+    .vega-bind input[type="range"] {
+        @apply h-1 rounded-full appearance-none cursor-pointer;
+        background: currentColor;
+        opacity: 0.3;
+        width: 8rem;
+    }
+
+    .vega-bind input[type="range"]::-webkit-slider-thumb {
+        @apply appearance-none w-3 h-3 rounded-full cursor-pointer;
+        background: currentColor;
+        opacity: 1;
+    }
+
     .dropdown-content.menu li a {
         @apply px-2;
     }

@@ -67,3 +67,13 @@ query = "copy-button"
 kind = "query"
 file_path = "assets/css/app.css"
 query = "copy-button"
+
+[links.vega_lite_version.a]
+kind = "query"
+file_path = "test/personal_site/mdex_vl_test.exs"
+query = "v5"
+
+[links.vega_lite_version.b]
+kind = "query"
+file_path = "assets/js/hooks/vega_chart.js"
+query = "v5"

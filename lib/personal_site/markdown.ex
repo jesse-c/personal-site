@@ -38,7 +38,12 @@ defmodule PersonalSite.MDExConverter do
              themes: [light: "onelight", dark: "onedark"], default_theme: "light-dark()"}
         ]
       )
-      |> MDEx.to_html!(codefence_renderers: %{"d2" => PersonalSite.MDExD2.renderer()})
+      |> MDEx.to_html!(
+        codefence_renderers: %{
+          "d2" => PersonalSite.MDExD2.renderer(),
+          "vl" => PersonalSite.MDExVl.renderer()
+        }
+      )
     end
   end
 end

@@ -80,3 +80,50 @@ x -> y
 ### Themes
 
 Defaults: `@default_light_theme 1` (Neutral Grey) and `@default_dark_theme 201` (Dark Flagship Terrastruct). Scale defaults to `@default_scale_percentage 65`%. Override per-document via `MDExD2.attach/2` options: `:d2_light_theme`, `:d2_dark_theme`, `:d2_scale`.
+
+## Vega-Lite charts
+
+Blog posts support inline [Vega-Lite](https://vega.github.io/vega-lite/) charts, rendered client-side via Vega-Embed — interactive by default, with hover tooltips and support for sliders and other controls.
+
+The spec is validated at compile time. Any local data URLs (paths starting with `/`) are checked for existence on disk at compile time too. Data files live in `priv/static/data/`.
+
+### Prerequisites
+
+None — Vega, Vega-Lite, and Vega-Embed (`@vega_lite_version v5`) are loaded lazily from CDN on first render.
+
+### Basic usage
+
+````markdown
+```vl
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": { "url": "/data/my-data.csv" },
+  "mark": { "type": "line", "point": true },
+  "encoding": {
+    "x": { "field": "x", "type": "quantitative" },
+    "y": { "field": "y", "type": "quantitative" },
+    "tooltip": [
+      { "field": "x", "type": "quantitative" },
+      { "field": "y", "type": "quantitative" }
+    ]
+  }
+}
+```
+````
+
+### Interactive controls
+
+Bind a parameter to a range slider using Vega-Lite's `params` + `bind`:
+
+````markdown
+```vl
+{
+  "params": [{ "name": "threshold", "value": 65, "bind": { "input": "range", "min": 0, "max": 100, "step": 1, "name": "Threshold" } }],
+  ...
+}
+```
+````
+
+### Dark mode
+
+Charts re-render automatically when the page theme changes. Dark mode overrides axis, legend, title, and grid colours to match the site palette.
