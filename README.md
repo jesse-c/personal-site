@@ -1,4 +1,4 @@
-# personal-site
+# My Personal Site
 
 ## Local development
 
