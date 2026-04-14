@@ -12,7 +12,9 @@ defmodule PersonalSiteWeb.Endpoint do
     store: :cookie,
     key: "_personal_site_key",
     signing_salt: "ioQ4XA2f",
-    same_site: "Lax"
+    same_site: "Lax",
+    http_only: true,
+    secure: true
   ]
 
   socket("/live", Phoenix.LiveView.Socket,
