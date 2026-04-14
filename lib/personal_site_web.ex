@@ -73,9 +73,16 @@ defmodule PersonalSiteWeb do
       def mount(params, session, socket) do
         Endpoint.subscribe(Cursors.topic())
 
+        client_ip =
+          case get_connect_info(socket, :peer_data) do
+            %{address: address} -> :inet.ntoa(address) |> to_string()
+            _ -> nil
+          end
+
         # Do these common things for all LiveViews
         socket =
           socket
+          |> assign(client_ip: client_ip)
           |> assign(Presence.initialise(socket, self()))
           |> assign(posts: Blog.all_posts())
           |> assign(projects: Projects.all_projects())
