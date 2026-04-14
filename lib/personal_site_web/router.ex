@@ -7,7 +7,18 @@ defmodule PersonalSiteWeb.Router do
     plug(:fetch_live_flash)
     plug(:put_root_layout, html: {PersonalSiteWeb.Layouts, :root})
     plug(:protect_from_forgery)
-    plug(:put_secure_browser_headers)
+
+    plug(:put_secure_browser_headers, %{
+      "content-security-policy" =>
+        "default-src 'self'; " <>
+          "script-src 'self' https://plausible.io; " <>
+          "style-src 'self' 'unsafe-inline'; " <>
+          "img-src 'self' data:; " <>
+          "font-src 'self'; " <>
+          "connect-src 'self' wss:; " <>
+          "frame-ancestors 'self';",
+      "strict-transport-security" => "max-age=31536000"
+    })
   end
 
   pipeline :api do
