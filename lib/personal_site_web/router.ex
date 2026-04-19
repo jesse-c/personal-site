@@ -11,8 +11,8 @@ defmodule PersonalSiteWeb.Router do
     plug(:put_secure_browser_headers, %{
       "content-security-policy" =>
         "default-src 'self'; " <>
-          "script-src 'self' https://plausible.io; " <>
-          "style-src 'self' 'unsafe-inline'; " <>
+          "script-src 'self' https://plausible.io https://cdn.jsdelivr.net; " <>
+          "style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; " <>
           "img-src 'self' data:; " <>
           "font-src 'self'; " <>
           "connect-src 'self' wss:; " <>
