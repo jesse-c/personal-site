@@ -92,7 +92,7 @@ defmodule PersonalSiteWeb.Live.ShoutboxIndex do
                   {format_time(shout.timestamp)}
                   {shout.name}
                 </p>
-                <p class="text-sm">
+                <p class="text-sm line-clamp-3 hover:line-clamp-none">
                   {shout.message}
                 </p>
               </div>

@@ -183,7 +183,7 @@ defmodule PersonalSiteWeb.Live.Index do
                 <p class="text-xs">
                   &#9786; {shout.name} ･ &#9200; {Timex.from_now(shout.timestamp)}
                 </p>
-                <p class="text-xs">{shout.message}</p>
+                <p class="text-xs line-clamp-3 hover:line-clamp-none">{shout.message}</p>
               </div>
             </div>
           <% end %>
@@ -199,7 +199,7 @@ defmodule PersonalSiteWeb.Live.Index do
                 <.input
                   type="text"
                   field={@form[:message]}
-                  maxlength="255"
+                  maxlength="256"
                   disabled={!@redis_connected?}
                 />
               </div>
