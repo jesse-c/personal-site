@@ -72,10 +72,13 @@ end
 config :tzdata, :autoupdate, :disabled
 
 if config_env() == :prod do
+  config :personal_site, :secure_cookies, true
   config :sentry,
     dsn: env!("SENTRY_DSN", :string!),
     environment_name: :prod,
     traces_sample_rate: 1.0,
+    before_send: {PersonalSite.SentryFilter, :before_send},
+    filter: PersonalSite.SentryEventFilter,
     integrations: [
       telemetry: [
         report_handler_failures: true
