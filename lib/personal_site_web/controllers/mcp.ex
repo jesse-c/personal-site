@@ -151,6 +151,21 @@ defmodule PersonalSiteWeb.MCPController do
     end
   end
 
+  @max_batch_size 20
+
+  defp handle_batch_requests(conn, requests, _wants_stream)
+       when length(requests) > @max_batch_size do
+    conn
+    |> put_status(400)
+    |> json(%{
+      "jsonrpc" => "2.0",
+      "error" => %{
+        "code" => MCPErrors.invalid_params(),
+        "message" => "Batch size exceeds maximum of #{@max_batch_size}"
+      }
+    })
+  end
+
   defp handle_batch_requests(conn, requests, wants_stream) do
     responses =
       requests
