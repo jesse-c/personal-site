@@ -38,7 +38,7 @@ defmodule PersonalSite.MixProject do
       {:phoenix, "~> 1.8.0"},
       {:phoenix_html, "~> 4.1"},
       {:phoenix_live_reload, "~> 1.2", only: :dev},
-      {:phoenix_live_view, "~> 1.1.2", override: true},
+      {:phoenix_live_view, "~> 1.2.8", override: true},
       {:floki, ">= 0.30.0", only: :test},
       {:esbuild, "~> 0.7", runtime: Mix.env() == :dev},
       {:tailwind, "~> 0.4.0", runtime: Mix.env() == :dev},
