@@ -10,6 +10,8 @@ defmodule PersonalSiteWeb.Live.InstagramDupeChecker do
     The prediction client for the service.
     """
 
+    require Logger
+
     @timeout_ms 2 * 60 * 1_000
 
     def middleware,
@@ -33,8 +35,8 @@ defmodule PersonalSiteWeb.Live.InstagramDupeChecker do
       port = Application.get_env(:personal_site, PersonalSite.InstagramDupeChecker)[:port]
       endpoint = "http://#{url}:#{port}/predict"
 
-      IO.puts("Sending request to #{endpoint}")
-      IO.puts("File: #{Path.basename(image_path)}")
+      Logger.debug("Sending request to #{endpoint}")
+      Logger.debug("File: #{Path.basename(image_path)}")
 
       {:ok, image_data} = File.read(image_path)
 
