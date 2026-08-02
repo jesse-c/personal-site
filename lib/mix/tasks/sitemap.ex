@@ -15,7 +15,9 @@ defmodule Mix.Tasks.Sitemap do
     File.write!("priv/static/sitemap.xml", xml)
     File.write!("priv/static/sitemap.xml.gz", :zlib.gzip(xml))
 
-    IO.puts("Generated priv/static/sitemap.xml with #{length(static_paths)} static routes, #{length(posts)} posts, #{length(tags)} tags")
+    IO.puts(
+      "Generated priv/static/sitemap.xml with #{length(static_paths)} static routes, #{length(posts)} posts, #{length(tags)} tags"
+    )
   end
 
   # Discovers static (no path params) browser-pipeline LiveView routes from the router.
@@ -42,6 +44,7 @@ defmodule Mix.Tasks.Sitemap do
       end) ++
         Enum.map(posts, fn post ->
           lastmod = post.date_updated || post.date_created
+
           "  <url>\n    <loc>#{@root}/blog/#{escape_xml(post.slug)}</loc>\n    <lastmod>#{lastmod}</lastmod>\n  </url>"
         end) ++
         Enum.map(tags, fn tag ->

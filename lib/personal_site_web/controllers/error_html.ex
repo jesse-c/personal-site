@@ -166,6 +166,7 @@ defmodule PersonalSiteWeb.ErrorHTML do
 
   defp not_found(assigns) do
     ~H"""
+    <span id="tracking-404" hidden></span>
     <p class="text-sm">Sorry, the page you are looking for does not exist.</p>
     """
   end

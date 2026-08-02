@@ -111,6 +111,12 @@ function removeCopyButtons() {
   copyScrollHandlers = [];
 }
 
+// Track 404 errors via Plausible custom event
+if (document.getElementById("tracking-404")) {
+  window.plausible &&
+    plausible("404", { props: { path: document.location.pathname } });
+}
+
 // Setup and teardown copy buttons
 document.addEventListener("DOMContentLoaded", addCopyButtons);
 window.addEventListener("phx:page-loading-start", removeCopyButtons);
