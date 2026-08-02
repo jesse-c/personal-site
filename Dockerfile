@@ -40,7 +40,7 @@ RUN mix deps.compile
 
 COPY priv priv
 COPY lib lib
-RUN mix compile
+RUN mix compile && mix sitemap
 
 COPY assets assets
 RUN mix assets.deploy

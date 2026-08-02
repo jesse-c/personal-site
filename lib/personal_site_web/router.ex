@@ -61,6 +61,8 @@ defmodule PersonalSiteWeb.Router do
     end
 
     get "/feed.xml", FeedController, :index
+    get "/sitemap.xml", SitemapController, :index
+    get "/sitemap.xml.gz", SitemapController, :index_gz
   end
 
   scope "/mcp", PersonalSiteWeb do
