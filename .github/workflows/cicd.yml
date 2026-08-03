@@ -18,7 +18,7 @@ jobs:
     name: Setup
     steps:
       - name: Checkout code
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
 
       - name: Set up Elixir and Erlang
         uses: erlef/setup-beam@v1
@@ -66,7 +66,7 @@ jobs:
     needs: build
     steps:
       - name: Checkout code
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
 
       - name: Check links
         uses: jesse-c/clevis-action@v0.2.1
@@ -79,7 +79,7 @@ jobs:
     needs: build
     steps:
       - name: Checkout code
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
 
       - name: Set up Elixir and Erlang
         uses: erlef/setup-beam@v1
@@ -137,7 +137,7 @@ jobs:
     needs: setup
     steps:
       - name: Checkout code
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
 
       - name: Set up Elixir and Erlang
         uses: erlef/setup-beam@v1
@@ -196,7 +196,7 @@ jobs:
           --health-retries 5
     steps:
       - name: Checkout code
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
 
       - name: Set up Elixir and Erlang
         uses: erlef/setup-beam@v1
