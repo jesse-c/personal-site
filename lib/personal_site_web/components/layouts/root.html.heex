@@ -10,13 +10,13 @@
     <link rel="alternate" type="application/rss+xml" href={~p"/feed.xml"} />
     <link rel="icon" sizes="any" type="image/x-icon" href="/favicon.ico" />
     <link phx-track-static rel="stylesheet" href={~p"/assets/css/app.css"} />
-    <script defer phx-track-static type="text/javascript" src={~p"/assets/js/app.js"}>
-    </script>
     <script
       defer
       data-domain={Application.get_env(:personal_site, PersonalSite.Plausible)[:data_domain]}
       src="https://plausible.io/js/script.js"
     >
+    </script>
+    <script defer phx-track-static type="text/javascript" src={~p"/assets/js/app.js"}>
     </script>
   </head>
   <body class="bg-white dark:bg-black text-black dark:text-white p-14">
