@@ -12,6 +12,7 @@ defmodule PersonalSite.SentryEventFilter do
   @impl true
   def exclude_exception?(%Phoenix.Router.NoRouteError{}, _source), do: true
   def exclude_exception?(%PersonalSite.Blog.NotFoundError{}, _source), do: true
+  def exclude_exception?(%Bandit.TransportError{}, _source), do: true
 
   def exclude_exception?(exception, source),
     do: Sentry.DefaultEventFilter.exclude_exception?(exception, source)
