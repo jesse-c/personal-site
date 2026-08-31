@@ -28,19 +28,21 @@
             alt="Jesse Claven"
             class="w-8 h-8 rounded-full object-cover border border-black dark:border-white"
           />
-          <.link href={~p"/"} class="font-bold no-underline hover:no-underline"><h1>Jesse Claven</h1></.link>
+          <.link href={~p"/"} class="font-bold no-underline hover:no-underline"><h1>
+            Jesse Claven
+          </h1></.link>
         </div>
         <nav class="hidden lg:flex">
           <ul class="flex items-center gap-6 text-sm">
             <li class="list-none ml-0"><.link navigate={~p"/"}>Home</.link></li>
             <li class="list-none ml-0">
               <.link navigate={~p"/blog"}>
-                Blog<span class="sup pl-0.5"><%= Enum.count(@posts) %></span>
+                Blog<span class="sup pl-0.5">{Enum.count(@posts)}</span>
               </.link>
             </li>
             <li class="list-none ml-0">
               <.link navigate={~p"/projects"}>
-                Projects<span class="sup pl-0.5"><%= Enum.count(@projects) %></span>
+                Projects<span class="sup pl-0.5">{Enum.count(@projects)}</span>
               </.link>
             </li>
             <li class="list-none ml-0">
@@ -50,12 +52,12 @@
             </li>
             <li class="list-none ml-0">
               <.link navigate={~p"/contributions"}>
-                Contributions<span class="sup pl-0.5"><%= Enum.count(@contributions) %></span>
+                Contributions<span class="sup pl-0.5">{Enum.count(@contributions)}</span>
               </.link>
             </li>
             <li class="list-none ml-0">
               <.link navigate={~p"/works"}>
-                Works<span class="sup pl-0.5"><%= Enum.count(@works) %></span>
+                Works<span class="sup pl-0.5">{Enum.count(@works)}</span>
               </.link>
             </li>
             <li class="list-none ml-0"><.link navigate={~p"/education"}>Education</.link></li>
@@ -136,7 +138,7 @@
                 phx-click={JS.add_class("translate-x-full", to: "#mobile-menu")}
                 class="text-white text-xl font-medium hover:underline transition-colors block"
               >
-                Blog<span class="sup pl-0.5"><%= Enum.count(@posts) %></span>
+                Blog<span class="sup pl-0.5">{Enum.count(@posts)}</span>
               </.link>
             </li>
             <li class="list-none ml-0">
@@ -145,7 +147,7 @@
                 phx-click={JS.add_class("translate-x-full", to: "#mobile-menu")}
                 class="text-white text-xl font-medium hover:underline transition-colors block"
               >
-                Projects<span class="sup pl-0.5"><%= Enum.count(@projects) %></span>
+                Projects<span class="sup pl-0.5">{Enum.count(@projects)}</span>
               </.link>
             </li>
             <li class="list-none ml-0">
@@ -163,7 +165,7 @@
                 phx-click={JS.add_class("translate-x-full", to: "#mobile-menu")}
                 class="text-white text-xl font-medium hover:underline transition-colors block"
               >
-                Contributions<span class="sup pl-0.5"><%= Enum.count(@contributions) %></span>
+                Contributions<span class="sup pl-0.5">{Enum.count(@contributions)}</span>
               </.link>
             </li>
             <li class="list-none ml-0">
@@ -172,7 +174,7 @@
                 phx-click={JS.add_class("translate-x-full", to: "#mobile-menu")}
                 class="text-white text-xl font-medium hover:underline transition-colors block"
               >
-                Works<span class="sup pl-0.5"><%= Enum.count(@works) %></span>
+                Works<span class="sup pl-0.5">{Enum.count(@works)}</span>
               </.link>
             </li>
             <li class="list-none ml-0">

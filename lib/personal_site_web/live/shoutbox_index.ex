@@ -76,8 +76,7 @@ defmodule PersonalSiteWeb.Live.ShoutboxIndex do
         aria-label={
           if @redis_connected?, do: "Connected to database", else: "Disconnected from database"
         }
-      >
-      </span>
+      ></span>
     </div>
     <div class="space-y-3 mt-3">
       <div :for={{year, months} <- @shouts_by_date} class="space-y-1">

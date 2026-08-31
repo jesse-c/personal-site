@@ -150,7 +150,7 @@ defmodule PersonalSiteWeb.Live.Index do
           </div>
           <div>
             <.link class="text-xs" navigate={~p"/blog"}>
-              Index<span class="sup pl-0.5"><%= Enum.count(@posts) %></span> →
+              Index<span class="sup pl-0.5">{Enum.count(@posts)}</span> →
             </.link>
           </div>
         </div>
@@ -167,11 +167,12 @@ defmodule PersonalSiteWeb.Live.Index do
               aria-label={
                 if @redis_connected?, do: "Connected to database", else: "Disconnected from database"
               }
-            >
-            </span>
+            ></span>
           </div>
           <h3 class="text-sm">
-            Latest<span class="sup pl-0.5"><%= min(Enum.count(@shouts), @shouts_max_display) %> of <%= Enum.count(@shouts) %></span>
+            Latest<span class="sup pl-0.5">{min(Enum.count(@shouts), @shouts_max_display)} of {Enum.count(
+              @shouts
+            )}</span>
           </h3>
           <%= if Enum.empty?(@shouts) do %>
             <div>
@@ -189,7 +190,7 @@ defmodule PersonalSiteWeb.Live.Index do
           <% end %>
           <div class="space-y-3">
             <.link class="text-xs" navigate={~p"/apps/shoutbox"}>
-              View all<span class="sup pl-0.5"><%= Enum.count(@shouts) %></span> →
+              View all<span class="sup pl-0.5">{Enum.count(@shouts)}</span> →
             </.link>
           </div>
           <div class="space-y-3">

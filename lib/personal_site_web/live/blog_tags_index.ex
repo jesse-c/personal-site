@@ -86,7 +86,7 @@ defmodule PersonalSiteWeb.Live.BlogTagsIndex do
         <div :for={tag <- @sorted_tags}>
           <p class="text-sm">
             <.link navigate={~p"/blog/tags/#{tag}"}>
-              {tag}<span class="sup pl-0.5"><%= @freqs_tags[tag] %></span>
+              {tag}<span class="sup pl-0.5">{@freqs_tags[tag]}</span>
             </.link>
           </p>
         </div>

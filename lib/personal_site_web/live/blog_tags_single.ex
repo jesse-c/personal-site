@@ -42,7 +42,7 @@ defmodule PersonalSiteWeb.Live.BlogTagsSingle do
     <h1 class="text-lg">
       <.link navigate={~p"/blog"}>Blog</.link>
       · <.link navigate={~p"/blog/tags"}>Tags</.link>
-      · {@tag}<span class="sup pl-0.5"><%= @freqs_tags[@tag] %></span>
+      · {@tag}<span class="sup pl-0.5">{@freqs_tags[@tag]}</span>
     </h1>
     <div class="space-y-3 md:w-1/2 md:max-w-1/2">
       <div :for={{year, posts} <- @years} class="space-y-1">
