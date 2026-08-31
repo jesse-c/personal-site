@@ -55,7 +55,7 @@ defmodule PersonalSite.MixProject do
       {:plug_cowboy, "~> 2.5"},
       {:mnemonic_slugs, "~> 0.0.3"},
       {:bandit, "~> 1.0-pre"},
-      {:nimble_publisher, "~> 1.1.0"},
+      {:nimble_publisher, "~> 2.1.0"},
       {:yaml_front_matter, "~> 1.0.0"},
       {:mdex, "~> 0.12"},
       {:slugify, "~> 1.3"},
