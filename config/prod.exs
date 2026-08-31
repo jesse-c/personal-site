@@ -13,6 +13,8 @@ config :logger, level: :info
 
 config :personal_site, enable_sentry: true
 
+config :personal_site, :secure_cookies, true
+
 config :sentry,
   enable_source_code_context: true,
   root_source_code_paths: [File.cwd!()]

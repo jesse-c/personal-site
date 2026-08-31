@@ -72,8 +72,6 @@ end
 config :tzdata, :autoupdate, :disabled
 
 if config_env() == :prod do
-  config :personal_site, :secure_cookies, true
-
   config :sentry,
     dsn: env!("SENTRY_DSN", :string!),
     environment_name: :prod,
