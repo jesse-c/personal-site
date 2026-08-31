@@ -14,7 +14,7 @@ defmodule PersonalSiteWeb.Endpoint do
     signing_salt: "ioQ4XA2f",
     same_site: "Lax",
     http_only: true,
-    secure: true
+    secure: Application.compile_env(:personal_site, :secure_cookies, false)
   ]
 
   socket("/live", Phoenix.LiveView.Socket,
