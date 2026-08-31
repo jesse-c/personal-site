@@ -31,7 +31,7 @@ jobs:
       # Define how to cache deps. Restores existing cache if present.
       - name: Cache deps
         id: cache-deps
-        uses: actions/cache@v5
+        uses: actions/cache@v6
         env:
           cache-name: cache-elixir-deps
         with:
@@ -45,7 +45,7 @@ jobs:
       # project's downloaded deps every run.
       - name: Cache compiled build
         id: cache-build
-        uses: actions/cache@v5
+        uses: actions/cache@v6
         env:
           cache-name: cache-compiled-build-v2
         with:
@@ -55,7 +55,7 @@ jobs:
       # Cache precompiled NIF archives so they don't need to be
       # re-downloaded when _build cache misses.
       - name: Cache precompiled NIFs
-        uses: actions/cache@v5
+        uses: actions/cache@v6
         with:
           path: ~/.cache/rustler_precompiled
           key: ${{ runner.os }}-nif-precompiled-${{ hashFiles('**/mix.lock') }}
@@ -104,7 +104,7 @@ jobs:
       # Define how to cache deps. Restores existing cache if present.
       - name: Cache deps
         id: cache-deps
-        uses: actions/cache@v5
+        uses: actions/cache@v6
         env:
           cache-name: cache-elixir-deps
         with:
@@ -118,7 +118,7 @@ jobs:
       # project's downloaded deps every run.
       - name: Cache compiled build
         id: cache-build
-        uses: actions/cache@v5
+        uses: actions/cache@v6
         env:
           cache-name: cache-compiled-build-v2
         with:
@@ -131,7 +131,7 @@ jobs:
       # Cache precompiled NIF archives so they don't need to be
       # re-downloaded when _build cache misses.
       - name: Cache precompiled NIFs
-        uses: actions/cache@v5
+        uses: actions/cache@v6
         with:
           path: ~/.cache/rustler_precompiled
           key: ${{ runner.os }}-nif-precompiled-${{ hashFiles('**/mix.lock') }}
@@ -179,7 +179,7 @@ jobs:
       # Define how to cache deps. Restores existing cache if present.
       - name: Cache deps
         id: cache-deps
-        uses: actions/cache@v5
+        uses: actions/cache@v6
         env:
           cache-name: cache-elixir-deps
         with:
@@ -193,7 +193,7 @@ jobs:
       # project's downloaded deps every run.
       - name: Cache compiled build
         id: cache-build
-        uses: actions/cache@v5
+        uses: actions/cache@v6
         env:
           cache-name: cache-compiled-build-v2
         with:
@@ -203,7 +203,7 @@ jobs:
       # Cache precompiled NIF archives so they don't need to be
       # re-downloaded when _build cache misses.
       - name: Cache precompiled NIFs
-        uses: actions/cache@v5
+        uses: actions/cache@v6
         with:
           path: ~/.cache/rustler_precompiled
           key: ${{ runner.os }}-nif-precompiled-${{ hashFiles('**/mix.lock') }}
@@ -252,7 +252,7 @@ jobs:
       # Define how to cache deps. Restores existing cache if present.
       - name: Cache deps
         id: cache-deps
-        uses: actions/cache@v5
+        uses: actions/cache@v6
         env:
           cache-name: cache-elixir-deps
         with:
@@ -266,7 +266,7 @@ jobs:
       # project's downloaded deps every run.
       - name: Cache compiled build
         id: cache-build
-        uses: actions/cache@v5
+        uses: actions/cache@v6
         env:
           cache-name: cache-compiled-build-v2
         with:
@@ -276,7 +276,7 @@ jobs:
       # Cache precompiled NIF archives so they don't need to be
       # re-downloaded when _build cache misses.
       - name: Cache precompiled NIFs
-        uses: actions/cache@v5
+        uses: actions/cache@v6
         with:
           path: ~/.cache/rustler_precompiled
           key: ${{ runner.os }}-nif-precompiled-${{ hashFiles('**/mix.lock') }}
