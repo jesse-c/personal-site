@@ -72,17 +72,6 @@ jobs:
       - name: Compile dependencies
         run: mix deps.compile --force
 
-      # _build/lib/<dep>/priv is a symlink to deps/<dep>/priv. Extract NIF
-      # archives from the precompiled cache into deps/*/priv/native/ so the
-      # symlink resolves correctly when project code loads the NIF module.
-      - name: Extract precompiled NIFs
-        run: |
-          find ~/.cache/rustler_precompiled -name "*.so.tar.gz" 2>/dev/null | while read archive; do
-            find deps -type d -name native -path "*/priv/native" 2>/dev/null | while read target; do
-              tar -xzf "$archive" -C "$target" 2>/dev/null || true
-            done
-          done
-
   conformancy:
     runs-on: ubuntu-24.04
     name: Conformancy
@@ -154,16 +143,10 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: curl -fsSL https://d2lang.com/install.sh | sh -s --
 
-      # _build/lib/<dep>/priv is a symlink to deps/<dep>/priv. Extract NIF
-      # archives from the precompiled cache into deps/*/priv/native/ so the
-      # symlink resolves correctly when project code loads the NIF module.
-      - name: Extract precompiled NIFs
-        run: |
-          find ~/.cache/rustler_precompiled -name "*.so.tar.gz" 2>/dev/null | while read archive; do
-            find deps -type d -name native -path "*/priv/native" 2>/dev/null | while read target; do
-              tar -xzf "$archive" -C "$target" 2>/dev/null || true
-            done
-          done
+      # Force-compile NIF deps so rustler_precompiled extracts the .so into
+      # deps/<dep>/priv/native/ before project code tries to load the module.
+      - name: Compile NIF deps
+        run: mix deps.compile --force lumis
 
       - name: Check formatting
         run: mix format --check-formatted
@@ -232,16 +215,10 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: curl -fsSL https://d2lang.com/install.sh | sh -s --
 
-      # _build/lib/<dep>/priv is a symlink to deps/<dep>/priv. Extract NIF
-      # archives from the precompiled cache into deps/*/priv/native/ so the
-      # symlink resolves correctly when project code loads the NIF module.
-      - name: Extract precompiled NIFs
-        run: |
-          find ~/.cache/rustler_precompiled -name "*.so.tar.gz" 2>/dev/null | while read archive; do
-            find deps -type d -name native -path "*/priv/native" 2>/dev/null | while read target; do
-              tar -xzf "$archive" -C "$target" 2>/dev/null || true
-            done
-          done
+      # Force-compile NIF deps so rustler_precompiled extracts the .so into
+      # deps/<dep>/priv/native/ before project code tries to load the module.
+      - name: Compile NIF deps
+        run: mix deps.compile --force lumis
 
       - name: Compiles without warnings
         run: mix compile --warnings-as-errors
@@ -311,16 +288,10 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: curl -fsSL https://d2lang.com/install.sh | sh -s --
 
-      # _build/lib/<dep>/priv is a symlink to deps/<dep>/priv. Extract NIF
-      # archives from the precompiled cache into deps/*/priv/native/ so the
-      # symlink resolves correctly when project code loads the NIF module.
-      - name: Extract precompiled NIFs
-        run: |
-          find ~/.cache/rustler_precompiled -name "*.so.tar.gz" 2>/dev/null | while read archive; do
-            find deps -type d -name native -path "*/priv/native" 2>/dev/null | while read target; do
-              tar -xzf "$archive" -C "$target" 2>/dev/null || true
-            done
-          done
+      # Force-compile NIF deps so rustler_precompiled extracts the .so into
+      # deps/<dep>/priv/native/ before project code tries to load the module.
+      - name: Compile NIF deps
+        run: mix deps.compile --force lumis
 
       - name: Run tests
         run: mix test
