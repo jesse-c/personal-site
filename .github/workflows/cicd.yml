@@ -47,18 +47,30 @@ jobs:
         id: cache-build
         uses: actions/cache@v5
         env:
-          cache-name: cache-compiled-build
+          cache-name: cache-compiled-build-v2
         with:
           path: _build
           key: ${{ runner.os }}-mix-${{ env.cache-name }}-${{ hashFiles('**/mix.lock') }}
+
+      # Cache precompiled NIF archives so they don't need to be
+      # re-downloaded when _build cache misses.
+      - name: Cache precompiled NIFs
+        uses: actions/cache@v5
+        with:
+          path: ~/.cache/rustler_precompiled
+          key: ${{ runner.os }}-nif-precompiled-${{ hashFiles('**/mix.lock') }}
           restore-keys: |
-            ${{ runner.os }}-mix-${{ env.cache-name }}-
-            ${{ runner.os }}-mix-
+            ${{ runner.os }}-nif-precompiled-
 
       # Download project dependencies. If unchanged, uses
       # the cached version.
       - name: Install dependencies
         run: mix deps.get
+
+      # Compile deps so the _build cache saved by this job is complete for
+      # downstream build/test jobs. --force ensures this always runs.
+      - name: Compile dependencies
+        run: mix deps.compile --force
 
   conformancy:
     runs-on: ubuntu-24.04
@@ -108,7 +120,7 @@ jobs:
         id: cache-build
         uses: actions/cache@v5
         env:
-          cache-name: cache-compiled-build
+          cache-name: cache-compiled-build-v2
         with:
           path: _build
           key: ${{ runner.os }}-mix-${{ env.cache-name }}-${{ hashFiles('**/mix.lock') }}
@@ -116,8 +128,25 @@ jobs:
             ${{ runner.os }}-mix-${{ env.cache-name }}-
             ${{ runner.os }}-mix-
 
+      # Cache precompiled NIF archives so they don't need to be
+      # re-downloaded when _build cache misses.
+      - name: Cache precompiled NIFs
+        uses: actions/cache@v5
+        with:
+          path: ~/.cache/rustler_precompiled
+          key: ${{ runner.os }}-nif-precompiled-${{ hashFiles('**/mix.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-nif-precompiled-
+
       - name: Install D2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: curl -fsSL https://d2lang.com/install.sh | sh -s --
+
+      # Force-compile NIF deps so rustler_precompiled extracts the .so into
+      # deps/<dep>/priv/native/ before project code tries to load the module.
+      - name: Compile NIF deps
+        run: mix deps.compile --force lumis
 
       - name: Check formatting
         run: mix format --check-formatted
@@ -166,16 +195,30 @@ jobs:
         id: cache-build
         uses: actions/cache@v5
         env:
-          cache-name: cache-compiled-build
+          cache-name: cache-compiled-build-v2
         with:
           path: _build
           key: ${{ runner.os }}-mix-${{ env.cache-name }}-${{ hashFiles('**/mix.lock') }}
+
+      # Cache precompiled NIF archives so they don't need to be
+      # re-downloaded when _build cache misses.
+      - name: Cache precompiled NIFs
+        uses: actions/cache@v5
+        with:
+          path: ~/.cache/rustler_precompiled
+          key: ${{ runner.os }}-nif-precompiled-${{ hashFiles('**/mix.lock') }}
           restore-keys: |
-            ${{ runner.os }}-mix-${{ env.cache-name }}-
-            ${{ runner.os }}-mix-
+            ${{ runner.os }}-nif-precompiled-
 
       - name: Install D2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: curl -fsSL https://d2lang.com/install.sh | sh -s --
+
+      # Force-compile NIF deps so rustler_precompiled extracts the .so into
+      # deps/<dep>/priv/native/ before project code tries to load the module.
+      - name: Compile NIF deps
+        run: mix deps.compile --force lumis
 
       - name: Compiles without warnings
         run: mix compile --warnings-as-errors
@@ -225,16 +268,30 @@ jobs:
         id: cache-build
         uses: actions/cache@v5
         env:
-          cache-name: cache-compiled-build
+          cache-name: cache-compiled-build-v2
         with:
           path: _build
           key: ${{ runner.os }}-mix-${{ env.cache-name }}-${{ hashFiles('**/mix.lock') }}
+
+      # Cache precompiled NIF archives so they don't need to be
+      # re-downloaded when _build cache misses.
+      - name: Cache precompiled NIFs
+        uses: actions/cache@v5
+        with:
+          path: ~/.cache/rustler_precompiled
+          key: ${{ runner.os }}-nif-precompiled-${{ hashFiles('**/mix.lock') }}
           restore-keys: |
-            ${{ runner.os }}-mix-${{ env.cache-name }}-
-            ${{ runner.os }}-mix-
+            ${{ runner.os }}-nif-precompiled-
 
       - name: Install D2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: curl -fsSL https://d2lang.com/install.sh | sh -s --
+
+      # Force-compile NIF deps so rustler_precompiled extracts the .so into
+      # deps/<dep>/priv/native/ before project code tries to load the module.
+      - name: Compile NIF deps
+        run: mix deps.compile --force lumis
 
       - name: Run tests
         run: mix test
