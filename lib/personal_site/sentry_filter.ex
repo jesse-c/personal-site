@@ -10,5 +10,7 @@ defmodule PersonalSite.SentryFilter do
 
   def before_send(%Sentry.Event{original_exception: %Phoenix.Router.NoRouteError{}}), do: nil
 
+  def before_send(%Sentry.Event{original_exception: %Bandit.TransportError{}}), do: nil
+
   def before_send(event), do: event
 end
