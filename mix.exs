@@ -70,7 +70,7 @@ defmodule PersonalSite.MixProject do
       {:hammer, "~> 7.0"},
       {:tesla, "~> 1.12"},
       {:req, "~> 0.7"},
-      {:dotenvy, "~> 1.1.0"},
+      {:dotenvy, "~> 1.2.0"},
       {:earmark, "1.5.0-pre1", override: true},
       {:sentry, "~> 13.0"},
       {:opentelemetry, "~> 1.5"},
