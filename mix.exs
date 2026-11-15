@@ -58,7 +58,7 @@ defmodule PersonalSite.MixProject do
       {:nimble_publisher, "~> 2.1"},
       {:yaml_front_matter, "~> 1.0.0"},
       {:mdex, "~> 0.12"},
-      {:lumis, "~> 0.1"},
+      {:lumis, "~> 0.8.0"},
       {:slugify, "~> 1.3"},
       {:credo, "~> 1.7", only: [:dev, :test], runtime: false},
       {:redix, "~> 1.1"},

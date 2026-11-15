@@ -83,7 +83,7 @@
         opacity: 1;
     }
 
-    pre .line {
+    pre .l-line {
         display: block;
         padding-left: 3rem;
         padding-right: 0.5rem;
@@ -91,7 +91,7 @@
         min-width: max-content;
     }
 
-    pre .line::before {
+    pre .l-line::before {
         content: attr(data-line);
         position: absolute;
         left: 0;
@@ -103,18 +103,18 @@
     }
 
     @media (prefers-color-scheme: dark) {
-        pre .line::before {
+        pre .l-line::before {
             color: oklch(40% 0 0);
         }
     }
 
-    pre .line:hover {
+    pre .l-line:hover {
         background: oklch(50% 0 0 / 6%);
         cursor: default;
     }
 
     @media (prefers-color-scheme: dark) {
-        pre .line:hover {
+        pre .l-line:hover {
             background: oklch(100% 0 0 / 5%);
         }
     }
