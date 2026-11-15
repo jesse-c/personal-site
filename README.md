@@ -20,12 +20,15 @@ Real secrets (`SECRET_KEY_BASE`, `SENTRY_DSN`, etc.) can be set in your environm
 
 ## D2 diagrams
 
+CI, Docker builds, and the SVG fixtures use D2 **v0.7.1**. Keep these in sync when upgrading D2.
+
 Blog posts support inline [D2](https://d2lang.com) diagrams, rendered to SVG at compile time — no JavaScript, no CDN, instant render, with light/dark mode via `prefers-color-scheme`.
 
 ### Prerequisites
 
 ```bash
-brew install d2
+curl -fsSL --retry 3 https://d2lang.com/install.sh -o /tmp/install-d2.sh
+sh /tmp/install-d2.sh --version v0.7.1
 ```
 
 ### Basic usage
