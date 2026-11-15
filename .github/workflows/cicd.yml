@@ -141,7 +141,9 @@ jobs:
       - name: Install D2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: curl -fsSL https://d2lang.com/install.sh | sh -s --
+        run: |
+          curl -fsSL --retry 3 https://d2lang.com/install.sh -o /tmp/install-d2.sh
+          sh /tmp/install-d2.sh --version v0.7.1
 
       # Force-compile NIF deps so rustler_precompiled extracts the .so into
       # deps/<dep>/priv/native/ before project code tries to load the module.
@@ -213,7 +215,9 @@ jobs:
       - name: Install D2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: curl -fsSL https://d2lang.com/install.sh | sh -s --
+        run: |
+          curl -fsSL --retry 3 https://d2lang.com/install.sh -o /tmp/install-d2.sh
+          sh /tmp/install-d2.sh --version v0.7.1
 
       # Force-compile NIF deps so rustler_precompiled extracts the .so into
       # deps/<dep>/priv/native/ before project code tries to load the module.
@@ -286,7 +290,9 @@ jobs:
       - name: Install D2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: curl -fsSL https://d2lang.com/install.sh | sh -s --
+        run: |
+          curl -fsSL --retry 3 https://d2lang.com/install.sh -o /tmp/install-d2.sh
+          sh /tmp/install-d2.sh --version v0.7.1
 
       # Force-compile NIF deps so rustler_precompiled extracts the .so into
       # deps/<dep>/priv/native/ before project code tries to load the module.

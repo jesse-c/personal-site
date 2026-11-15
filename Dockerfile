@@ -18,7 +18,7 @@ RUN apt-get update -y && apt-get install -y --no-install-recommends \
       build-essential git curl
 
 # Install d2 (required for compile-time SVG diagram rendering in blog posts)
-RUN /bin/bash -o pipefail -c "curl -fsSL https://d2lang.com/install.sh | sh -s --"
+RUN /bin/bash -o pipefail -c "curl -fsSL --retry 3 https://d2lang.com/install.sh | sh -s -- --version v0.7.1"
 
 WORKDIR /app
 
