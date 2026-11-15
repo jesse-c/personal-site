@@ -149,7 +149,7 @@ jobs:
       # Force-compile NIF deps so rustler_precompiled extracts the .so into
       # deps/<dep>/priv/native/ before project code tries to load the module.
       - name: Compile NIF deps
-        run: mix deps.compile --force lumis
+        run: mix deps.compile --force --include-children lumis
 
       - name: Check formatting
         run: mix format --check-formatted
@@ -223,7 +223,7 @@ jobs:
       # Force-compile NIF deps so rustler_precompiled extracts the .so into
       # deps/<dep>/priv/native/ before project code tries to load the module.
       - name: Compile NIF deps
-        run: mix deps.compile --force lumis
+        run: mix deps.compile --force --include-children lumis
 
       - name: Compiles without warnings
         run: mix compile --warnings-as-errors
@@ -298,7 +298,7 @@ jobs:
       # Force-compile NIF deps so rustler_precompiled extracts the .so into
       # deps/<dep>/priv/native/ before project code tries to load the module.
       - name: Compile NIF deps
-        run: mix deps.compile --force lumis
+        run: mix deps.compile --force --include-children lumis
 
       - name: Run tests
         run: mix test

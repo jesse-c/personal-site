@@ -33,9 +33,12 @@ defmodule PersonalSite.MDExConverter do
           unsafe: true
         ],
         syntax_highlight: [
-          formatter:
-            {:html_multi_themes,
-             themes: [light: "onelight", dark: "onedark"], default_theme: "light-dark()"}
+          engine: :lumis,
+          opts: [
+            formatter:
+              {:html_multi_themes,
+               themes: [light: "onelight", dark: "onedark"], default_theme: "light-dark()"}
+          ]
         ]
       )
       |> MDEx.to_html!(
